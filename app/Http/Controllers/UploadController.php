@@ -27,6 +27,10 @@ class UploadController extends Controller
         // Save it in the database
         $upload = new Upload();
         $upload->name = $file;
+        $upload->public = $request->public;
+        $upload->transcribe = $request->transcribe;
+        $upload->share = $request->share;
+        $upload->contribute_to_science = $request->contribute;
         // If we are logged in, save that user's id
         if(Auth::user()) $upload->user_id = Auth::user()->id;
         $upload->save();
