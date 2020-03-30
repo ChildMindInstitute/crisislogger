@@ -43,5 +43,5 @@
 
 @section('scripts')
     <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-    <script src="{{ asset('js/pages/capture-audio.js') }}"></script>
+    <script src="{{ asset('js/pages/capture-audio.js') }}?time={{ time() }}"></script>
 @endsection

@@ -59,6 +59,7 @@ https://addpipe.com/blog/audio-constraints-getusermedia/ */
         //start the recording process
         rec.record()
         console.log("Recording started");
+        recordButton.innerHTML = "<i class=\"la la-circle\"></i> Recording";
     }).catch(function(err) {
         //enable the record button if getUserMedia() fails
         recordButton.disabled = false;
@@ -88,6 +89,8 @@ function stopRecording() {
     pauseButton.disabled = true;
     //reset button just in case the recording is stopped while paused
     pauseButton.innerHTML = "<i class=\"la la-pause\"></i> Pause";
+    // reset the start button
+    recordButton.innerHTML = "<i class=\"la la-play\"></i> Start";
     //tell the recorder to stop the recording
     rec.stop(); //stop microphone access
     gumStream.getAudioTracks()[0].stop();
