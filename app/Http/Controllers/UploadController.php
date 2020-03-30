@@ -11,6 +11,7 @@ use Auth;
 
 class UploadController extends Controller
 {
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -20,7 +21,9 @@ class UploadController extends Controller
 
         // Store the file name in the session in case the user decides to sign up.
         // That way we can attribute this clip to the new user.
-        Session::put('filename', $file);
+        // Prepend /storage/ to send back to the register controller so it can find the proper file if user registers
+        $filename = '/storage/' . $file;
+        Session::put('filename', $filename);
         // Save it in the database
         $upload = new Upload();
         $upload->name = $file;
@@ -30,11 +33,9 @@ class UploadController extends Controller
 
         $response = [
             'message' => 'File uploaded successfully.',
-            'file' => $file
+            'file' => $filename
         ];
         return response()->json($response, Response::HTTP_OK);
     }
-
-
 
 }

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Upload;
 use App\User;
-use Composer\Util\Platform;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -56,6 +55,7 @@ class RegisterController extends Controller
             'name' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'filename' => ['nullable', 'string'],
         ]);
     }
 
@@ -81,6 +81,15 @@ class RegisterController extends Controller
                 $upload->save();
             }
             Session::remove('filename');
+        } else {
+            // Check and see if we are sending the filename along
+            if($data['filename']){
+                $upload = Upload::where('name', $data['filename'])->first();
+                if($upload){
+                    $upload->user_id = $user->id;
+                    $upload->save();
+                }
+            }
         }
 
         return $user;
