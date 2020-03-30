@@ -18,3 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('upload', 'UploadController@upload')->name('upload');
+
+Route::middleware('auth')->group(function(){
+
+    Route::prefix('user')->group(function(){
+        Route::post('update', 'UserController@update')->name('user_update');
+        Route::post('change_password', 'UserController@changePassword')->name('user_change_password');
+    });
+
+});

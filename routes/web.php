@@ -33,6 +33,10 @@ Route::middleware('auth')->group(function(){
         return view('pages.dashboard');
     })->name('dashboard');
 
+    Route::get('profile', function () {
+        return view('pages.profile');
+    })->name('profile');
+
 });
 
 Auth::routes();
