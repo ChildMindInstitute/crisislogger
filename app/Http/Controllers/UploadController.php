@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Session;
+use Storage;
+use Auth;
 
 class UploadController extends Controller
 {
@@ -12,12 +16,25 @@ class UploadController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function upload(Request $request){
-        $file = $request->file('audio_data')->store('uploads');
+        $file = Storage::disk('public')->putFile('uploads', $request->file('audio_data'));
+
+        // Store the file name in the session in case the user decides to sign up.
+        // That way we can attribute this clip to the new user.
+        Session::put('filename', $file);
+        // Save it in the database
+        $upload = new Upload();
+        $upload->name = $file;
+        // If we are logged in, save that user's id
+        if(Auth::user()) $upload->user_id = Auth::user()->id;
+        $upload->save();
 
         $response = [
-            'message' => 'Uploaded successfully.',
+            'message' => 'File uploaded successfully.',
             'file' => $file
         ];
         return response()->json($response, Response::HTTP_OK);
     }
+
+
+
 }

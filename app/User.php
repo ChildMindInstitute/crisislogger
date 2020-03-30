@@ -5,7 +5,13 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Eloquent;
 
+/**
+ * Class User
+ * @package App
+ * @mixin Eloquent
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,4 +42,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function uploads(){
+        return Upload::where('user_id', $this->id)->get();
+    }
+
 }

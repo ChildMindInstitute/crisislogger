@@ -4,16 +4,11 @@
 
     <div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">
         <div class="kt-login__container">
-            <div class="kt-login__logo">
-                <a href="#">
-                    <img style="max-width:150px;" src="{{ asset('media/logos/CMI_spot_logo.jpg') }}">
-                </a>
-            </div>
             <div class="kt-login__signin">
                 <div class="kt-login__head">
                     <h3 class="kt-login__title">Sign In To {{ config('app.name') }}</h3>
                 </div>
-                <form class="kt-form" action="{{ route('login') }}" _lpchecked="1">
+                <form class="kt-form" method="POST" action="{{ route('login') }}">
                     @csrf
 
                     @include('components.input', [

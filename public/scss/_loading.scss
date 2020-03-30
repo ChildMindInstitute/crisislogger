@@ -1,0 +1,16 @@
+.loading {
+    &:before {
+        content:'';
+        display:inline-block;
+        top:50%;
+        left:0;
+        border-radius: 50%;
+        width:10px;
+        height:10px;
+        margin-top:-8px;
+        animation:kt-spinner 0.5s linear infinite;
+        border:2px solid #fff;
+        border-right:2px solid transparent;
+        margin-right:10px;
+    }
+}
