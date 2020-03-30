@@ -17,7 +17,14 @@
                     @foreach(Auth::user()->uploads() as $upload)
                         <div class="col-sm-12 col-md-4">
                             <p>{{ $upload->created_at }}</p>
-                            <audio controls src="{{ $upload->name }}"></audio>
+                            @if(Str::contains($upload->name, '.wav'))
+                                <audio controls src="{{ $upload->name }}"></audio>
+                            @else
+                                <video controls>
+                                    <source src="{{ url('/') . $upload->name }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            @endif
                         </div>
                     @endforeach
                 </div>

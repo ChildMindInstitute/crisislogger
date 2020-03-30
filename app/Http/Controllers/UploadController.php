@@ -17,7 +17,8 @@ class UploadController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function upload(Request $request){
-        $file = Storage::disk('public')->putFile('uploads', $request->file('audio_data'));
+        $extension = $request->file('data')->extension();
+        $file = Storage::disk('public')->putFile('uploads', $request->file('data'));
 
         // Store the file name in the session in case the user decides to sign up.
         // That way we can attribute this clip to the new user.
@@ -37,7 +38,8 @@ class UploadController extends Controller
 
         $response = [
             'message' => 'File uploaded successfully.',
-            'file' => $filename
+            'file' => $filename,
+            'ext' => $extension
         ];
         return response()->json($response, Response::HTTP_OK);
     }

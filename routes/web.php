@@ -21,6 +21,10 @@ Route::prefix('capture')->group(function() {
         return view('pages.capture.capture');
     })->name('capture');
 
+    Route::get('video', function () {
+        return view('pages.capture.capture-video');
+    })->name('capture-video');
+
     Route::get('create', function () {
         return view('pages.capture.create-account');
     })->name('capture-create-account');

@@ -114,7 +114,6 @@ function createDownloadLink(blob) {
     li.appendChild(au);
     li.appendChild(link);
 
-    //add the li element to the ordered list
     let filename = new Date().toISOString();
     //filename to send to server without extension
     upload.addEventListener('click', async (e) => {
@@ -127,84 +126,3 @@ function createDownloadLink(blob) {
     upload_info.classList.remove('d-none');
 }
 
-function uploadButtonClicked(blob, filename){
-    // Do any form validation
-    if(!valid()){
-        return;
-    }
-
-    // Block UI
-    KTApp.blockPage();
-    // Close the form modal
-    $('#uploadModal').modal('hide')
-
-    // Create the new form, attach all data we need
-    let fd = new FormData();
-    fd.append("audio_data", blob, filename);
-    fd.append("public", $("input[name='public']:checked").val());
-    fd.append("transcribe", $("input[name='transcribe']:checked").val());
-    fd.append("share", $("input[name='share']:checked").val());
-    fd.append("contribute", $("input[name='contribute']:checked").val());
-
-    axios.post('api/upload', fd, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    }).then(response => {
-        console.log(response);
-        let data = response.data;
-        KTApp.unblockPage();
-
-        swal.fire({
-            title: 'Success!',
-            text: data.message,
-            showCancelButton: false,
-            confirmButtonText: 'Ok'
-        }).then((result) => {
-            if(result.value){
-                window.location.href = '/capture/create';
-            }
-        });
-    }).catch(error => {
-        KTApp.unblockPage();
-        console.log(error.response);
-        let data = error.response.data;
-        swal.fire({
-            type: 'error',
-            title: 'Something went wrong.',
-            text: data.message
-        });
-    });
-}
-
-function valid(){
-    if (!$("input[name='public']:checked").val()) {
-        swal.fire({
-            title: 'You missed a step..',
-            text: 'Please select yes or no for post publicly.'
-        });
-        return false;
-    }
-    if (!$("input[name='transcribe']:checked").val()) {
-        swal.fire({
-            title: 'You missed a step..',
-            text: 'Please select yes or no for transcribe.'
-        });
-        return false;
-    }
-    if (!$("input[name='share']:checked").val()) {
-        swal.fire({
-            title: 'You missed a step..',
-            text: 'Please select yes or no for share.'
-        });
-        return false;
-    }
-    if (!$("input[name='contribute']:checked").val()) {
-        swal.fire({
-            title: 'You missed a step..',
-            text: 'Please select yes or no for contribute.'
-        });
-        return false;
-    }
-    return true;
-}

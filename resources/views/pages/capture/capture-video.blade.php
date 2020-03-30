@@ -7,23 +7,24 @@
         <div class="kt-portlet">
             <div class="kt-portlet__body">
                 <h1 class="display-4">Capture Your Thoughts on COVID-19</h1>
-                <h3>Create an audio recording</h3>
-                <p>If you wish to create a video recording, <a href="{{ route('capture-video') }}">click here.</a></p>
-                <p>You can record via your computer or phone microphone your thoughts, concerns on COVID-19.</p>
+                <h3>Create a video recording</h3>
+                <p>If you wish to create an audio recording, <a href="{{ route('capture') }}">click here.</a></p>
+                <p>You can record via your computer or phone camera your thoughts, concerns on COVID-19.</p>
                 <p>After you record your thoughts, you can upload them and create an optional account to view your uploaded files.</p>
 
                 <div>
                     <div id="recordingsList" class="d-none">
-                        <h3>Your video:</h3>
+                        <h3>Your recording:</h3>
+                        <video id='video' controls></video>
                     </div>
 
                     <div class="text-center">
                         <div class="btn-group mb-3 mt-3">
+                            <button id="cameraButton" class="btn btn-info">
+                                <i class="la la-camera"></i> Request Camera
+                            </button>
                             <button id="recordButton" class="btn btn-success">
                                 <i class="la la-play"></i> Start
-                            </button>
-                            <button id="pauseButton" class="btn btn-outline-primary">
-                                <i class="la la-pause"></i> Pause
                             </button>
                             <button id="stopButton" class="btn btn-danger">
                                 <i class="la la-stop"></i> Stop
@@ -46,8 +47,7 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
     <script src="{{ asset('js/pages/capture-valid.js') }}"></script>
     <script src="{{ asset('js/pages/capture-upload.js') }}"></script>
-    <script src="{{ asset('js/pages/capture-audio.js') }}?time={{ time() }}"></script>
+    <script src="{{ asset('js/pages/capture-video.js') }}?time={{ time() }}"></script>
 @endsection
