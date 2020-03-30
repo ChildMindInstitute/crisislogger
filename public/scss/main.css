@@ -1,0 +1,35 @@
+.content {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+@media (min-width: 768px) {
+  .content {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+@media (min-width: 992px) {
+  .content {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+.header {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  z-index: 1000;
+  position: relative;
+}
+.header img {
+  max-width: 200px;
+  max-height: 100px;
+}
+@media (min-width: 992px) {
+  .header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
