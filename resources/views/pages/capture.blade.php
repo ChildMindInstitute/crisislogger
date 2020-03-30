@@ -152,21 +152,29 @@ https://addpipe.com/blog/audio-constraints-getusermedia/ */
             //add the li element to the ordered list
             let filename = new Date().toISOString();
             //filename to send to server without extension
-            let xhr = new XMLHttpRequest();
             upload.addEventListener('click', async (e) => {
                 e.preventDefault();
-                console.log('upload clicked');
-                xhr.onload = function(e) {
-                    if (this.readyState === 4) {
-                        let response = JSON.parse(e.target.responseText);
-                        console.log(response);
-                        swal.fire(response.message);
-                    }
-                };
                 let fd = new FormData();
                 fd.append("audio_data", blob, filename);
-                xhr.open("POST", "{{ route('upload') }}", true);
-                xhr.send(fd);
+
+                axios.post('{{ route('upload') }}', fd, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }).then(response => {
+                    console.log(response);
+                    let data = response.data;
+                    swal.fire(data.message);
+                }).catch(error => {
+                    console.log(error.response);
+                    let data = error.response.data;
+                    swal.fire({
+                        type: 'error',
+                        title: 'Something went wrong.',
+                        text: data.message
+                    });
+                });
+
             });
 
             recordingsList.appendChild(li);

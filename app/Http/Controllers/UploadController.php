@@ -12,8 +12,11 @@ class UploadController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function upload(Request $request){
+        $file = $request->file('audio_data')->store('uploads');
+
         $response = [
-            'message' => 'Uploaded successfully.'
+            'message' => 'Uploaded successfully.',
+            'file' => $file
         ];
         return response()->json($response, Response::HTTP_OK);
     }
