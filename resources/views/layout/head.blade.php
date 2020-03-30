@@ -23,7 +23,7 @@
     <link href="{{ asset('css/skins/header/menu/light.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/skins/brand/dark.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/skins/aside/dark.css') }}" rel="stylesheet" type="text/css" />        <!--end::Layout Skins -->
-    <link href="{{ asset('scss/main.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('scss/main.css') }}?time={{ time() }}" rel="stylesheet" type="text/css" />
 
 
 </head>

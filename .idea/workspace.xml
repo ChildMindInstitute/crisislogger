@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8675259a-5e9b-4d96-b780-906ce6c72f78" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/parentlogger.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/parentlogger.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/pages/capture-audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/capture-audio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/scss/_content.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/scss/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/scss/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/scss/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/scss/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/scss/main.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/scss/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/scss/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/authorized/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/authorized/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/authorized/user-bar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/authorized/user-bar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/head.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/capture/capture.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/capture/capture.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,19 +165,20 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/pages/capture" />
-      <recent name="$PROJECT_DIR$/public/media/logos" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Http/Controllers" />
       <recent name="$PROJECT_DIR$/resources/views/components" />
       <recent name="$PROJECT_DIR$/resources/views/layout/authorized" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/scss/global/node_modules" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/media/photos" />
+      <recent name="$PROJECT_DIR$/resources/views/pages/capture" />
+      <recent name="$PROJECT_DIR$/public/media/logos" />
     </key>
   </component>
   <component name="RunManager">
@@ -186,7 +199,8 @@
       <updated>1585510117332</updated>
       <workItem from="1585510119307" duration="6802000" />
       <workItem from="1585517297226" duration="9831000" />
-      <workItem from="1585541132781" duration="8914000" />
+      <workItem from="1585541132781" duration="9393000" />
+      <workItem from="1585583823083" duration="1587000" />
     </task>
     <servers />
   </component>
@@ -203,19 +217,20 @@
       <screen x="0" y="23" width="2560" height="1378" />
     </state>
     <state x="1520" y="377" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1378@0.23.2560.1378" timestamp="1585511586983" />
-    <state x="535" y="318" width="827" height="475" key="EditFileWatcherDialog" timestamp="1585541069217">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="535" y="318" width="827" height="475" key="EditFileWatcherDialog/0.0.1440.900@0.0.1440.900" timestamp="1585541069217" />
-    <state x="302" y="82" key="SettingsEditor" timestamp="1585541189368">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="302" y="82" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1585541189368" />
-    <state x="1429" y="350" key="SettingsEditor/0.23.2560.1378@0.23.2560.1378" timestamp="1585521526864" />
-    <state x="1576" y="452" width="687" height="518" key="find.popup" timestamp="1585514927647">
+    <state x="951" y="510" width="827" height="475" key="EditFileWatcherDialog" timestamp="1585583893527">
       <screen x="0" y="23" width="2560" height="1378" />
     </state>
-    <state x="1576" y="452" width="687" height="518" key="find.popup/0.23.2560.1378@0.23.2560.1378" timestamp="1585514927647" />
+    <state x="535" y="318" width="827" height="475" key="EditFileWatcherDialog/0.0.1440.900@0.0.1440.900" timestamp="1585541069217" />
+    <state x="951" y="510" key="EditFileWatcherDialog/0.23.2560.1378@0.23.2560.1378" timestamp="1585583893527" />
+    <state x="1530" y="330" key="SettingsEditor" timestamp="1585583915170">
+      <screen x="0" y="23" width="2560" height="1378" />
+    </state>
+    <state x="302" y="82" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1585541189368" />
+    <state x="1530" y="330" key="SettingsEditor/0.23.2560.1378@0.23.2560.1378" timestamp="1585583915170" />
+    <state x="1576" y="452" width="687" height="518" key="find.popup" timestamp="1585578530078">
+      <screen x="0" y="23" width="2560" height="1378" />
+    </state>
+    <state x="1576" y="452" width="687" height="518" key="find.popup/0.23.2560.1378@0.23.2560.1378" timestamp="1585578530078" />
     <state x="569" y="83" width="591" height="685" key="ftp.server.browser" timestamp="1585535247388">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -224,6 +239,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="593" y="355" key="publish.login/0.0.1440.900@0.0.1440.900" timestamp="1585541166827" />
+    <state x="1286" y="539" key="scopes" timestamp="1585583891013">
+      <screen x="0" y="23" width="2560" height="1378" />
+    </state>
+    <state x="1286" y="539" key="scopes/0.23.2560.1378@0.23.2560.1378" timestamp="1585583891013" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1585541931713">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

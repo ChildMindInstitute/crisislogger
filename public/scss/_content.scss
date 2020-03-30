@@ -1,3 +1,9 @@
+body {
+    font-size:16px;
+    font-weight: normal;
+    color:#111;
+}
+
 .content {
 
     padding-top:$padding-mobile;
@@ -12,5 +18,12 @@
         padding-top:$padding-desktop;
         padding-bottom:$padding-desktop;
     }
+
+}
+
+img {
+
+    max-width:100%;
+    height:auto;
 
 }

@@ -15,16 +15,18 @@
                         <h3>Your recording:</h3>
                     </div>
 
-                    <div class="btn-group mb-2">
-                        <button id="recordButton" class="btn btn-success">
-                            <i class="la la-play"></i> Start
-                        </button>
-                        <button id="pauseButton" class="btn btn-outline-primary">
-                            <i class="la la-pause"></i> Pause
-                        </button>
-                        <button id="stopButton" class="btn btn-danger">
-                            <i class="la la-stop"></i> Stop
-                        </button>
+                    <div class="text-center">
+                        <div class="btn-group mb-3 mt-3">
+                            <button id="recordButton" class="btn btn-success">
+                                <i class="la la-play"></i> Start
+                            </button>
+                            <button id="pauseButton" class="btn btn-outline-primary">
+                                <i class="la la-pause"></i> Pause
+                            </button>
+                            <button id="stopButton" class="btn btn-danger">
+                                <i class="la la-stop"></i> Stop
+                            </button>
+                        </div>
                     </div>
 
                     <p>If you wish to re-record your thoughts, please press start again. Your old recording will be replaced.</p>

@@ -25,6 +25,7 @@
     <link href="{{ asset('css/skins/brand/light.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/skins/aside/light.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/custom.css') }}?time={{ time() }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('scss/main.css') }}?time={{ time() }}" rel="stylesheet" type="text/css" />
 
     <!--end::Layout Skins -->
    @include('layout.authorized.favicon')
