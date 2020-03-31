@@ -43,20 +43,20 @@ function stopRecording() {
         chunks.push(e.data);
         videoContainer.classList.remove('d-none');
         video.src = URL.createObjectURL(e.data);
+        console.log(chunks);
+
+        startBtn.removeAttribute('disabled');
+        stopBtn.disabled = true;
+        startBtn.innerHTML = "<i class=\"la la-play\"></i> Start";
+
+        var blob = new Blob(chunks, {type: 'video/webm'});
+        let filename = new Date().toISOString() + ".webm";
+        uploadBtn.classList.remove('d-none');
+
+        upload.addEventListener('click', async (e) => {
+            e.preventDefault();
+            uploadButtonClicked(blob, filename);
+        });
     };
     recorder.stop();
-    startBtn.removeAttribute('disabled');
-    stopBtn.disabled = true;
-    startBtn.innerHTML = "<i class=\"la la-play\"></i> Start";
-
-    var blob = new Blob(chunks, {type: 'video/mp4'});
-    let url = URL.createObjectURL(blob);
-    uploadBtn.classList.remove('d-none');
-
-    let filename = new Date().toISOString() + ".mp4";
-    //filename to send to server without extension
-    upload.addEventListener('click', async (e) => {
-        e.preventDefault();
-        uploadButtonClicked(blob, filename);
-    });
 }

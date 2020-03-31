@@ -1,4 +1,4 @@
-function uploadButtonClicked(blob, filename){
+function uploadButtonClicked(file, filename){
     // Do any form validation
     if(!valid()){
         return;
@@ -11,7 +11,7 @@ function uploadButtonClicked(blob, filename){
 
     // Create the new form, attach all data we need
     let fd = new FormData();
-    fd.append("data", blob, filename);
+    fd.append("data", file);
     fd.append("public", $("input[name='public']:checked").val());
     fd.append("transcribe", $("input[name='transcribe']:checked").val());
     fd.append("share", $("input[name='share']:checked").val());

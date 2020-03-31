@@ -114,4 +114,8 @@ h3 {
   margin-bottom: 2rem;
 }
 
+video {
+  max-width: 100%;
+}
+
 /*# sourceMappingURL=main.css.map */
