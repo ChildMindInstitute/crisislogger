@@ -34,9 +34,17 @@ class UploadController extends Controller
         if(Auth::user()) $upload->user_id = Auth::user()->id;
         $upload->save();
 
+        // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
+        if($upload->share){
+            $redirect = route('questionnaire');
+        } else {
+            $redirect = route('capture-create-account');
+        }
+
         $response = [
             'message' => 'File uploaded successfully.',
             'file' => $filename,
+            'redirect' => $redirect
         ];
         return response()->json($response, Response::HTTP_OK);
     }

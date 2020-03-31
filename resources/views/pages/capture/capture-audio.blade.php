@@ -20,7 +20,7 @@
 
                     <div class="text-center">
                         <div class="btn-group mb-3 mt-3">
-                            <button id="recordButton" class="btn btn-success">
+                            <button id="recordButton" class="btn btn-primary">
                                 <i class="la la-play"></i> Start
                             </button>
                             <button id="pauseButton" class="btn btn-outline-primary">
@@ -29,12 +29,10 @@
                             <button id="stopButton" class="btn btn-danger">
                                 <i class="la la-stop"></i> Stop
                             </button>
+                            <button class="btn btn-success d-none" id="uploadInfo" data-toggle="modal" data-target="#uploadModal">Save Recording</button>
                         </div>
                     </div>
 
-                    <div id="uploadInfo" class="d-none">
-                        <button class="btn btn-success" data-toggle="modal" data-target="#uploadModal">Save Recording</button>
-                    </div>
                 </div>
             </div>
         </div>

@@ -31,7 +31,7 @@ function uploadButtonClicked(file, filename){
             confirmButtonText: 'Ok'
         }).then((result) => {
             if(result.value){
-                window.location.href = '/capture/create';
+                window.location.href = data.redirect;
             }
         });
     }).catch(error => {

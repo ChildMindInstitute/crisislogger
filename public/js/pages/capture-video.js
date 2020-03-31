@@ -27,6 +27,7 @@ function requestVideo() {
         preview.captureStream = preview.captureStream || preview.mozCaptureStream;
         preview.classList.remove('d-none');
         spinner.classList.add('d-none');
+        startBtn.classList.remove('d-none');
     }).catch(e => console.error(e));
 }
 
