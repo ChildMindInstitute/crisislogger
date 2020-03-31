@@ -3,15 +3,15 @@
 @section('capture-active', 'kt-menu__item--active')
 @section('content')
 
-    <div class="container content">
+    <div class="container">
         <div class="kt-portlet">
             <div class="kt-portlet__body">
-                <h1 class="display-4">Capture Your Thoughts on COVID-19</h1>
+                <h1 class="display-4">Capture your thoughts and feelings</h1>
+                <p>Please share your thoughts, feelings, fears, frustrations, needs, and hopes. Recordings can range from 30 seconds to 5 minutes.  We hope that you will come back and record more.  Please avoid using any identifying names or information.</p>
                 <h3>Create an audio recording</h3>
                 <p>If you wish to create a video recording, <a href="{{ route('capture-video') }}">click here.</a></p>
-                <p>Press Start to begin recording your thoughts and feelings.</p>
+                <p>Press Start to begin recording your thoughts and feelings (and again to delete and re-record).</p>
                 <p>Press Stop to end recording. You will be able to save the recording for private use or share it publicly as is or as a transcript.</p>
-                <p>Press Start if you wish to re-record and overwrite your recording.</p>
 
                 <div>
                     <div id="recordingsList" class="d-none">
@@ -33,7 +33,7 @@
                     </div>
 
                     <div id="uploadInfo" class="d-none">
-                        <button class="btn btn-success" data-toggle="modal" data-target="#uploadModal">Upload File</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#uploadModal">Save Recording</button>
                     </div>
                 </div>
             </div>

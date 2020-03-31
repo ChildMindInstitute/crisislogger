@@ -12,8 +12,10 @@ startBtn.disabled = true;
 stopBtn.disabled = true;
 let upload = document.getElementById('upload');
 let preview = document.getElementById('live-video');
+let spinner = document.getElementById('spinner');
 
 function requestVideo() {
+    spinner.classList.remove('d-none');
     navigator.mediaDevices.getUserMedia({
         video: true,
         audio: true
@@ -24,6 +26,7 @@ function requestVideo() {
         preview.srcObject = stream;
         preview.captureStream = preview.captureStream || preview.mozCaptureStream;
         preview.classList.remove('d-none');
+        spinner.classList.add('d-none');
     }).catch(e => console.error(e));
 }
 

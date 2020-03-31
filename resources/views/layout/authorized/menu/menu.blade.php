@@ -26,7 +26,7 @@
                     </g>
                 </svg>
             </i>
-            <span class="kt-menu__link-text">Capture Thoughts</span>
+            <span class="kt-menu__link-text">Share Your Thoughts</span>
         </a>
     </li>
 

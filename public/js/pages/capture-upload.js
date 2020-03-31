@@ -7,13 +7,11 @@ function uploadButtonClicked(file, filename){
     // Block UI
     KTApp.blockPage();
     // Close the form modal
-    $('#uploadModal').modal('hide')
+    $('#uploadModal').modal('hide');
 
     // Create the new form, attach all data we need
     let fd = new FormData();
     fd.append("data", file);
-    fd.append("public", $("input[name='public']:checked").val());
-    fd.append("transcribe", $("input[name='transcribe']:checked").val());
     fd.append("share", $("input[name='share']:checked").val());
     fd.append("contribute", $("input[name='contribute']:checked").val());
 

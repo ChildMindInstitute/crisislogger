@@ -14,8 +14,6 @@ use Storage;
  * @property int id
  * @property string name
  * @property int user_id
- * @property int public
- * @property int transcribe
  * @property int share
  * @property int contribute_to_science
  * @property CarbonImmutable created_at

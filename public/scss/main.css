@@ -26,6 +26,12 @@ img {
   height: auto;
 }
 
+.sticky {
+  position: sticky !important;
+  top: 0;
+  background: #fff;
+}
+
 .header {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -67,8 +73,17 @@ img {
   border-color: #0067a0;
 }
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-brand:hover, .btn-brand:active, .btn-brand:focus {
-  background-color: #0088d3;
-  border-color: #0088d3;
+  background-color: #0077ba;
+  border-color: #0077ba;
+}
+
+.btn-outline-primary {
+  border-color: #0067a0;
+  color: #0067a0;
+}
+.btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:focus {
+  background-color: #0077ba;
+  border-color: #0077ba;
 }
 
 .btn-link,
@@ -79,11 +94,11 @@ img {
 .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__heading .kt-menu__link-text:hover,
 .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__heading .kt-menu__link-text:active,
 .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__heading .kt-menu__link-text:focus, .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link .kt-menu__link-text:hover, .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link .kt-menu__link-text:active, .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link .kt-menu__link-text:focus {
-  color: #0088d3;
+  color: #0077ba;
 }
 
 .btn-link:hover, .btn-link:active, .btn-link:focus {
-  background-color: #0088d3 !important;
+  background-color: #0077ba !important;
 }
 
 .overlay {

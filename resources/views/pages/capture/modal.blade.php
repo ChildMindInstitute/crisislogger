@@ -10,22 +10,9 @@
             <form id="ConsentForm">
                 <div class="modal-body">
 
-                        <div class="form-group">
-                            <label>Post publicly?</label>
-                            <div class="kt-radio-inline">
-                                <label class="kt-radio">
-                                    <input type="radio" name="public" value="1" required > Yes
-                                    <span></span>
-                                </label>
-                                <label class="kt-radio">
-                                    <input type="radio" name="public" value="0" required> No
-                                    <span></span>
-                                </label>
-                            </div>
-                            <span class="form-text text-muted">If posted publicly, other parents can hear what you have to say.</span>
-                        </div>
-                        <div class="form-group">
-                        <label>Share publicly?</label>
+
+                    <div class="form-group">
+                        <p>Share publicly?</p>
                         <div class="kt-radio-inline">
                             <label class="kt-radio">
                                 <input type="radio" name="share" value="1" > Yes
@@ -38,22 +25,9 @@
                         </div>
                         <span class="form-text text-muted">If Yes, other parents will have an opportunity to hear what you have to say.</span>
                     </div>
+
                         <div class="form-group">
-                            <label>May we transcribe your recording?</label>
-                            <div class="kt-radio-inline">
-                                <label class="kt-radio">
-                                    <input type="radio" name="transcribe" value="1" > Yes
-                                    <span></span>
-                                </label>
-                                <label class="kt-radio">
-                                    <input type="radio" name="transcribe" value="0"> No
-                                    <span></span>
-                                </label>
-                            </div>
-                            <span class="form-text text-muted">If posted transcribed, your recording will help a lot more people.</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Contribute recording to science?</label>
+                            <p>Contribute recording to science?</p>
                             <div class="kt-radio-inline">
                                 <label class="kt-radio">
                                     <input type="radio" name="contribute" value="1" > Yes

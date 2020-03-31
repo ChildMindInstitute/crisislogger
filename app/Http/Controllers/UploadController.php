@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UploadRequest;
 use App\Upload;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Session;
@@ -13,10 +15,10 @@ class UploadController extends Controller
 {
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param UploadRequest $request
+     * @return JsonResponse
      */
-    public function upload(Request $request){
+    public function upload(UploadRequest $request){
         $file = Storage::disk('public')->putFile('uploads', $request->file('data'));
         // Store the file name in the session in case the user decides to sign up.
         // That way we can attribute this clip to the new user.
@@ -26,8 +28,6 @@ class UploadController extends Controller
         // Save it in the database
         $upload = new Upload();
         $upload->name = $file;
-        $upload->public = $request->public;
-        $upload->transcribe = $request->transcribe;
         $upload->share = $request->share;
         $upload->contribute_to_science = $request->contribute;
         // If we are logged in, save that user's id
