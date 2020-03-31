@@ -53,6 +53,8 @@
 
                     <input type="hidden" value="{{ Session::get('filename') }}" name="filename" />
                 </form>
+
+                <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
             </div>
         </div>
     </div>

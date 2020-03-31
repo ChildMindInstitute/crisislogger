@@ -37,9 +37,7 @@ Route::prefix('capture')->group(function() {
 
 Route::middleware('auth')->group(function(){
 
-    Route::get('dashboard', function () {
-        return view('pages.dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', 'HomeController@dashboard')->name('dashboard');
 
     Route::get('profile', function () {
         return view('pages.profile');
