@@ -9,8 +9,9 @@
                 <h1 class="display-4">Capture Your Thoughts on COVID-19</h1>
                 <h3>Create an audio recording</h3>
                 <p>If you wish to create a video recording, <a href="{{ route('capture-video') }}">click here.</a></p>
-                <p>You can record via your computer or phone microphone your thoughts, concerns on COVID-19.</p>
-                <p>After you record your thoughts, you can upload them and create an optional account to view your uploaded files.</p>
+                <p>Press Start to begin recording your thoughts and feelings.</p>
+                <p>Press Stop to end recording. You will be able to save the recording for private use or share it publicly as is or as a transcript.</p>
+                <p>Press Start if you wish to re-record and overwrite your recording.</p>
 
                 <div>
                     <div id="recordingsList" class="d-none">
@@ -31,8 +32,6 @@
                         </div>
                     </div>
 
-                    <p>If you wish to re-record your thoughts, please press start again. Your old recording will be replaced.</p>
-
                     <div id="uploadInfo" class="d-none">
                         <button class="btn btn-success" data-toggle="modal" data-target="#uploadModal">Upload File</button>
                     </div>
@@ -46,8 +45,8 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-    <script src="{{ asset('js/pages/capture-valid.js') }}"></script>
+    <script src="{{ asset('js/recorder.js') }}"></script>
+    <script src="{{ asset('js/pages/capture-valid.js') }}?time={{ time() }}"></script>
     <script src="{{ asset('js/pages/capture-upload.js') }}?time={{ time() }}"></script>
     <script src="{{ asset('js/pages/capture-audio.js') }}?time={{ time() }}"></script>
 @endsection

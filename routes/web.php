@@ -18,8 +18,12 @@ Route::get('/', function () {
 Route::prefix('capture')->group(function() {
 
     Route::get('/', function () {
-        return view('pages.capture.capture');
+        return view('pages.capture.choose-method');
     })->name('capture');
+
+    Route::get('audio', function () {
+        return view('pages.capture.capture-audio');
+    })->name('capture-audio');
 
     Route::get('video', function () {
         return view('pages.capture.capture-video');

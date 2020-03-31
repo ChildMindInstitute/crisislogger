@@ -9,8 +9,14 @@
                 <h1 class="display-4">Capture Your Thoughts on COVID-19</h1>
                 <h3>Create a video recording</h3>
                 <p>If you wish to create an audio recording, <a href="{{ route('capture') }}">click here.</a></p>
-                <p>You can record via your computer or phone camera your thoughts, concerns on COVID-19.</p>
-                <p>After you record your thoughts, you can upload them and create an optional account to view your uploaded files.</p>
+                <p>Press Request Camera to allow access to your camera.</p>
+                <p>Press Start to begin recording your thoughts and feelings.</p>
+                <p>Press Stop to end recording. You will be able to save the recording for private use or share it publicly as is or as a transcript.</p>
+                <p>Press Start if you wish to re-record and overwrite your recording.</p>
+
+                <div class="text-center">
+                    <video id="live-video" width="270" height="200" muted controls class="d-none"></video>
+                </div>
 
                 <div>
                     <div id="recordingsList" class="d-none">
@@ -31,8 +37,6 @@
                             </button>
                         </div>
                     </div>
-
-                    <p>If you wish to re-record your thoughts, please press start again. Your old recording will be replaced.</p>
 
                     <div id="uploadInfo" class="d-none">
                         <button class="btn btn-success" data-toggle="modal" data-target="#uploadModal">Upload File</button>

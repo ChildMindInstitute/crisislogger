@@ -5,10 +5,6 @@
 
     <div class="container content">
         <div class="text-center">
-            <div class="overlay">
-                <img src="{{ asset('media/photos/man-in-white-long-sleeve-shirt-sitting-beside-woman-in-white-3995913.jpg') }}" alt="{{ config('app.name') }}" />
-            </div>
-
             <h1 class="display-1">Parent Logger</h1>
             <h3>Nullam id posuere nisl. Duis a pretium dolor, quis volutpat dolor.</h3>
             <p class="lead">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam suscipit, odio eget efficitur tempus, diam magna bibendum massa, ac volutpat sapien dui at neque.</p>

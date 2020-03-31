@@ -11,22 +11,26 @@ stopBtn.onclick = stopRecording;
 startBtn.disabled = true;
 stopBtn.disabled = true;
 let upload = document.getElementById('upload');
+let preview = document.getElementById('live-video');
 
 function requestVideo() {
     navigator.mediaDevices.getUserMedia({
         video: true,
         audio: true
-    })
-    .then(stm => {
+    }).then(stm => {
         stream = stm;
         reqBtn.style.display = 'none';
         startBtn.removeAttribute('disabled');
-        video.src = URL.createObjectURL(stream);
+        preview.srcObject = stream;
+        preview.captureStream = preview.captureStream || preview.mozCaptureStream;
+        preview.classList.remove('d-none');
     }).catch(e => console.error(e));
 }
 
 function startRecording() {
+    preview.classList.remove('d-none');
     uploadBtn.classList.add('d-none');
+    videoContainer.classList.add('d-none');
     recorder = new MediaRecorder(stream, {
         mimeType: 'video/webm'
     });
@@ -39,11 +43,12 @@ function startRecording() {
 
 function stopRecording() {
     const chunks = [];
+    preview.classList.add('d-none');
     recorder.ondataavailable = e => {
         chunks.push(e.data);
         videoContainer.classList.remove('d-none');
         video.src = URL.createObjectURL(e.data);
-        console.log(chunks);
+       // console.log(chunks);
 
         startBtn.removeAttribute('disabled');
         stopBtn.disabled = true;
