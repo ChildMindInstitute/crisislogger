@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container">
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('questionnaire_form_upload') }}">
             @csrf
 
             {{-- Background information --}}
@@ -13,6 +13,12 @@
             {{-- Exposure status --}}
             @include('pages.questionnaire.exposure')
 
+            {{-- Life changes --}}
+            @include('pages.questionnaire.life-changes')
+
+            @component('components.form-group')
+                <button type="submit" class="btn btn-success">Submit</button>
+            @endcomponent
         </form>
     </div>
 

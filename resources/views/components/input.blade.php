@@ -5,7 +5,7 @@
     @endif
 
     <input
-        id="{{ $id }}"
+        id="{{ $id ?? null }}"
         class="form-control @error('email') is-invalid @enderror"
         type="{{ $type ?? 'text' }}"
         name="{{ $name }}"
@@ -18,10 +18,7 @@
         value="{{ $value }}"
         @endif
 
-        @if(isset($required))
         required
-        @endif
-
         >
 
         @error($name)
