@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UploadRequest;
+use App\Transcription;
 use App\Upload;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -17,6 +18,9 @@ class UploadController extends Controller
     /**
      * @param UploadRequest $request
      * @return JsonResponse
+     * @throws \Google\ApiCore\ApiException
+     * @throws \Google\ApiCore\ValidationException
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function upload(UploadRequest $request){
         $file = Storage::disk('gcs')->putFile('', $request->file('data'));
@@ -39,10 +43,17 @@ class UploadController extends Controller
             $redirect = route('capture-create-account');
         }
 
+        // If the are contributing to science, we will transcribe the message and save it
+        if($upload->contribute_to_science){
+            $transcription = Transcription::audio($upload);
+            Session::put('transcription', $transcription->id);
+        }
+
         $response = [
             'message' => 'File uploaded successfully.',
             'file' => $file,
             'redirect' => $redirect,
+            'transcription' => $transcription->id ?? null
         ];
         return response()->json($response, Response::HTTP_OK);
     }

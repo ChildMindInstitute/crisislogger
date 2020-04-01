@@ -16,11 +16,11 @@
                             </div>
                         </div>
                         <div class="kt-portlet__body">
-                            @if(Str::contains($upload->name, '.wav'))
-                                <audio controls src="{{ $upload->name }}"></audio>
+                            @if(Str::contains($upload->link, '.wav'))
+                                <audio controls src="{{ $upload->link }}"></audio>
                             @else
                                 <video controls>
-                                    <source src="{{ $upload->name }}" type="video/webm">
+                                    <source src="{{ $upload->link }}" type="video/webm">
                                     Your browser does not support the video tag.
                                 </video>
                             @endif

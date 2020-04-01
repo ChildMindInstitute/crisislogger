@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Transcription;
 use App\Upload;
 use Auth;
 use Session;
@@ -24,15 +25,27 @@ class HomeController extends Controller
      */
     public function dashboard(){
         $user = Auth::user();
+
         // Check and see if there are any files in the session waiting to be added to a user
         if(Session::has('filename')){
-            $upload = Upload::where('name', '/storage/'.Session::get('filename'))->first();
+            $upload = Upload::where('name', Session::get('filename'))->first();
             if($upload){
                 $upload->user_id = $user->id;
                 $upload->save();
             }
             // Clear the session
             Session::remove('filename');
+        }
+
+        // Check and see if there are any transcription in the session waiting to be added to a user
+        if(Session::has('transcription')){
+            $transcription = Transcription::where('id', Session::get('transcription'))->first();
+            if($transcription){
+                $transcription->user_id = $user->id;
+                $transcription->save();
+            }
+            // Clear the session
+            Session::remove('transcription');
         }
 
         return view('pages.dashboard');

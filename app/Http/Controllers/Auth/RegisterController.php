@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Transcription;
 use App\Upload;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -75,7 +76,7 @@ class RegisterController extends Controller
 
         // Check and see if we have a filename in session
         if(Session::has('filename')){
-            $upload = Upload::where('name', '/storage/'.Session::get('filename'))->first();
+            $upload = Upload::where('name', Session::get('filename'))->first();
             if($upload){
                 $upload->user_id = $user->id;
                 $upload->save();
@@ -84,10 +85,29 @@ class RegisterController extends Controller
         } else {
             // Check and see if we are sending the filename along
             if($data['filename']){
-                $upload = Upload::where('name', '/storage/'.$data['filename'])->first();
+                $upload = Upload::where('name', $data['filename'])->first();
                 if($upload){
                     $upload->user_id = $user->id;
                     $upload->save();
+                }
+            }
+        }
+
+        // Check and see if we have a transcription to add
+        if(Session::has('transcription')){
+            $transcription = Transcription::where('id', Session::get('transcription'))->first();
+            if($transcription){
+                $transcription->user_id = $user->id;
+                $transcription->save();
+            }
+            Session::remove('transcription');
+        } else {
+            // Check and see if we are sending the transcription along
+            if($data['transcription']){
+                $transcription = Transcription::where('id', $data['transcription'])->first();
+                if($transcription){
+                    $transcription->user_id = $user->id;
+                    $transcription->save();
                 }
             }
         }

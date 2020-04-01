@@ -20,13 +20,17 @@ use Storage;
  */
 class Upload extends Model
 {
+    protected $appends = [
+        'link'
+    ];
 
     /**
-     * @param $value
      * @return string
      */
-    public function getNameAttribute($value){
-        $name = str_replace('/storage/', '', $value);
+    public function getLinkAttribute()
+    {
+        $name = str_replace('/storage/', '', $this->name);
         return 'https://storage.googleapis.com/' . env('GOOGLE_CLOUD_STORAGE_BUCKET') . "/$name";
     }
+
 }
