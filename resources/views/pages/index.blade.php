@@ -5,6 +5,8 @@
 
     <div class="container content pt-0">
 
+        <img src="https://place-hold.it/1200x300">
+
         <div class="text-center">
             <h1 class="display-4">A Call to Action for Parents During the Covid-19 Crisis</h1>
         </div>
