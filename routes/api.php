@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function(){
         Route::post('change_password', 'UserController@changePassword')->name('user_change_password');
     });
 
+    Route::post('word_cloud', 'WordcloudController@generate');
+
 });
 
 Route::prefix('transcribe')->group(function(){

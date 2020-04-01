@@ -47,6 +47,10 @@ Route::middleware('auth')->group(function(){
         return view('pages.profile');
     })->name('profile');
 
+    Route::get('word-clouds', function () {
+        return view('pages.word-clouds');
+    })->name('word-clouds');
+
 });
 
 Auth::routes();

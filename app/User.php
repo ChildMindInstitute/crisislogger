@@ -50,4 +50,11 @@ class User extends Authenticatable
         return Upload::where('user_id', $this->id)->get();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function transcriptions(){
+        return Transcription::where('user_id', $this->id)->get();
+    }
+
 }
