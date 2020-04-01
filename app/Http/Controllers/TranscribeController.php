@@ -11,17 +11,5 @@ use Storage;
 
 class TranscribeController extends Controller
 {
-    /**
-     * @param string $name
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Google\ApiCore\ApiException
-     * @throws \Google\ApiCore\ValidationException
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    public function transcribeAudio(string $name){
-
-
-        return response()->json($response, Response::HTTP_OK);
-    }
 
 }

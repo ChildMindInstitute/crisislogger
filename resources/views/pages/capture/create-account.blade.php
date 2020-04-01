@@ -8,6 +8,11 @@
     <div class="container content">
         <div class="kt-portlet">
             <div class="kt-portlet__body">
+                @if(Session::has('questionnaire_success'))
+                    @component('components.alerts.success')
+                        {{ Session::get('questionnaire_success') }}
+                    @endcomponent
+                @endif
                 <h1 class="display-4">Create an optional Account</h1>
                 <p>You can create an optional account to save your recordings and view them. Think of it as your personal diary.</p>
                 <form method="POST" action="{{ route('register') }}">

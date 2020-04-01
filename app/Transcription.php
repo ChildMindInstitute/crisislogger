@@ -79,4 +79,18 @@ class Transcription extends Model
         return $transcription;
     }
 
+    /**
+     * @param Upload $upload
+     * @return Transcription
+     * @throws ApiException
+     * @throws FileNotFoundException
+     * @throws ValidationException
+     */
+    public static function video(Upload $upload){
+        // First, convert the video to an audio file.
+        $audio_upload = $upload->convertToAudio();
+        // Call the transcribe audio now to do the transcribing.
+        return self::audio($audio_upload);
+    }
+
 }

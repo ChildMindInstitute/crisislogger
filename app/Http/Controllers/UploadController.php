@@ -23,6 +23,7 @@ class UploadController extends Controller
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function upload(UploadRequest $request){
+        $file_extension = $request->file('data')->getClientOriginalExtension();
         $file = Storage::disk('gcs')->putFile('', $request->file('data'));
 
         // Store the file name in the session in case the user decides to sign up.
@@ -45,7 +46,11 @@ class UploadController extends Controller
 
         // If the are contributing to science, we will transcribe the message and save it
         if($upload->contribute_to_science){
-            $transcription = Transcription::audio($upload);
+           // if($file_extension == 'wav' || $file_extension == 'mp3'){
+                $transcription = Transcription::audio($upload);
+           // } else {
+            //    $transcription = Transcription::video($upload);
+            //}
             Session::put('transcription', $transcription->id);
         }
 
