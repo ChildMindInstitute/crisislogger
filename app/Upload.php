@@ -20,10 +20,13 @@ use Storage;
  */
 class Upload extends Model
 {
+
     /**
      * @param $value
+     * @return string
      */
-    public function setNameAttribute($value){
-        $this->attributes['name'] = Storage::url($value);
+    public function getNameAttribute($value){
+        $name = str_replace('/storage/', '', $value);
+        return 'https://storage.googleapis.com/' . env('GOOGLE_CLOUD_STORAGE_BUCKET') . "/$name";
     }
 }

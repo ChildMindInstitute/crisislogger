@@ -26,7 +26,7 @@ class HomeController extends Controller
         $user = Auth::user();
         // Check and see if there are any files in the session waiting to be added to a user
         if(Session::has('filename')){
-            $upload = Upload::where('name', Session::get('filename'))->first();
+            $upload = Upload::where('name', '/storage/'.Session::get('filename'))->first();
             if($upload){
                 $upload->user_id = $user->id;
                 $upload->save();

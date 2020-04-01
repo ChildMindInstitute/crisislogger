@@ -75,7 +75,7 @@ class RegisterController extends Controller
 
         // Check and see if we have a filename in session
         if(Session::has('filename')){
-            $upload = Upload::where('name', Session::get('filename'))->first();
+            $upload = Upload::where('name', '/storage/'.Session::get('filename'))->first();
             if($upload){
                 $upload->user_id = $user->id;
                 $upload->save();
@@ -84,7 +84,7 @@ class RegisterController extends Controller
         } else {
             // Check and see if we are sending the filename along
             if($data['filename']){
-                $upload = Upload::where('name', $data['filename'])->first();
+                $upload = Upload::where('name', '/storage/'.$data['filename'])->first();
                 if($upload){
                     $upload->user_id = $user->id;
                     $upload->save();

@@ -20,7 +20,7 @@
                                 <audio controls src="{{ $upload->name }}"></audio>
                             @else
                                 <video controls>
-                                    <source src="{{ url('/') . $upload->name }}" type="video/webm">
+                                    <source src="{{ $upload->name }}" type="video/webm">
                                     Your browser does not support the video tag.
                                 </video>
                             @endif
