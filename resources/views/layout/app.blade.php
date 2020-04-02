@@ -13,5 +13,20 @@
     </div>
     <!-- end:: Page -->
 
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <p>©2020 Child Mind Institute</p>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <img src="{{ asset('media/logos/open-humans.png') }}" alt="" style="" />
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <img src="{{ asset('media/logos/mit-logo@logotyp.us.svg') }}" alt="" style="" />
+                </div>
+            </div>
+        </div>
+    </footer>
     @include('layout.footer')
 </body>

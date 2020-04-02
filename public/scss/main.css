@@ -149,4 +149,13 @@ video {
   max-width: 100%;
 }
 
+footer {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+footer img {
+  max-height: 50px;
+  max-width: 200px;
+}
+
 /*# sourceMappingURL=main.css.map */
