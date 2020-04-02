@@ -11,21 +11,19 @@
 
                 @component('components.voice', ['voice' => 'Parent'])
                     <p>Parents are facing unique challenges of working from home,
-                    establishing new routines for school at home.
+                    while simultaneously juggling home life.
                     At the same time, their children are trapped indoors,
-                    cut off from their friends and the routine and structure
+                    cut off from their friends, and the routine and structure
                     of a school day have been entirely disrupted.</p>
                 @endcomponent
 
                 @component('components.voice', ['voice' => 'Teacher'])
                     <p>Teachers are struggling to support their students'
-                    development remotely, which introduces not just technical
-                    challenges, but challenges in preparing educational
-                    materials that translate from the classroom to a computer,
+                    development remotely, which introduces challenges in
+                    preparing educational materials that translate
+                    from the classroom to a computer, and
                     competing with the distractions they and their students
-                    face at home, and in connecting with their students
-                    and keeping track of their progress without benefit
-                    of face-to-face communications.</p>
+                    face at home.</p>
                 @endcomponent
 
                 @component('components.voice', ['voice' => 'Health worker'])
@@ -47,7 +45,7 @@
                     has consequences for their mental wellbeing.</p>
                 @endcomponent
 
-                @component('components.voice', ['voice' => 'Everyone else'])
+                @component('components.voice', ['voice' => 'Other'])
                     <p>Social distancing and the isolation of sheltering in
                     has impacted people in ways they could not have foreseen.
                     Beyond loneliness, there can be a sense of fear and
