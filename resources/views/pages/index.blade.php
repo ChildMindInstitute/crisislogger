@@ -8,7 +8,7 @@
         <img src="https://place-hold.it/1200x300">
 
         <div class="text-center">
-            <h1 class="display-4">A Call to Action for Parents During the Covid-19 Crisis</h1>
+            <h1 class="display-4">A Call to Action During the Covid-19 Crisis</h1>
         </div>
 
         <p>This is an unprecedented time.
