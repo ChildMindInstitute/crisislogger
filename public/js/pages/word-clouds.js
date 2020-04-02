@@ -1,5 +1,75 @@
 let spinner = document.getElementById('spinner');
 
+// Encapsulate the word cloud functionality
+function wordCloud(selector) {
+    let width, height;
+    if(window.innerWidth < 600){
+        width = window.innerWidth - 40;
+        height = 200;
+    } else {
+        width = window.innerWidth - 400;
+        height = 600;
+    }
+
+
+    var fill = d3.scale.category20();
+    //Construct the word cloud's SVG element
+    var svg = d3.select(selector).append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+
+    //Draw the word cloud
+    function draw(words) {
+        var cloud = svg.selectAll("g text")
+            .data(words, function(d) { return d.text; })
+
+        //Entering words
+        cloud.enter()
+            .append("text")
+            .style("font-family", "Impact")
+            .style("fill", function(d, i) { return fill(i); })
+            .attr("text-anchor", "middle")
+            .attr('font-size', 1)
+            .text(function(d) { return d.text; });
+
+        //Entering and existing words
+        cloud
+            .transition()
+            .duration(600)
+            .style("font-size", function(d) { return d.size + "px"; })
+            .attr("transform", function(d) {
+                return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+            })
+            .style("fill-opacity", 1);
+
+        //Exiting words
+        cloud.exit()
+            .transition()
+            .duration(200)
+            .style('fill-opacity', 1e-6)
+            .attr('font-size', 1)
+            .remove();
+    }
+
+    //Use the module pattern to encapsulate the visualisation code. We'll
+    // expose only the parts that need to be public.
+    return {
+        update: function(words) {
+            d3.layout.cloud().size([width, height])
+                .words(words)
+                .padding(5)
+                .rotate(0)
+                .font("Impact")
+                .fontSize(function(d) { return d.size; })
+                .on("end", draw)
+                .start();
+        }
+    }
+}
+
 axios.post('/api/word_cloud', {
 })
 .then(function (response) {
@@ -9,57 +79,25 @@ axios.post('/api/word_cloud', {
         let words = [];
         let obj = data[i];
         Object.keys(obj)
-        .forEach(function eachKey(key) {
-            words.push({
-               word: key,
-               size: obj[key] * 10
+            .forEach(function eachKey(key) {
+                words.push({
+                    text: key,
+                    size: obj[key] * 10
+                });
             });
-        });
-        // set the dimensions and margins of the graph
-        var margin = {top: 10, right: 10, bottom: 10, left: 10},
-            width = 450 - margin.left - margin.right,
-            height = 450 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-        var svg = d3.select("#clouds").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");
+        var portlet = document.createElement('div');
+        var portlet_body = document.createElement('div');
 
-// Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
-// Wordcloud features that are different from one word to the other must be here
-        var layout = d3.layout.cloud()
-            .size([width, height])
-            .words(words.map(function(d) { return {text: d.word, size:d.size}; }))
-            .padding(5)        //space between words
-            .rotate(function() { return ~~(Math.random() * 2) * 90; })
-            .fontSize(function(d) { return d.size; })      // font size of words
-            .on("end", draw);
-        layout.start();
+        portlet.classList.add('kt-portlet');
+        portlet_body.classList.add('kt-portlet__body');
+        portlet.appendChild(portlet_body);
 
-// This function takes the output of 'layout' above and draw the words
-// Wordcloud features that are THE SAME from one word to the other can be here
-        function draw(words) {
-            svg
-                .append("g")
-                .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
-                .selectAll("text")
-                .data(words)
-                .enter().append("text")
-                .style("font-size", function(d) { return d.size; })
-                .style("fill", "#69b3a2")
-                .attr("text-anchor", "middle")
-                .style("font-family", "Impact")
-                .attr("transform", function(d) {
-                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                })
-                .text(function(d) { return d.text; });
-        }
+        document.getElementById('clouds').append(portlet);
+
+        var myWordCloud = wordCloud(portlet_body);
+        myWordCloud.update(words);
     }
-
-
 })
 .catch(function (error) {
     console.log(error);

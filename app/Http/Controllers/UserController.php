@@ -27,6 +27,7 @@ class UserController extends Controller
             if($email_exists){
                 return back()->withErrors(['email' => 'This email already exists.']);
             }
+            $user->email = $request->email;
         }
         $user->save();
 
