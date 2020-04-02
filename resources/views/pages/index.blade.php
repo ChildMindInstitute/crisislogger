@@ -11,6 +11,7 @@
             <h1 class="display-4">Call to Action During the Covid-19 Crisis</h1>
         </div>
 
+	<br>
         <p>This is an unprecedented time.
         Our lives have been disrupted in so many ways,
         and while we are all concerned about the health of friends,
