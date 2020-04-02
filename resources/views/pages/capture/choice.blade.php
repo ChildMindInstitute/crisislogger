@@ -10,7 +10,7 @@
             <div class="text-center row">
 
                 @component('components.voice', ['voice' => 'Parent'])
-                    <p>Parents are facing unique challenges of working from home,
+                    <p>Parents are facing unique challenges of working from home
                     while simultaneously juggling home life.
                     At the same time, their children are trapped indoors,
                     cut off from their friends, and the routine and structure
@@ -19,7 +19,7 @@
                 @endcomponent
 
                 @component('components.voice', ['voice' => 'Teacher'])
-                    <p>Teachers are struggling to support their students'
+                    <p>Teachers are struggling to support students'
                     development remotely, which introduces challenges in
                     preparing educational materials that translate
                     from the classroom to a computer, and

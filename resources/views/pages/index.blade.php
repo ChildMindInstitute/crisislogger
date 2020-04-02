@@ -30,6 +30,7 @@
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
         </div>
 
+	<br>
         <p>You will be able to share it publicly in its original form
         or as a transcript, or make it private,
         even creating a journal for yourself over time.
