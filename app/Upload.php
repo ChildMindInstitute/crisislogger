@@ -17,6 +17,7 @@ use Storage;
  * @property int user_id
  * @property int share
  * @property int contribute_to_science
+ * @property string voice
  * @property CarbonImmutable created_at
  */
 class Upload extends Model

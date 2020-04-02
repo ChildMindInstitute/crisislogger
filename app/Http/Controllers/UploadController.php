@@ -35,6 +35,11 @@ class UploadController extends Controller
         $upload->contribute_to_science = $request->contribute;
         // If we are logged in, save that user's id
         if(Auth::user()) $upload->user_id = Auth::user()->id;
+
+        if($request->has('voice')){
+            $upload->voice = $request->voice;
+        }
+
         $upload->save();
 
         // Check and see if the user needs to be redirected to the questionnaire page (if sharing)

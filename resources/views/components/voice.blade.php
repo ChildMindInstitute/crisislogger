@@ -1,0 +1,4 @@
+<div class="col-sm-12 col-md-4 mb-5">
+    <a href="{{ route('capture') }}?voice={{ str_replace(' ', '_', \Illuminate\Support\Str::lower($voice)) }}" class="btn btn-primary btn-wide mb-3 btn-lg">{{ $voice }}</a>
+    {{ $slot }}
+</div>

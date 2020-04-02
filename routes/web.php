@@ -37,6 +37,10 @@ Route::prefix('capture')->group(function() {
         return view('pages.capture.create-account');
     })->name('capture-create-account');
 
+    Route::get('choice', function () {
+        return view('pages.capture.choice');
+    })->name('capture-choice');
+
 });
 
 Route::middleware('auth')->group(function(){

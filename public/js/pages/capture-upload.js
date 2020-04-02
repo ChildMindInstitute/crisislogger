@@ -14,6 +14,9 @@ function uploadButtonClicked(file, filename){
     fd.append("data", file);
     fd.append("share", $("input[name='share']:checked").val());
     fd.append("contribute", $("input[name='contribute']:checked").val());
+    fd.append("voice", getParameterByName("voice"));
+
+    console.log(getParameterByName("voice"));
 
     axios.post('/api/upload', fd, {
         headers: {
@@ -44,4 +47,14 @@ function uploadButtonClicked(file, filename){
             text: data.message
         });
     });
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
