@@ -11,6 +11,7 @@
             <h1 class="display-4">Call to Action During the Covid-19 Crisis</h1>
         </div>
 
+	<br>
         <p>This is an unprecedented time.
         Our lives have been disrupted in so many ways,
         and while we are all concerned about the health of friends,
@@ -30,6 +31,7 @@
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
         </div>
 
+	<br>
         <p>You will be able to share it publicly in its original form
         or as a transcript, or make it private,
         even creating a journal for yourself over time.
