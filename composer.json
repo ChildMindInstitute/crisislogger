@@ -9,13 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "ext-json": "*",
         "fideloper/proxy": "^4.0",
         "google/cloud-speech": "^0.31.1",
+        "guzzlehttp/guzzle": "^6.5",
         "laravel/framework": "^6.2",
+        "laravel/passport": "^8.4",
         "laravel/tinker": "^2.0",
-        "superbalist/laravel-google-cloud-storage": "^2.2",
-        "ext-json": "*",
-        "pbmedia/laravel-ffmpeg": "5.0.0"
+        "pbmedia/laravel-ffmpeg": "5.0.0",
+        "superbalist/laravel-google-cloud-storage": "^2.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",

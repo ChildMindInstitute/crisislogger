@@ -43,6 +43,33 @@ Route::prefix('capture')->group(function() {
 
 });
 
+Route::get('/open-humans', function () {
+    $query = http_build_query([
+        'client_id' => 3,
+        'redirect_uri' => 'https://www.openhumans.org/direct-sharing/projects/oauth2/authorize/?',
+        'response_type' => 'code',
+        'scope' => ''
+    ]);
+
+    return redirect('http://127.0.0.1:8000/oauth/authorize?'.$query);
+});
+
+Route::get('/callback', function (Request $request) {
+    $response = (new GuzzleHttp\Client)->post('http://127.0.0.1:8000/oauth/token', [
+        'form_params' => [
+            'grant_type' => 'authorization_code',
+            'client_id' => 3,
+            'client_secret' => 'CLIENT_SECRET',
+            'redirect_uri' => 'http://127.0.0.1:8001/callback',
+            'code' => $request->code,
+        ]
+    ]);
+
+    session()->put('token', json_decode((string) $response->getBody(), true));
+
+    return redirect('/dashboard');
+});
+
 Route::middleware('auth')->group(function(){
 
     Route::get('dashboard', 'HomeController@dashboard')->name('dashboard');
