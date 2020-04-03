@@ -3,6 +3,16 @@
      please provide some background information about yourself:</h3>
 
     @component('components.form-group')
+        <p>What country do you live in?</p>
+        @include('components.input', ['name' => 'country', 'placeholder' => 'Enter country'])
+    @endcomponent
+
+    @component('components.form-group')
+        <p>State/Providence/Region:</p>
+        @include('components.input', ['name' => 'state/providence/region', 'placeholder' => 'Enter country'])
+    @endcomponent
+
+    @component('components.form-group')
         <label for="dob">Your date of birth?</label>
         <input class="form-control datepicker" id="dob" type="text" value="" name="dob" required placeholder="Select date" />
     @endcomponent
@@ -24,14 +34,26 @@
     </div>
 
     @component('components.form-group')
-        <p>Which of the following best describes your race?</p>
-        @include('components.radio', ['name' => 'race', 'value' => 'Black/African American'])
-        @include('components.radio', ['name' => 'race', 'value' => 'Asian'])
-        @include('components.radio', ['name' => 'race', 'value' => 'American Indian or Alaska Native'])
-        @include('components.radio', ['name' => 'race', 'value' => 'Native Hawaiian or other Pacific Islander'])
-        @include('components.radio', ['name' => 'race', 'value' => 'White/Caucasian'])
-        @include('components.radio', ['name' => 'race', 'value' => 'More than one race'])
-        @include('components.radio', ['name' => 'race', 'value' => 'Other'])
+        <p>Thinking about what you know of your family history, which of the following best describes the geographic regions where your ancestors (i.e. your great-great-grandparents) come from? You may select as many choices as you need.</p>
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'England, Ireland, Scotland or Wales'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Australia – not of Aboriginal or Torres Strait Islander descent'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Australia – not of Aboriginal or Torres Strait Islander descent'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Australia – of Aboriginal or Torres Strait Islander descent'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'New Zealand – not of Maori descent'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'New Zealand – of Maori descent'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Northern Europe including Sweden, Norway, Finland and surrounding countries'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Western Europe including France, Germany, the Netherlands and surrounding countries'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Southern Europe including Italy, Greece, Spain, Portugal and surrounding countries'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Middle East including Lebanon, Turkey and surrounding countries'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Eastern Asia including China, Japan, South Korea, North Korea, Taiwan and Hong Kong'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'South-East Asia including Thailand, Malaysia, Indonesia, Singapore and surrounding countries'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'South Asia including India, Pakistan, Sri Lanka and surrounding countries])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Polynesia, Micronesia or Melanesia including Tonga, Fiji, Papua New Guinea and surrounding countries'])
+        @include('components.checkbox', ['name' => 'race'[], 'value' => 'Africa'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'North America - not of First Nations, Native American, Inuit or Métis descent'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'North America - of First Nations, Native American, Inuit or Métis descent'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Don’t know'])
+        @include('components.checkbox', ['name' => 'race[]', 'value' => 'Other '])
     @endcomponent
 
     @component('components.form-group')
@@ -133,7 +155,7 @@
         @include('components.radio', ['name' => 'health_insurance', 'value' => 'Yes, other'])
         @include('components.radio', ['name' => 'health_insurance', 'value' => 'No'])
     @endcomponent
-
+    
     @component('components.form-group')
         <p>In the 3 months prior to the Coronavirus/COVID-19 crisis in your area, did you or your family receive money from government assistance programs like welfare, Aid to Families with Dependent Children, General Assistance, or Temporary Assistance for Needy Families</p>
         @include('components.radio-group', ['name' => 'money_government_program'])

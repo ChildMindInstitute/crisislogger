@@ -45,7 +45,7 @@
     @endcomponent
 
     @component('components.form-group')
-        <p>During the past 2 weeks, how worried have you been about being infected?</p>
+        <p>During the past 2 weeks, how worried have <em>you</em> been about being infected?</p>
         @include('components.radio', ['name' => 'worried_about_being_infected', 'value' => 'Not at all'])
         @include('components.radio', ['name' => 'worried_about_being_infected', 'value' => 'Slightly'])
         @include('components.radio', ['name' => 'worried_about_being_infected', 'value' => 'Moderately'])
@@ -54,7 +54,7 @@
     @endcomponent
 
     @component('components.form-group')
-        <p>During the past 2 weeks, how worried have your friends or family been about being infected?</p>
+        <p>During the past 2 weeks, how worried have <em>your friends or family</em> been about being infected?</p>
         @include('components.radio', ['name' => 'worried_about_family_being_infected', 'value' => 'Not at all'])
         @include('components.radio', ['name' => 'worried_about_family_being_infected', 'value' => 'Slightly'])
         @include('components.radio', ['name' => 'worried_about_family_being_infected', 'value' => 'Moderately'])
@@ -63,7 +63,7 @@
     @endcomponent
 
     @component('components.form-group')
-        <p>During the past 2 weeks, how worried have your physical health been about being infected?</p>
+        <p>During the past 2 weeks, how worried have your <em>physical health</em> been about being infected?</p>
         @include('components.radio', ['name' => 'worried_about_physical_health_being_affected', 'value' => 'Not at all'])
         @include('components.radio', ['name' => 'worried_about_physical_health_being_affected', 'value' => 'Slightly'])
         @include('components.radio', ['name' => 'worried_about_physical_health_being_affected', 'value' => 'Moderately'])
@@ -72,7 +72,7 @@
     @endcomponent
 
     @component('components.form-group')
-        <p>During the past 2 weeks, how worried have your mental health been about being infected?</p>
+        <p>During the past 2 weeks, how worried have your <em>mental/emotional health</em> been about being infected?</p>
         @include('components.radio', ['name' => 'worried_about_mental_health_being_affected', 'value' => 'Not at all'])
         @include('components.radio', ['name' => 'worried_about_mental_health_being_affected', 'value' => 'Slightly'])
         @include('components.radio', ['name' => 'worried_about_mental_health_being_affected', 'value' => 'Moderately'])
