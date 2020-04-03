@@ -7,7 +7,9 @@
         <div class="row">
             <div class="col-sm-12">
                 @component('components.portlet')
-                    <p>When you record your thoughts, and you choose to contribute to science, they will be transcribed and shown here as word clouds.</p>
+                    <p>Your recordings were transcribed using Google's
+                    transcription service and are shown below as word clouds.
+                    The larger the size of a word, the more times you said it.</p>
                 @endcomponent
             </div>
         </div>

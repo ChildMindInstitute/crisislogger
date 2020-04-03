@@ -1,4 +1,5 @@
 @component('components.portlet-sticky', ['title' => 'Life Changes in the past 2 Weeks', 'z_index' => 3])
+    <h3>Please answer the following questions about any changes in your life in the last 2 weeks due to Coronavirus/COVID-19:</h3>
 
     @component('components.form-group')
         <p>During the past 2 weeks, if you attend school, has your school building been closed down?</p>

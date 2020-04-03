@@ -7,12 +7,23 @@
         <div class="kt-portlet">
             <div class="kt-portlet__body">
                 <h1 class="display-4">Capture your thoughts and feelings</h1>
-                <p>Please share your thoughts, feelings, fears, frustrations, needs, and hopes. Recordings can range from 30 seconds to 5 minutes.  We hope that you will come back and record more.  Please avoid using any identifying names or information.</p>
+                <p>Please share your thoughts, feelings, fears, frustrations,
+                needs, and hopes.
+                Your recording can range from 30 seconds to 5 minutes.
+                It will be transcribed by Google's transcription service,
+                and you will be able to view a word cloud created from the transcript.
+                You will be able to save the recording for private use
+                or share it publicly.
+                We hope that you will come back and record more.
+                Please avoid using any identifying names or information.</p>
                 <h3>Create a video recording</h3>
-                <p>If you wish to create an audio recording, <a href="{{ route('capture-audio') }}">click here.</a></p>
-                <p>Press Request Camera to allow access to your camera.</p>
-                <p>Press Start to begin recording your thoughts and feelings (and again to delete and re-record).</p>
-                <p>Press Stop to end recording. You will be able to save the recording for private use or share it publicly as is or as a transcript.</p>
+                <p>If you wish to create an audio recording instead,
+                <a href="{{ route('capture-audio') }}">click here.</a></p>
+                <p>(1) Press <b>Request Camera</b> to allow access to your camera.</p>
+                <p>(2) Press <b>Start</b> to begin recording
+                (and again to delete and re-record).</p>
+                <p>(3) Press <b>Stop</b> to end recording.</p>
+                <p>(4) Press <b>Save Recording</b> to upload and transcribe the recording.</p>
 
                 <div class="text-center d-flex justify-content-center" id="preview">
                     <div id="spinner" class="d-none kt-spinner kt-spinner--v2 kt-spinner--lg kt-spinner--primary"></div>

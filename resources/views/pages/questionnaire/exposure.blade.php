@@ -1,4 +1,6 @@
 @component('components.portlet-sticky', ['title' => 'Exposure COVID-19 Health / Exposure Status', 'z_index' => 2])
+    <h3>Please answer the following questions about your health or exposure to Coronavirus/COVID-19:</h3>
+
     <h3>During the past two weeks:</h3>
 
     @component('components.form-group')

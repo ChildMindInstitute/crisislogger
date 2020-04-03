@@ -1,5 +1,6 @@
 @component('components.portlet-sticky', ['title' => 'Background', 'z_index' => 1])
-    <h3>First, before we get started with the main questions, we would like to obtain some background information about you.</h3>
+    <h3>For your recording to be really useful for scientific research,
+     please provide some background information about yourself:</h3>
 
     @component('components.form-group')
         <label for="dob">Your date of birth?</label>

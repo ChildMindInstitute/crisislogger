@@ -21,7 +21,7 @@
         result in increased feelings of vulnerability,
         lack of control, and a need for support.</p>
 
-        <p>The Child Mind Institute and its research partners
+        <p>The Child Mind Institute and its research partners*
         are deeply committed to research and care of mental health
         and we are here to listen.
         We urge you to share with us your fears, frustrations, and hopes
@@ -45,6 +45,12 @@
         We will add new features in the future to visualize your contribution
         in the context of everyone else’s, and to create a collection of
         publicly shared recordings or transcripts.</p>
+
+        <p>*Our partners include <a href="https://openhumans.org">Open Humans</a>,
+        and
+        <a href="https://mcgovern.mit.edu/profile/satrajit-ghosh/">Satrajit Ghosh</a\
+>
+        and Sanu Abraham at MIT.
 
     </div>
 

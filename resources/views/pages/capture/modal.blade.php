@@ -23,11 +23,11 @@
                                 <span></span>
                             </label>
                         </div>
-                        <span class="form-text text-muted">If Yes, other parents will have an opportunity to hear what you have to say.</span>
+                        <span class="form-text text-muted">If Yes, others will have an opportunity to hear what you have to say.</span>
                     </div>
 
                         <div class="form-group">
-                            <p>Contribute recording to science?</p>
+                            <p>Contribute to science?</p>
                             <div class="kt-radio-inline">
                                 <label class="kt-radio">
                                     <input type="radio" name="contribute" value="1" > Yes
@@ -38,7 +38,7 @@
                                     <span></span>
                                 </label>
                             </div>
-                            <span class="form-text text-muted">If Yes, THANK YOU for your contribution! We will transcribe and analyze the audio, and will report back the anonymized results publicly.</span>
+                            <span class="form-text text-muted">If Yes, THANK YOU for your contribution! We will analyze the audio and transcript, and will report back the anonymized results publicly.</span>
                         </div>
 
                 </div>
