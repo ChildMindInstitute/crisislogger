@@ -14,14 +14,18 @@
                     <div class="form-group">
                         <p>Share publicly?</p>
                         <div class="kt-radio-inline">
-                            <label class="kt-radio">
-                                <input type="radio" name="share" value="1" > Yes
-                                <span></span>
-                            </label>
-                            <label class="kt-radio">
-                                <input type="radio" name="share" value="0"> No
-                                <span></span>
-                            </label>
+                                <label class="kt-radio">
+                                    <input type="radio" name="contribute" value="1" > Yes: Recording & transcript
+                                    <span></span>
+                                </label>
+                                <label class="kt-radio">
+                                    <input type="radio" name="contribute" value="2" > Transcript only
+                                    <span></span>
+                                </label>
+                                <label class="kt-radio">
+                                    <input type="radio" name="share" value="0"> No
+                                    <span></span>
+                                </label>
                         </div>
                         <span class="form-text text-muted">If Yes, others will have an opportunity to hear or read what you have to say.</span>
                     </div>
@@ -30,11 +34,7 @@
                             <p>Contribute to science?</p>
                             <div class="kt-radio-inline">
                                 <label class="kt-radio">
-                                    <input type="radio" name="contribute" value="1" > Recording & transcript
-                                    <span></span>
-                                </label>
-                                <label class="kt-radio">
-                                    <input type="radio" name="contribute" value="2" > Transcript only
+                                    <input type="radio" name="contribute" value="1" > Yes
                                     <span></span>
                                 </label>
                                 <label class="kt-radio">
@@ -42,7 +42,7 @@
                                     <span></span>
                                 </label>
                             </div>
-                            <span class="form-text text-muted">If contributing to science, THANK YOU! We will analyze the audio and transcript, and will report back the anonymized results publicly.</span>
+                            <span class="form-text text-muted">If Yes, THANK YOU for your contribution! We will analyze the audio and transcript, and will report back the anonymized results publicly.</span>
                         </div>
 
                 </div>
