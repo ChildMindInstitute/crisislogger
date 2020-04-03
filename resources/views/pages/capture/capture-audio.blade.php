@@ -11,9 +11,9 @@
                 needs, and hopes.</b>
                 Your recording can range from 30 seconds to 5 minutes.
                 It will be transcribed by Google's transcription service,
-                and you will be able to view a <i>word cloud</i> created from the transcript.
-                You will be able to save the recording for <i>private use
-                or share it publicly</i>.
+                and you will be able to view a <b>word cloud</b> created from the transcript.
+                You will be able to save the recording for <b>private use
+                or share it publicly</b>.
                 We hope that you will come back and record more.
                 Please avoid using any identifying names or information.</p>
                 <h3>Create an audio recording</h3>
