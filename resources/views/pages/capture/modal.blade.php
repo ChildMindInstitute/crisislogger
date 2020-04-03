@@ -30,7 +30,11 @@
                             <p>Contribute to science?</p>
                             <div class="kt-radio-inline">
                                 <label class="kt-radio">
-                                    <input type="radio" name="contribute" value="1" > Yes
+                                    <input type="radio" name="contribute" value="1" > Recording & transcript
+                                    <span></span>
+                                </label>
+                                <label class="kt-radio">
+                                    <input type="radio" name="contribute" value="2" > Transcript only
                                     <span></span>
                                 </label>
                                 <label class="kt-radio">
