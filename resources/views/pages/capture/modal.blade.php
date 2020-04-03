@@ -23,7 +23,7 @@
                                 <span></span>
                             </label>
                         </div>
-                        <span class="form-text text-muted">If Yes, others will have an opportunity to hear what you have to say.</span>
+                        <span class="form-text text-muted">If Yes, others will have an opportunity to hear or read what you have to say.</span>
                     </div>
 
                         <div class="form-group">
@@ -42,7 +42,7 @@
                                     <span></span>
                                 </label>
                             </div>
-                            <span class="form-text text-muted">If Yes, THANK YOU for your contribution! We will analyze the audio and transcript, and will report back the anonymized results publicly.</span>
+                            <span class="form-text text-muted">If contributing to science, THANK YOU! We will analyze the audio and transcript, and will report back the anonymized results publicly.</span>
                         </div>
 
                 </div>
