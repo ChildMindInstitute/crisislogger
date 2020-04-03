@@ -26,7 +26,7 @@
     @endcomponent
 
     @component('components.form-group')
-        <p>During the past 2 weeks, have you been able to telework?</p>
+        <p>During the past 2 weeks, have you been able to telework or work from home?</p>
         @include('components.radio-group', ['name' => 'telework'])
     @endcomponent
 
@@ -36,7 +36,7 @@
     @endcomponent
 
     @component('components.form-group')
-        <p>During the past 2 weeks, how much time have you spent going outside of the house?</p>
+        <p>During the past 2 weeks, how much time have you spent going outside of the home (e.g., going to stores, parks, etc.)?</p>
         @include('components.radio', ['name' => 'time_outside_house', 'value' => 'No time'])
         @include('components.radio', ['name' => 'time_outside_house', 'value' => 'Rarely'])
         @include('components.radio', ['name' => 'time_outside_house', 'value' => 'Occasionally'])
