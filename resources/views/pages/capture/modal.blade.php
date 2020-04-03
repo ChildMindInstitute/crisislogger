@@ -15,11 +15,11 @@
                         <p>Share publicly?</p>
                         <div class="kt-radio-inline">
                                 <label class="kt-radio">
-                                    <input type="radio" name="contribute" value="1" > <b>Yes</b>: Recording & transcript
+                                    <input type="radio" name="share" value="1" > <b>Yes</b>: Recording & transcript
                                     <span></span>
                                 </label>
                                 <label class="kt-radio">
-                                    <input type="radio" name="contribute" value="2" > Transcript only
+                                    <input type="radio" name="share" value="2" > Transcript only
                                     <span></span>
                                 </label>
                                 <label class="kt-radio">
@@ -30,9 +30,9 @@
                         <span class="form-text text-muted">If Yes, others will have an opportunity to hear or read what you have to say.</span>
                     </div>
 
-                        <div class="form-group">
-                            <p>Contribute to science?</p>
-                            <div class="kt-radio-inline">
+                    <div class="form-group">
+                        <p>Contribute to science?</p>
+                        <div class="kt-radio-inline">
                                 <label class="kt-radio">
                                     <input type="radio" name="contribute" value="1" > <b>Yes</b>
                                     <span></span>
@@ -41,9 +41,9 @@
                                     <input type="radio" name="contribute" value="0"> No
                                     <span></span>
                                 </label>
-                            </div>
-                            <span class="form-text text-muted">If Yes, THANK YOU for your contribution! We will analyze the audio and transcript, and will report back the anonymized results publicly.</span>
                         </div>
+                        <span class="form-text text-muted">If Yes, THANK YOU for your contribution! We will analyze the audio and transcript, and will report back the anonymized results publicly.</span>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
