@@ -48,8 +48,7 @@
 
         <p>*Our partners include <a href="https://openhumans.org">Open Humans</a>,
         and
-        <a href="https://mcgovern.mit.edu/profile/satrajit-ghosh/">Satrajit Ghosh</a\
->
+        <a href="https://mcgovern.mit.edu/profile/satrajit-ghosh/">Satrajit Ghosh</a>
         and Sanu Abraham at MIT.
 
     </div>
