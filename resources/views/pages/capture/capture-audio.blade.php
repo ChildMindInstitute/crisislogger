@@ -7,13 +7,13 @@
         <div class="kt-portlet">
             <div class="kt-portlet__body">
                 <h1 class="display-4">Capture your thoughts and feelings</h1>
-                <p>Please share your thoughts, feelings, fears, frustrations,
-                needs, and hopes.
+                <p><b>Please share your thoughts, feelings, fears, frustrations,
+                needs, and hopes.</b>
                 Your recording can range from 30 seconds to 5 minutes.
                 It will be transcribed by Google's transcription service,
-                and you will be able to view a word cloud created from the transcript.
-                You will be able to save the recording for private use
-                or share it publicly.
+                and you will be able to view a <i>word cloud</i> created from the transcript.
+                You will be able to save the recording for <i>private use
+                or share it publicly</i>.
                 We hope that you will come back and record more.
                 Please avoid using any identifying names or information.</p>
                 <h3>Create an audio recording</h3>
