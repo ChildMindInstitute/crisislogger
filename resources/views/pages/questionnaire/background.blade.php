@@ -130,17 +130,6 @@
     @endcomponent
 
     @component('components.form-group')
-        <p>Please specify the relationship to the people in your house (check all that apply)</p>
-        @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Partner/Spouse'])
-        @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Parents(s)'])
-        @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Grandparent(s)'])
-        @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Siblings'])
-        @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Children'])
-        @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Other relatives'])
-        @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Unrelated person'])
-    @endcomponent
-
-    @component('components.form-group')
         <p>How many rooms (total) are in your house?</p>
         @include('components.input', ['name' => 'number_rooms'])
     @endcomponent
@@ -155,7 +144,7 @@
         @include('components.radio', ['name' => 'health_insurance', 'value' => 'Yes, other'])
         @include('components.radio', ['name' => 'health_insurance', 'value' => 'No'])
     @endcomponent
-    
+
     @component('components.form-group')
         <p>In the 3 months prior to the Coronavirus/COVID-19 crisis in your area, did you or your family receive money from government assistance programs like welfare, Aid to Families with Dependent Children, General Assistance, or Temporary Assistance for Needy Families</p>
         @include('components.radio-group', ['name' => 'money_government_program'])
@@ -186,16 +175,6 @@
         @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Serious acne or skin problems'])
         @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Emotional or mental health problems such as Depression or Anxiety'])
         @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Problems with alcohol or drugs'])
-    @endcomponent
-
-    @component('components.form-group')
-        <p>How tall are you?</p>
-        @include('components.input', ['name' => 'height'])
-    @endcomponent
-
-    @component('components.form-group')
-        <p>How much do you weigh?</p>
-        @include('components.input', ['name' => 'weight'])
     @endcomponent
 
     @component('components.form-group')
