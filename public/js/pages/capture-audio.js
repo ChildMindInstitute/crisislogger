@@ -66,17 +66,17 @@ https://addpipe.com/blog/audio-constraints-getusermedia/ */
 
         lastStartTime = new Date().getTime();
         //limit recording to 5 mins = 300,000 ms
-        timeRemaining = 300000
+        timeRemaining = 300000;
         timeoutRequest = setTimeout(function() {
             if (!stopButton.disabled) {
-                this.stopRecording()
+                this.stopRecording();
             }
         }, timeRemaining);
     }).catch(function(err) {
         //enable the record button if getUserMedia() fails
         recordButton.disabled = false;
         stopButton.disabled = true;
-        pauseButton.disabled = true
+        pauseButton.disabled = true;
     });
 }
 
@@ -101,7 +101,7 @@ function pauseRecording(){
         lastStartTime = new Date().getTime();
         timeoutRequest = setTimeout(function() {
             if (!stopButton.disabled) {
-                this.stopRecording()
+                this.stopRecording();
             }
         }, timeRemaining);
     }

@@ -46,9 +46,9 @@ function startRecording() {
     //limit recording to 5 mins = 300,000 ms
     timeoutRequest = setTimeout(function() {
         if (!stopBtn.disabled) {
-            this.stopRecording()
+            this.stopRecording();
         }
-    }, 7000);
+    }, 300000);
 }
 
 
