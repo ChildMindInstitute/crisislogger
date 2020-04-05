@@ -154,7 +154,7 @@ footer {
   padding-bottom: 12px;
   background: #e1e1ef;
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
 }
