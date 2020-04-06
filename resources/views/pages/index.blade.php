@@ -49,7 +49,8 @@
         publicly shared recordings or transcripts.</p>
 
         <p>*Our list of partners is growing, and presently includes 
-        <a href="https://openhumans.org">Open Humans</a>,
+        the National Institute of Mental Health,
+	    <a href="https://openhumans.org">Open Humans</a>,
         the <a href="https://cri-paris.org">CRI</a> in Paris, and
         <a href="https://mcgovern.mit.edu/profile/satrajit-ghosh/">Satrajit Ghosh</a>
         and Sanu Abraham at MIT.
