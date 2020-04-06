@@ -15,11 +15,11 @@
                         <p>Share publicly?</p>
                         <div class="kt-radio-inline">
                                 <label class="kt-radio">
-                                    <input type="radio" name="share" value="1" checked="checked"> Yes: Recording + transcript
+                                    <input type="radio" name="share" value="1" checked="checked"> Yes -- recording + transcript
                                     <span></span>
                                 </label>
                                 <label class="kt-radio">
-                                    <input type="radio" name="share" value="2"> Transcript only
+                                    <input type="radio" name="share" value="2"> transcript only
                                     <span></span>
                                 </label>
                                 <label class="kt-radio">
