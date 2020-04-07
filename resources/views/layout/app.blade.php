@@ -12,7 +12,7 @@
         </div>
     </div>
     <!-- end:: Page -->
-
+    <!--
     <footer>
         <div class="container">
             <div class="row">
@@ -28,5 +28,6 @@
             </div>
         </div>
     </footer>
+    -->
     @include('layout.footer')
 </body>
