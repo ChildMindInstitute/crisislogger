@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'openhumans_access_token', 'openhumans_refresh_token',
     ];
 
     /**
