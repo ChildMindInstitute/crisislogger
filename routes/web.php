@@ -19,7 +19,7 @@ Route::get('questionnaire', function () {
     return view('pages.questionnaire.index');
 })->name('questionnaire');
 
-Route::prefix('capture')->group(function() {
+Route::prefix('capture')->group(function () {
 
     Route::get('/', function () {
         return view('pages.capture.choose-method');
@@ -51,7 +51,7 @@ Route::get('/open-humans', function () {
         'scope' => ''
     ]);
 
-    return redirect('http://127.0.0.1:8000/oauth/authorize?'.$query);
+    return redirect('http://127.0.0.1:8000/oauth/authorize?' . $query);
 });
 
 Route::get('/callback', function (Request $request) {
@@ -65,12 +65,12 @@ Route::get('/callback', function (Request $request) {
         ]
     ]);
 
-    session()->put('token', json_decode((string) $response->getBody(), true));
+    session()->put('token', json_decode((string)$response->getBody(), true));
 
     return redirect('/dashboard');
 });
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
 
     Route::get('dashboard', 'HomeController@dashboard')->name('dashboard');
 
@@ -85,3 +85,10 @@ Route::middleware('auth')->group(function(){
 });
 
 Auth::routes();
+
+
+Route::get('openhumans/authenticate', 'OpenHumansController@authenticate');
+Route::get('openhumans/redirect', 'OpenHumansController@redirect');
+Route::get('openhumans/refreshToken', 'OpenHumansController@refreshToken');
+Route::get('openhumans/getProjectMembers', 'OpenHumansController@getProjectMembers');
+Route::get('openhumans/getProjectInformation', 'OpenHumansController@getProjectInformation');
