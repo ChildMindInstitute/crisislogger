@@ -91,7 +91,7 @@
 @endcomponent
 
 @component('components.form-group')
-    <p>What is the highest level of education <strong>you</strong> completed?</p>
+    <p>What is the highest level of education <em>you</em> completed?</p>
     @include('components.radio', ['name' => 'education', 'value' => 'Some grade school'])
     @include('components.radio', ['name' => 'education', 'value' => 'Some high school'])
     @include('components.radio', ['name' => 'education', 'value' => 'High school diploma or GED'])
@@ -102,7 +102,7 @@
 @endcomponent
 
 @component('components.form-group')
-    <p>What is the highest level of education <strong>your mother</strong> completed?</p>
+    <p>What is the highest level of education <em>your mother</em> completed?</p>
     @include('components.radio', ['name' => 'education_mother', 'value' => 'Some grade school'])
     @include('components.radio', ['name' => 'education_mother', 'value' => 'Some high school'])
     @include('components.radio', ['name' => 'education_mother', 'value' => 'High school diploma or GED'])
@@ -113,7 +113,7 @@
 @endcomponent
 
 @component('components.form-group')
-    <p>What is the highest level of education <strong>your father</strong> completed?</p>
+    <p>What is the highest level of education <em>your father</em> completed?</p>
     @include('components.radio', ['name' => 'education_father', 'value' => 'Some grade school'])
     @include('components.radio', ['name' => 'education_father', 'value' => 'Some high school'])
     @include('components.radio', ['name' => 'education_father', 'value' => 'High school diploma or GED'])
