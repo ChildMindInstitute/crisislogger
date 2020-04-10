@@ -1,0 +1,8 @@
+[10-Apr-2020 13:18:34 UTC] PHP Warning:  Uncaught ErrorException: require_once(/home/crisislogger/public_html/database/migrations/2020_04_08_071405_add_openhumans_to_users_table.php): failed to open stream: No such file or directory in /home/crisislogger/public_html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:109
+Stack trace:
+#0 /home/crisislogger/public_html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(109): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(/h...', '/home/crisislog...', 109, Array)
+#1 /home/crisislogger/public_html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(109): require_once()
+#2 /home/crisislogger/public_html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(482): Illuminate\Filesystem\Filesystem->requireOnce('/home/crisislog...')
+#3 /home/crisislogger/public_html/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(104): Illuminate\Database\Migrations\Migrator->requireFiles(Array)
+#4 /home/cri in /home/crisislogger/public_html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php on line 109
+[10-Apr-2020 13:18:34 UTC] PHP Fatal error:  Illuminate\Filesystem\Filesystem::requireOnce(): Failed opening required '/home/crisislogger/public_html/database/migrations/2020_04_08_071405_add_openhumans_to_users_table.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/crisislogger/public_html/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php on line 109
