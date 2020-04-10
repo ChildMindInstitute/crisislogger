@@ -43,19 +43,18 @@
                     can leave them feeling lonely and frightened.</p>
                 @endcomponent
 ​
+                @component('components.voice', ['voice' => 'Student'])
+                    <p>Students have to adapt to a wide variety of new
+                    challenges such as shifting to online classes,
+                    managing internet bandwidth issues, pausing research
+                    projects, and caring for younger siblings and loved ones.</p>
+                @endcomponent
+​
                 @component('components.voice', ['voice' => 'Other'])
                     <p>Social distancing and the isolation of sheltering in
                     has impacted people in ways they could not have foreseen.
                     Beyond loneliness, there can be a sense of fear and
                     uncertainty of what the future has in store.</p>
-                @endcomponent
-​
-                @component('components.voice', ['voice' => 'Student'])
-                    <p>In addition to dealing with typical coursework and research,
-                    students have had to adapt to a wide variety of new
-                    challenges such as shifting to online classes,
-                    managing internet bandwidth issues, pausing research
-                    projects, and caring for younger siblings and loved ones.</p>
                 @endcomponent
 ​
             </div>
