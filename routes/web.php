@@ -21,9 +21,8 @@ Route::get('questionnaire', function () {
 
 Route::prefix('capture')->group(function () {
 
-    Route::get('/', function () {
-        return view('pages.capture.choose-method');
-    })->name('capture');
+    Route::post('/', 'HomeController@capture')->name('capture');
+    Route::get('/', 'HomeController@capture')->name('capture');
 
     Route::get('audio', function () {
         return view('pages.capture.capture-audio');

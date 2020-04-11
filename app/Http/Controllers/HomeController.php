@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Transcription;
 use App\Upload;
 use Auth;
+use Illuminate\Http\Request;
 use Session;
 
 class HomeController extends Controller
@@ -16,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'capture']);
     }
 
     /**
@@ -50,5 +51,20 @@ class HomeController extends Controller
 
         return view('pages.dashboard');
     }
-
+    public function capture(Request $request)
+    {
+        $type = $request->get('voice');
+        if (isset($type))
+        {
+            return view('pages.capture.choose-method');
+        }
+        if (!Auth::check())
+        {
+            $validatedData = $request->validate([
+                'email' => 'required| unique:users,email,dns',
+            ]);
+            session()->put('user-email', $validatedData['email']);
+            return redirect(route('capture-choice'));
+        }
+    }
 }

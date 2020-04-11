@@ -28,6 +28,10 @@
                         </span>
                         @enderror
                     </div>
+                <h1 class="display-4">LAST STEP: User Information</h1>
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <p>Please fill in your name and a password to come back and see your previous submissions.</p>
 
                     <div class="form-group">
                         <label>Name</label>
@@ -57,6 +61,7 @@
                     </div>
 
                     <input type="hidden" value="{{ Session::get('filename') }}" name="filename" />
+
                 </form>
 
                 <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>

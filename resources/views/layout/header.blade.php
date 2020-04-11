@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-12 col-md-8">
                 <div class="float-right">
-                    <a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a>
+                    <button class="btn btn-primary btn-wide mr-2" id="share-thought-btn">Share Your Thoughts</button>
                     @auth
                         <div class="btn-group">
                             <a href="{{ route('dashboard') }}" class="btn btn-link">Dashboard</a>
