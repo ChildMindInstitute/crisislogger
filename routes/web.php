@@ -33,6 +33,10 @@ Route::prefix('capture')->group(function () {
         return view('pages.capture.capture-video');
     })->name('capture-video');
 
+    Route::get('text', function () {
+        return view('pages.capture.capture-text');
+    })->name('capture-text');
+
     Route::get('create', function () {
         return view('pages.capture.create-account');
     })->name('capture-create-account');
@@ -92,3 +96,7 @@ Route::get('openhumans/redirect', 'OpenHumansController@redirect');
 Route::get('openhumans/refreshToken', 'OpenHumansController@refreshToken');
 Route::get('openhumans/getProjectMembers', 'OpenHumansController@getProjectMembers');
 Route::get('openhumans/getProjectInformation', 'OpenHumansController@getProjectInformation');
+
+Route::get('/getCountries', 'CountryController@getCountries');
+Route::get('/getStates/{id}', 'CountryController@getStates');
+Route::get('/getCities/{id}/{name}', 'CountryController@getCities');

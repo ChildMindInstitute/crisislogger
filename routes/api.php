@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('upload', 'UploadController@upload')->name('upload');
+Route::post('text', 'TextController@create')->name('upload');
 
 Route::middleware('auth')->group(function(){
 

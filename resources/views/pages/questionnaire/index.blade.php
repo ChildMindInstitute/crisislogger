@@ -19,7 +19,7 @@
 
     <div class="container">
         @component('components.portlet')
-            <div class="kt-grid kt-grid--desktop-xl kt-grid--ver-desktop-xl kt-wizard-v3 kt-wizard-v3--extend" id="questionnaire_wizard" data-ktwizard-state="step-first">
+            <div class=" kt-grid--desktop-xl kt-grid--ver-desktop-xl kt-wizard-v3 kt-wizard-v3--extend" id="questionnaire_wizard" data-ktwizard-state="step-first">
                 <div class="kt-grid__item kt-wizard-v3__aside">
 
                     <!--begin: Form Wizard Nav -->
@@ -121,6 +121,69 @@
 
 @section('scripts')
     <script src="{{ asset('js/pages/questionnaire.js') }}"></script>
+
+    <script>
+        $(function () {
+            $.ajax({
+                type: "get",
+                url: "/getCountries/",
+                success: function (res) {
+                    if (res) {
+                        $("#country").empty();
+                        $("#state").empty();
+                        $("#city").empty();
+                        $("#country").append('<option>Select State</option>');
+                        $.each(res, function (key, value) {
+                            $("#country").append('<option value="' + value.name.common + '" data-id="' + value.ne_id + '">' + value.name.common + '</option>');
+                        });
+                    }
+                }
+            });
+        });
+
+        $('#country').change(function () {
+            var cid = $(this).find(':selected').data('id');
+            if (cid) {
+                $.ajax({
+                    type: "get",
+                    url: "/getStates/" + cid,
+                    success: function (res) {
+                        if (res) {
+                            $("#state").empty();
+                            $("#city").empty();
+                            $("#state").append('<option>Select State</option>');
+                            $.each(res, function (key, value) {
+                                $("#state").append('<option value="' + value.name + '">' + value.name + '</option>');
+                            });
+                        }
+                    }
+
+                });
+            }
+        });
+
+        $('#state').change(function () {
+            var sid = $(this).val();
+            var cid = $("#country").find(':selected').data('id');
+            if (sid) {
+                $.ajax({
+                    type: "get",
+                    url: "/getCities/" + cid + "/" + sid,
+                    success: function (res) {
+                        if (res) {
+                            $("#city").empty();
+                            $("#city").append('<option>Select City</option>');
+                            $.each(res, function (key, value) {
+                                $("#city").append('<option value="' + value.name + '">' + value.name + '</option>');
+                            });
+                        }
+                    }
+
+                });
+            }
+        });
+
+    </script>
 @endsection
 
 @section('styles')
