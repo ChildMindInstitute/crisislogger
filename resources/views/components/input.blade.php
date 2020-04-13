@@ -18,7 +18,7 @@
         value="{{ $value }}"
         @endif
 
-        required
+        @if(isset($required)) required @endif
         >
 
         @error($name)

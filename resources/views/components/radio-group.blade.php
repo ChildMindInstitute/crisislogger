@@ -4,11 +4,11 @@
     @endif
     <div class="kt-radio-inline">
         <label class="kt-radio">
-            <input type="radio" name="{{ $name }}" value="Yes" required> Yes
+            <input type="radio" name="{{ $name }}" value="Yes" @if(isset($required)) required @endif> Yes
             <span></span>
         </label>
         <label class="kt-radio">
-            <input type="radio" name="{{ $name }}" value="No" required> No
+            <input type="radio" name="{{ $name }}" value="No" @if(isset($required)) required @endif> No
             <span></span>
         </label>
     </div>

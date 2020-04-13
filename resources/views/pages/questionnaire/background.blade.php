@@ -1,15 +1,17 @@
 <h3>For your recording to be really useful for scientific research,
  please provide some background information about yourself:</h3>
 
-@component('components.form-group')
-    <p>What country do you live in?</p>
-    @include('components.input', ['name' => 'country', 'placeholder' => 'Enter country'])
+@component('components.country')
 @endcomponent
 
-@component('components.form-group')
-    <p>State/Providence/Region:</p>
-    @include('components.input', ['name' => 'state/providence/region', 'placeholder' => 'Enter state/providence/region'])
-@endcomponent
+{{--@component('components.form-group')--}}
+{{--    <p>What country do you live in?</p>--}}
+{{--    @include('components.input', ['name' => 'country', 'placeholder' => 'Enter country'])--}}
+{{----}}
+{{--@component('components.form-group')--}}
+{{--    <p>State/Providence/Region:</p>--}}
+{{--    @include('components.input', ['name' => 'state/providence/region', 'placeholder' => 'Enter state/providence/region'])--}}
+{{--@endcomponent--}}
 
 @component('components.form-group')
     <label for="dob">Your date of birth?</label>

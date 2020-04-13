@@ -46,8 +46,8 @@ class OpenHumansController extends Controller {
 
 			// save access token in user
 			User::where('id', Auth::id())->update([
-				'access_token' => $response->access_token,
-				'refresh_token' => $response->refresh_token,
+				'openhumans_access_token' => $response->access_token,
+				'openhumans_refresh_token' => $response->refresh_token,
 			]);
 
 			echo 'success';
@@ -60,7 +60,7 @@ class OpenHumansController extends Controller {
 	public function refreshToken() {
 		// get user refresh token
 		$user = User::where('id', Auth::id())->first();
-		$refreshToken = $user->refresh_token;
+		$refreshToken = $user->openhumans_refresh_token;
 
 		$clientId = config('openHumans.clientId');
 		$clientSecret = config('openHumans.clientSecret');
@@ -82,8 +82,8 @@ class OpenHumansController extends Controller {
 
 			// save new access token in user
 			User::where('id', Auth::id())->update([
-				'access_token' => $response->access_token,
-				'refresh_token' => $response->refresh_token,
+				'openhumans_access_token' => $response->access_token,
+				'openhumans_refresh_token' => $response->refresh_token,
 			]);
 
 			echo 'success';
@@ -96,7 +96,7 @@ class OpenHumansController extends Controller {
 	public function getProjectMembers() {
 		// get user access token
 		$user = User::where('id', Auth::id())->first();
-		$accessToken = $user->access_token;
+		$accessToken = $user->openhumans_access_token;
 
 		// send post request to openhumans to get project members
 		$client = new \GuzzleHttp\Client();
@@ -117,7 +117,7 @@ class OpenHumansController extends Controller {
 	public function getProjectInformation() {
 		// get user access token
 		$user = User::where('id', Auth::id())->first();
-		$accessToken = $user->access_token;
+		$accessToken = $user->openhumans_access_token;
 
 		// send post request to openhumans to get project information
 		$client = new \GuzzleHttp\Client();
