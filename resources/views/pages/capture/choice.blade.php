@@ -6,8 +6,10 @@
     <div class="container">
 ​
         @component('components.portlet')
-            <h1 class="display-4">Please tell us with which voice you would like to express yourself:</h1>
-            <div class="text-center row">
+           <h1 class="display-4">Please tell us with which voice you would like to express yourself</h1>
+           <h4>Note: You must be 18 or older to upload information on this website.</h4>
+           <br>
+           <div class="text-center row">
 ​
                 @component('components.voice', ['voice' => 'Parent'])
                     <p>Parents are facing unique challenges of working from home
