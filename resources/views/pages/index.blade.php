@@ -12,46 +12,50 @@
         </div>
 
 	<br>
-        <p>This is an unprecedented time.
-        Our lives have been disrupted in so many ways,
-        and while we are all concerned about the health of friends,
-        family, and ourselves,
-        we are at the same time distancing ourselves from each other.
-        The uncertainty, stress, and fear can
-        result in increased feelings of vulnerability,
-        lack of control, and a need for support.</p>
+        <p>This is an unprecedented time,
+	and our lives have been disrupted by the COVID-19 pandemic
+	in so many ways.
+        We are all concerned about the health of our family and friends,
+        and facing new challenges we could never have imagined.
+	At the same time as we're distancing ourselves from each other,
+        the stress, uncertaint, and fear gives us an even greater
+        need for support.</p>
 
-        <p>The Child Mind Institute and its research partners*
-        are deeply committed to research and care of mental health
+        <p>The Child Mind Institute and its partners*
+        are deeply committed to mental health,
         and we are here to listen.
-        We urge you to share with us your fears, 
-        frustrations, and needs during this time of crisis, 
-        as well as what is helping you to get through it,
-        by recording audio or video at the link below.</p>
+	We are launching an important research project, 
+        and hope you will share your fears, 
+        frustrations, and hopes with us in an audio or video clip
+	by clicking the link below.
+	After you record your thoughts and feelings,
+	we will ask some questions to learn more about your situation.</p>
         
         <div class="text-center">
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
         </div>
 
 	<br>
-        <p>You will be able to share it publicly in its original form
-        or as a transcript, or make it private,
-        even creating a journal for yourself over time.
-        After you record your thoughts and feelings,
-        we will ask some questions to learn more about your situation.</p>
+        <p>You can share your recording publicly in its original form
+        or as a transcript, or decide to keep it private,
+        and even create a journal for yourself over time.</p>
 
         <p>For those who choose to contribute their recordings to scientific
-        research, we will analyze them to generate recommendations and action
-        plans to guide clinicians and researchers, so they can better identify
-        resources to support you and others.
-        We will add new features in the future to visualize your contribution
+        research, we will analyze them to create recommendations for
+	how clinicians and researchers can best support
+	families as we move ahead.
+        We will continue to add new features to the website
+	to visualize your contribution
         in the context of everyone else’s, and to create a collection of
         publicly shared recordings or transcripts.</p>
+
+        <p>We know how precious your time is, and greatly appreciate
+	your participation in this project.</p>
 
         <p>*Our list of partners is growing, and presently includes 
         the National Institute of Mental Health,
 	    <a href="https://openhumans.org">Open Humans</a>,
-        the <a href="https://cri-paris.org">CRI</a> in Paris, and
+        the <a href="https://cri-paris.org">CRI</a> in Paris, Parents Magazine, and
         <a href="https://mcgovern.mit.edu/profile/satrajit-ghosh/">Satrajit Ghosh</a>
         and Sanu Abraham at MIT.
 

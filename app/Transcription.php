@@ -93,4 +93,18 @@ class Transcription extends Model
         return self::audio($audio_upload);
     }
 
+
+	public static function text(Upload $upload) {
+		$user = Auth::user();
+
+		// If not empty, save into transcriptions table
+		$transcription = new Transcription();
+		$transcription->upload_id = $upload->id;
+		if ($user) $transcription->user_id = $user->id;
+		$transcription->text = $upload->text;
+		$transcription->save();
+
+		return $transcription;
+	}
+
 }
