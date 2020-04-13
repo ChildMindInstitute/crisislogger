@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "ext-json": "*",
+        "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
         "google/cloud-speech": "^0.31.1",
         "guzzlehttp/guzzle": "^6.5",
