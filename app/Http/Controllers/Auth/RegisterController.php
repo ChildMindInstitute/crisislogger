@@ -84,6 +84,7 @@ class RegisterController extends Controller
         }
         if (session()->has('need-to-question-air'))
         {
+            session()->forget('need-to-question-air');
             $this->redirectTo = '/questionnaire';
         }
         return $user;

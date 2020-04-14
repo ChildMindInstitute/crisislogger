@@ -25,10 +25,6 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function dashboard(){
-        if(session()->has('need-to-question-air'))
-        {
-            return  redirect(route('questionnaire'));
-        }
         $user = Auth::user();
 
         // Check and see if there are any files in the session waiting to be added to a user
