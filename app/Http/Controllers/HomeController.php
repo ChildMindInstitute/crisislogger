@@ -22,9 +22,13 @@ class HomeController extends Controller
 
     /**
      * Show the dashboard. If there are files to add to a user, add them.
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function dashboard(){
+        if(session()->has('need-to-question-air'))
+        {
+            return  redirect(route('questionnaire'));
+        }
         $user = Auth::user();
 
         // Check and see if there are any files in the session waiting to be added to a user
@@ -55,7 +59,7 @@ class HomeController extends Controller
     public function capture(Request $request)
     {
         $type = $request->get('voice');
-        if (isset($type))
+        if (isset($type) && (session()->has('user-email') || Auth::check()))
         {
             return view('pages.capture.choose-method');
         }

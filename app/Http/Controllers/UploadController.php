@@ -73,6 +73,7 @@ class UploadController extends Controller
             }
             Session::put('transcription', $transcription->id);
         }
+        session()->remove('user-email');
         $response = [
             'message' => 'File uploaded successfully.',
             'file' => $file,
@@ -114,9 +115,16 @@ class UploadController extends Controller
         $user->texts()->save($upload);
         // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
         //if(!$upload->share){
+        if($upload->contribute_to_science){
+            session()->put('need-to-question-air');
+        }
         $redirect = route('capture-create-account');
-        //}
+        if (auth()->check() && $upload->contribute_to_science)
+        {
+            $redirect = route('questionnaire');
+        }
         // If the are contributing to science, we will transcribe the message and save it
+        session()->remove('user-email');
         $response = [
             'message' => 'ONE MORE STEP: Enter your email address on the next screen for us to log your text.',
             'redirect' => $redirect,
