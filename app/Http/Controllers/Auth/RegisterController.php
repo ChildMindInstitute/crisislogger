@@ -32,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-//    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -82,17 +82,10 @@ class RegisterController extends Controller
             $user->password = Hash::make($data['password']);
             $user->save();
         }
-        return $user;
-    }
-    public function redirectPath()
-    {
         if (session()->has('need-to-question-air'))
         {
-            return '/questionnaire';
+            $this->redirectTo = '/questionnaire';
         }
-        else
-        {
-            return RouteServiceProvider::HOME;
-        }
+        return $user;
     }
 }

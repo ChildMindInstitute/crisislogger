@@ -59,10 +59,13 @@ class UploadController extends Controller
         }
         $user->uploads()->save($upload);
         // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
-        if($upload->share){
+        if($upload->contribute_to_science){
+            session()->put('need-to-question-air', 1);
+        }
+        $redirect = route('capture-create-account');
+        if (auth()->check() && $upload->contribute_to_science)
+        {
             $redirect = route('questionnaire');
-        } else {
-            $redirect = route('capture-create-account');
         }
         // If the are contributing to science, we will transcribe the message and save it
         if($upload->contribute_to_science){
@@ -116,7 +119,7 @@ class UploadController extends Controller
         // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
         //if(!$upload->share){
         if($upload->contribute_to_science){
-            session()->put('need-to-question-air');
+            session()->put('need-to-question-air', 1);
         }
         $redirect = route('capture-create-account');
         if (auth()->check() && $upload->contribute_to_science)
@@ -124,7 +127,7 @@ class UploadController extends Controller
             $redirect = route('questionnaire');
         }
         // If the are contributing to science, we will transcribe the message and save it
-        session()->remove('user-email');
+        session()->forget('user-email');
         $response = [
             'message' => 'ONE MORE STEP: Enter your email address on the next screen for us to log your text.',
             'redirect' => $redirect,
