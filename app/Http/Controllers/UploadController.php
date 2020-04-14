@@ -43,6 +43,7 @@ class UploadController extends Controller
         $user = Auth::user();
         if (!isset($user) && isset($email_address))
         {
+            session()->forget('user-email');
             $user = new User();
             $user->setAttribute('email', $email_address);
             $user->setAttribute('name', 'unnamed');// assign temp user.
@@ -76,7 +77,6 @@ class UploadController extends Controller
             }
             Session::put('transcription', $transcription->id);
         }
-        session()->forget('user-email');
         $response = [
             'message' => 'File uploaded successfully.',
             'file' => $file,
