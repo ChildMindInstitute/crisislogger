@@ -13,7 +13,7 @@ class UpdateTransactionsTable extends Migration
      */
     public function up() {
         Schema::table('transcriptions', function (Blueprint $table) {
-            if (!Schema::hasColumn('uploads', 'user_id'))
+            if (!Schema::hasColumn('transcriptions', 'user_id'))
             {
                 $table->integer('user_id')->nullable();
             }
