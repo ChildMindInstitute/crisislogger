@@ -98,12 +98,12 @@
                                     <span>Previous</span>
                                 </span>
                             </div>
-                            <button type="submit" class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-submit" id="Submit">
+                            <button type="submit" class="btn btn-primary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-submit" id="Submit">
                                 <span>
                                     <span>Submit</span>
                                 </span>
                             </button>
-                            <div class="btn btn-info btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-next">
+                            <div class="btn btn-primary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-next">
                                 <span>
                                     <span>Next Step</span>
                                 </span>

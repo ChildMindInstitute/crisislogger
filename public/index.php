@@ -8,18 +8,21 @@
  */
 ob_start();
 define('LARAVEL_START', microtime(true));
-
-/*
-|--------------------------------------------------------------------------
-| Register The Auto Loader
-|--------------------------------------------------------------------------
-|
-| Composer provides a convenient, automatically generated class loader for
-| our application. We just need to utilize it! We'll simply require it
-| into the script here so that we don't have to worry about manual
-| loading any of our classes later on. It feels great to relax.
-|
-*/
+ini_set('upload_max_filesize', '500M');
+ini_set('post_max_size', '500M');
+ini_set('max_input_time', 600);
+ini_set('max_execution_time', 600);
+    /*
+    |--------------------------------------------------------------------------
+    | Register The Auto Loader
+    |--------------------------------------------------------------------------
+    |
+    | Composer provides a convenient, automatically generated class loader for
+    | our application. We just need to utilize it! We'll simply require it
+    | into the script here so that we don't have to worry about manual
+    | loading any of our classes later on. It feels great to relax.
+    |
+    */
 
 require __DIR__.'/../vendor/autoload.php';
 
