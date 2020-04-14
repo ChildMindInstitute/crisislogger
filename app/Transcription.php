@@ -41,7 +41,8 @@ class Transcription extends Model
 
         # set string as audio content
         $audio = (new RecognitionAudio())
-            ->setContent($content);
+#            ->setContent($content);
+        ->setUri('gs://crisislogger_uploads/'.$upload->name);
         # The audio file's encoding, sample rate and language
         $config = new RecognitionConfig([
             // 'encoding' => AudioEncoding::LINEAR16,
