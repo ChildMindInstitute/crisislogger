@@ -1,18 +1,37 @@
-var video, timeoutRequest, reqBtn, startBtn, stopBtn, stream, recorder, uploadBtn;
+var video, timeoutRequest, reqBtn, recordButton, stream, recorder, uploadBtn;
 video = document.getElementById('video');
 reqBtn = document.getElementById('cameraButton');
-startBtn = document.getElementById('recordButton');
-stopBtn = document.getElementById('stopButton');
+reqBtn.onclick = requestVideo;
+recordButton = document.getElementById('button');
 videoContainer = document.getElementById('recordingsList');
 uploadBtn = document.getElementById('uploadInfo');
-reqBtn.onclick = requestVideo;
-startBtn.onclick = startRecording;
-stopBtn.onclick = stopRecording;
-startBtn.disabled = true;
-stopBtn.disabled = true;
+
 let upload = document.getElementById('upload');
 let preview = document.getElementById('live-video');
 let spinner = document.getElementById('spinner');
+
+let isRecording = false;
+const camIcon = `
+<svg class="bi bi-camera-video-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.667 3h6.666C10.253 3 11 3.746 11 4.667v6.666c0 .92-.746 1.667-1.667 1.667H2.667C1.747 13 1 12.254 1 11.333V4.667C1 3.747 1.746 3 2.667 3z"/>
+    <path d="M7.404 8.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V4.308c0-.63-.693-1.01-1.233-.696L7.404 7.304a.802.802 0 000 1.393z"/>
+</svg>
+`;
+const stopIcon = `
+<svg id="stop-icon" class="bi bi-stop-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 3.5h6A1.5 1.5 0 0112.5 5v6a1.5 1.5 0 01-1.5 1.5H5A1.5 1.5 0 013.5 11V5A1.5 1.5 0 015 3.5z"/>
+</svg>
+`;
+recordButton.addEventListener("click", toggleRecording);
+
+function toggleRecording() {
+    if (isRecording) {
+        stopRecording();
+        isRecording = false;
+    } else {
+        startRecording();
+    }
+}
 
 function requestVideo() {
     spinner.classList.remove('d-none');
@@ -22,30 +41,32 @@ function requestVideo() {
     }).then(stm => {
         stream = stm;
         reqBtn.style.display = 'none';
-        startBtn.removeAttribute('disabled');
+        button.removeAttribute('disabled');
         preview.srcObject = stream;
         preview.captureStream = preview.captureStream || preview.mozCaptureStream;
         preview.classList.remove('d-none');
         spinner.classList.add('d-none');
-        startBtn.classList.remove('d-none');
+        recordButton.style.display = "inline-block";
     }).catch(e => console.error(e));
 }
 
 function startRecording() {
+
+    isRecording = true;
+    button.innerHTML = stopIcon;
+    button.classList.add('recording');
+    
+    if ( navigator.vibrate ) navigator.vibrate( 150 );
+
     preview.classList.remove('d-none');
-    uploadBtn.classList.add('d-none');
-    videoContainer.classList.add('d-none');
     recorder = new MediaRecorder(stream, {
         mimeType: 'video/webm'
     });
     recorder.start();
-    stopBtn.disabled = false;
-    startBtn.disabled = true;
-    startBtn.innerHTML = "<i class=\"la la-circle\"></i> Recording";
 
     //limit recording to 5 mins = 300,000 ms
     timeoutRequest = setTimeout(function() {
-        if (!stopBtn.disabled) {
+        if (isRecording) {
             this.stopRecording();
         }
     }, 300000);
@@ -53,21 +74,19 @@ function startRecording() {
 
 
 function stopRecording() {
+    isRecording = false;
+    button.classList.remove('recording');
+    button.innerHTML = camIcon;
+    $("#myModal").modal();
+    if ( navigator.vibrate ) navigator.vibrate( [ 200, 100, 200 ] );
     const chunks = [];
     preview.classList.add('d-none');
     recorder.ondataavailable = e => {
         chunks.push(e.data);
-        videoContainer.classList.remove('d-none');
         video.src = URL.createObjectURL(e.data);
-       // console.log(chunks);
-
-        startBtn.removeAttribute('disabled');
-        stopBtn.disabled = true;
-        startBtn.innerHTML = "<i class=\"la la-play\"></i> Start";
 
         var blob = new Blob(chunks, {type: 'video/webm'});
         let filename = new Date().toISOString() + ".webm";
-        uploadBtn.classList.remove('d-none');
 
         upload.addEventListener('click', async (e) => {
             e.preventDefault();

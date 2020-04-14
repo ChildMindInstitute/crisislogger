@@ -13,23 +13,47 @@ let audioContext = new AudioContext;
 let timeoutRequest;
 let lastStartTime;
 let timeRemaining;
-let recordButton = document.getElementById("recordButton");
-let stopButton = document.getElementById("stopButton");
-let pauseButton = document.getElementById("pauseButton");
+let isRecording = false;
+let button = document.getElementById("button");
+const micIcon = `
+<svg class="bi bi-mic-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 3a3 3 0 016 0v5a3 3 0 01-6 0V3z"/>
+    <path fill-rule="evenodd" d="M3.5 6.5A.5.5 0 014 7v1a4 4 0 008 0V7a.5.5 0 011 0v1a5 5 0 01-4.5 4.975V15h3a.5.5 0 010 1h-7a.5.5 0 010-1h3v-2.025A5 5 0 013 8V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+</svg>
+`;
+const stopIcon = `
+<svg id="stop-icon" class="bi bi-stop-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 3.5h6A1.5 1.5 0 0112.5 5v6a1.5 1.5 0 01-1.5 1.5H5A1.5 1.5 0 013.5 11V5A1.5 1.5 0 015 3.5z"/>
+</svg>
+`;
+button.innerHTML = micIcon;
 let recordingsList = document.getElementById("recordingsList");
 let upload = document.getElementById('upload');
 let upload_info = document.getElementById('uploadInfo');
 //add events to those 3 buttons
-recordButton.addEventListener("click", startRecording);
-stopButton.addEventListener("click", stopRecording);
-pauseButton.addEventListener("click", pauseRecording);
+button.addEventListener("click", toggleRecording);
+
+function toggleRecording() {
+    if (isRecording) {
+        stopRecording();
+        isRecording = false;
+    } else {
+        startRecording();
+    }
+}
 
 function startRecording(){
     //console.log('recording clicked');
 
+    isRecording = true;
+    button.innerHTML = stopIcon;
+    button.classList.add('recording');
+    
+    if ( navigator.vibrate ) navigator.vibrate( 150 );
+
     // Remove the old recording, if we are re-recording
     recordingsList.innerHTML = '';
-    upload_info.classList.add('d-none');
+    //upload_info.classList.add('d-none');
 
     /* Simple constraints object, for more advanced audio features see
 
@@ -39,11 +63,6 @@ https://addpipe.com/blog/audio-constraints-getusermedia/ */
         audio: true,
         video: false
     };
-    /* Disable the record button until we get a success or fail from getUserMedia() */
-
-    recordButton.disabled = true;
-    stopButton.disabled = false;
-    pauseButton.disabled = false;
 
     /* We're using the standard promise based getUserMedia()
 
@@ -62,7 +81,6 @@ https://addpipe.com/blog/audio-constraints-getusermedia/ */
         //start the recording process
         rec.record()
         console.log("Recording started");
-        recordButton.innerHTML = "<i class=\"la la-circle\"></i> Recording";
 
         lastStartTime = new Date().getTime();
         //limit recording to 5 mins = 300,000 ms
@@ -73,50 +91,20 @@ https://addpipe.com/blog/audio-constraints-getusermedia/ */
             }
         }, timeRemaining);
     }).catch(function(err) {
-        //enable the record button if getUserMedia() fails
-        recordButton.disabled = false;
-        stopButton.disabled = true;
-        pauseButton.disabled = true;
+        isRecording = false;
+        button.classList.remove('recording');
+        button.innerHTML = micIcon;
     });
-}
-
-function pauseRecording(){
-    console.log("pauseButton clicked rec.recording=", rec.recording);
-    if (rec.recording) {
-        //pause
-        rec.stop();
-        pauseButton.innerHTML = "<i class=\"la la-play\"></i> Resume";
-
-        //update time remaining
-        const currentTime = new Date().getTime();
-        const timeElapsed = currentTime - lastStartTime;
-        timeRemaining = timeRemaining - timeElapsed;
-        clearTimeout(timeoutRequest);
-
-    } else {
-        //resume
-        rec.record();
-        pauseButton.innerHTML = "<i class=\"la la-pause\"></i> Pause";
-
-        lastStartTime = new Date().getTime();
-        timeoutRequest = setTimeout(function() {
-            if (!stopButton.disabled) {
-                this.stopRecording();
-            }
-        }, timeRemaining);
-    }
 }
 
 function stopRecording() {
     console.log("stopButton clicked");
-    //disable the stop button, enable the record too allow for new recordings
-    stopButton.disabled = true;
-    recordButton.disabled = false;
-    pauseButton.disabled = true;
-    //reset button just in case the recording is stopped while paused
-    pauseButton.innerHTML = "<i class=\"la la-pause\"></i> Pause";
-    // reset the start button
-    recordButton.innerHTML = "<i class=\"la la-play\"></i> Start";
+
+    isRecording = false;
+    button.classList.remove( 'recording' );
+    button.innerHTML = micIcon;
+    if ( navigator.vibrate ) navigator.vibrate( [ 200, 100, 200 ] );
+
     //tell the recorder to stop the recording
     rec.stop(); //stop microphone access
     gumStream.getAudioTracks()[0].stop();
@@ -151,7 +139,6 @@ function createDownloadLink(blob) {
     });
 
     recordingsList.appendChild(li);
-    recordingsList.classList.remove('d-none');
-    upload_info.classList.remove('d-none');
+    $("#myModal").modal();
 }
 
