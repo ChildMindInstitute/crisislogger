@@ -12,8 +12,13 @@ class AddOpenhumansToUsersTable extends Migration {
 	 */
 	public function up() {
 		Schema::table('users', function (Blueprint $table) {
-			$table->string('openhumans_access_token', 100);
-			$table->string('openhumans_refresh_token', 100);
+		    if (!Schema::hasColumn('users', 'openhumans_access_token'))
+            {
+                $table->string('openhumans_access_token', 100);
+            }
+            if (!Schema::hasColumn('users', 'openhumans_access_token')) {
+                $table->string('openhumans_refresh_token', 100);
+            }
 		});
 	}
 
