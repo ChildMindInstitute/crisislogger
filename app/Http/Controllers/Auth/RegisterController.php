@@ -75,6 +75,7 @@ class RegisterController extends Controller
             $user->name = $data['name'];
             $user->password = Hash::make($data['password']);
             $user->update();
+            session()->forget('temp_user_id');
         }
         else {
             $user = new User();

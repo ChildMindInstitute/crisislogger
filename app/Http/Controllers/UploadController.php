@@ -76,7 +76,7 @@ class UploadController extends Controller
             }
             Session::put('transcription', $transcription->id);
         }
-        session()->remove('user-email');
+        session()->forget('user-email');
         $response = [
             'message' => 'File uploaded successfully.',
             'file' => $file,
