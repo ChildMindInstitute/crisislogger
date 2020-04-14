@@ -29,7 +29,7 @@
         .text-ellipsis {
             height: 150px;
             display: inline-block;
-            /* width: 514px; */
+            width: 514px;
             overflow: hidden;
             text-overflow: ellipsis;
             padding: 20px;
