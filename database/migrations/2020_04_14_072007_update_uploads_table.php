@@ -15,7 +15,7 @@ class UpdateUploadsTable extends Migration
         Schema::table('uploads', function (Blueprint $table) {
             if (!Schema::hasColumn('uploads', 'user_id'))
             {
-                $table->integer('user_id', 100);
+                $table->integer('user_id')->nullable();
             }
         });
     }
