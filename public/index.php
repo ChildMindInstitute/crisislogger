@@ -7,12 +7,13 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 ob_start();
+
 define('LARAVEL_START', microtime(true));
 ini_set('upload_max_filesize', '500M');
 ini_set('post_max_size', '500M');
 ini_set('max_input_time', 600);
 ini_set('max_execution_time', 600);
-    /*
+ /*
     |--------------------------------------------------------------------------
     | Register The Auto Loader
     |--------------------------------------------------------------------------

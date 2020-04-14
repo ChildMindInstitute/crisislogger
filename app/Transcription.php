@@ -57,16 +57,33 @@ class Transcription extends Model
         );
 
         # Detects speech in the audio file
-        $google_response = $client->recognize($config, $audio);
+       # $google_response = $client->recognize($config, $audio);
 
         # Print most likely transcription
+        #$response = '';
+        #foreach ($google_response->getResults() as $result) {
+        #    $alternatives = $result->getAlternatives();
+        #    $mostLikely = $alternatives[0];
+        #    $transcript = $mostLikely->getTranscript();
+        #    $response .= $transcript;
+        #}
+
+        $operation = $client->longRunningRecognize($config, $audio);
+        $operation->pollUntilComplete();
+
         $response = '';
-        foreach ($google_response->getResults() as $result) {
-            $alternatives = $result->getAlternatives();
-            $mostLikely = $alternatives[0];
-            $transcript = $mostLikely->getTranscript();
-            $response .= $transcript;
+        if ($operation->operationSucceeded()) {
+            $google_response = $operation->getResult();
+
+            # Print most likely transcription
+            foreach ($google_response as $result) {
+                $alternatives = $result->getAlternatives();
+                $mostLikely = $alternatives[0];
+                $transcript = $mostLikely->getTranscript();
+                $response .= $transcript;
+            }
         }
+
 
         $client->close();
 
