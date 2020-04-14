@@ -101,11 +101,17 @@ class UploadController extends Controller
         $user = Auth::user();
         if (!isset($user) && isset($email_address))
         {
-            $user = new User();
-            $user->setAttribute('email', $email_address);
-            $user->setAttribute('name', 'unnamed');// assign temp user.
-            $user->setAttribute('password', \Hash::make(time()));// assign temp password.
-            $user->save();
+            session()->forget('user-email');
+            $user = User::where('email', $email_address)->first();
+            if (!$user)
+            {
+                $user = new User();
+                $user->setAttribute('email', $email_address);
+                $user->setAttribute('name', 'unnamed');// assign temp user.
+                $user->setAttribute('password', \Hash::make(time()));// assign temp password.
+
+                $user->save();
+            }
             session()->put('temp_user_id', $user->getKey());
         }
         if($request->has('voice')){
