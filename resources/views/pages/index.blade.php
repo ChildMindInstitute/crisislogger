@@ -10,7 +10,22 @@
         <div class="text-center">
             <h1 class="display-4">Call to Action During the Covid-19 Crisis</h1>
         </div>
-
+    @if(Session::has('authorization_success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ Session::get('authorization_success')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+        @if(Session::has('authorization_failed'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ Session::get('authorization_failed')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
 	<br>
         <p>This is an unprecedented time,
 	and our lives have been disrupted by the COVID-19 pandemic
@@ -21,17 +36,21 @@
         the stress, uncertaint, and fear gives us an even greater
         need for support.</p>
 
-        <p>The Child Mind Institute, the Child Mind Medical Practice, and its partners*
-        are deeply committed to mental health, and we are here to listen.
-        We are launching an important research project,
+        <p>The Child Mind Institute and its partners*
+        are deeply committed to mental health,
+        and we are here to listen.
+	We are launching an important research project,
         and hope you will share your fears,
         frustrations, and hopes with us in an audio or video clip
-        by clicking the link below.</p>
-	<br>
+	by clicking the link below.
+	After you record your thoughts and feelings,
+	we will ask some questions to learn more about your situation.</p>
+
         <div class="text-center">
-            <a class="btn-primary btn btn-wide btn-lg" href="{{route('capture', ['voice'=> 'parent'])}}">Share Your Thoughts</a>
+            <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
         </div>
-        <br>
+
+	<br>
         <p>You can share your recording publicly in its original form
         or as a transcript, or decide to keep it private,
         and even create a journal for yourself over time.</p>

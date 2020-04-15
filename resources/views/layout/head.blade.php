@@ -39,5 +39,9 @@
             background: rgba(228, 228, 228, 0.98);
             resize: both;
         }
+        .error {
+            color: red;
+            text-align: center;
+        }
     </style>
 </head>

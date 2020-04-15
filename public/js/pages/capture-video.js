@@ -35,6 +35,22 @@ function toggleRecording() {
 
 function requestVideo() {
     spinner.classList.remove('d-none');
+    let iphone = !!navigator.platform && /iPhone/.test(navigator.platform);
+    if (document.getElementById('error-id'))
+    {
+        document.getElementById('error-id').remove();
+    }
+    let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+    if (iphone && isSafari)
+    {
+        let errorMsg = 'The video recording is not supported on this device';
+        let error = document.createElement('p');
+        error.innerText =  errorMsg;
+        error.setAttribute('id', 'error-id');
+        error.classList.add('error');
+        reqBtn.setAttribute('disabled', true);
+    }
+
     navigator.mediaDevices.getUserMedia({
         video: true,
         audio: true
@@ -47,7 +63,18 @@ function requestVideo() {
         preview.classList.remove('d-none');
         spinner.classList.add('d-none');
         recordButton.style.display = "inline-block";
-    }).catch(e => console.error(e));
+    }).catch(e => {
+        if (e)
+        {
+            let errorMsg = 'We can not find the camera device. please check and try again';
+            let error = document.createElement('p');
+            error.innerText =  errorMsg;
+            error.setAttribute('id', 'error-id');
+            error.classList.add('error');
+            reqBtn.after(error);
+            spinner.classList.add('d-none');
+        }
+    });
 }
 
 function startRecording() {
@@ -55,7 +82,7 @@ function startRecording() {
     isRecording = true;
     button.innerHTML = stopIcon;
     button.classList.add('recording');
-    
+
     if ( navigator.vibrate ) navigator.vibrate( 150 );
 
     preview.classList.remove('d-none');

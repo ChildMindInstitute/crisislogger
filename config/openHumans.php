@@ -13,6 +13,6 @@ return [
 
 	'clientId' => env('OPEN_HUMANS_CLIENT_ID'),
 	'clientSecret' => env('OPEN_HUMANS_CLIENT_SECRET'),
-	'redirectUri' => env('OPEN_HUMANS_REDIRECT_URI'),
+	'redirectUri' =>'127.0.0.1:8000/openhumans/redirect',
 
 ];

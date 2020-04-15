@@ -89,12 +89,10 @@ class Transcription extends Model
                 $transcript = $mostLikely->getTranscript();
                 $response .= $transcript;
             }
-        }else {
-    print_r($operation->getError());
-}
-
-
-
+        }
+        else {
+            print_r($operation->getError());
+        }
         $client->close();
 
         // If not empty, save into transcriptions table

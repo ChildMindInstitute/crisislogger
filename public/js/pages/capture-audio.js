@@ -44,11 +44,13 @@ function toggleRecording() {
 
 function startRecording(){
     //console.log('recording clicked');
-
+    let iphone = !!navigator.platform && /iPhone/.test(navigator.platform);
+    let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+    button.setAttribute('disabled', true);
     isRecording = true;
     button.innerHTML = stopIcon;
     button.classList.add('recording');
-    
+
     if ( navigator.vibrate ) navigator.vibrate( 150 );
 
     // Remove the old recording, if we are re-recording

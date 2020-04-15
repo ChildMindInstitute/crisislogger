@@ -52,8 +52,4 @@ class HomeController extends Controller
         $texts = Auth::user()->texts()->get();
         return view('pages.dashboard', compact('uploads', 'texts'));
     }
-    public function capture()
-    {
-        return redirect(route('capture-choice'));
-    }
 }
