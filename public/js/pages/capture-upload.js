@@ -1,3 +1,12 @@
+let uploadInfo = document.getElementById('uploadInfo');
+
+uploadInfo.addEventListener("click", swapModals);
+
+function swapModals() {
+    $("#myModal").modal('hide');
+    $("#uploadModal").modal();
+}
+
 function uploadButtonClicked(file, filename){
     // Do any form validation
     if(!valid()){

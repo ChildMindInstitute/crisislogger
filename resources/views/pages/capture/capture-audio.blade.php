@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Delete Recording</button>
-                                    <button class="btn btn-success" id="uploadInfo" data-toggle="modal" data-target="#uploadModal">Save Recording</button>
+                                    <button class="btn btn-success" id="uploadInfo">Save Recording</button>
                                 </div>
                             </div>
                         </div>
