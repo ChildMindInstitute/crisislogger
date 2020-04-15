@@ -8,8 +8,9 @@
             <h4>Uploaded video and audio</h4>
             <div class="card col-lg-12">
                 <div class="card-body">
-                    <div class="row">
-                        @if(count($uploads) > 0)
+					<div class="row">
+					@if(count($uploads) > 0)
+						
                             @foreach($uploads  as $upload)
                             <div class="col-sm-12 col-md-4 col-lg-3 mb-4 " style="box-shadow: 2px 1px 4px 4px #e0dbdb;">
                                 <div class="kt-portlet" >
@@ -42,32 +43,36 @@
                                     </div>
                                 @endif
                             </div>
-                        @endforeach
-                    @else
-                    </div>
-                    <div class="text-center mt-5">
+							@endforeach
+						@else
+                    
+						<div class="text-center mt-5">
                             <h4>No uploads found.</h4>
                         </div>
                     @endif
+					</div>
                 </div>
             </div>
 
         </div>
+		<br></br>
         <div class="row">
             <h4>Texts </h4>
             <div class="card col-lg-12">
                 <div class="card-body">
+					@if(count($texts) > 0)
                     <div class="row">
-                    @if(count($texts) > 0)
-                        @foreach($texts  as $text)
-                            <div class="col-sm-12 col-md-4 col-lg-3">
-                                <div class="kt-portlet">
-                                    <p class="text-justify text-ellipsis">{{$text->text}}</p>
-                                </div>
-                            </div>
-                        @endforeach
-                    @else
+						
+							@foreach($texts  as $text)
+								<div class="col-sm-12 col-md-4 col-lg-3">
+									<div class="kt-portlet">
+										<p class="text-justify text-ellipsis">{{$text->text}}</p>
+									</div>
+								</div>
+							@endforeach
+						
                     </div>
+					@else
                     <div class="text-center mt-5">
                             <h4>No uploads found.</h4>
                         </div>

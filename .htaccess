@@ -1,3 +1,10 @@
+LimitRequestBody 3048576000
+
+#SecRequestBodyLimit 43107200
+
+#SecRequestBodyNoFilesLimit 43107200
+
+
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^crisislogger.org$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^www.crisislogger.org$
