@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-4">
                 <a href="/"><img src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" alt="{{ config('app.name') }}"></a>
+                <img src="{{ asset('media/logos/parents_magazine_logo.png') }}" alt="{{ config('app.name') }}" id="parents_magazine_logo">
             </div>
             <div class="col-sm-12 col-md-8">
                
