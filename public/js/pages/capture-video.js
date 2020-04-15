@@ -51,7 +51,7 @@ function requestVideo() {
 }
 
 function startRecording() {
-
+    console.log('recording started');
     isRecording = true;
     button.innerHTML = stopIcon;
     button.classList.add('recording');
@@ -66,14 +66,14 @@ function startRecording() {
 
     //limit recording to 5 mins = 300,000 ms
     timeoutRequest = setTimeout(function() {
-        if (isRecording) {
-            this.stopRecording();
-        }
+        console.log('Recording time limit reached')
+        stopRecording();
     }, 300000);
 }
 
 
 function stopRecording() {
+    console.log('recording stopped');
     isRecording = false;
     button.classList.remove('recording');
     button.innerHTML = camIcon;
