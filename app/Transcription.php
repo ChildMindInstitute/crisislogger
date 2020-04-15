@@ -100,10 +100,13 @@ class Transcription extends Model
         // If not empty, save into transcriptions table
         $transcription = new Transcription();
         $transcription->upload_id = $upload->id;
-        $transcription->user_id = $upload->user_id;
+        $transcription->user_id = Auth::check()? Auth::user()->getKey(): null;
         $transcription->text = $response;
         $transcription->save();
-
+        if (!Auth::check())
+        {
+            session()->put('transaction_id', $transcription->getKey());
+        }
         return $transcription;
     }
 

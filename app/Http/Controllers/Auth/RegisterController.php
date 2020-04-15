@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Texts;
 use App\Transcription;
 use App\Upload;
 use App\User;
@@ -54,7 +55,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['nullable', 'string', 'max:255'],
-//            'email' => ['required', 'string', 'email', 'max:255'], we don't do a email validation this step.
+            'email' => ['required', 'string', 'email', 'max:255'],  //we don't do a email validation this step.
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'filename' => ['nullable', 'string'],
         ]);
@@ -68,20 +69,41 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if (session()->has('temp_user_id'))
+
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->save();
+        if (session()->has('transaction_id'))
         {
-            $user_id = session()->get('temp_user_id');
-            $user = User::findOrFail($user_id);
-            $user->name = $data['name'];
-            $user->password = Hash::make($data['password']);
-            $user->update();
-            session()->forget('temp_user_id');
+            $transaction = Transcription::whereKey(session()->get('transaction_id'))->first();
+            if ($transaction)
+            {
+                $transaction->user_id = $user->getKey();
+                $transaction->update();
+                session()->forget('transaction_id');
+            }
         }
-        else {
-            $user = new User();
-            $user->name = $data['name'];
-            $user->password = Hash::make($data['password']);
-            $user->save();
+        if (session()->has('upload_id'))
+        {
+            $upload = Upload::whereKey(session()->get('upload_id'))->first();
+            if ($upload)
+            {
+                $upload->user_id = $user->getKey();
+                $upload->update();
+                session()->forget('upload_id');
+            }
+        }
+        if (session()->has('text_id'))
+        {
+            $text = Texts::whereKey(session()->get('text_id'))->first();
+            if ($text)
+            {
+                $text->user_id = $user->getKey();
+                $text->update();
+                session()->forget('text_id');
+            }
         }
         if (session()->has('need-to-question-air'))
         {

@@ -13,10 +13,21 @@
                         {{ Session::get('questionnaire_success') }}
                     @endcomponent
                 @endif
-                <h1 class="display-4">LAST STEP: User Information</h1>
+                <h1 class="display-4">Create an optional Account</h1>
+                <p>You can create an optional account to save your recordings and view them. Think of it as your personal diary.</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-                    <p>Please fill in your name and a password to come back and see your previous submissions.</p>
+
+                    <div class="form-group">
+                        <label>Email address<span class="text-danger">*</span></label>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" aria-describedby="emailHelp" name="email" required placeholder="Enter email">
+                        <span class="form-text text-muted">We'll never share your email with anyone else.</span>
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
 
                     <div class="form-group">
                         <label>Name</label>
@@ -46,7 +57,6 @@
                     </div>
 
                     <input type="hidden" value="{{ Session::get('filename') }}" name="filename" />
-
                 </form>
 
                 <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
