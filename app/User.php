@@ -62,4 +62,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Texts::class, 'user_id');
     }
+    public function questionaires()
+    {
+        return $this->hasOne(Questionnaire::class, 'user_id');
+    }
 }

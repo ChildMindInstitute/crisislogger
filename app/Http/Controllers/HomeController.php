@@ -52,20 +52,8 @@ class HomeController extends Controller
         $texts = Auth::user()->texts()->get();
         return view('pages.dashboard', compact('uploads', 'texts'));
     }
-    public function capture(Request $request)
+    public function capture()
     {
-        $type = $request->get('voice');
-        if (isset($type) && (session()->has('user-email') || Auth::check()))
-        {
-            return view('pages.capture.choose-method');
-        }
-        if (!Auth::check())
-        {
-            $validatedData = $request->validate([
-                'email' => 'required| unique:users,email,dns',
-            ]);
-            session()->put('user-email', $validatedData['email']);
-            return redirect(route('capture-choice'));
-        }
+        return redirect(route('capture-choice'));
     }
 }

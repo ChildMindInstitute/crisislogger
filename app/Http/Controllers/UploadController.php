@@ -25,13 +25,9 @@ class UploadController extends Controller
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function upload(UploadRequest $request){
-        $email_address = session()->get('user-email');
-        if (!Auth::user() && !isset($email_address))
-        {
-            \App::abort(404, 'The user information not found'); // need to prevent if user doesn't enter email address
-        }
         $file_extension = $request->file('data')->guessExtension();
         $file = Storage::disk('gcs')->putFile('', $request->file('data'));
+
         // Store the file name in the session in case the user decides to sign up.
         Session::put('filename', $file);
         // Save it in the database
@@ -40,17 +36,8 @@ class UploadController extends Controller
         $upload->share = $request->share;
         $upload->contribute_to_science = $request->contribute;
         // If we are logged in, save that user's id
-        $user = Auth::user();
-        if (!isset($user) && isset($email_address))
-        {
-            session()->forget('user-email');
-            $user = new User();
-            $user->setAttribute('email', $email_address);
-            $user->setAttribute('name', 'unnamed');// assign temp user.
-            $user->setAttribute('password', \Hash::make(time()));// assign temp password.
-            $user->save();
-            session()->put('temp_user_id', $user->getKey());
-        }
+        if(Auth::user()) $upload->user_id = Auth::user()->id;
+
         if($request->has('voice')){
             $upload->voice = $request->voice;
         }
@@ -58,15 +45,18 @@ class UploadController extends Controller
         {
             $upload->voice = 'parent';
         }
-        $user->uploads()->save($upload);
-        // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
-        if($upload->contribute_to_science){
-            session()->put('need-to-question-air', 1);
+        if (Auth::check())
+        {
+            Auth::user()->uploads()->save($upload);
+        }
+        else {
+            $upload->save();
+            session()->put('upload_id', $upload->getKey());
         }
         $redirect = route('capture-create-account');
-        if (auth()->check() && $upload->contribute_to_science)
-        {
-            $redirect = route('questionnaire');
+        // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
+        if($upload->contribute_to_science && (!Auth::check() || Auth::user() && !Auth::user()->questionaires())){
+            session()->put('need-to-question-air', 1);
         }
         // If the are contributing to science, we will transcribe the message and save it
         if($upload->contribute_to_science){
@@ -75,7 +65,6 @@ class UploadController extends Controller
             } else {
                 $transcription = Transcription::video($upload);
             }
-            Session::put('transcription', $transcription->id);
         }
         $response = [
             'message' => 'File uploaded successfully.',
@@ -87,53 +76,34 @@ class UploadController extends Controller
     }
     public function saveText(UploadRequest $request)
     {
-        $email_address = session()->get('user-email');
-        if (!Auth::user() && !isset($email_address))
-        {
-            \App::abort(404, 'The user information not found'); // need to prevent if user doesn't enter email address
-        }
         // Save it in the database
-        $upload = new Texts();
-        $upload->text = $request->data;
-        $upload->share = $request->share;
-        $upload->contribute_to_science = $request->contribute;
+        $text = new Texts();
+        $text->text = $request->data;
+        $text->share = $request->share;
+        $text->contribute_to_science = $request->contribute;
         // If we are logged in, save that user's id
-        $user = Auth::user();
-        if (!isset($user) && isset($email_address))
-        {
-            session()->forget('user-email');
-            $user = User::where('email', $email_address)->first();
-            if (!$user)
-            {
-                $user = new User();
-                $user->setAttribute('email', $email_address);
-                $user->setAttribute('name', 'unnamed');// assign temp user.
-                $user->setAttribute('password', \Hash::make(time()));// assign temp password.
-
-                $user->save();
-            }
-            session()->put('temp_user_id', $user->getKey());
-        }
         if($request->has('voice')){
-            $upload->voice = $request->voice;
+            $text->voice = $request->voice;
         }
         else
         {
-            $upload->voice = 'parent';
+            $text->voice = 'parent';
         }
-        $user->texts()->save($upload);
-        // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
-        //if(!$upload->share){
-        if($upload->contribute_to_science){
-            session()->put('need-to-question-air', 1);
+        if (Auth::check())
+        {
+            Auth::user()->texts()->save($text);
+        }
+        else {
+            $text->save();
+            session()->put('text_id', $text->getKey());
         }
         $redirect = route('capture-create-account');
-        if (auth()->check() && $upload->contribute_to_science)
-        {
-            $redirect = route('questionnaire');
+        // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
+        //if(!$upload->share){
+        if($text->contribute_to_science && (!Auth::check() || Auth::user() && !Auth::user()->questionaires())){
+            session()->put('need-to-question-air', 1);
         }
         // If the are contributing to science, we will transcribe the message and save it
-        session()->forget('user-email');
         $response = [
             'message' => 'ONE MORE STEP: Enter your email address on the next screen for us to log your text.',
             'redirect' => $redirect,
