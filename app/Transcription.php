@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
 use Auth;
 use Storage;
 use Eloquent;
+use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
+
 
 /**
  * Class Transcription
@@ -36,7 +38,7 @@ class Transcription extends Model
      * @throws ValidationException
      * @throws FileNotFoundException
      */
-    public static function audio(Upload $upload){
+    public static function audio(Upload $upload , $audio_channel_count=1){
         $content = Storage::disk('gcs')->get($upload->name);
 
         # set string as audio content
@@ -47,8 +49,12 @@ class Transcription extends Model
         $config = new RecognitionConfig([
             // 'encoding' => AudioEncoding::LINEAR16,
             // 'sample_rate_hertz' => 44100,
-            'language_code' => 'en-US'
-        ]);
+ #           'language_code' => 'en-US'
+ 'encoding'=>AudioEncoding::LINEAR16,
+        'language_code'=>'en-US',
+#        'sample_rate_hertz'=> 44100,
+        'audio_channel_count'=> $audio_channel_count
+       ]);
 
         # Instantiates a client
         $client = new SpeechClient(
@@ -77,13 +83,16 @@ class Transcription extends Model
             $google_response = $operation->getResult();
 
             # Print most likely transcription
-            foreach ($google_response as $result) {
+            foreach ($google_response->getResults() as $result) {
                 $alternatives = $result->getAlternatives();
                 $mostLikely = $alternatives[0];
                 $transcript = $mostLikely->getTranscript();
                 $response .= $transcript;
             }
-        }
+        }else {
+    print_r($operation->getError());
+}
+
 
 
         $client->close();
@@ -109,7 +118,7 @@ class Transcription extends Model
         // First, convert the video to an audio file.
         $audio_upload = $upload->convertToAudio();
         // Call the transcribe audio now to do the transcribing.
-        return self::audio($audio_upload);
+        return self::audio($audio_upload,2 );
     }
 
 
