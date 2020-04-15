@@ -27,7 +27,7 @@ class UpdateTransactionsTable extends Migration
      */
     public function down() {
         Schema::table('transcriptions', function (Blueprint $table) {
-            $table->dropColumn('user_id');
+//            $table->dropColumn('user_id');
         });
     }
 }
