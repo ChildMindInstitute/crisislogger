@@ -11,8 +11,6 @@ let AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioContext = new AudioContext;
 //new audio context to help us record
 let timeoutRequest;
-let lastStartTime;
-let timeRemaining;
 let isRecording = false;
 let button = document.getElementById("button");
 const micIcon = `
@@ -44,22 +42,17 @@ function toggleRecording() {
 
 function startRecording(){
     //console.log('recording clicked');
-    let iphone = !!navigator.platform && /iPhone/.test(navigator.platform);
-    let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
-    button.setAttribute('disabled', true);
     isRecording = true;
     button.innerHTML = stopIcon;
     button.classList.add('recording');
 
     if ( navigator.vibrate ) navigator.vibrate( 150 );
-
     // Remove the old recording, if we are re-recording
     recordingsList.innerHTML = '';
     //upload_info.classList.add('d-none');
 
     /* Simple constraints object, for more advanced audio features see
-
-https://addpipe.com/blog/audio-constraints-getusermedia/ */
+    https://addpipe.com/blog/audio-constraints-getusermedia/ */
 
     let constraints = {
         audio: true,
@@ -67,9 +60,7 @@ https://addpipe.com/blog/audio-constraints-getusermedia/ */
     };
 
     /* We're using the standard promise based getUserMedia()
-
     https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia */
-
     navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
         console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
         /* assign to gumStream for later use */
@@ -84,14 +75,17 @@ https://addpipe.com/blog/audio-constraints-getusermedia/ */
         rec.record()
         console.log("Recording started");
 
-        lastStartTime = new Date().getTime();
+        isRecording = true;
+        button.innerHTML = stopIcon;
+        button.classList.add('recording');
+        if ( navigator.vibrate ) navigator.vibrate( 150 );
+
         //limit recording to 5 mins = 300,000 ms
-        timeRemaining = 300000;
         timeoutRequest = setTimeout(function() {
-            if (!stopButton.disabled) {
-                this.stopRecording();
-            }
-        }, timeRemaining);
+            console.log('Recording time limit reached')
+            stopRecording();
+        }, 300000);
+
     }).catch(function(err) {
         isRecording = false;
         button.classList.remove('recording');
@@ -100,7 +94,7 @@ https://addpipe.com/blog/audio-constraints-getusermedia/ */
 }
 
 function stopRecording() {
-    console.log("stopButton clicked");
+    console.log('recording stopped');
 
     isRecording = false;
     button.classList.remove( 'recording' );
