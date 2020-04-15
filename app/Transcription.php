@@ -119,7 +119,7 @@ class Transcription extends Model
         // First, convert the video to an audio file.
         $audio_upload = $upload->convertToAudio();
         // Call the transcribe audio now to do the transcribing.
-        return self::audio($audio_upload,2 );
+        return self::audio($audio_upload,1 );
     }
 
 

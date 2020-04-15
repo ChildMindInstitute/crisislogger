@@ -6,32 +6,19 @@
     <div class="container">
         <div class="kt-portlet">
             <div class="kt-portlet__body">
-                <h1 class="display-4">Capture your thoughts and feelings</h1>
-                <p><b>Please share your fears, frustrations, and needs
-                during this time of crisis, as well as what is helping you to get through it.</b>
-                Your recording can range from 30 seconds to 5 minutes.
-                It will be transcribed by Google's transcription service,
-                and you will be able to view a <b>word cloud</b> created from the transcript.
-                You will be able to save the recording for <b>private use
-                or share it publicly</b>.
-                We hope that you will come back and record more.
-                Please avoid using any identifying names or information.</p>
-                <h3>Create a video recording</h3>
-                <p>If you wish to create an audio recording instead,
-                <a href="{{ route('capture-audio') }}">click here.</a></p>
-                <p>(1) Press <b>Request Camera</b> to allow access to your camera.</p>
-                <p>(2) Press the red camera button
-                to begin recording.</p>
-                <p>(3) Press the red button again to end your recording.</p>
+
+                <h1 class="display-4">Capture your thoughts and feelings in video</h1>
 
                 <div class="text-center d-flex justify-content-center" id="preview">
                     <div id="spinner" class="d-none kt-spinner kt-spinner--v2 kt-spinner--lg kt-spinner--primary"></div>
                     <video id="live-video" width="270" height="200" muted autoplay="autoplay" class="d-none"></video>
                 </div>
-
-                <button id="cameraButton" class="btn btn-primary">
-                    <i class="la la-camera"></i> Request Camera
+		<br>
+		<center>
+                <button id="cameraButton" class="btn btn-primary btn-wide btn-lg" style="width:300px">
+                    <i class="la la-camera"></i> Request video camera
                 </button>
+		</center>
 
                 <div class="recorder_wrapper">
                     <div class="recorder">
@@ -63,6 +50,23 @@
                         </div>
                     </div>
                 </div>
+
+		<br>
+
+                <p><b>Please share your fears, frustrations, and needs,
+                and what is helping you get through this crisis.</b>
+                Your recording can be up to 5 minutes long.
+                You will be able to save the recording for private use
+                or share it publicly, but                
+                please avoid using any identifying names or information.
+                It will be transcribed by Google's transcription service,
+                and you will be able to view a word cloud created from the transcript.
+                We hope that you will come back and record more as a journal of your thoughts and experiences.</p>
+
+                <p>If you would prefer, you can  
+                <a href="{{ route('capture-audio') }}">record audio</a> or
+                <a href="{{ route('capture-text') }}">type text</a> instead.</p>
+
             </div>
         </div>
     </div>
