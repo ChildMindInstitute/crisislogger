@@ -23,6 +23,6 @@ class QuestionnaireController extends Controller
         if($user) $questionnaire->user_id = $user->id;
         $questionnaire->save();
 
-        return redirect()->route('capture-create-account')->with('questionnaire_success', 'Thank you for your input!');
+        return redirect()->route('dashboard');
     }
 }
