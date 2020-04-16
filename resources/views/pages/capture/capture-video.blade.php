@@ -29,7 +29,7 @@
 
                 @if($recordIsDisabled)
                     <br>
-                    <p class="error">The video record is not supported on this device</p>
+                    <p class="error">The Safari browser allows you to type text and record audio, but not video. If you want to record video, please use a different browser like Chrome or Firefox.</p>
                 @else
                     <center>
                         <button id="cameraButton" class="btn btn-primary btn-wide btn-lg" style="width:300px;">

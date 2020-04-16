@@ -10,7 +10,7 @@
             <div class="col-12 col-md-6 my-auto mx-auto">
                
                 <div class="float-right">
-                    <a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a>
+                    <!--a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a-->
 
                     @auth
                         <div class="btn-group">

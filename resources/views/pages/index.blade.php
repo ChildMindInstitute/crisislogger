@@ -5,7 +5,7 @@
 
     <div class="container content pt-0">
 
-        <img src="{{ asset('media/photos/covid.jpg') }}" alt="">
+        <img src="{{ asset('media/photos/parentlogger.png') }}" alt="">
 
         <div class="text-center">
             <h1 class="display-4">Call to Action During the Covid-19 Crisis</h1>
