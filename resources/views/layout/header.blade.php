@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6 col-md-3 my-auto">
-                <a href="/"><img src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" alt="{{ config('app.name') }}"></a>
+                <a href="/"><img src="{{ asset('media/logos/CrisisLogger_logo.png') }}" alt="{{ config('app.name') }}"></a>
             </div>
             <div class="col-6 col-md-3 my-auto">
                 <img src="{{ asset('media/logos/parents_magazine_logo.png') }}" alt="{{ config('app.name') }}" id="parents_magazine_logo">
