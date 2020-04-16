@@ -6,7 +6,7 @@
         <div class="kt-portlet">
             <div class="kt-portlet__body">
 
-                <h1 class="display-4">Capture your thoughts and feelings in text</h1>
+                <center><h1 class="display-4">Capture your thoughts and feelings in text</h1></center>
 
                 <center><h3>Type in the box below</h3></center>
                 <div>

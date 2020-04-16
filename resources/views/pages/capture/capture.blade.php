@@ -6,7 +6,7 @@
     <div class="container content">
         <div class="kt-portlet">
             <div class="kt-portlet__body">
-                <h3>Create an audio recording</h3>
+                <center><h3>Create an audio recording</h3></center>
                 <p>If you wish to create a video recording, <a href="{{ route('capture-video') }}">click here.</a></p>
                 <p>You can record via your computer or phone microphone your thoughts, concerns on COVID-19.</p>
                 <p>After you record your thoughts, you can upload them and create an optional account to view your uploaded files.</p>

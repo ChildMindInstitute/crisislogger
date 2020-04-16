@@ -13,7 +13,8 @@
                         {{ Session::get('questionnaire_success') }}
                     @endcomponent
                 @endif
-                <h1 class="display-4">Please sign up to come back and record more</h1>
+
+                <center><h1 class="display-4">Please sign up to come back and record more</h1></center>
                 <p>You can create an optional account to save your recordings and view them. Think of it as your personal diary.</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf

@@ -19,7 +19,7 @@
         <div class="kt-portlet">
             <div class="kt-portlet__body">
 
-                <h1 class="display-4">Capture your thoughts and feelings in video</h1>
+                <center><h1 class="display-4">Capture your thoughts and feelings in video</h1></center>
 
                 <div class="text-center d-flex justify-content-center" id="preview">
                     <div id="spinner" class="d-none kt-spinner kt-spinner--v2 kt-spinner--lg kt-spinner--primary"></div>
