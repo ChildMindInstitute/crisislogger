@@ -26,7 +26,7 @@
                 </div>
                 <br>
                 <center>
-                    <button id="cameraButton" class="btn btn-primary btn-wide btn-lg" style="width:300px" {{$recordIsDisabled ? 'disabled': ''}}>
+                    <button id="cameraButton" class="btn btn-primary btn-wide btn-lg" style="width:300px; display: {{$recordIsDisabled?'none': 'block'}}">
                         <i class="la la-camera"></i> Request video camera
                     </button>
                 </center>
