@@ -2,7 +2,7 @@
     <script>window.location.href = '{{ \App\Providers\RouteServiceProvider::HOME }}';</script>
 @endauth
 @extends('layout.app')
-@section('title', 'Create Account')
+@section('title', '')
 @section('content')
 
     <div class="container content">
@@ -13,7 +13,7 @@
                         {{ Session::get('questionnaire_success') }}
                     @endcomponent
                 @endif
-                <h1 class="display-4">Create an optional Account</h1>
+                <h1 class="display-4">Please sign up to come back and record more</h1>
                 <p>You can create an optional account to save your recordings and view them. Think of it as your personal diary.</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -53,7 +53,7 @@
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">Submit</button>
-                        <a href="{{ route('home') }}" class="btn btn-link">Skip</a>
+                        <a href="{{ route('dashboard') }}" class="btn btn-link">Skip</a>
                     </div>
 
                     <input type="hidden" value="{{ Session::get('filename') }}" name="filename" />

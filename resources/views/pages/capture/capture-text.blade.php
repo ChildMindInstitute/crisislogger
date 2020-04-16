@@ -1,74 +1,50 @@
 @extends(isset(Auth::user()->id) ? 'layout.authorized.app' : 'layout.app')
-@section('title', 'Capture Thoughts')
+@section('title', '')
 @section('capture-active', 'kt-menu__item--active')
 @section('content')
+    <div class="container">
+        <div class="kt-portlet">
+            <div class="kt-portlet__body">
 
-	<div class="container">
-		<div class="kt-portlet">
-			<div class="kt-portlet__body">
-				<h1 class="display-4">Write your thoughts and feelings</h1>
-				<p><b>Please share your fears, frustrations, and needs
-						during this time of crisis, as well as what is helping you to get through it.</b>
-					Feel free to share any additional thoughts or feelings as you see fit.
-					It will be transcribed by Google's transcription service,
-					and you will be able to view a <b>word cloud</b> created from the transcript.
-					You will be able to save the recording for <b>private use
-						or share it publicly</b>.
-					We hope that you will come back and record more.
-					Please avoid using any identifying names or information.</p>
+                <h1 class="display-4">Capture your thoughts and feelings in text</h1>
 
-				<form method="post" action="/api/text">
-					<div class="form-group">
-						<textarea class="form-control" id="text" name="text" rows="3" style="min-height: 350px;"></textarea>
-					</div>
+                <center><h3>Type in the box below</h3></center>
+                <div>
+                    <div id="recordingsList" class="d-none">
+                        <h3>Your text:</h3>
+                    </div>
+                    <form >
+                        <div class="form-group">
+                            <label for="text-area"></label>
+                            <textarea class="form-control" aria-label="With textarea" name="mind-text"></textarea>
+                        </div>
+                    </form>
+                    <div class="text-center">
+                        <div class="btn-group mb-3 mt-3">
+                            <button class="btn btn-success d-none" id="uploadInfo" data-toggle="modal" data-target="#uploadModal">Submit</button>
+                        </div>
+                    </div>
+                </div>
 
-					<input type="hidden" id="formshare" name="formshare">
-					<input type="hidden" id="formcontribute" name="formcontribute">
-					<input type="hidden" id="formvoice" name="formvoice">
+                <p><b>Please share your fears, frustrations, and needs,
+                and what is helping you get through this crisis.</b>
+                You will be able to save your text for private use
+                or share it publicly, but                
+                please avoid using any identifying names or information.
+                We hope that you will come back and record more as a journal of your thoughts and experiences.</p>
 
-					<div>
-						<div id="recordingsList" class="d-none">
-							<h3>Your Text:</h3>
-						</div>
+                <p>If you would prefer, you can  
+                <a href="{{ route('capture-video') }}">record video</a> or
+                <a href="{{ route('capture-audio') }}">record audio</a> instead.</p>
 
-						<div class="text-center">
-							<div class="btn-group mb-3 mt-3">
-								<button id="recordButton" class="btn btn-primary">
-									<i class="la la-check"></i> Done
-								</button>
+            </div>
+        </div>
+    </div>
 
-							</div>
-						</div>
-
-					</div>
-				</form>
-
-			</div>
-		</div>
-	</div>
-
-	@include('pages.capture.modal')
+    @include('pages.capture.modal')
 
 @endsection
 
-
 @section('scripts')
-	<script>
-		// set inputs to send data via form
-		$("input[name='formshare']").val($("input[name='share']:checked").val());
-		$("input[name='formcontribute']").val($("input[name='contribute']:checked").val());
-		$("input[name='formvoice']").val(getParameterByName("voice"));
-
-
-		function getParameterByName(name, url) {
-			if (!url) url = window.location.href;
-			name = name.replace(/[\[\]]/g, '\\$&');
-			var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-				results = regex.exec(url);
-			if (!results) return null;
-			if (!results[2]) return '';
-			return decodeURIComponent(results[2].replace(/\+/g, ' '));
-		}
-
-	</script>
+    <script src="{{ asset('js/pages/capture-text.js') }}?time={{ time() }}"></script>
 @endsection

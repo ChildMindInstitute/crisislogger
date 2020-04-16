@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('upload', 'UploadController@upload')->name('upload');
-Route::post('text', 'TextController@create')->name('upload');
+Route::post('save-text', 'UploadController@saveText')->name('save-text');
 
 Route::middleware('auth')->group(function(){
 
@@ -30,7 +30,6 @@ Route::middleware('auth')->group(function(){
     Route::post('word_cloud', 'WordcloudController@generate');
 
 });
-
 Route::prefix('transcribe')->group(function(){
    Route::get('audio/{name}', 'TranscribeController@transcribeAudio');
 });

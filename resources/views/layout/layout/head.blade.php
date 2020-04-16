@@ -25,5 +25,10 @@
     <link href="{{ asset('css/skins/aside/dark.css') }}" rel="stylesheet" type="text/css" />        <!--end::Layout Skins -->
     <link href="{{ asset('scss/main.css') }}?time={{ time() }}" rel="stylesheet" type="text/css" />
 
-
+    <style>
+        .error {
+            color: red;
+            text-align: center;
+        }
+    </style>
 </head>

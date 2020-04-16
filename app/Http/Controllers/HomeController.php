@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Transcription;
 use App\Upload;
 use Auth;
+use Illuminate\Http\Request;
 use Session;
 
 class HomeController extends Controller
@@ -16,12 +17,12 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'capture']);
     }
 
     /**
      * Show the dashboard. If there are files to add to a user, add them.
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function dashboard(){
         $user = Auth::user();
@@ -47,8 +48,8 @@ class HomeController extends Controller
             // Clear the session
             Session::remove('transcription');
         }
-
-        return view('pages.dashboard');
+        $uploads = Auth::user()->uploads()->with('transcript')->get();
+        $texts = Auth::user()->texts()->get();
+        return view('pages.dashboard', compact('uploads', 'texts'));
     }
-
 }

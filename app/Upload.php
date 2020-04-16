@@ -32,7 +32,7 @@ class Upload extends Model
     public function getLinkAttribute()
     {
         $name = str_replace('/storage/', '', $this->name);
-        return 'https://storage.googleapis.com/' . env('GOOGLE_CLOUD_STORAGE_BUCKET') . "/$name";
+        return 'https://storage.googleapis.com/' . config('app.google_cloud_buck') . "/$name";
     }
 
     /**
@@ -44,6 +44,7 @@ class Upload extends Model
 
         FFMpeg::fromDisk('gcs')
             ->open($this->name)
+              ->addFilter('-ac', 1)
             ->export()
             ->toDisk('gcs')
             ->inFormat(new \FFMpeg\Format\Audio\Wav)
@@ -59,5 +60,8 @@ class Upload extends Model
 
         return $upload;
     }
-
+    public function transcript()
+    {
+        return $this->hasOne(Transcription::class, 'upload_id');
+    }
 }
