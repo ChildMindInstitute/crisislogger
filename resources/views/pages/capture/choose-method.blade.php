@@ -7,14 +7,14 @@
         <div class="kt-portlet">
             <div class="kt-portlet__body">
                 <center><h1 class="display-4">How would you like to capture your thoughts?</h1></center>
-                <div class="text-center">
-                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4" >
+                <div class="row text-center">
+                    <div class="col-md-4 mb-4" >
                         <a href="{{ route('capture-audio') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide btn-lg">Audio</a>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4" >
+                    <div class="col-md-4 mb-4" >
                         <a id="videoButton" href="{{ route('capture-video') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide btn-lg">Video</a>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4" >
+                    <div class="col-md-4 mb-4" >
                         <a  href="{{ route('capture-text') }}?voice={{ $_GET['voice'] ?? '' }}&type=text" class="btn btn-primary btn-wide btn-lg">Text&nbsp;&nbsp;</a>
                     </div>
                 </div>
