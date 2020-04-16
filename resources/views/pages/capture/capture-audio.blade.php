@@ -6,22 +6,8 @@
     <div class="container">
         <div class="kt-portlet">
             <div class="kt-portlet__body">
-                <p><b>Please share your fears, frustrations, and needs
-                during this time of crisis, as well as what is helping you to get through it.</b>
-                Feel free to share any additional thoughts or feelings as you see fit.
-                Your recording can range from 30 seconds to 5 minutes.
-                It will be transcribed by Google's transcription service,
-                and you will be able to view a <b>word cloud</b> created from the transcript.
-                You will be able to save the recording for <b>private use
-                or share it publicly</b>.
-                We hope that you will come back and record more.
-                Please avoid using any identifying names or information.</p>
-                <h3>Create an audio recording</h3>
-                <p>If you wish to create a video recording instead,
-                <a href="{{ route('capture-video') }}">click here.</a></p>
-                <p>(1) Press the red microphone
-                below to begin recording.</p>
-                <p>(2) Press the button again to end your recording.</p>
+
+                <h1 class="display-4">Capture your thoughts and feelings in audio</h1>
 
                 <div>
                     <div class="recorder_wrapper">
@@ -53,6 +39,24 @@
                         </div>
                     </div>
                 </div>
+
+                <br>
+                <br>
+
+                <p><b>Please share your fears, frustrations, and needs,
+                and what is helping you get through this crisis.</b>
+                Your recording can be up to 5 minutes long.
+                You will be able to save the recording for private use
+                or share it publicly, but                
+                please avoid using any identifying names or information.
+                It will be transcribed by Google's transcription service,
+                and you will be able to view a word cloud created from the transcript.
+                We hope that you will come back and record more as a journal of your thoughts and experiences.</p>
+
+                <p>If you would prefer, you can  
+                <a href="{{ route('capture-video') }}">record video</a> or
+                <a href="{{ route('capture-text') }}">type text</a> instead.</p>
+
             </div>
         </div>
     </div>

@@ -44,6 +44,7 @@ class Upload extends Model
 
         FFMpeg::fromDisk('gcs')
             ->open($this->name)
+              ->addFilter('-ac', 1)
             ->export()
             ->toDisk('gcs')
             ->inFormat(new \FFMpeg\Format\Audio\Wav)

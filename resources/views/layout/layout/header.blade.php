@@ -5,7 +5,10 @@
                 <a href="/"><img src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" alt="{{ config('app.name') }}"></a>
             </div>
             <div class="col-sm-12 col-md-8">
+
                 <div class="float-right">
+                    <a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a>
+
                     @if(Auth::check())
                         <a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a>
                         <div class="btn-group">
