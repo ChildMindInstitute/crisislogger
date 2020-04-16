@@ -4,10 +4,12 @@
 @section('content')
 
 	<div class="container-fluid">
+
 		<div class="row">
+
 			<div class="col-sm-12 col-md-6 col-lg-6">
 				<div class="row">
-					@foreach($uploads as $upload)
+					@foreach(Auth::user()->uploads() as $upload)
 						<div class="col-sm-12 col-md-4 col-lg-3">
 							<div class="kt-portlet">
 								<div class="kt-portlet__head">
