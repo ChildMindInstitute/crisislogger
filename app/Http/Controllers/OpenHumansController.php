@@ -14,7 +14,6 @@ class OpenHumansController extends Controller {
 		// create link for openhumans authentication
 		$clientId = config('openHumans.clientId');
 		$url = "https://www.openhumans.org/direct-sharing/projects/oauth2/authorize/?client_id=$clientId&response_type=code";
-
 		// redirect user to openhumans
 		return redirect($url);
 	}
@@ -79,7 +78,6 @@ class OpenHumansController extends Controller {
 		if ($response->getStatusCode() == 200) {
 			$response = $response->getBody();
 			$response = json_decode($response);
-
 			// save new access token in user
 			User::where('id', Auth::id())->update([
 				'openhumans_access_token' => $response->access_token,
