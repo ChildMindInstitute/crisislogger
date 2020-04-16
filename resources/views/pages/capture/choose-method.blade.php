@@ -9,8 +9,8 @@
                 <h1 class="display-4">How would you like to capture your thoughts?</h1>
                 <div class="text-center">
                     <a href="{{ route('capture-audio') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide mr-5 btn-lg">Audio</a>
-                    <a id="videoButton" href="{{ route('capture-video') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide btn-lg mr-5">Video</a>
-                    <a id="textButton" href="{{ route('capture-text') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide btn-lg">Text</a>
+                    <a id="videoButton" href="{{ route('capture-video') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide btn-lg">Video</a>
+                    <a  href="{{ route('capture-text') }}?voice={{ $_GET['voice'] ?? '' }}&type=text" class="btn ml-5 btn-primary btn-wide btn-lg">Text</a>
                 </div>
             </div>
         </div>

@@ -14,9 +14,11 @@
         "fideloper/proxy": "^4.0",
         "google/cloud-speech": "^0.31.1",
         "guzzlehttp/guzzle": "^6.5",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "^6.2",
         "laravel/passport": "^8.4",
         "laravel/tinker": "^2.0",
+        "mobiledetect/mobiledetectlib": "^2.8",
         "pbmedia/laravel-ffmpeg": "5.0.0",
         "pragmarx/countries": "^0.7.0",
         "superbalist/laravel-google-cloud-storage": "^2.2"

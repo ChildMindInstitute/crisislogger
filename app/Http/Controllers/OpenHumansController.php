@@ -27,7 +27,6 @@ class OpenHumansController extends Controller {
 		$redirectUri = config('openHumans.redirectUri');
 		$clientId = config('openHumans.clientId');
 		$clientSecret = config('openHumans.clientSecret');
-
 		// send post request to openhumans to get access token
 		$client = new \GuzzleHttp\Client();
 		$response = $client->request('POST', 'https://www.openhumans.org/oauth2/token/', [
@@ -49,10 +48,11 @@ class OpenHumansController extends Controller {
 				'openhumans_access_token' => $response->access_token,
 				'openhumans_refresh_token' => $response->refresh_token,
 			]);
-
-			echo 'success';
+            \Session::flash('authorization_success', 'Successfully authorized');
+            return view('pages.index');
 		} else {
-			echo 'fail';
+			\Session::flash('authorization_success', 'Something went wrong, please try again later');
+			return view('pages.index');
 		}
 
 	}

@@ -28,4 +28,5 @@
     <link href="{{ asset('scss/main.css') }}?time={{ time() }}" rel="stylesheet" type="text/css" />
 
     <!--end::Layout Skins -->
+
 </head>
