@@ -50,7 +50,7 @@ class Transcription extends Model
             // 'encoding' => AudioEncoding::LINEAR16,
             // 'sample_rate_hertz' => 44100,
  #           'language_code' => 'en-US'
- 'encoding'=>AudioEncoding::LINEAR16,
+        'encoding'=>AudioEncoding::LINEAR16,
         'language_code'=>'en-US',
 #        'sample_rate_hertz'=> 44100,
         'audio_channel_count'=> $audio_channel_count
@@ -96,8 +96,13 @@ class Transcription extends Model
         $client->close();
 
         // If not empty, save into transcriptions table
+        $upload_id =  $upload->id;
+        if (session()->has('upload_id'))
+        {
+            $upload_id = session()->get('upload_id');
+        }
         $transcription = new Transcription();
-        $transcription->upload_id = $upload->id;
+        $transcription->upload_id = $upload_id;
         $transcription->user_id = Auth::check()? Auth::user()->getKey(): null;
         $transcription->text = $response;
         $transcription->save();
@@ -118,6 +123,7 @@ class Transcription extends Model
     public static function video(Upload $upload){
         // First, convert the video to an audio file.
         $audio_upload = $upload->convertToAudio();
+        session()->put('upload_id', $upload->getKey());
         // Call the transcribe audio now to do the transcribing.
         return self::audio($audio_upload,1 );
     }
