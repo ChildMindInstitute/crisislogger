@@ -11,6 +11,9 @@
 |
 */
 
+use App\Upload;
+
+
 Route::get('/', function () {
     return view('pages.index');
 })->name('home');
@@ -100,3 +103,10 @@ Route::get('openhumans/getProjectInformation', 'OpenHumansController@getProjectI
 Route::get('/getCountries', 'CountryController@getCountries');
 Route::get('/getStates/{id}', 'CountryController@getStates');
 Route::get('/getCities/{id}/{name}', 'CountryController@getCities');
+
+
+Route::get('sadfsdfad',function(){
+ return \Auth::user();
+#return Upload::where('user_id', 1)->get();
+
+});
