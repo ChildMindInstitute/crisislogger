@@ -8,9 +8,15 @@
             <div class="kt-portlet__body">
                 <h1 class="display-4">How would you like to capture your thoughts?</h1>
                 <div class="text-center">
-                    <a href="{{ route('capture-audio') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide mr-5 btn-lg">Audio</a>
-                    <a id="videoButton" href="{{ route('capture-video') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide btn-lg">Video</a>
-                    <a  href="{{ route('capture-text') }}?voice={{ $_GET['voice'] ?? '' }}&type=text" class="btn ml-5 btn-primary btn-wide btn-lg">Text</a>
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4" >
+                        <a href="{{ route('capture-audio') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide btn-lg">Audio</a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4" >
+                        <a id="videoButton" href="{{ route('capture-video') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide btn-lg">Video</a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-4" >
+                        <a  href="{{ route('capture-text') }}?voice={{ $_GET['voice'] ?? '' }}&type=text" class="btn btn-primary btn-wide btn-lg">Text&nbsp;&nbsp;</a>
+                    </div>
                 </div>
             </div>
         </div>

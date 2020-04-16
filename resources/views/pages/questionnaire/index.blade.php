@@ -98,7 +98,7 @@
                                     <span>Previous</span>
                                 </span>
                             </div>
-                            <button type="submit" class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-submit" id="Submit">
+                            <button type="submit" class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-submit" id="questionaireSubmit">
                                 <span>
                                     <span>Submit</span>
                                 </span>
