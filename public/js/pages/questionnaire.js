@@ -73,7 +73,6 @@ var KTWizard3 = function() {
 
                 },
                 invalidHandler: function(e, r) {
-                    console.log(r.invalid);
                     KTUtil.scrollTop(), swal.fire({
                         title: "",
                         text: "There are some errors in your submission. Please correct them.",
@@ -81,13 +80,13 @@ var KTWizard3 = function() {
                         confirmButtonClass: "btn btn-secondary"
                     })
                 },
-                submitHandler: function(e) {
-                    $('#QuestionnaireForm').submit();
-                }
             });
         }
     }
 }();
 jQuery(document).ready(function() {
     KTWizard3.init()
+    $('#questionaireSubmit').on('click', function () {
+        $(this).submit();
+    })
 });
