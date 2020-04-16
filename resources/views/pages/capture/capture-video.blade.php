@@ -9,7 +9,8 @@
     $version = $agent->version($platform);
     $browser = $agent->browser();
     $recordIsDisabled = false;
-   if ($platform == 'OS X' &&   strtolower($browser) == 'safari')
+    $platform = str_replace(' ','', strtolower($platform) );
+    if (($platform == 'osx' || $platform == 'ios') && strtolower($browser) == 'safari')
    {
        $recordIsDisabled = true;
    }
@@ -25,14 +26,16 @@
                     <video id="live-video" width="270" height="200" muted autoplay="autoplay" class="d-none"></video>
                 </div>
                 <br>
-                <center>
-                    <button id="cameraButton" class="btn btn-primary btn-wide btn-lg" style="width:300px; display: {{$recordIsDisabled?'none': 'block'}}">
-                        <i class="la la-camera"></i> Request video camera
-                    </button>
-                </center>
+
                 @if($recordIsDisabled)
                     <br>
                     <p class="error">The video record is not supported on this device</p>
+                @else
+                    <center>
+                        <button id="cameraButton" class="btn btn-primary btn-wide btn-lg" style="width:300px;">
+                            <i class="la la-camera"></i> Request video camera
+                        </button>
+                    </center>
                 @endif
 
                 <div class="recorder_wrapper">
