@@ -55,7 +55,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['nullable', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],  //we don't do a email validation this step.
+            'email' => ['required', 'string', 'unique:users', 'email', 'max:255'],  //we don't do a email validation this step.
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'filename' => ['nullable', 'string'],
         ]);
@@ -71,7 +71,7 @@ class RegisterController extends Controller
     {
 
         $user = new User();
-        $user->name = $data['name'];
+        $user->name = !isset($data['name']) ? 'unnamed': $data['name'];
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
         $user->save();
