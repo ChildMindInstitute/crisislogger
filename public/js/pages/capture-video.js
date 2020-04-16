@@ -34,23 +34,12 @@ function toggleRecording() {
 }
 
 function requestVideo() {
-    spinner.classList.remove('d-none');
-    let iphone = !!navigator.platform && /iPhone/.test(navigator.platform);
+
     if (document.getElementById('error-id'))
     {
         document.getElementById('error-id').remove();
     }
-    let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
-    if (iphone && isSafari)
-    {
-        let errorMsg = 'The video recording is not supported on this device';
-        let error = document.createElement('p');
-        error.innerText =  errorMsg;
-        error.setAttribute('id', 'error-id');
-        error.classList.add('error');
-        reqBtn.setAttribute('disabled', true);
-    }
-
+    spinner.classList.remove('d-none');
     navigator.mediaDevices.getUserMedia({
         video: true,
         audio: true

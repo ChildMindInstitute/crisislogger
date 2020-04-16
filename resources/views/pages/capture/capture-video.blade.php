@@ -2,7 +2,18 @@
 @section('title', '')
 @section('capture-active', 'kt-menu__item--active')
 @section('content')
-
+<?php
+    $agent = new \Jenssegers\Agent\Agent();
+    $platform = $agent->platform();
+    $iPhone = $agent->isPhone();
+    $version = $agent->version($platform);
+    $browser = $agent->browser();
+    $recordIsDisabled = false;
+   if ($platform == 'OS X' &&   strtolower($browser) == 'safari')
+   {
+       $recordIsDisabled = true;
+   }
+?>
     <div class="container">
         <div class="kt-portlet">
             <div class="kt-portlet__body">
@@ -29,10 +40,12 @@
                     <video id="live-video" width="270" height="200" muted autoplay="autoplay" class="d-none"></video>
                 </div>
 
-                <button id="cameraButton" class="btn btn-primary">
+                <button id="cameraButton" class="btn btn-primary" {{$recordIsDisabled ? 'disabled': ''}}>
                     <i class="la la-camera"></i> Request Camera
                 </button>
-
+                @if($recordIsDisabled)
+                    <p class="error">The video record is not supported on this device</p>
+                @endif
                 <div class="recorder_wrapper">
                     <div class="recorder">
                         <button class="record_btn" id="button" style="display: none;">
