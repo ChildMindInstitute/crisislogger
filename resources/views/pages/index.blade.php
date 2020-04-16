@@ -31,6 +31,7 @@
         
         <div class="text-center">
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
+            <a href="{{ route('login') }}" class="btn-outline-primary btn btn-wide btn-lg">Login</a>
         </div>
 
 	<br>
