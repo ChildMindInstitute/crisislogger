@@ -8,7 +8,7 @@
         <img src="{{ asset('media/photos/parentlogger.png') }}" alt="">
 
         <div class="text-center">
-            <h1 class="display-4">Call to Action During the Covid-19 Crisis</h1>
+            <h1 class="display-4">We want to hear your thoughts and feelings during the Covid-19 crisis</h1>
         </div>
 
 	<br>
@@ -18,15 +18,13 @@
         We are all concerned about the health of our family and friends,
         and facing new challenges we could never have imagined.
 	At the same time as we're distancing ourselves from each other,
-        the stress, uncertaint, and fear gives us an even greater
+        the stress, uncertainty, and fear gives us an even greater
         need for support.</p>
 
-        <p>The Child Mind Institute and its partners*
-        are deeply committed to mental health,
-        and we are here to listen.
-	We are launching an important research project, 
-        and hope you will share your fears, 
-        frustrations, and hopes with us in an audio or video clip
+        <p>The Child Mind Institute and Parents Magazine and collaborators*
+        want to help and are here to listen.
+        Please share your fears, 
+        frustrations, and hopes as an audio or video recording or text
 	by clicking the link below.
 	After you record your thoughts and feelings,
 	we will ask some questions to learn more about your situation.</p>
@@ -36,28 +34,17 @@
         </div>
 
 	<br>
-        <p>You can share your recording publicly in its original form
-        or as a transcript, or decide to keep it private,
-        and even create a journal for yourself over time.</p>
-
         <p>For those who choose to contribute their recordings to scientific
         research, we will analyze them to create recommendations for
 	how clinicians and researchers can best support
-	families as we move ahead.
-        We will continue to add new features to the website
-	to visualize your contribution
-        in the context of everyone else’s, and to create a collection of
-        publicly shared recordings or transcripts.</p>
+	families as we move ahead.</p>
 
         <p>We know how precious your time is, and greatly appreciate
 	your participation in this project.</p>
 
-        <p>*Our list of partners is growing, and presently includes 
-        the National Institute of Mental Health,
-	    <a href="https://openhumans.org">Open Humans</a>,
-        the <a href="https://cri-paris.org">CRI</a> in Paris, Parents Magazine, and
-        <a href="https://mcgovern.mit.edu/profile/satrajit-ghosh/">Satrajit Ghosh</a>
-        and Sanu Abraham at MIT.
+        <p>*Our collaborators include
+        the National Institute of Mental Health, OpenHumans.org, the CRI in Paris,
+        and Satrajit Ghosh and Sanu Abraham at MIT.</p>
 
     </div>
 
