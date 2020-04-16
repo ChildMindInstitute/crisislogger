@@ -33,7 +33,7 @@
                     <p>If you wish to re-record your thoughts, please press start again. Your old recording will be replaced.</p>
 
                     <div id="uploadInfo" class="d-none">
-                        <button class="btn btn-success" data-toggle="modal" data-target="#uploadModal">Upload File</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#uploadModal" data-backdrop="static" data-keyboard="false">Upload File</button>
                     </div>
                 </div>
             </div>
