@@ -1,3 +1,7 @@
+<?php
+    $agent = new \Jenssegers\Agent\Agent();
+    $isMobile = $agent->isMobile();
+?>
 <div class="header" style="text-align: center;">
     <div class="container">
         <div class="row">
@@ -8,7 +12,7 @@
                 <img src="{{ asset('media/logos/parents_magazine_logo.png') }}" alt="{{ config('app.name') }}" id="parents_magazine_logo">
             </div>
             <div class="col-12 col-md-6 my-auto mx-auto">
-               
+
                 <div class="float-right">
                     <!--a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a-->
 
@@ -26,7 +30,9 @@
                         </form>
                     @else
                         <div class="float-right">
-                            <a href="{{ route('login') }}" class="btn btn-link btn-wide">Login</a>
+                            @if(!$isMobile)
+                                <a href="{{ route('login') }}" class="btn btn-link btn-wide">Login</a>
+                            @endif
                         </div>
                     @endauth
 
