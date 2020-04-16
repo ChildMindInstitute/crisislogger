@@ -65,12 +65,12 @@
               -webkit-transition: all 0.3s;
               transition: all 0.3s; }
         .kt-wizard-v3 .kt-wizard-v3__nav .kt-wizard-v3__nav-items .kt-wizard-v3__nav-item[data-ktwizard-state="current"]:after {
-          color: red; }
+          color: #5578eb; }
         .kt-wizard-v3 .kt-wizard-v3__nav .kt-wizard-v3__nav-items .kt-wizard-v3__nav-item[data-ktwizard-state="current"] .kt-wizard-v3__nav-body {
-          color: red; }
+          color: #5578eb; }
           .kt-wizard-v3 .kt-wizard-v3__nav .kt-wizard-v3__nav-items .kt-wizard-v3__nav-item[data-ktwizard-state="current"] .kt-wizard-v3__nav-body .kt-wizard-v3__nav-bar:after {
             width: 100%;
-            background-color: red; }
+            background-color: #5578eb; }
       @media (max-width: 768px) {
         .kt-wizard-v3 .kt-wizard-v3__nav .kt-wizard-v3__nav-items {
           -webkit-box-orient: vertical;
