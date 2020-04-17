@@ -114,18 +114,19 @@ function createDownloadLink(blob) {
     let url = URL.createObjectURL(blob);
     let au = document.createElement('audio');
     let li = document.createElement('div');
-    let link = document.createElement('a');
+    // let link = document.createElement('a');
     //add controls to the <audio> element
     au.controls = true;
     au.src = url;
+    au.classList.add('audio-record');
     //link the a element to the blob
-    link.href = url;
-    link.download = new Date().toISOString() + '.wav';
-    link.innerHTML = '<i class="flaticon-download flaticon"></i>';
-    link.classList.add('download-link');
+    // link.href = url;
+    // link.download = new Date().toISOString() + '.wav';
+    // link.innerHTML = '<i class="flaticon-download flaticon"></i>';
+    // link.classList.add('download-link');
     //add the new audio and a elements to the li element
     li.appendChild(au);
-    li.appendChild(link);
+    // li.appendChild(link);
 
     let filename = new Date().toISOString();
     //filename to send to server without extension
