@@ -40,12 +40,12 @@ function requestVideo() {
         document.getElementById('error-id').remove();
     }
     spinner.classList.remove('d-none');
-    
+
     let constraints = {
         audio: true,
         video: {
-            width: { min: 320 },
-            height: { min: 240 },
+            width: {min: 320, ideal: 320, max: 320},
+            height: {min: 240, ideal: 240, max: 240},
             advanced: [
                 { width: 320 },
                 { width: { min: 320 } },
