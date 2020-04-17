@@ -17,6 +17,7 @@ use Storage;
  * @property int user_id
  * @property int share
  * @property int contribute_to_science
+ * @property boolean video_generated
  * @property string voice
  * @property CarbonImmutable created_at
  */
@@ -56,6 +57,7 @@ class Upload extends Model
         $upload->name = $name . '.wav';
         $upload->share = $this->share;
 	    $upload->voice = $this->voice;
+	    $upload->video_generated = true;
         $upload->save();
         return $upload;
     }
