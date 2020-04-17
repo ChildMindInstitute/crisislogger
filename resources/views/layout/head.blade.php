@@ -36,6 +36,7 @@
             padding: 20px;
             font-size: 1.3rem;
             margin: 0px;
+            overflow-y: scroll;
             background: rgba(228, 228, 228, 0.98);
             resize: both;
         }
