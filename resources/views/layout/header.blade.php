@@ -2,7 +2,7 @@
     $agent = new \Jenssegers\Agent\Agent();
     $isMobile = $agent->isMobile();
 ?>
-<div class="header" style="text-align: center;">
+<div class="header" style="text-align: right; padding-top: 0px; padding-bottom: 0px;">
     <div class="container">
         <div class="row">
             <!--div class="col-6 col-md-3 my-auto">
@@ -11,13 +11,15 @@
             <div class="col-6 col-md-3 my-auto">
                 <a href="/"><img src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" alt="{{ config('app.name') }}"></a>
             </div-->
-            <div class="col-12 col-md-6 my-auto mx-auto">
+            <div class="col-12 my-auto ml-auto">
 
                 <div class="float-right">
                     <!--a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a-->
 
+                    @if (Route::current()->getName() !== 'home')
                     @auth
                         <div class="btn-group">
+
                             <a class="btn btn-link" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -29,12 +31,15 @@
                             @csrf
                         </form>
                     @else
+                    
                         <div class="float-right">
-                            @if(!$isMobile)
-                                <a href="{{ route('login') }}" class="btn btn-link btn-wide">Login</a>
-                            @endif
+                            
+                                <a href="{{ route('home') }}" class="btn btn-wide btn-lg">Home</a>
+                                <a href="{{ route('login') }}" class="btn btn-wide btn-lg">Login</a>
+                            
                         </div>
                     @endauth
+                    @endif
 
                 </div>
             </div>
