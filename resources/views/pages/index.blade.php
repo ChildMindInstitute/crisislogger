@@ -5,7 +5,7 @@
 
     <div class="container content pt-0">
 
-        <img src="{{ asset('media/photos/crisislogger-banner-plus-logos-3.png') }}" alt="">
+        <img src="{{ asset('media/photos/crisislogger-banner-plus-logos-4.png') }}" alt="">
         <div class="text-center">
    	    <br>
             <h1 class="display-4">We want to hear your thoughts and feelings during the Covid-19 crisis</h1>
