@@ -3,11 +3,13 @@ let uploadInfo = document.getElementById('uploadInfo');
 uploadInfo.addEventListener("click", swapModals);
 
 function swapModals() {
-    $("#reviewRecordingModal").modal('hide');
-    $("#uploadModal").modal({
-        backdrop: 'static',
-        keyboard: false
-    });
+    $("#myModal").modal('hide');
+    setTimeout(function() {
+        $("#uploadModal").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+    }, 700);
 }
 
 function uploadButtonClicked(file, filename){
