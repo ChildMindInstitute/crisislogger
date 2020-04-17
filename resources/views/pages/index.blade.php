@@ -6,12 +6,11 @@
     <div class="container content pt-0">
 
         <img src="{{ asset('media/photos/crisislogger-banner-plus-logos-3.png') }}" alt="">
-
         <div class="text-center">
+   	    <br>
             <h1 class="display-4">We want to hear your thoughts and feelings during the Covid-19 crisis</h1>
         </div>
 
-	<br>
         <p>This is an unprecedented time,
 	and our lives have been disrupted by the COVID-19 pandemic
 	in so many ways.
@@ -29,6 +28,7 @@
 	After you record your thoughts and feelings,
 	we will ask some questions to learn more about your situation.</p>
         
+	<br>
         <div class="text-center">
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
             <a href="{{ route('login') }}" class="btn-outline-primary btn btn-wide btn-lg">Login</a>
