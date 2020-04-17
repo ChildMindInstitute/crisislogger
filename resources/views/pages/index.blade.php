@@ -11,23 +11,6 @@
             <h1 class="display-4">We want to hear your thoughts and feelings during the Covid-19 crisis</h1>
         </div>
 
-        <p>This is an unprecedented time,
-	and our lives have been disrupted by the COVID-19 pandemic
-	in so many ways.
-        We are all concerned about the health of our family and friends,
-        and facing new challenges we could never have imagined.
-	At the same time as we're distancing ourselves from each other,
-        the stress, uncertainty, and fear gives us an even greater
-        need for support.</p>
-
-        <p>The Child Mind Institute and Parents Magazine and collaborators*
-        want to help and are here to listen.
-        Please share your fears, 
-        frustrations, and hopes as an audio or video recording or text
-	by clicking the link below.
-	After you record your thoughts and feelings,
-	we will ask some questions to learn more about your situation.</p>
-        
 	<br>
         <div class="text-center">
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
@@ -35,17 +18,30 @@
         </div>
 
 	<br>
-        <p>For those who choose to contribute their recordings to scientific
-        research, we will analyze them to create recommendations for
-	how clinicians and researchers can best support
-	families as we move ahead.</p>
 
-        <p>We know how precious your time is, and greatly appreciate
-	your participation in this project.</p>
+	<p>This is an incredibly challenging time, 
+	and the pandemic has transformed our lives in ways we never 
+	could have imagined.
+      	We’re concerned about the health of our loved ones, 
+	grateful for the medical heroes and essential workers 
+	in our communities, and trying our best to adapt to this 
+	new normal — but the ongoing stress and uncertainty is 
+	affecting us all. We want to be optimistic, 
+	but it’s hard not to worry about what the future holds.</p>
+        
+	<p>The Child Mind Institute and <i>Parents</i> magazine 
+	are here to listen and learn from your experience. 
+	We invite you to share your thoughts with us — 
+	including your fears, frustrations, and hopes — 
+	as an audio or video recording by clicking the "Share Your Thoughts" 
+        link above. 
+	If you choose to contribute your recording to science, 
+	it will help us find the best ways to provide support to families.
+        We greatly appreciate your participation in this important project.</p>
 
-        <p>*Our collaborators include
+        <p><i>Our collaborators include
         the National Institute of Mental Health, OpenHumans.org, the CRI in Paris,
-        and Satrajit Ghosh and Sanu Abraham at MIT.</p>
+        and Satrajit Ghosh and Sanu Abraham at MIT.</i></p>
 
     </div>
 
