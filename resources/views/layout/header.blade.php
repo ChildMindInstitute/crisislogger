@@ -33,8 +33,8 @@
                     @else
                     
                         <div class="float-left">
-                            
-                            <a href="{{ route('home') }}" class="btn btn-wide btn-lg"><img src="{{ asset('media/logos/home-icon.png') }}" alt="home" style="height:24px"></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('media/photos/crisislogger-banner-plus-logos-4.png') }}" alt="home"></a>
+                            <!--a href="{{ route('home') }}" class="btn btn-wide btn-lg"><img src="{{ asset('media/logos/home-icon.png') }}" alt="home" style="height:24px"></a-->
                             <!--a href="{{ route('home') }}" class="btn btn-wide btn-lg">Home</a-->
 			</div>
                         <div class="float-right">
