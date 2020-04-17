@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="kt-portlet__body" >
                                         @if(Str::contains($upload->link, '.wav'))
-                                            <audio controls src="{{ $upload->link }}"></audio>
+                                            <audio controls src="{{ $upload->link }}" style="width: 100%"></audio>
                                         @else
                                             <video controls>
                                                 <source src="{{ $upload->link }}" type="video/webm">
