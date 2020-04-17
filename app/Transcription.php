@@ -100,6 +100,7 @@ class Transcription extends Model
         if (session()->has('upload_id'))
         {
             $upload_id = session()->get('upload_id');
+            session()->forget('upload_id');
         }
         $transcription = new Transcription();
         $transcription->upload_id = $upload_id;
