@@ -3,8 +3,11 @@ let uploadInfo = document.getElementById('uploadInfo');
 uploadInfo.addEventListener("click", swapModals);
 
 function swapModals() {
-    $("#myModal").modal('hide');
-    $("#uploadModal").modal();
+    $("#reviewRecordingModal").modal('hide');
+    $("#uploadModal").modal({
+        backdrop: 'static',
+        keyboard: false
+    });
 }
 
 function uploadButtonClicked(file, filename){

@@ -135,6 +135,9 @@ function createDownloadLink(blob) {
     });
 
     recordingsList.appendChild(li);
-    $("#myModal").modal();
+    $("#reviewRecordingModal").modal({
+        backdrop: 'static',
+        keyboard: false
+    });
 }
 
