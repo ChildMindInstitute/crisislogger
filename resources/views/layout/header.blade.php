@@ -13,7 +13,7 @@
             </div-->
             <div class="col-12 my-auto ml-auto">
 
-                <div class="float-right">
+                <div> <!--div class="float-right"-->
                     <!--a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a-->
 
                     @if (Route::current()->getName() !== 'home')
@@ -32,11 +32,13 @@
                         </form>
                     @else
                     
+                        <div class="float-left">
+                            
+                            <a href="{{ route('home') }}" class="btn btn-wide btn-lg"><img src="{{ asset('media/logos/home-icon.png') }}" alt="home" style="height:24px"></a>
+                            <!--a href="{{ route('home') }}" class="btn btn-wide btn-lg">Home</a-->
+			</div>
                         <div class="float-right">
-                            
-                                <a href="{{ route('home') }}" class="btn btn-wide btn-lg">Home</a>
-                                <a href="{{ route('login') }}" class="btn btn-wide btn-lg">Login</a>
-                            
+                            <a href="{{ route('login') }}" class="btn btn-wide btn-lg">Login</a>
                         </div>
                     @endauth
                     @endif
