@@ -41,7 +41,7 @@
                 <br>
                 <br>
 
-                <p><b>Please share your fears, frustrations, and needs,
+                <p><b>Please share your fears, frustrations, needs, and hopes,
                 and what is helping you get through this crisis.</b>
                 Your recording can be up to 5 minutes long.
                 You will be able to save the recording for private use

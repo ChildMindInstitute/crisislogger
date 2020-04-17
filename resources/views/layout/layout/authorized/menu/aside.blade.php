@@ -4,7 +4,7 @@
     <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
         <div class="kt-aside__brand-logo">
             <a href="{{ url('/') }}">
-                <img alt="{{ config('app.name') }}" src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" style="max-width:110px;max-height:50px;" />
+                <img alt="{{ config('app.name') }}" src="{{ asset('media/logos/CrisisLogger_logo.png') }}" style="max-height:100px;" />
             </a>
         </div>
         <div class="kt-aside__brand-tools">
