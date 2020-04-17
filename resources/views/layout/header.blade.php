@@ -15,9 +15,11 @@
 
                 <div class="float-right">
                     <!--a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a-->
+
                     @if (Route::current()->getName() !== 'home')
                     @auth
                         <div class="btn-group">
+
                             <a class="btn btn-link" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -32,6 +34,7 @@
                     
                         <div class="float-right">
                             
+                                <a href="{{ route('home') }}" class="btn btn-wide btn-lg">Home</a>
                                 <a href="{{ route('login') }}" class="btn btn-wide btn-lg">Login</a>
                             
                         </div>
