@@ -40,10 +40,23 @@ function requestVideo() {
         document.getElementById('error-id').remove();
     }
     spinner.classList.remove('d-none');
-    navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: true
-    }).then(stm => {
+    
+    let constraints = {
+        audio: true,
+        video: {
+            width: { min: 320 },
+            height: { min: 240 },
+            advanced: [
+                { width: 320 },
+                { width: { min: 320 } },
+                { frameRate: 15 },
+                { width: { max: 320 } },
+                { facingMode: "user" }
+            ]
+        }
+    };
+
+    navigator.mediaDevices.getUserMedia(constraints).then(stm => {
         stream = stm;
         reqBtn.style.display = 'none';
         button.removeAttribute('disabled');
@@ -93,7 +106,10 @@ function stopRecording() {
     isRecording = false;
     button.classList.remove('recording');
     button.innerHTML = camIcon;
-    $("#myModal").modal();
+    $("#reviewRecordingModal").modal({
+        backdrop: 'static',
+        keyboard: false
+    });
     if ( navigator.vibrate ) navigator.vibrate( [ 200, 100, 200 ] );
     const chunks = [];
     preview.classList.add('d-none');

@@ -48,7 +48,7 @@ class HomeController extends Controller
             // Clear the session
             Session::remove('transcription');
         }
-        $uploads = Auth::user()->uploads()->with('transcript')->get();
+        $uploads = Auth::user()->uploads()->with('transcript')->where('video_generated', false)->get();
         $texts = Auth::user()->texts()->get();
         return view('pages.dashboard', compact('uploads', 'texts'));
     }

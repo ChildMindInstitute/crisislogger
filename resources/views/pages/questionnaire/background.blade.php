@@ -4,18 +4,10 @@
 @component('components.country')
 @endcomponent
 
-{{--@component('components.form-group')--}}
-{{--    <p>What country do you live in?</p>--}}
-{{--    @include('components.input', ['name' => 'country', 'placeholder' => 'Enter country'])--}}
-{{----}}
-{{--@component('components.form-group')--}}
-{{--    <p>State/Providence/Region:</p>--}}
-{{--    @include('components.input', ['name' => 'state/providence/region', 'placeholder' => 'Enter state/providence/region'])--}}
-{{--@endcomponent--}}
 
 @component('components.form-group')
     <label for="dob">Your date of birth?</label>
-    <input class="form-control datepicker" id="dob" type="text" value="" name="dob" placeholder="Select date" />
+    <input class="form-control datepicker" id="dob" type="text" value="" style="width: 100%" name="dob" placeholder="Select date" />
 @endcomponent
 
 @component('components.form-group')
