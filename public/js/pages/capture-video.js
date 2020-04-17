@@ -106,7 +106,10 @@ function stopRecording() {
     isRecording = false;
     button.classList.remove('recording');
     button.innerHTML = camIcon;
-    $("#myModal").modal();
+    $("#reviewRecordingModal").modal({
+        backdrop: 'static',
+        keyboard: false
+    });
     if ( navigator.vibrate ) navigator.vibrate( [ 200, 100, 200 ] );
     const chunks = [];
     preview.classList.add('d-none');
