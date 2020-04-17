@@ -12,13 +12,8 @@ let audioContext = new AudioContext;
 //new audio context to help us record
 let timeoutRequest;
 let isRecording = false;
-let button = document.getElementById("button");
-const micIcon = `
-<svg class="bi bi-mic-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M5 3a3 3 0 016 0v5a3 3 0 01-6 0V3z"/>
-    <path fill-rule="evenodd" d="M3.5 6.5A.5.5 0 014 7v1a4 4 0 008 0V7a.5.5 0 011 0v1a5 5 0 01-4.5 4.975V15h3a.5.5 0 010 1h-7a.5.5 0 010-1h3v-2.025A5 5 0 013 8V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
-</svg>
-`;
+let button = document.getElementById("recorder");
+const micIcon = "<i class=\"fa fa-microphone\" style='text-align: center;margin: 0 auto'></i>\n"
 const stopIcon = `
 <svg id="stop-icon" class="bi bi-stop-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path d="M5 3.5h6A1.5 1.5 0 0112.5 5v6a1.5 1.5 0 01-1.5 1.5H5A1.5 1.5 0 013.5 11V5A1.5 1.5 0 015 3.5z"/>
