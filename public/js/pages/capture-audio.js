@@ -113,7 +113,8 @@ function createDownloadLink(blob) {
     //add controls to the <audio> element
     au.controls = true;
     au.src = url;
-    au.classList.add('audio-record');
+    au.style['width'] = '100%';
+    // au.classList.add('audio-record');
     //link the a element to the blob
     // link.href = url;
     // link.download = new Date().toISOString() + '.wav';

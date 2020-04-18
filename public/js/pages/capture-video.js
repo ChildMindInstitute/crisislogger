@@ -1,5 +1,6 @@
 var video, timeoutRequest, reqBtn, recordButton, stream, recorder, uploadBtn;
 video = document.getElementById('video');
+video.setAttribute('style', 'width: 100%');
 reqBtn = document.getElementById('cameraButton');
 reqBtn.onclick = requestVideo;
 recordButton = document.getElementById('button');
@@ -44,7 +45,7 @@ function requestVideo() {
     let constraints = {
         audio: true,
         video: {
-            width: {min: 320, ideal: 320},
+            width: {min: '100%', ideal: 320},
             height: {min: 240, ideal: 240},
         }
     };

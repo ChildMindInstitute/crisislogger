@@ -89,9 +89,10 @@
                 <a href="{{ route('capture-text') }}">type text</a> instead.</p>
 
                 <br>
-                <p><i><span class="form-text text-muted">Video recording 
-		works on Chrome and Firefox browsers, but not on 
-                iOS devices (iPhones or iPads).</span></i></p>
+                <p><i><span class="form-text text-muted">Technical details:
+		Video recording works on Chrome and Firefox browsers, but not 
+                on iOS devices. Resulting video files 
+		are 320w x 240h at 15 frames per second.</span></i></p>
 
             </div>
         </div>
