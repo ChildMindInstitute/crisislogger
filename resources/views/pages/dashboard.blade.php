@@ -45,8 +45,12 @@
                                         <p class="card-title text-center">No word cloud</p>
                                     </div>
                                 @endif
-                                <div class="kt-portlet__body--fit-bottom text-right  remove-btn">
-                                    <a class="btn" href="{{route('remove', ['id' => $upload->id, 'type' => 'upload'])}}" ><i class="fa fa-trash" ></i> Remove</a>
+                                <div class="kt-portlet__body--fit-bottom   remove-btn">
+                                    <div class="form-group form-check float-left mb-0">
+                                        <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->contribute_to_science}}" {{$upload->contribute_to_science?'checked': ''}}  id="contribute-upload-{{$upload->id}}">
+                                        <label class="form-check-label" for="contribute">Contribute to science</label>
+                                    </div>
+                                    <a class="float-right" href="{{route('remove', ['id' => $upload->id, 'type' => 'upload'])}}" ><i class="fa fa-trash" ></i> Remove</a>
                                 </div>
                             </div>
 							@endforeach
@@ -74,8 +78,12 @@
 									<div class="kt-portlet">
 										<p class="text-justify text-ellipsis">{{$text->text}}</p>
 									</div>
-                                    <div class="kt-portlet__body--fit-bottom text-right ">
-                                        <a class="btn" href="{{route('remove', ['id' => $text->id, 'type' => 'text'])}}"><i class="fa fa-trash" ></i> Remove</a>
+                                    <div class="kt-portlet__body--fit-bottom">
+                                        <div class="form-group form-check float-left mb-0">
+                                            <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$text->contribute_to_science}}"   {{$text->contribute_to_science?'checked': ''}}  id="contribute-text-{{$text->id}}">
+                                            <label class="form-check-label" for="contribute">Contribute to science</label>
+                                        </div>
+                                        <a class="float-right" href="{{route('remove', ['id' => $text->id, 'type' => 'text'])}}"><i class="fa fa-trash" ></i> Remove</a>
                                     </div>
 								</div>
 							@endforeach

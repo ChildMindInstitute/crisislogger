@@ -21,7 +21,7 @@ Route::post('upload', 'UploadController@upload')->name('upload');
 Route::post('save-text', 'UploadController@saveText')->name('save-text');
 
 Route::middleware('auth')->group(function(){
-
+    Route::put('/update-resource-status', 'UserController@updateResourceStatus')->name('update-resource-status');
     Route::prefix('user')->group(function(){
         Route::post('update', 'UserController@update')->name('user_update');
         Route::post('change_password', 'UserController@changePassword')->name('user_change_password');

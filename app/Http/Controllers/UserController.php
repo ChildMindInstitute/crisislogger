@@ -116,4 +116,47 @@ class UserController extends Controller
         \Session::flash('session_success', 'Successfully deleted');
         return redirect('/dashboard');
     }
+
+    public function updateResourceStatus(Request $request)
+    {
+        $id = $request->get('id');
+        $type = $request->get('type');
+        $status = $request->get('status');
+        try {
+            if ($type === 'text')
+            {
+                $text = Texts::findOrFail($id);
+                if ($text)
+                {
+                    \DB::beginTransaction();
+                    $text->contribute_to_science = $status;
+                    $text->update();
+                    \DB::commit();
+                }
+            }
+            if ($type ==='upload')
+            {
+                $upload = Upload::findOrFail($id);
+                if ($upload)
+                {
+                    \DB::beginTransaction();
+                    $upload->contribute_to_science = $status;
+                    $upload->update();
+                    \DB::commit();
+                }
+            }
+        }
+        catch (\Exception $exception)
+        {
+            \DB::rollBack();
+            \Session::flash('session_error', $exception->getMessage());
+            return \Response::json(
+                ['url' => route('dashboard')]
+            );
+        }
+        \Session::flash('session_success', 'Successfully updated');
+        return \Response::json(
+            ['url' => route('dashboard')]
+        );
+    }
 }
