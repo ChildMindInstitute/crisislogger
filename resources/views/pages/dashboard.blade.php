@@ -112,9 +112,10 @@
         height: 100px;
         width: 100%;
         left: 0;
-        bottom: -50px;
+        bottom: -10px;
         padding: 15px;
         display: inline-grid;
+        position: absolute;
     }
     a {
         font-size: 13px;
