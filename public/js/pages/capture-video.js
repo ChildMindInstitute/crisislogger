@@ -46,13 +46,6 @@ function requestVideo() {
         video: {
             width: {min: 320, ideal: 320},
             height: {min: 240, ideal: 240},
-            advanced: [
-                { width: 320 },
-                { width: { min: 320 } },
-                { frameRate: 15 },
-                { width: { max: 320 } },
-                { facingMode: "user" }
-            ]
         }
     };
 
