@@ -101,7 +101,16 @@
                 </div>
             </div>
         </div>
+        <div class="row float-right">
+            <form action="{{route('close-account')}}" method="POST" id="close-account" >
+                @csrf
+                <button  class="btn btn-primary"> Close my account</button>
+            </form>
+        </div>
     </div>
 
+@endsection
+@section('scripts')
+    <script src="{{asset('js/pages/profile.js')}}"></script>
 @endsection
 

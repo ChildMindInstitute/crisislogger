@@ -80,7 +80,7 @@ Route::get('/callback', function (Request $request) {
 Route::middleware('auth')->group(function () {
 
     Route::get('dashboard', 'HomeController@dashboard')->name('dashboard');
-
+    Route::post('close-account', 'UserController@closeAccount')->name('close-account');
     Route::get('profile', function () {
         return view('pages.profile');
     })->name('profile');

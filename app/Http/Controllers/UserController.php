@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\User;
 use Auth;
 use Hash;
+use function GuzzleHttp\Psr7\uri_for;
 
 class UserController extends Controller
 {
@@ -50,5 +51,29 @@ class UserController extends Controller
 
         return back()->with('password_success', 'Your password has been successfully changed.');
     }
-
+    public function closeAccount()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if (count($user->uploads()->get()))
+        {
+            $user->uploads()->forceDelete();
+        }
+        if (count($user->texts()->get()))
+        {
+            $user->texts()->forceDelete();
+        }
+        if (count($user->transcriptions()->get()))
+        {
+            $user->transcriptions()->forceDelete();
+        }
+        try {
+            $user->delete();
+            Auth::logout();
+            return redirect('/');
+        }
+        catch (\Exception $exception)
+        {
+            \App::abort(400);
+        }
+    }
 }

@@ -55,7 +55,7 @@
             </div>
 
         </div>
-		<br></br>
+		<br>
         <div class="row">
             <h4>Texts </h4>
             <div class="card col-lg-12">
