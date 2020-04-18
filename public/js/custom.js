@@ -100,4 +100,14 @@ $(document).ready(function(){
                 }
             });
     })
+    $('.text-content').on('click', function () {
+        let html = $(this).text();
+        html = "<p style='padding: 20px;max-height: 400px;overflow: scroll;'>"+html+"</p>"
+        $('#text-content-modal').find('.modal-content').find('.modal-footer').before(html);
+        $('#text-content-modal').modal('show');
+    })
+    $('#text-content-modal').on('hide.bs.modal', function (event) {
+        console.log('here')
+        $(this).find('.modal-content').find('p').remove();
+    })
 });

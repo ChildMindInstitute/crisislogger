@@ -46,11 +46,11 @@
                                     </div>
                                 @endif
                                 <div class="kt-portlet__body--fit-bottom   remove-btn">
-                                    <div class="form-group form-check float-left mb-0">
+                                    <div class="form-group float-left mb-0">
                                         <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->contribute_to_science}}" {{$upload->contribute_to_science?'checked': ''}}  id="contribute-upload-{{$upload->id}}">
                                         <label class="form-check-label text-black" for="contribute-upload-{{$upload->id}}">Science?</label>
                                     </div>
-                                    <div class="form-group form-check float-left mb-0">
+                                    <div class="form-group float-left mb-0">
                                         <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->share}}"   {{$upload->share?'checked': ''}}  id="share-upload-{{$upload->id}}">
                                         <label class="form-check-label text-black" for="share-upload-{{$upload->id}}">Public?</label>
                                     </div>
@@ -79,15 +79,15 @@
 
 							@foreach($texts  as $text)
 								<div class="col-sm-12 col-md-4 col-lg-3">
-									<div class="kt-portlet">
+									<div class="kt-portlet text-content" id="text-content-{{$text->id}}">
 										<p class="text-justify text-ellipsis">{{$text->text}}</p>
 									</div>
                                     <div class="kt-portlet__body--fit-bottom" style="display: inline-grid">
-                                        <div class="form-group form-check float-left mb-0">
+                                        <div class="form-group float-left mb-0">
                                             <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$text->contribute_to_science}}"   {{$text->contribute_to_science?'checked': ''}}  id="contribute-text-{{$text->id}}">
                                             <label class="form-check-label text-black" for="contribute-text-{{$text->id}}">Science?</label>
                                         </div>
-                                        <div class="form-group form-check float-left mb-0">
+                                        <div class="form-group float-left mb-0">
                                             <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$text->share}}"   {{$text->share?'checked': ''}}  id="share-text-{{$text->id}}">
                                             <label class="form-check-label text-black" for="share-text-{{$text->id}}">Public?</label>
                                         </div>
@@ -102,6 +102,15 @@
                             <h4>No uploads found.</h4>
                         </div>
                     @endif
+                </div>
+            </div>
+            <div class="modal fade" id="text-content-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,25 +130,40 @@
         font-size: 13px;
         color: #000000 !important;
     }
+    input[type="checkbox"] {
+        visibility: hidden;
+    }
+    label {
+        cursor: pointer;
+    }
+    input[type="checkbox"] + label:before {
+        border: 1px solid #0067a0;
+        content: "\00a0";
+        display: inline-block;
+        font: 16px/1em sans-serif;
+        height: 16px;
+        padding: 0;
+        vertical-align: top;
+        width: 16px;
+    }
+    input[type="checkbox"]:checked + label:before {
+        background: #fff;
+        color: #0067a0;
+        content: "\2713";
+        text-align: center;
+    }
+    input[type="checkbox"]:checked + label:after {
+        font-weight: bold;
+    }
+
+    input[type="checkbox"]:focus + label::before {
+        outline: rgb(59, 153, 252) auto 5px;
+    }
+    .text-black{
+        font-size: 1;
+    }
 </style>
 @section('scripts')
-    <script type="text/javascript">
-        function removeResourece(id, type) {
-            swal.fire(
-                {
-                    text: 'Are you sure you want to delete this?',
-                    confirmButtonText:  'Yes' ,
-                    showCancelButton: true,
-                    cancelButtonText:  'Cancel' ,
-                }
-            ).then(result => {
-                if(result.value)
-                {
-                    window.location.href = '/remove?id='+id+'&type='+type
-                }
-            })
-        }
-    </script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
     <script src="{{ asset('js/pages/word-clouds.js') }}?time={{ time() }}"></script>

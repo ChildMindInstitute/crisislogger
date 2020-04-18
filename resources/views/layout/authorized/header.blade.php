@@ -30,9 +30,10 @@
     <style>
 
         .text-ellipsis {
-            height: 150px;
+            height: 150px !important;
             display: inline-block;
             /*width: 514px;*/
+            width: 100% !important;
             overflow: hidden;
             text-overflow: ellipsis;
             padding: 20px;
@@ -41,6 +42,7 @@
             overflow-y: scroll;
             background: rgba(228, 228, 228, 0.98);
             resize: both;
+            cursor: pointer;
         }
         .error {
             color: red;
