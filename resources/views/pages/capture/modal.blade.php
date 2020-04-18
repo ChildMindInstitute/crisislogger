@@ -61,7 +61,7 @@
                     <button type="submit" class="btn btn-primary" id="upload"> {{!request()->has('type')? 'Upload' : 'Continue'}}</button>
                 </div>
 
-<span class="form-text text-muted">By clicking <b>Continue</b> above, you agree to the terms below:
+<span class="form-text text-muted">By clicking <b>Upload</b> above, you agree to the terms below:
 <br><br>
 <i>Child Mind Institute, Inc., Child Mind Medical Practice, PLLC and Child Mind Medical Practice, PC (together, “CMI”) does not directly or indirectly practice medicine or dispense medical advice as part of this tool.  CMI assumes no liability for any diagnosis, treatment, decision made, or action taken in reliance upon this tool, and assumes no responsibility for your use of this tool. If you do need immediate help, please contact a local care provider. If you have opted to share your data publicly, you release CMI from any claims arising out of the use of your story. You have the right to agree to these terms in your own name or, if applicable, on behalf of your child.</span>
                     </div>
