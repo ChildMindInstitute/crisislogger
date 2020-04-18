@@ -8,12 +8,6 @@
     <div class="container content">
         <div class="kt-portlet">
             <div class="kt-portlet__body">
-                @if(Session::has('questionnaire_success'))
-                    @component('components.alerts.success')
-                        {{ Session::get('questionnaire_success') }}
-                    @endcomponent
-                @endif
-
                 <center><h1 class="display-4">Please sign up to come back and record more</h1></center>
                 <p>You can create an optional account to save your recordings and view them. Think of it as your personal diary.</p>
                 <form method="POST" action="{{ route('register') }}">
@@ -46,7 +40,16 @@
                         </span>
                         @enderror
                     </div>
-
+                    <div class="form-group">
+                        <label>Referral Code </label>
+                        <input type="text" class="form-control @error('referral_code') is-invalid @enderror" placeholder="Referral Code" value="{{old('referral_code')}}" aria-describedby="referralCodeHelp" name="referral_code">
+                        <span class="form-text text-muted">Please enter the referral code if you have</span>
+                        @error('referral_code')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                     <div class="form-group">
                         <label>Confirm Password<span class="text-danger">*</span></label>
                         <input type="password" class="form-control"  name="password_confirmation" required>
