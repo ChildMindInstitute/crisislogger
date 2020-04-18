@@ -48,10 +48,10 @@
                                 <div class="kt-portlet__body--fit-bottom   remove-btn">
                                     <div class="form-group form-check float-left mb-0">
                                         <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->contribute_to_science}}" {{$upload->contribute_to_science?'checked': ''}}  id="contribute-upload-{{$upload->id}}">
-                                        <label class="form-check-label" for="contribute">Share?</label>
+                                        <label class="form-check-label text-primary" for="contribute">Share?</label>
                                     </div>
                                     <div class="form-group form-check float-left mb-0">
-                                        <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->share}}"   {{$upload->share?'checked': ''}}  id="share-text-{{$text->id}}">
+                                        <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->share}}"   {{$upload->share?'checked': ''}}  id="share-upload-{{$upload->id}}">
                                         <label class="form-check-label text-primary" for="contribute">Public?</label>
                                     </div>
                                     <a class="remove-resource" href="#" id="upload-{{$upload->id}}" ><i class="fa fa-trash" ></i> Delete?</a>
