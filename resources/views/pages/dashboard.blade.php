@@ -54,7 +54,7 @@
                                         <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->share}}"   {{$upload->share?'checked': ''}}  id="share-upload-{{$upload->id}}">
                                         <label class="form-check-label text-black" for="share-upload-{{$upload->id}}">Public?</label>
                                     </div>
-                                    <a class="remove-resource" href="#" id="upload-{{$upload->id}}" ><i class="fa fa-trash" ></i> Delete?</a>
+                                    <a class="remove-resource" href="#" id="upload-{{$upload->id}}" ><i class="fa fa-trash" style="margin-right: 10px" ></i> Delete?</a>
                                 </div>
                             </div>
 							@endforeach
@@ -91,7 +91,7 @@
                                             <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$text->share}}"   {{$text->share?'checked': ''}}  id="share-text-{{$text->id}}">
                                             <label class="form-check-label text-black" for="share-text-{{$text->id}}">Public?</label>
                                         </div>
-                                        <a class="remove-resource" href="#" id="text-{{$text->id}}"><i class="fa fa-trash" ></i> Delete?</a>
+                                        <a class="remove-resource" href="#" id="text-{{$text->id}}"><i class="fa fa-trash" style="margin-right: 10px" ></i> Delete?</a>
                                     </div>
 								</div>
 							@endforeach
@@ -142,7 +142,7 @@
         display: inline-block;
         font: 16px/1em sans-serif;
         height: 16px;
-        padding: 0;
+        margin-right: 10px;
         vertical-align: top;
         width: 16px;
     }
@@ -158,9 +158,6 @@
 
     input[type="checkbox"]:focus + label::before {
         outline: rgb(59, 153, 252) auto 5px;
-    }
-    .text-black{
-        font-size: 1;
     }
 </style>
 @section('scripts')
