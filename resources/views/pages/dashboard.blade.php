@@ -78,7 +78,7 @@
                     <div class="row">
 
 							@foreach($texts  as $text)
-								<div class="col-sm-12 col-md-4 col-lg-3 mb-4 " >
+								<div class="col-sm-12 col-md-4 col-lg-3 mb-4 " style="box-shadow: 2px 1px 4px 4px #e0dbdb;">
 									<div class="kt-portlet text-content" id="text-content-{{$text->id}}">
 										<p class="text-justify text-ellipsis">{{$text->text}}</p>
 									</div>
