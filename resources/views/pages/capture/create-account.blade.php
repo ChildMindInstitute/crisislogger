@@ -41,6 +41,11 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label>Confirm Password<span class="text-danger">*</span></label>
+                        <input type="password" class="form-control"  name="password_confirmation" required>
+                    </div>
+
+                    <div class="form-group">
                         <label>Referral Code </label>
                         <input type="text" class="form-control @error('referral_code') is-invalid @enderror" placeholder="Referral Code" value="{{old('referral_code')}}" aria-describedby="referralCodeHelp" name="referral_code">
                         <span class="form-text text-muted">Please enter the referral code if you have</span>
@@ -49,10 +54,6 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Confirm Password<span class="text-danger">*</span></label>
-                        <input type="password" class="form-control"  name="password_confirmation" required>
                     </div>
 
                     <div class="form-group">
