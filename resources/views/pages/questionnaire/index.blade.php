@@ -132,7 +132,7 @@
                         $("#country").empty();
                         $("#state").empty();
                         $("#city").empty();
-                        $("#country").append('<option>Select State</option>');
+                        $("#country").append('<option>Select Country</option>');
                         $.each(res, function (key, value) {
                             $("#country").append('<option value="' + value.name.common + '" data-id="' + value.ne_id + '">' + value.name.common + '</option>');
                         });
