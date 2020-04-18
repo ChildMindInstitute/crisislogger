@@ -56,9 +56,11 @@
                 <a href="{{ route('capture-text') }}">type text</a> instead.</p>
 
                 <br>
-                <p><i><span class="form-text text-muted">Audio recording
-                works on Chrome, Firefox, and Safari browsers, 
-		but only on Safari in iOS.</span></i></p>
+                <p><i><span class="form-text text-muted">Technical details: 
+		Audio recording works on Chrome, Firefox, and Safari browsers, 
+		but only on Safari in iOS.
+		The resulting audio files are single channel with 44.1 kHz 
+		sample rate and 16 bits per sample.</span></i></p>
 
             </div>
         </div>
