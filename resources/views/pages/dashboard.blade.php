@@ -12,8 +12,8 @@
             <h4>Uploaded video and audio</h4>
             <div class="card col-lg-12">
                 <div class="card-body">
-					<div class="row">
-					@if(count($uploads) > 0)
+                    <div class="row">
+                    @if(count($uploads) > 0)
 
                             @foreach($uploads  as $upload)
                             <div class="col-sm-12 col-md-4 col-lg-3 mb-4 " style="box-shadow: 2px 1px 4px 4px #e0dbdb;">
@@ -42,75 +42,58 @@
                                     </div>
                                 @else
                                     <div class="kt-portlet " id="{{'transcript-'.$upload->id}}">
-                                        <p class="card-title text-center">No word cloud</p>
+{{--                                        <p class="card-title text-center">No word cloud</p>--}}
                                     </div>
                                 @endif
                                 <div class="kt-portlet__body--fit-bottom   remove-btn">
-                                    <div class="form-group float-left mb-0">
+                                    <div class="form-group form-check float-left mb-0">
                                         <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->contribute_to_science}}" {{$upload->contribute_to_science?'checked': ''}}  id="contribute-upload-{{$upload->id}}">
-                                        <label class="form-check-label text-black" for="contribute-upload-{{$upload->id}}">Science?</label>
+                                        <label class="form-check-label" for="contribute">Contribute to science</label>
                                     </div>
-                                    <div class="form-group float-left mb-0">
-                                        <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->share}}"   {{$upload->share?'checked': ''}}  id="share-upload-{{$upload->id}}">
-                                        <label class="form-check-label text-black" for="share-upload-{{$upload->id}}">Public?</label>
-                                    </div>
-                                    <a class="remove-resource" href="#" id="upload-{{$upload->id}}" ><i class="fa fa-trash" style="margin-right: 10px" ></i> Delete?</a>
+                                    <a class="float-right" href="{{route('remove', ['id' => $upload->id, 'type' => 'upload'])}}" ><i class="fa fa-trash" ></i> Remove</a>
                                 </div>
                             </div>
-							@endforeach
-						@else
+                            @endforeach
+                        @else
 
-						<div class="text-center mt-5">
+                        <div class="text-center mt-5">
                             <h4>No uploads found.</h4>
                         </div>
                     @endif
-					</div>
+                    </div>
                 </div>
             </div>
 
         </div>
-		<br>
+        <br>
         <div class="row">
             <h4>Texts </h4>
             <div class="card col-lg-12">
                 <div class="card-body">
-					@if(count($texts) > 0)
+                    @if(count($texts) > 0)
                     <div class="row">
 
-							@foreach($texts  as $text)
-								<div class="col-sm-12 col-md-4 col-lg-3 mb-4 " style="box-shadow: 2px 1px 4px 4px #e0dbdb;">
-									<div class="kt-portlet text-content" id="text-content-{{$text->id}}">
-										<p class="text-justify text-ellipsis">{{$text->text}}</p>
-									</div>
-                                    <div class="kt-portlet__body--fit-bottom" style="display: inline-grid">
-                                        <div class="form-group float-left mb-0">
-                                            <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$text->contribute_to_science}}"   {{$text->contribute_to_science?'checked': ''}}  id="contribute-text-{{$text->id}}">
-                                            <label class="form-check-label text-black" for="contribute-text-{{$text->id}}">Science?</label>
-                                        </div>
-                                        <div class="form-group float-left mb-0">
-                                            <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$text->share}}"   {{$text->share?'checked': ''}}  id="share-text-{{$text->id}}">
-                                            <label class="form-check-label text-black" for="share-text-{{$text->id}}">Public?</label>
-                                        </div>
-                                        <a class="remove-resource" href="#" id="text-{{$text->id}}"><i class="fa fa-trash" style="margin-right: 10px" ></i> Delete?</a>
+                            @foreach($texts  as $text)
+                                <div class="col-sm-12 col-md-4 col-lg-3">
+                                    <div class="kt-portlet">
+                                        <p class="text-justify text-ellipsis">{{$text->text}}</p>
                                     </div>
-								</div>
-							@endforeach
+                                    <div class="kt-portlet__body--fit-bottom">
+                                        <div class="form-group form-check float-left mb-0">
+                                            <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$text->contribute_to_science}}"   {{$text->contribute_to_science?'checked': ''}}  id="contribute-text-{{$text->id}}">
+                                            <label class="form-check-label" for="contribute">Contribute to science</label>
+                                        </div>
+                                        <a class="float-right" href="{{route('remove', ['id' => $text->id, 'type' => 'text'])}}"><i class="fa fa-trash" ></i> Remove</a>
+                                    </div>
+                                </div>
+                            @endforeach
 
                     </div>
-					@else
+                    @else
                     <div class="text-center mt-5">
                             <h4>No uploads found.</h4>
                         </div>
                     @endif
-                </div>
-            </div>
-            <div class="modal fade" id="text-content-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -121,43 +104,8 @@
         height: 100px;
         width: 100%;
         left: 0;
-        bottom: -10px;
+        bottom: -50px;
         padding: 15px;
-        display: inline-grid;
-        position: absolute;
-    }
-    a {
-        font-size: 13px;
-        color: #000000 !important;
-    }
-    input[type="checkbox"] {
-        visibility: hidden;
-    }
-    label {
-        cursor: pointer;
-    }
-    input[type="checkbox"] + label:before {
-        border: 1px solid #0067a0;
-        content: "\00a0";
-        display: inline-block;
-        font: 16px/1em sans-serif;
-        height: 16px;
-        margin-right: 10px;
-        vertical-align: top;
-        width: 16px;
-    }
-    input[type="checkbox"]:checked + label:before {
-        background: #fff;
-        color: #0067a0;
-        content: "\2713";
-        text-align: center;
-    }
-    input[type="checkbox"]:checked + label:after {
-        font-weight: bold;
-    }
-
-    input[type="checkbox"]:focus + label::before {
-        outline: rgb(59, 153, 252) auto 5px;
     }
 </style>
 @section('scripts')
