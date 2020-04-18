@@ -88,6 +88,11 @@
                 <a href="{{ route('capture-audio') }}">record audio</a> or
                 <a href="{{ route('capture-text') }}">type text</a> instead.</p>
 
+                <br>
+                <p><i><span class="form-text text-muted">Video recording 
+		works on Chrome and Firefox browsers, but not on 
+                iOS devices (iPhones or iPads).</span></i></p>
+
             </div>
         </div>
     </div>
