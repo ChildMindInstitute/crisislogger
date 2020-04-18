@@ -5,6 +5,10 @@
 
     <div class="container-fluid">
         <div class="row">
+            @component('components/flash-message')
+            @endcomponent
+        </div>
+        <div class="row">
             <h4>Uploaded video and audio</h4>
             <div class="card col-lg-12">
                 <div class="card-body">
@@ -39,9 +43,11 @@
                                 @else
                                     <div class="kt-portlet " id="{{'transcript-'.$upload->id}}">
                                         <p class="card-title text-center">No word cloud</p>
-
                                     </div>
                                 @endif
+                                <div class="kt-portlet__body--fit-bottom text-right">
+                                    <a class="btn" href="{{route('remove', ['id' => $text->id, 'type' => 'upload'])}}"><i class="fa fa-trash" ></i> Remove</a>
+                                </div>
                             </div>
 							@endforeach
 						@else
@@ -68,6 +74,9 @@
 									<div class="kt-portlet">
 										<p class="text-justify text-ellipsis">{{$text->text}}</p>
 									</div>
+                                    <div class="kt-portlet__body--fit-bottom text-right">
+                                        <a class="btn" href="{{route('remove', ['id' => $text->id, 'type' => 'text'])}}"><i class="fa fa-trash" ></i> Remove</a>
+                                    </div>
 								</div>
 							@endforeach
 

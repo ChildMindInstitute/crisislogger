@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Texts;
+use App\Upload;
 use App\User;
 use Auth;
 use Hash;
+use Illuminate\Http\Request;
 use function GuzzleHttp\Psr7\uri_for;
 
 class UserController extends Controller
@@ -75,5 +78,42 @@ class UserController extends Controller
         {
             \App::abort(400);
         }
+    }
+    public function removeResource(Request $request)
+    {
+        $type = $request->get('type');
+        $id = $request->get('id');
+        try {
+            \DB::beginTransaction();
+            if ($type ==='text')
+            {
+                $text = Texts::findOrFail($id);
+                if ($text)
+                {
+                    $text->forceDelete();
+                }
+            }
+            if ($type === 'upload')
+            {
+                $upload = Upload::findOrFail($id);
+                if ($upload)
+                {
+                    if (count($upload->transcript()->get()))
+                    {
+                        $upload->transcript()->forceDelete();
+                    }
+                    $upload->forceDelete();
+                }
+            }
+            \DB::commit();
+        }
+        catch (\Exception $exception)
+        {
+            \DB::rollBack();
+            \Session::flash('session_error', $exception->getMessage());
+            return redirect('/dashboard');
+        }
+        \Session::flash('session_success', 'Successfully deleted');
+        return redirect('/dashboard');
     }
 }
