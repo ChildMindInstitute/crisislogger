@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\RouteServiceProvider;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class OpenHumansController extends Controller {
 
 
 	public function redirect(Request $request) {
-		return;
+//		return;
 		// get code from openhumans
 		$code = $request->code;
 		$origin = $request->origin;
@@ -43,13 +44,49 @@ class OpenHumansController extends Controller {
 			$response = $response->getBody();
 			$response = json_decode($response);
 
-			// save access token in user
-			User::where('id', Auth::id())->update([
-				'openhumans_access_token' => $response->access_token,
-				'openhumans_refresh_token' => $response->refresh_token,
-			]);
-            \Session::flash('authorization_success', 'Successfully authorized');
-            return view('pages.index');
+			return $this->getUserData($response->access_token, $response->refresh_token);
+
+		} else {
+			\Session::flash('authorization_success', 'Something went wrong, please try again later');
+			return view('pages.index');
+		}
+
+	}
+
+	public function getUserData($access_token, $refresh_token) {
+		$client = new \GuzzleHttp\Client();
+		$response = $client->request('GET', 'https://www.openhumans.org/api/direct-sharing/project/exchange-member/?access_token=' . $access_token);
+
+		if ($response->getStatusCode() == 200) {
+			$response = $response->getBody();
+			$response = json_decode($response);
+			$openhumans_project_member_id = $response->project_member_id;
+
+			// get user is registered or not
+			$user = User::where('openhumans_project_member_id', $openhumans_project_member_id)->first();
+
+			if ($user === null) {
+				// create user
+				$user = new User();
+				$user->openhumans_project_member_id = $openhumans_project_member_id;
+				$user->openhumans_access_token = $access_token;
+				$user->openhumans_refresh_token = $refresh_token;
+
+				$user->save();
+				Auth::login($user);
+			} else {
+				// update existing user
+				$user->update([
+					'openhumans_project_member_id' => $openhumans_project_member_id,
+					'openhumans_access_token' => $access_token,
+					'openhumans_refresh_token' => $refresh_token,
+				]);
+				Auth::login($user);
+			}
+
+			\Session::flash('authorization_success', 'Successfully authorized');
+//			return view('pages.index');
+			return redirect(RouteServiceProvider::HOME);
 		} else {
 			\Session::flash('authorization_success', 'Something went wrong, please try again later');
 			return view('pages.index');
