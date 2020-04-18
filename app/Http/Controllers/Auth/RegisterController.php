@@ -55,8 +55,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['nullable', 'string', 'max:255'],
-            'email' => ['required', 'string', 'unique:users', 'email', 'max:255'],  //we don't do a email validation this step.
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['nullable', 'string', 'unique:users', 'email', 'max:255'],  //we don't do a email validation this step.
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
             'referral_code' => ['nullable', 'string', 'max:255'],
             'filename' => ['nullable', 'string'],
         ]);
@@ -74,7 +74,7 @@ class RegisterController extends Controller
         $user = new User();
         $user->name = !isset($data['name']) ? 'unnamed': $data['name'];
         $user->email = $data['email'];
-        $user->password = Hash::make($data['password']);
+          $user->password = $data['password'] == null ? null : Hash::make($data['password']);
         if (isset($data['referral_code']))
         {
             $user->referral_code = $data['referral_code'];
@@ -110,11 +110,20 @@ class RegisterController extends Controller
                 session()->forget('text_id');
             }
         }
-        if (session()->has('need-to-question-air') && !isset($data['referral_code']))
-        {
-            session()->forget('need-to-question-air');
-            $this->redirectTo = '/questionnaire';
+
+        if (isset($data['referral_code'])) {
+            session()->put('referral_code', $data['referral_code']);
         }
+        session()->put('registered', $user->id);
+
+//      if (session()->has('need-to-question-air') && !isset($data['referral_code']))
+//        {
+//            session()->forget('need-to-question-air');
+//            $this->redirectTo = '/questionnaire';
+//        }
+
+        $this->redirectTo = '/openhumans/authenticate';
+
         return $user;
     }
 }
