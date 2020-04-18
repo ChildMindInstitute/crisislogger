@@ -122,6 +122,7 @@ class UserController extends Controller
         $id = $request->get('id');
         $type = $request->get('type');
         $status = $request->get('status');
+        $contentType = $request->get('contentType');
         try {
             if ($type === 'text')
             {
@@ -129,7 +130,13 @@ class UserController extends Controller
                 if ($text)
                 {
                     \DB::beginTransaction();
-                    $text->contribute_to_science = $status;
+                    if ($contentType ==='contribute')
+                    {
+                        $text->contribute_to_science = $status;
+                    }
+                    else {
+                        $text->share = $status;
+                    }
                     $text->update();
                     \DB::commit();
                 }
@@ -140,7 +147,13 @@ class UserController extends Controller
                 if ($upload)
                 {
                     \DB::beginTransaction();
-                    $upload->contribute_to_science = $status;
+                    if ($contentType ==='contribute')
+                    {
+                        $upload->contribute_to_science = $status;
+                   }
+                    else {
+                        $upload->share = $status;
+                    }
                     $upload->update();
                     \DB::commit();
                 }

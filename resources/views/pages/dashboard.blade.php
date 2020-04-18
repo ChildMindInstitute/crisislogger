@@ -48,9 +48,13 @@
                                 <div class="kt-portlet__body--fit-bottom   remove-btn">
                                     <div class="form-group form-check float-left mb-0">
                                         <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->contribute_to_science}}" {{$upload->contribute_to_science?'checked': ''}}  id="contribute-upload-{{$upload->id}}">
-                                        <label class="form-check-label" for="contribute">Contribute to science</label>
+                                        <label class="form-check-label" for="contribute">Share?</label>
                                     </div>
-                                    <a class="float-right" href="{{route('remove', ['id' => $upload->id, 'type' => 'upload'])}}" ><i class="fa fa-trash" ></i> Remove</a>
+                                    <div class="form-group form-check float-left mb-0">
+                                        <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->share}}"   {{$upload->share?'checked': ''}}  id="share-text-{{$text->id}}">
+                                        <label class="form-check-label text-primary" for="contribute">Public?</label>
+                                    </div>
+                                    <a class="remove-resource" href="#" id="text-{{$text->id}}" ><i class="fa fa-trash" ></i> Delete?</a>
                                 </div>
                             </div>
 							@endforeach
@@ -78,12 +82,16 @@
 									<div class="kt-portlet">
 										<p class="text-justify text-ellipsis">{{$text->text}}</p>
 									</div>
-                                    <div class="kt-portlet__body--fit-bottom">
+                                    <div class="kt-portlet__body--fit-bottom" style="display: inline-grid">
                                         <div class="form-group form-check float-left mb-0">
                                             <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$text->contribute_to_science}}"   {{$text->contribute_to_science?'checked': ''}}  id="contribute-text-{{$text->id}}">
-                                            <label class="form-check-label" for="contribute">Contribute to science</label>
+                                            <label class="form-check-label text-primary" for="contribute">Science?</label>
                                         </div>
-                                        <a class="float-right" href="{{route('remove', ['id' => $text->id, 'type' => 'text'])}}"><i class="fa fa-trash" ></i> Remove</a>
+                                        <div class="form-group form-check float-left mb-0">
+                                            <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$text->share}}"   {{$text->share?'checked': ''}}  id="share-text-{{$text->id}}">
+                                            <label class="form-check-label text-primary" for="contribute">Public?</label>
+                                        </div>
+                                        <a class="remove-resource" href="#" id="text-{{$text->id}}"><i class="fa fa-trash" ></i> Delete?</a>
                                     </div>
 								</div>
 							@endforeach
@@ -106,9 +114,30 @@
         left: 0;
         bottom: -50px;
         padding: 15px;
+        display: inline-grid;
+    }
+    a {
+        font-size: 13px;
     }
 </style>
 @section('scripts')
+    <script type="text/javascript">
+        function removeResourece(id, type) {
+            swal.fire(
+                {
+                    text: 'Are you sure you want to delete this?',
+                    confirmButtonText:  'Yes' ,
+                    showCancelButton: true,
+                    cancelButtonText:  'Cancel' ,
+                }
+            ).then(result => {
+                if(result.value)
+                {
+                    window.location.href = '/remove?id='+id+'&type='+type
+                }
+            })
+        }
+    </script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
     <script src="{{ asset('js/pages/word-clouds.js') }}?time={{ time() }}"></script>

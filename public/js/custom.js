@@ -21,15 +21,21 @@ $(document).ready(function(){
         $id = $id.split('-');
         let resource_id = $id[$id.length -1];
         let  $type = $id[$id.length -2];
+        let  $contentType = $id['0'];
         if ($(this).is(':checked'))
         {
             swal.fire({
-                text: 'Are you sure to  make it public ?'
+                title: ($contentType ==='contribute'? 'Are you sure you want to contribute this for science?': 'Are you sure you want to share this publicly?'),
+                text: ($contentType === 'contribute'?' If Yes, you are only giving permission for (1) your data to be stored by our team, and (2) to be contacted before its use in future research.':
+                        'If Public, the Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If Private, your story will not be publicly shared in any form.'),
+                showCancelButton: true,
+                confirmButtonText:  $contentType === 'contribute' ? 'Contribute to science' : 'Public',
+                cancelButtonText:  $contentType === 'contribute' ? 'Do not contribute' : 'Private',
             })
                 .then(result => {
                     if (result.value)
                     {
-                        const data =  { id: resource_id, type: $type, status:  1};
+                        const data =  { id: resource_id, type: $type, status:  1, contentType: $contentType};
                         axios.put('/api/update-resource-status', data)
                             .then(({data}) => {
                                 window.location.href = data.url
@@ -40,17 +46,25 @@ $(document).ready(function(){
                                     text: "Something went wrong, please try again later"
                                 })
                             })
+                    }
+                    else {
+                        $(this).prop('checked', false)
                     }
                 })
         }
         else {
             swal.fire({
-                text: 'Are you sure to  make it private ?'
+                title: ($contentType ==='contribute'? 'Are you sure you do not want to contribute this for science? ': 'Are you sure you want to make this private?'),
+                text: ($contentType ==='contribute'? 'Contributing to science means that you are only giving permission for (1) your data to be stored by our team, and (2) to be contacted before its use in future research.':
+                    'If Public, the Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If Private, your story will not be publicly shared in any form.'),
+                confirmButtonText:  $contentType === 'contribute' ? 'Do not contribute' : 'Private',
+                showCancelButton: true,
+                cancelButtonText:  $contentType === 'contribute' ? 'Contribute to science' : 'Public',
             })
                 .then(result => {
                     if (result.value)
                     {
-                        const data =  { id: resource_id, type: $type, status: 0};
+                        const data =  { id: resource_id, type: $type, status:  0, contentType: $contentType};
                         axios.put('/api/update-resource-status', data)
                             .then(({data}) => {
                                 window.location.href = data.url
@@ -62,7 +76,28 @@ $(document).ready(function(){
                                 })
                             })
                     }
+                    else {
+                        $(this).prop('checked', true)
+                    }
                 })
         }
     });
+    $('.remove-resource').on('click', function (e) {
+        e.preventDefault();
+        let id = $(this).attr('id');
+        id = id.split('-');
+        let type = id[0];
+        let contentId = id[1];
+        swal.fire({
+            text: 'Are you sure you want to delete this?',
+            confirmButtonText: 'Yes',
+            showCancelButton: true,
+            cancelButtonText:  'Cancel',
+        })
+            .then(result => {
+                if (result.value) {
+                    window.location.href = '/remove?id='+contentId+'&type='+type;
+                }
+            });
+    })
 });
