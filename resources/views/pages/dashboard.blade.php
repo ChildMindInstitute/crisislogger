@@ -103,9 +103,9 @@
     .remove-btn {
         height: 100px;
         width: 100%;
-        position: absolute;
         left: 0;
         bottom: -50px;
+        padding: 15px;
     }
 </style>
 @section('scripts')
