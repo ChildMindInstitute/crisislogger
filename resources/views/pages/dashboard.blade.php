@@ -54,7 +54,7 @@
                                         <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->share}}"   {{$upload->share?'checked': ''}}  id="share-text-{{$text->id}}">
                                         <label class="form-check-label text-primary" for="contribute">Public?</label>
                                     </div>
-                                    <a class="remove-resource" href="#" id="text-{{$text->id}}" ><i class="fa fa-trash" ></i> Delete?</a>
+                                    <a class="remove-resource" href="#" id="upload-{{$upload->id}}" ><i class="fa fa-trash" ></i> Delete?</a>
                                 </div>
                             </div>
 							@endforeach
