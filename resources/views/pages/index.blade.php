@@ -8,13 +8,14 @@
         <img src="{{ asset('media/photos/crisislogger-banner-plus-logos-4.png') }}" alt="">
         <div class="text-center">
    	    <br>
-            <h1 class="display-4">Please tell us how you're feeling during this Covid-19 crisis</h1>
+            <h1 class="display-4">We want to hear your thoughts and feelings during the Covid-19 crisis</h1>
         </div>
 
 	<br>
         <div class="text-center">
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
-            <a href="{{ route('login') }}" class="btn-outline-primary btn btn-wide btn-lg">Login</a>
+{{--            <a href="{{ route('login') }}" class="btn-outline-primary btn btn-wide btn-lg">Login</a>--}}
+            <a href="{{ route('openhumans-authenticate') }}" class="btn-outline-primary btn btn-wide btn-lg">Login</a>
         </div>
 
 	<br>

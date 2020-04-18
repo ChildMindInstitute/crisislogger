@@ -95,7 +95,7 @@ Route::middleware('auth')->group(function () {
 Auth::routes();
 
 
-Route::get('openhumans/authenticate', 'OpenHumansController@authenticate');
+Route::get('openhumans/authenticate', 'OpenHumansController@authenticate')->name('openhumans-authenticate');
 Route::get('openhumans/redirect', 'OpenHumansController@redirect');
 Route::get('openhumans/refreshToken', 'OpenHumansController@refreshToken');
 Route::get('openhumans/getProjectMembers', 'OpenHumansController@getProjectMembers');
