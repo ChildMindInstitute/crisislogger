@@ -46,7 +46,7 @@
                                     </div>
                                 @endif
                                 <div class="kt-portlet__body--fit-bottom text-right">
-                                    <a class="btn" href="{{route('remove', ['id' => $text->id, 'type' => 'upload'])}}"><i class="fa fa-trash" ></i> Remove</a>
+                                    <a class="btn" href="{{route('remove', ['id' => $upload->id, 'type' => 'upload'])}}"><i class="fa fa-trash" ></i> Remove</a>
                                 </div>
                             </div>
 							@endforeach
