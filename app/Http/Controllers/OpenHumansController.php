@@ -20,6 +20,7 @@ class OpenHumansController extends Controller {
 
 
 	public function redirect(Request $request) {
+		return;
 		// get code from openhumans
 		$code = $request->code;
 		$origin = $request->origin;

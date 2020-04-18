@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <p><b>Please share your fears, frustrations, and needs,
+                <p><b>Please share your fears, frustrations, needs, and hopes,
                 and what is helping you get through this crisis.</b>
                 You will be able to save your text for private use
                 or share it publicly, but                

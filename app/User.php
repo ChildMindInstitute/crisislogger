@@ -12,6 +12,7 @@ use Laravel\Passport\HasApiTokens;
  * Class User
  * @package App
  * @mixin Eloquent
+ * @property string $referral_code
  */
 class User extends Authenticatable
 {

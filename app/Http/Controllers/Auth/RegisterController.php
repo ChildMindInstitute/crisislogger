@@ -57,6 +57,7 @@ class RegisterController extends Controller
             'name' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'unique:users', 'email', 'max:255'],  //we don't do a email validation this step.
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'referral_code' => ['nullable', 'string', 'max:255'],
             'filename' => ['nullable', 'string'],
         ]);
     }
@@ -74,6 +75,10 @@ class RegisterController extends Controller
         $user->name = !isset($data['name']) ? 'unnamed': $data['name'];
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
+        if (isset($data['referral_code']))
+        {
+            $user->referral_code = $data['referral_code'];
+        }
         $user->save();
         if (session()->has('transaction_id'))
         {
@@ -105,7 +110,7 @@ class RegisterController extends Controller
                 session()->forget('text_id');
             }
         }
-        if (session()->has('need-to-question-air'))
+        if (session()->has('need-to-question-air') && !isset($data['referral_code']))
         {
             session()->forget('need-to-question-air');
             $this->redirectTo = '/questionnaire';

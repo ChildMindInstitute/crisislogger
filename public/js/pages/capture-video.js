@@ -41,17 +41,12 @@ function requestVideo() {
         document.getElementById('error-id').remove();
     }
     spinner.classList.remove('d-none');
-    
+
     let constraints = {
         audio: true,
         video: {
-            advanced: [
-                { width: 320 },
-                { width: { min: 320 } },
-                { frameRate: 15 },
-                { width: { max: 320 } },
-                { facingMode: "user" }
-            ]
+            width: {min: '100%', ideal: 320},
+            height: {min: 240, ideal: 240},
         }
     };
 

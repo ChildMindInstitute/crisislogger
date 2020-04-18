@@ -74,7 +74,7 @@
 
 		<br>
 
-                <p><b>Please share your fears, frustrations, and needs,
+                <p><b>Please share your fears, frustrations, needs, and hopes,
                 and what is helping you get through this crisis.</b>
                 Your recording can be up to 5 minutes long.
                 You will be able to save the recording for private use
@@ -87,6 +87,12 @@
                 <p>If you would prefer, you can
                 <a href="{{ route('capture-audio') }}">record audio</a> or
                 <a href="{{ route('capture-text') }}">type text</a> instead.</p>
+
+                <br>
+                <p><i><span class="form-text text-muted">Technical details:
+		Video recording works on Chrome and Firefox browsers, but not 
+                on iOS devices. Resulting video files 
+		are 320w x 240h at 15 frames per second.</span></i></p>
 
             </div>
         </div>
