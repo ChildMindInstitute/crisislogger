@@ -38,7 +38,7 @@
                     </div>
                     <div class="kt-login__actions">
                         <button id="kt_login_signin_submit" class="btn btn-brand btn-elevate kt-login__btn-primary">Sign In</button>
-                        <a href="/openhumans/authenticate" id="kt_login_signin_submit" class="btn btn-brand btn-elevate kt-login__btn-primary" style="vertical-align: middle">Sign In With OpenHumans</a>
+                        <a href="/openhumans/authenticate" id="kt_login_signin_submit" class="btn btn-brand btn-elevate kt-login__btn-primary" style="vertical-align: middle"><span>Sign In With OpenHumans</span></a>
                     </div>
                 </form>
             </div>
