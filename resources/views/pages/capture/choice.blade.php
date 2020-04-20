@@ -29,6 +29,13 @@
                     face at home.</p>
                 @endcomponent
 ​
+                @component('components.voice', ['voice' => 'Student'])
+                    <p>Students have to adapt to a wide variety of new
+                    challenges such as shifting to online classes,
+                    managing internet bandwidth issues, pausing research
+                    projects, and caring for younger siblings and loved ones.</p>
+                @endcomponent
+​
                 @component('components.voice', ['voice' => 'Health worker'])
                     <p>Health workers are on the front line of this crisis,
                     and risk their own health and those they come
@@ -44,13 +51,6 @@
                     This isolation and concern for their health
                     and for those they may have come into contact with
                     can leave them feeling lonely and frightened.</p>
-                @endcomponent
-​
-                @component('components.voice', ['voice' => 'Student'])
-                    <p>Students have to adapt to a wide variety of new
-                    challenges such as shifting to online classes,
-                    managing internet bandwidth issues, pausing research
-                    projects, and caring for younger siblings and loved ones.</p>
                 @endcomponent
 ​
                 @component('components.voice', ['voice' => 'Other'])
