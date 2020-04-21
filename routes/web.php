@@ -94,8 +94,10 @@ Route::middleware('auth')->group(function () {
 
 Auth::routes();
 
+// override login
+//Route::get('/login', 'OpenHumansController@login')->name('login');
 
-Route::get('openhumans/authenticate', 'OpenHumansController@authenticate');
+Route::get('openhumans/authenticate', 'OpenHumansController@authenticate')->name('openhumans-authenticate');
 Route::get('openhumans/redirect', 'OpenHumansController@redirect');
 Route::get('openhumans/refreshToken', 'OpenHumansController@refreshToken');
 Route::get('openhumans/getProjectMembers', 'OpenHumansController@getProjectMembers');
@@ -105,9 +107,3 @@ Route::get('/getCountries', 'CountryController@getCountries');
 Route::get('/getStates/{id}', 'CountryController@getStates');
 Route::get('/getCities/{id}/{name}', 'CountryController@getCities');
 
-
-Route::get('sadfsdfad',function(){
- return \Auth::user();
-#return Upload::where('user_id', 1)->get();
-
-});

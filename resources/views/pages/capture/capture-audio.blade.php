@@ -7,7 +7,7 @@
         <div class="kt-portlet">
             <div class="kt-portlet__body">
 
-                <center><h1 class="display-4">Capture your thoughts and feelings in audio</h1></center>
+                <center><h1 class="display-4">Share your thoughts and feelings in audio</h1></center>
 
                 <div>
                     <div class="recorder_wrapper">

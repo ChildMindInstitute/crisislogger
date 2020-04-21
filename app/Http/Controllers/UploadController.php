@@ -26,7 +26,6 @@ class UploadController extends Controller
      */
     public function upload(UploadRequest $request){
         $file_extension = $request->file('data')->guessExtension();
-
         $file = Storage::disk('gcs')->putFile('', $request->file('data'));
 
         // Store the file name in the session in case the user decides to sign up.
@@ -60,13 +59,13 @@ class UploadController extends Controller
             session()->put('need-to-question-air', 1);
         }
         // If the are contributing to science, we will transcribe the message and save it
-        if($upload->contribute_to_science){
+//        if($upload->contribute_to_science){
             if($file_extension == 'wav' || $file_extension == 'mp3'){
                 $transcription = Transcription::audio($upload);
             } else {
                 $transcription = Transcription::video($upload);
             }
-        }
+//        }
         $response = [
             'message' => 'File uploaded successfully.',
             'file' => $file,

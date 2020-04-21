@@ -6,7 +6,7 @@
     <div class="container">
         <div class="kt-portlet">
             <div class="kt-portlet__body">
-                <center><h1 class="display-4">How would you like to capture your thoughts?</h1></center>
+                <center><h1 class="display-4">How would you like to share your thoughts?</h1></center>
                 <div class="row text-center">
                     <div class="col-md-4 mb-4" >
                         <a href="{{ route('capture-audio') }}?voice={{ $_GET['voice'] ?? '' }}" class="btn btn-primary btn-wide btn-lg">Audio</a>
