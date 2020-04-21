@@ -40,14 +40,15 @@
                         </span>
                         @enderror
                     </div>
+
                     <div class="form-group">
                         <label>Confirm Password<span class="text-danger">*</span></label>
                         <input type="password" class="form-control"  name="password_confirmation" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Referral Code </label>
-                        <input type="text" class="form-control @error('referral_code') is-invalid @enderror" placeholder="Referral Code" value="{{old('referral_code')}}" aria-describedby="referralCodeHelp" name="referral_code">
+                        <label>Referral Code (if you were given one)</label>
+                        <input type="text" class="form-control @error('referral_code') is-invalid @enderror" placeholder="" value="{{old('referral_code')}}" aria-describedby="referralCodeHelp" name="referral_code">
                         <span class="form-text text-muted">Please enter the referral code if you have</span>
                         @error('referral_code')
                         <span class="invalid-feedback" role="alert">
@@ -57,6 +58,14 @@
                     </div>
 
                     <div class="form-group">
+		    	After clicking "Submit" below, 
+			you will be taken to a page to sign up with
+			our partner Open Humans, who will store your recording.
+			When you get there, create an account 
+			("Join now!" button in the upper right),
+			authorize the CrisisLogger Open Humans project,
+			and you will be brought back to this website.
+			<br><br>
                         <button type="submit" class="btn btn-success">Submit</button>
                         <a href="{{ route('home') }}" class="btn btn-link">Skip</a>
                     </div>

@@ -116,13 +116,13 @@ class RegisterController extends Controller
         }
         session()->put('registered', $user->id);
 
-        if (session()->has('need-to-question-air') && !isset($data['referral_code']))
+      if (session()->has('need-to-question-air') && !isset($data['referral_code']))
         {
             session()->forget('need-to-question-air');
             $this->redirectTo = '/questionnaire';
         }
 
-//      $this->redirectTo = '/openhumans/authenticate';
+//        $this->redirectTo = '/openhumans/authenticate';
 
         return $user;
     }

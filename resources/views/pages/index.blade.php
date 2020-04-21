@@ -8,7 +8,7 @@
         <img src="{{ asset('media/photos/crisislogger-banner-plus-logos-4.png') }}" alt="">
         <div class="text-center">
    	    <br>
-            <h1 class="display-4">We want to hear your thoughts and feelings during the Covid-19 crisis</h1>
+            <h1 class="display-4">Please tell us how you're feeling during this Covid-19 crisis</h1>
         </div>
 
 	<br>
@@ -26,9 +26,10 @@
       	We’re concerned about the health of our loved ones, 
 	grateful for the medical heroes and essential workers 
 	in our communities, and trying our best to adapt to this 
-	new normal — but the ongoing stress and uncertainty is 
-	affecting us all. We want to be optimistic, 
-	but it’s hard not to worry about what the future holds.</p>
+	new normal. We want to be optimistic, 
+	but the ongoing stress and uncertainty is 
+	affecting us all, and it’s hard not to worry about what 
+	the future holds.</p>
         
 	<p>The Child Mind Institute and <i>Parents</i> magazine 
 	are here to listen and learn from your experience. 
