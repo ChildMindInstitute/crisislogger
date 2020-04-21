@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" class="form-control"  value="{{old('password')}}"  aria-describedby="nameHelp" name="name" placeholder="Enter full name" required>
-                        <span class="form-text text-muted">Your full name.</span>
+                        <span class="form-text text-muted"></span>
                     </div>
 
                     <div class="form-group">
