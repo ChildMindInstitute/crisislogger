@@ -15,7 +15,7 @@
 
                     <div class="form-group">
                         <label>Email address<span class="text-danger">*</span></label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" aria-describedby="emailHelp" name="email" placeholder="Enter email" required>
                         <span class="form-text text-muted">We'll never share your email with anyone else.</span>
                         @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -26,13 +26,13 @@
 
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control"  value="{{old('password')}}"  aria-describedby="nameHelp" name="name" placeholder="Enter full name">
-                        <span class="form-text text-muted"></span>
+                        <input type="text" class="form-control"  value="{{old('password')}}"  aria-describedby="nameHelp" name="name" placeholder="Enter full name" required>
+                        <span class="form-text text-muted">Your full name.</span>
                     </div>
 
                     <div class="form-group">
                         <label>Password<span class="text-danger">*</span></label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" aria-describedby="passwordHelp" name="password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" aria-describedby="passwordHelp" name="password" required>
                         <span class="form-text text-muted">Must be at least 8 characters.</span>
                         @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -40,15 +40,14 @@
                         </span>
                         @enderror
                     </div>
-
                     <div class="form-group">
                         <label>Confirm Password<span class="text-danger">*</span></label>
-                        <input type="password" class="form-control"  name="password_confirmation">
+                        <input type="password" class="form-control"  name="password_confirmation" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Referral Code (if you were given one)</label>
-                        <input type="text" class="form-control @error('referral_code') is-invalid @enderror" placeholder="" value="{{old('referral_code')}}" aria-describedby="referralCodeHelp" name="referral_code">
+                        <label>Referral Code </label>
+                        <input type="text" class="form-control @error('referral_code') is-invalid @enderror" placeholder="Referral Code" value="{{old('referral_code')}}" aria-describedby="referralCodeHelp" name="referral_code">
                         <span class="form-text text-muted">Please enter the referral code if you have</span>
                         @error('referral_code')
                         <span class="invalid-feedback" role="alert">
@@ -58,14 +57,6 @@
                     </div>
 
                     <div class="form-group">
-		    	After clicking "Submit" below, 
-			you will be taken to a page to sign up with
-			our partner Open Humans, who will store your recording.
-			When you get there, create an account 
-			("Join now!" button in the upper right),
-			authorize the CrisisLogger Open Humans project,
-			and you will be brought back to this website.
-			<br><br>
                         <button type="submit" class="btn btn-success">Submit</button>
                         <a href="{{ route('home') }}" class="btn btn-link">Skip</a>
                     </div>

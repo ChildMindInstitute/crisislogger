@@ -95,7 +95,7 @@ Route::middleware('auth')->group(function () {
 Auth::routes();
 
 // override login
-Route::get('/login', 'OpenHumansController@login')->name('login');
+//Route::get('/login', 'OpenHumansController@login')->name('login');
 
 Route::get('openhumans/authenticate', 'OpenHumansController@authenticate')->name('openhumans-authenticate');
 Route::get('openhumans/redirect', 'OpenHumansController@redirect');
