@@ -3,7 +3,7 @@
 @section('dashboard-active', 'kt-menu__item--active')
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <div class="row">
             @component('components/flash-message')
             @endcomponent
