@@ -289,11 +289,20 @@ footer img {
         margin-right: unset;
         position: relative;
     }
+    .kt-footer {
+        position: relative !important;
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+    }
 }
 .kt-footer {
     width: 100%;
-    bottom: 0px;
-    position: fixed;
+    bottom: 0;
     margin-top: 15px;
+    padding-top: 39px;
+    border-top: 1px solid #c2bdba;
+}
+.third-party-logos {
+    max-width: 110px;
 }
 /*# sourceMappingURL=main.css.map */
