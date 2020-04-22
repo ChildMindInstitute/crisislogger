@@ -51,9 +51,6 @@
                                 </label>
                         </div>
                         <span class="form-text text-muted">If you decide to contribute your recording/text to science, you are only giving permission for (1) your data to be stored by our team, and (2) to be contacted before its use in future research.</span>
-
-<!--Before any research is conducted on your contribution, you will be contacted by our team to obtain permissions.</span-->
-
                 <br>
 
                 <div class="modal-footer">
