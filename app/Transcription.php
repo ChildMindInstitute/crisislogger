@@ -42,76 +42,83 @@ class Transcription extends Model
         $content = Storage::disk('gcs')->get($upload->name);
 
         # set string as audio content
-        $audio = (new RecognitionAudio())
-#            ->setContent($content);
-        ->setUri('gs://crisislogger_uploads/'.$upload->name);
-        # The audio file's encoding, sample rate and language
-        $config = new RecognitionConfig([
-            // 'encoding' => AudioEncoding::LINEAR16,
-            // 'sample_rate_hertz' => 44100,
- #           'language_code' => 'en-US'
-        'encoding'=>AudioEncoding::LINEAR16,
-        'language_code'=>'en-US',
-#        'sample_rate_hertz'=> 44100,
-        'audio_channel_count'=> $audio_channel_count
-       ]);
+        try {
+            $audio = (new RecognitionAudio())
+            #            ->setContent($content);
+                ->setUri('gs://crisislogger_uploads/'.$upload->name);
+            # The audio file's encoding, sample rate and language
+            $config = new RecognitionConfig([
+                // 'encoding' => AudioEncoding::LINEAR16,
+                // 'sample_rate_hertz' => 44100,
+                #           'language_code' => 'en-US'
+                'encoding'=>AudioEncoding::LINEAR16,
+                'language_code'=>'en-US',
+                #        'sample_rate_hertz'=> 44100,
+                'audio_channel_count'=> $audio_channel_count
+            ]);
 
-        # Instantiates a client
-        $client = new SpeechClient(
-        [
-            'credentials' => config('app.google_credentials'),
-        ]
-        );
+            # Instantiates a client
+            $client = new SpeechClient(
+                [
+                    'credentials' => config('app.google_credentials'),
+                ]
+            );
 
-        # Detects speech in the audio file
-       # $google_response = $client->recognize($config, $audio);
-
-        # Print most likely transcription
-        #$response = '';
-        #foreach ($google_response->getResults() as $result) {
-        #    $alternatives = $result->getAlternatives();
-        #    $mostLikely = $alternatives[0];
-        #    $transcript = $mostLikely->getTranscript();
-        #    $response .= $transcript;
-        #}
-
-        $operation = $client->longRunningRecognize($config, $audio);
-        $operation->pollUntilComplete();
-
-        $response = '';
-        if ($operation->operationSucceeded()) {
-            $google_response = $operation->getResult();
+            # Detects speech in the audio file
+            # $google_response = $client->recognize($config, $audio);
 
             # Print most likely transcription
-            foreach ($google_response->getResults() as $result) {
-                $alternatives = $result->getAlternatives();
-                $mostLikely = $alternatives[0];
-                $transcript = $mostLikely->getTranscript();
-                $response .= $transcript;
-            }
-        }
-        else {
-            print_r($operation->getError());
-        }
-        $client->close();
+            #$response = '';
+            #foreach ($google_response->getResults() as $result) {
+            #    $alternatives = $result->getAlternatives();
+            #    $mostLikely = $alternatives[0];
+            #    $transcript = $mostLikely->getTranscript();
+            #    $response .= $transcript;
+            #}
 
-        // If not empty, save into transcriptions table
-        $upload_id =  $upload->id;
-        if (session()->has('upload_id'))
-        {
-            $upload_id = session()->get('upload_id');
-            session()->forget('upload_id');
+            $operation = $client->longRunningRecognize($config, $audio);
+            $operation->pollUntilComplete();
+
+            $response = '';
+            if ($operation->operationSucceeded()) {
+                $google_response = $operation->getResult();
+
+                # Print most likely transcription
+                foreach ($google_response->getResults() as $result) {
+                    $alternatives = $result->getAlternatives();
+                    $mostLikely = $alternatives[0];
+                    $transcript = $mostLikely->getTranscript();
+                    $response .= $transcript;
+                }
+            }
+            else {
+                print_r($operation->getError());
+            }
+            $client->close();
+
+            // If not empty, save into transcriptions table
+            $upload_id =  $upload->id;
+            if (session()->has('upload_id'))
+            {
+                $upload_id = session()->get('upload_id');
+                session()->forget('upload_id');
+            }
+            $transcription = new Transcription();
+            $transcription->upload_id = $upload_id;
+            $transcription->user_id = Auth::check()? Auth::user()->getKey(): null;
+            $transcription->text = $response;
+            $transcription->save();
+            if (!Auth::check())
+            {
+                session()->put('transaction_id', $transcription->getKey());
+            }
+            return $transcription;
         }
-        $transcription = new Transcription();
-        $transcription->upload_id = $upload_id;
-        $transcription->user_id = Auth::check()? Auth::user()->getKey(): null;
-        $transcription->text = $response;
-        $transcription->save();
-        if (!Auth::check())
+        catch (\Exception $exception)
         {
-            session()->put('transaction_id', $transcription->getKey());
+            \Log::error('Video transcript error: '.$exception->getMessage());
+            return null;
         }
-        return $transcription;
     }
 
     /**
