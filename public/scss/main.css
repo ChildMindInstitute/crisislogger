@@ -303,6 +303,7 @@ footer img {
     }
     .kt-footer  p {
         height: 30px;
+        margin-bottom: 15px !important;
     }
 }
 .kt-footer {
@@ -310,6 +311,9 @@ footer img {
     bottom: 0;
     padding: 0;
     border-top: 1px solid #c2bdba;
+}
+.kt-footer  p {
+    margin-bottom: 5px;
 }
 footer {
     padding-top: 0;
@@ -324,7 +328,7 @@ html {
     position: relative;
 }
 #kt_content, #content-area {
-    min-height: 100vh;
+    min-height: 115vh;
 }
 body{
 }
