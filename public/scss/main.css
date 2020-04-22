@@ -289,20 +289,39 @@ footer img {
         margin-right: unset;
         position: relative;
     }
+    #content-area {
+        min-height: 180vh !important;
+    }
     .kt-footer {
-        position: relative !important;
         margin-top: 0px !important;
         padding-top: 0px !important;
+        position: relative !important;
+    }
+    body{
+        margin-bottom: 0  !important;
+    }
+    #content-privacy{
+        margin-top: 30px;
     }
 }
 .kt-footer {
     width: 100%;
     bottom: 0;
+    position: absolute;
     margin-top: 15px;
     padding-top: 39px;
     border-top: 1px solid #c2bdba;
 }
 .third-party-logos {
-    max-width: 110px;
+    max-width: 100%;
+}
+html {
+    position: relative;
+}
+#content-area {
+    min-height: 140vh;
+}
+body{
+    margin-bottom: 150px;
 }
 /*# sourceMappingURL=main.css.map */
