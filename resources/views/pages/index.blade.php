@@ -37,14 +37,16 @@
 	including your fears, frustrations, and hopes —
 	as an audio or video recording by clicking the "Share Your Thoughts"
         link above.
+        We greatly appreciate your participation.
 	If you choose to contribute your recording to science,
-	it will help us find the best ways to provide support to families.
-        We greatly appreciate your participation in this important project.</p>
+	it will help us find the best ways to provide support to families.</p>
 
         <p>The Child Mind Institute and <i>Parents</i> Magazine 
 	have partnered with 
-        the National Institute of Mental Health, OpenHumans.org, the CRI in Paris,
-        and Satrajit Ghosh and Sanu Abraham at MIT.</i></p>
+        the National Institute of Mental Health, OpenHumans.org,
+        the CRI - Université de Paris,
+        and Satrajit Ghosh and Sanu Abraham at MIT 
+        on this important research project.</i></p>
 
     </div>
 
