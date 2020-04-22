@@ -9,7 +9,7 @@
         <a href="{{ route('login') }}" class="login-btn text-white btn-lg">Login</a>
         <div class="text-center">
    	    <br>
-            <h1 class="display-4">Please tell us how you're feeling during this Covid-19 crisis</h1>
+            <h1 class="display-4">Please tell us how you're feeling during this COVID-19 crisis</h1>
         </div>
 
 	<br>
