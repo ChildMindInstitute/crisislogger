@@ -303,6 +303,8 @@ footer img {
         height: 30px;
         display: block !important;
         margin-bottom: 15px !important;
+        margin-top: 15px !important;
+        font-size: 16px;
     }
     .admin-footer-padding{
         padding-left: unset !important;
