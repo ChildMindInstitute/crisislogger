@@ -3,7 +3,7 @@
 @section('profile-active', 'kt-menu__item--active')
 @section('content')
 
-    <div class="container">
+    <div class="container kt-portlet">
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div class="kt-portlet">
@@ -101,7 +101,7 @@
                 </div>
             </div>
         </div>
-        <div class="row float-right">
+        <div class="row float-right" style="    margin: 0 auto;">
             <form action="{{route('close-account')}}" method="POST" id="close-account" >
                 @csrf
                 <button  class="btn btn-primary"> Close my account</button>
