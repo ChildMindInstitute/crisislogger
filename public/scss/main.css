@@ -304,12 +304,18 @@ footer img {
         display: block !important;
         margin-bottom: 15px !important;
     }
+    .admin-footer-padding{
+        padding-left: unset !important;
+    }
 }
 .kt-footer {
     width: 100%;
     bottom: 0;
     padding: 0;
     border-top: 1px solid #c2bdba;
+}
+.admin-footer-padding {
+    padding-left: 265px;
 }
 .kt-footer  p {
     margin-bottom: 5px;
