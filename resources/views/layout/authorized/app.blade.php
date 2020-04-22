@@ -52,11 +52,11 @@
                     <!-- end:: Content -->
                 </div>
 
-                @include('layout.authorized.footer')
             </div>
 
         </div>
     </div>
+    @include('layout.authorized.footer')
 
     <script>
         var KTAppOptions = {
