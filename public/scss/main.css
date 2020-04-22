@@ -301,6 +301,7 @@ footer img {
     }
     .kt-footer  p {
         height: 30px;
+        display: block !important;
         margin-bottom: 15px !important;
     }
 }
@@ -312,6 +313,9 @@ footer img {
 }
 .kt-footer  p {
     margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+
 }
 footer {
     padding-top: 0;
