@@ -1,3 +1,4 @@
+
 <script>
     var KTAppOptions = {
         "colors": {
