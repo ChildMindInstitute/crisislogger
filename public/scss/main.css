@@ -293,8 +293,6 @@ footer img {
         min-height: 180vh !important;
     }
     .kt-footer {
-        margin-top: 0px !important;
-        padding-top: 0px !important;
         position: relative !important;
     }
     body{
@@ -303,25 +301,31 @@ footer img {
     #content-privacy{
         margin-top: 30px;
     }
+    .kt-footer  p {
+        height: 30px;
+    }
 }
 .kt-footer {
     width: 100%;
     bottom: 0;
-    position: absolute;
-    margin-top: 15px;
-    padding-top: 39px;
+    padding: 0;
     border-top: 1px solid #c2bdba;
+}
+footer {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 .third-party-logos {
     max-width: 100%;
+    height: 100%;
+    vertical-align: middle;
 }
 html {
     position: relative;
 }
-#content-area {
-    min-height: 140vh;
+#kt_content, #content-area {
+    min-height: 100vh;
 }
 body{
-    margin-bottom: 150px;
 }
 /*# sourceMappingURL=main.css.map */
