@@ -326,7 +326,6 @@ footer img {
 footer {
     padding-top: 0;
     padding-bottom: 0;
-    position: fixed;
     min-height: 80px;
 }
 .third-party-logos {
@@ -343,6 +342,7 @@ footer {
 }
 html {
     position: relative;
+    height: 100px;
 }
 body{
 }
