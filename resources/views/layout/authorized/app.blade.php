@@ -4,7 +4,7 @@
 
     @include('layout.authorized.header-mobile')
 
-    <div class="kt-grid kt-grid--hor kt-grid--root">
+    <div class="kt-grid kt-grid--hor kt-grid--root" >
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
 
             @include('layout.authorized.menu.aside')
@@ -46,7 +46,7 @@
                     <!-- end:: Subheader -->
 
                     <!-- begin:: Content -->
-                    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid" id="content-area">
                         @yield('content')
                     </div>
                     <!-- end:: Content -->

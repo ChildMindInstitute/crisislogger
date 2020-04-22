@@ -279,6 +279,7 @@ footer img {
     margin-top: -62px;
     margin-right: 45px;
     position: relative;
+    text-align: right;
 }
 
 @media only screen and (max-width: 600px) {
@@ -288,9 +289,6 @@ footer img {
         font-size: 12px;
         margin-right: unset;
         position: relative;
-    }
-    #content-area {
-        min-height: 180vh !important;
     }
     .kt-footer {
         position: relative !important;
@@ -318,17 +316,22 @@ footer img {
 footer {
     padding-top: 0;
     padding-bottom: 0;
+    position: fixed;
+    min-height: 80px;
 }
 .third-party-logos {
     max-width: 100%;
     height: 100%;
     vertical-align: middle;
+    min-height: 28px;
+    max-height: 28px !important;
+}
+.third-party-logos-more
+{
+    min-height: 40px;
 }
 html {
     position: relative;
-}
-#kt_content, #content-area {
-    min-height: 115vh;
 }
 body{
 }
