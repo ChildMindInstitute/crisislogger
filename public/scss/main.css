@@ -335,6 +335,7 @@ footer {
     vertical-align: middle;
     min-height: 28px;
     max-height: 28px !important;
+    margin: 0 auto;
 }
 .third-party-logos-more
 {
