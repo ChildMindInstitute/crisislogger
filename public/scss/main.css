@@ -309,6 +309,12 @@ footer img {
     .admin-footer-padding{
         padding-left: unset !important;
     }
+    .footer-row {
+        display: inline-grid;
+    }
+    .third-party-logos {
+        margin: 20px auto !important;
+    }
 }
 .kt-footer {
     width: 100%;
@@ -336,7 +342,7 @@ footer {
     vertical-align: middle;
     min-height: 28px;
     max-height: 28px !important;
-    margin: 0 auto;
+    margin: 5px auto;
 }
 .third-party-logos-more
 {
