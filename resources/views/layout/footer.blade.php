@@ -9,6 +9,7 @@
                 <img class="third-party-logos" src="{{ asset('media/logos/nimh-logo.png') }}" alt="" style="max-height:30px;" />
                 <img class="third-party-logos" src="{{ asset('media/logos/open-humans.png') }}" alt="" style="max-height:30px;" />
                 <img class="third-party-logos"  src="{{ asset('media/logos/CRI.png') }}" alt="" style="min-height: 45px;" />
+                <img class="third-party-logos"  src="{{ asset('media/logos/mcgovern_logo.png') }}" alt="" style="min-height: 50px;margin-top: -5px;" />
             </div>
         </div>
     </div>
