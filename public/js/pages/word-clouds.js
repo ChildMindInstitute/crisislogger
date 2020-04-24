@@ -6,7 +6,7 @@ function wordCloud(selector) {
     width = $('.kt-portlet__body').innerWidth() - 20;
     height = 200;
 
-    var fill = d3.scale.category20();
+    var fill = d3.scale.sqrt();
     //Construct the word cloud's SVG element
     var svg = d3.select(selector).append("svg")
         .attr("width", width)
@@ -23,7 +23,9 @@ function wordCloud(selector) {
         //Entering words
         cloud.enter()
             .append("text")
-            .style("font-family", "Impact")
+            .style("font-style", "Normal")
+            .style("font-family", "sans-serif")
+            .style("color", "#6E6E6E")
             .style("fill", function(d, i) { return fill(i); })
             .attr("text-anchor", "middle")
             .attr('font-size', 1)
@@ -32,8 +34,10 @@ function wordCloud(selector) {
         //Entering and existing words
         cloud
             .transition()
-            .duration(600)
+            .duration(1000)
+
             .style("font-size", function(d) { return d.size + "px"; })
+            .style("color", "#6E6E6E")
             .attr("transform", function(d) {
                 return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
             })
@@ -54,9 +58,9 @@ function wordCloud(selector) {
         update: function(words) {
             d3.layout.cloud().size([width, height])
                 .words(words)
-                .padding(5)
+                .padding(1)
                 .rotate(0)
-                .font("Impact")
+                .font("sans-serif")
                 .fontSize(function(d) { return d.size; })
                 .on("end", draw)
                 .start();
@@ -76,7 +80,7 @@ axios.post('/api/word_cloud', {
             .forEach(function eachKey(key) {
                 words.push({
                     text: key,
-                    size: obj[key] * 14
+                    size: obj[key] *  Math.random() * (30 - 15) + 15
                 });
             });
 
