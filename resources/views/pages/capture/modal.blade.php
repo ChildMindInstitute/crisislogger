@@ -50,7 +50,8 @@
                                     <span></span>
                                 </label>
                         </div>
-                        <span class="form-text text-muted">If you decide to contribute your recording/text to science, you are only giving permission for (1) your data to be stored by our team, and (2) to be contacted before its use in future research.</span>
+                        <span class="form-text text-muted">If you decide to contribute your recording/text to science, you are only giving permission for (1) your data to be stored by our team, and (2) to be contacted before its use in future research (note: usage of recordings for research is limited to those 18 years and older).
+</span>
                 <br>
 
                 <div class="modal-footer">
