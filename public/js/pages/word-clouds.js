@@ -81,10 +81,9 @@ axios.post('/api/word_cloud', {
             });
 
         var portlet_body = document.createElement('div');
-
+        $('#transcript-'+i).find('#spinner').remove();
         portlet_body.classList.add('kt-portlet__body');
         document.getElementById('transcript-'+i).append(portlet_body);
-        $('#transcript-'+i).find('#spinner').remove();
         var myWordCloud = wordCloud(portlet_body);
         myWordCloud.update(words);
     }
