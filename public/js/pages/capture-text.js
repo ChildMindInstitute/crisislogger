@@ -13,6 +13,11 @@ $(function () {
 
         e.preventDefault();
         // Block UI
+        if (!$('#years-old').is(':checked'))
+        {
+            $('#years-old-label').after("<span class='invalid-feedback'>You need to click above checkbox before continue.</span>").show()
+            return false;
+        }
         KTApp.blockPage();
         // Close the form modal
         $('#uploadModal').modal('hide');

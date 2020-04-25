@@ -55,7 +55,7 @@
 
                 <br>
                 <p>
-                    <i><span class="form-text text-muted">Technical details:
+                    <i><span class="form-text text-muted" style="font-size: 14px">Technical details:
                     Audio recording works on Chrome, Firefox, and Safari browsers,
                     but only on Safari in iOS.
                     The resulting audio files are single channel with 44.1 kHz

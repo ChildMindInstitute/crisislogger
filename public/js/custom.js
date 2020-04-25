@@ -114,4 +114,10 @@ $(document).ready(function(){
         console.log('here')
         $(this).find('.modal-content').find('p').remove();
     })
+    $('#terms-btn').click(function () {
+        var scrollingElement = document.getElementById('upload-modal');
+        $(scrollingElement).animate({
+            scrollTop: scrollingElement.scrollHeight
+        }, 500);
+    })
 });

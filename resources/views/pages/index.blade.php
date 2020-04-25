@@ -33,7 +33,7 @@
 	affecting us all, and it’s hard not to worry about what
 	the future holds.</p>
 
-	We are here to listen and learn from your experience.
+	<p>We are here to listen and learn from your experience.
 	We invite you to share your thoughts with us —
 	including your fears, frustrations, and hopes —
 	as an audio or video recording by clicking the "Share Your Thoughts"
@@ -42,14 +42,12 @@
 	If you choose to contribute your recording to science,
 	it will help us find the best ways to provide support to families.</p>
 
-	<p>Thank you!  We greatly appreciate your participation!</p>
-
-        <p>The Child Mind Institute and <i>Parents</i> Magazine 
-	have partnered with 
+        <p>The Child Mind Institute and <i>Parents</i> Magazine
+	have partnered with
         the National Institute of Mental Health, OpenHumans.org,
         the CRI - Université de Paris,
-        and Dr. Satrajit Ghosh and Sanu Abraham at MIT 
-        on this important research project.</i></p>
+        and Satrajit Ghosh and Sanu Abraham at MIT
+        on this important research project.</p>
 
     </div>
 

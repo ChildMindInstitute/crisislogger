@@ -116,6 +116,11 @@ function stopRecording() {
 
         upload.addEventListener('click', async (e) => {
             e.preventDefault();
+            if (!$('#years-old').is(':checked'))
+            {
+                $('#years-old-label').after("<span class='invalid-feedback'>You need to click above checkbox before continue.</span>").show()
+                return false;
+            }
             uploadButtonClicked(blob, filename);
         });
     };
