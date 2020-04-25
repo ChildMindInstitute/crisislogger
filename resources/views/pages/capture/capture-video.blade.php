@@ -93,6 +93,7 @@
 		are 320w x 240h at 15 frames per second.</span></i></p>
 
             </div>
+            </div>
         </div>
     </div>
 

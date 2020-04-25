@@ -36,6 +36,7 @@
                 <a href="{{ route('capture-audio') }}">record audio</a> instead.</p>
 
             </div>
+            </div>
         </div>
     </div>
 
