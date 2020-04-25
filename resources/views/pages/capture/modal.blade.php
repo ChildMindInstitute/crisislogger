@@ -27,7 +27,7 @@
 		</div>
 
                 <div class="form-group">
-                        <p>Will you share publicly?</p>
+                        <p>Would you like to share publicly?</p>
                         <div class="kt-radio-inline">
                             @if(!request()->has('type'))
                                 <label class="kt-radio">
