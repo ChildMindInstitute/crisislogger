@@ -49,8 +49,7 @@
                                     <span></span>
                                 </label>
                         </div>
-                        <span class="form-text text-muted">If Yes -- The Child Mind Institute and its partners may share your text or recording through their websites and social media channels.</span>
-                        <span class="form-text text-muted">If No, your story will not be publicly shared in any form.</span>
+                        <span class="form-text text-muted">If Yes -- The Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If No, your story will not be publicly shared in any form.</span>
                 </div>
 
                 <div class="modal-footer">
