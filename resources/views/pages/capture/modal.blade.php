@@ -9,8 +9,25 @@
             </div>
             <form id="ConsentForm">
                 <div class="modal-body" id="upload-modal">
+
                     <div class="form-group">
-                        <h4>Share publicly?</h4>
+                        <h4>Would you like to contribute to science?</h4>
+                        <div class="kt-radio-inline">
+                            <label class="kt-radio">
+                                <input type="radio" name="contribute" value="1" checked="checked"> Yes
+                                <span></span>
+                            </label>
+                            <label class="kt-radio">
+                                <input type="radio" name="contribute" value="0"> No
+                                <span></span>
+                            </label>
+                        </div>
+                        <span class="form-text text-muted small-font">If you decide to contribute your recording/text to science, you are only giving permission for (1) your data to be stored by our team, and (2) to be contacted before its use in future research (note: usage of recordings for research is limited to those 18 years and older).
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <h4>Would you like to share publicly?</h4>
                         <div class="kt-radio-inline">
                             @if(!request()->has('type'))
                                 <label class="kt-radio">
@@ -33,25 +50,9 @@
                                 <span></span>
                             </label>
                         </div>
-                        <span class="form-text text-muted small-font" >If Yes -- The Child Mind Institute and its partners may share your text or recording through their websites and social media channels.</span>
-                        <span
-                            class="form-text text-muted small-font">If No, your story will not be publicly shared in any form.</span>
+                        <span class="form-text text-muted small-font" >If Yes -- The Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If No, your story will not be publicly shared in any form.</span>
                     </div>
-                    <div class="form-group">
-                        <h4>Contribute to science?</h4>
-                        <div class="kt-radio-inline">
-                            <label class="kt-radio">
-                                <input type="radio" name="contribute" value="1" checked="checked"> Yes
-                                <span></span>
-                            </label>
-                            <label class="kt-radio">
-                                <input type="radio" name="contribute" value="0"> No
-                                <span></span>
-                            </label>
-                        </div>
-                        <span class="form-text text-muted small-font">If you decide to contribute your recording/text to science, you are only giving permission for (1) your data to be stored by our team, and (2) to be contacted before its use in future research (note: usage of recordings for research is limited to those 18 years and older).
-                        </span>
-                    </div>
+
                     <div class="form-group">
                         <input type="checkbox" name="years-old" id="years-old" >
                         <label for="years-old" id="years-old-label">I am at least 16 years old.</label>

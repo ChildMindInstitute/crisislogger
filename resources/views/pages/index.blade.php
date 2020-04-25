@@ -15,9 +15,7 @@
 	<br>
         <div class="text-center">
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
-            <a href="http://front.crisislogger.care" class="btn-outline-primary btn btn-wide btn-lg">Listen to Others' Thoughts</a>
-{{--            <a href="{{ route('login') }}" class="btn-outline-primary btn btn-wide btn-lg">Login</a>--}}
-{{--            <a href="{{ route('openhumans-authenticate') }}" class="btn-outline-primary btn btn-wide btn-lg">Login</a>--}}
+            <!--a href="http://front.crisislogger.care" class="btn-outline-primary btn btn-wide btn-lg">Listen to Others' Thoughts</a-->
         </div>
 
 	<br><br>
@@ -38,7 +36,9 @@
 	including your fears, frustrations, and hopes —
 	as an audio or video recording by clicking the "Share Your Thoughts"
         link above.
+<!--
         Explore what others have recorded by clicking the "Listen to Others' Thoughts".
+-->
 	If you choose to contribute your recording to science,
 	it will help us find the best ways to provide support to families.</p>
 
