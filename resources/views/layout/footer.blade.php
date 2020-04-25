@@ -4,12 +4,12 @@
             <div class="row text-center footer-row" style="width: 100%;justify-content: space-around;">
                 <p class="col-lg-1 col-md-4 col-sm-12"><a href="/privacy.html" style="color: #74788d !important;">Privacy</a></p>
                 <p class="col-lg-2 col-md-4 col-sm-12 ">©2020 Child Mind Institute</p>
-                <img class="third-party-logos" src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" alt="" style="min-height:40px;" />
-                <img class="third-party-logos" src="{{ asset('media/logos/parents_magazine_logo.png') }}" alt=""  />
-                <img class="third-party-logos" src="{{ asset('media/logos/nimh-logo.png') }}" alt="" style="max-height:30px;" />
-                <img class="third-party-logos" src="{{ asset('media/logos/open-humans.png') }}" alt="" style="max-height:30px;" />
-                <img class="third-party-logos"  src="{{ asset('media/logos/CRI.png') }}" alt="" style="min-height: 55px;" />
-                <img class="third-party-logos"  src="{{ asset('media/logos/mcgovern_logo.png') }}" alt="" style="min-height: 50px;margin-top: -5px;" />
+                <a href="https://childmind.org"><img class="third-party-logos" src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" alt="" style="min-height:40px;" /></a>
+                <a href="https://www.parents.com/"><img class="third-party-logos" src="{{ asset('media/logos/parents_magazine_logo.png') }}" alt=""  /></a>
+                <a href="https://www.nimh.nih.gov/index.shtml"><img class="third-party-logos" src="{{ asset('media/logos/nimh-logo.png') }}" alt="" style="max-height:30px;" /></a>
+                <a href="https://www.openhumans.org/"><img class="third-party-logos" src="{{ asset('media/logos/open-humans.png') }}" alt="" style="max-height:30px;" /></a>
+                <a href="https://cri-paris.org"><img class="third-party-logos"  src="{{ asset('media/logos/CRI.png') }}" alt="" style="min-height: 55px;" /></a>
+                <a href="https://mcgovern.mit.edu/"><img class="third-party-logos"  src="{{ asset('media/logos/mcgovern_logo.png') }}" alt="" style="min-height: 50px;margin-top: -5px;" /></a>
             </div>
         </div>
     </div>
