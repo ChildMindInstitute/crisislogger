@@ -105,7 +105,7 @@ class UploadController extends Controller
         }
         // If the are contributing to science, we will transcribe the message and save it
         $response = [
-            'message' => 'Successfully saved!',
+            'message' => 'Saved -- Thank you!',
             'redirect' => $redirect,
         ];
         return response()->json($response, Response::HTTP_OK);

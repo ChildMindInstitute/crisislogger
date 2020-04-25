@@ -87,7 +87,7 @@
                         <!--begin: Form Wizard Step 4-->
                         <div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
                             <p>Please ensure the information you have added is correct and to the best of your knowledge.</p>
-                            <p>We thank you for your cooperation.</p>
+                            <p>Thank you for your cooperation!</p>
                         </div>
                         <!--end: Form Wizard Step 4-->
 

@@ -7,8 +7,8 @@
 
     <div class="container content">
         <div class="kt-portlet">
-            <div class="kt-portlet__body">
-                <center><h1 class="display-4">Please sign up to come back and record more</h1></center>
+            <div class="kt-portlet__body"> 
+                <center><h1 class="display-4">Thank you!  Please sign up to come back and record more</h1></center>
                 <p>You can create an optional account to save your recordings and view them. Think of it as your personal diary.</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -58,14 +58,14 @@
                     </div>
 
                     <div class="form-group">
-		    	After clicking "Submit" below, 
+		    	<!--After clicking "Submit" below, 
 			you will be taken to a page to sign up with
 			our partner Open Humans, who will store your recording.
 			When you get there, create an account 
 			("Join now!" button in the upper right),
 			authorize the CrisisLogger Open Humans project,
 			and you will be brought back to this website.
-			<br><br>
+			<br><br-->
                         <button type="submit" class="btn btn-success">Submit</button>
                         <a href="{{ route('home') }}" class="btn btn-link">Skip</a>
                     </div>
