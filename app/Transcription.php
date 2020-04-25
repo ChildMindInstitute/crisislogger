@@ -29,16 +29,6 @@ use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
  */
 class Transcription extends Model
 {
-    public const commonWords = array(
-        'and',
-        'the',
-        'I',
-        'is',
-        'a',
-        'an',
-        'an',
-        'you',
-    );
     /**
      * Transcribe an audio file to text.
      * @param Upload $upload
@@ -97,13 +87,7 @@ class Transcription extends Model
                     $alternatives = $result->getAlternatives();
                     $mostLikely = $alternatives[0];
                     $transcript = $mostLikely->getTranscript();
-                    $word = explode(' ', $transcript);
-                    $word = array_diff($word, self::commonWords);
-                    if (count($word) > 0)
-                    {
-                        $response .= $transcript;
-                    }
-
+                    $response .= $transcript;
                 }
             }
             else {
