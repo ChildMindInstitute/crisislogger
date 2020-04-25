@@ -6,7 +6,7 @@
     <div class="container">
         <div class="kt-portlet">
             <div class="kt-portlet__body">
-                <center><h1 class="display-4">Share your thoughts and feelings in audio</h1></center>
+                <center><h1 class="display-4">Please share your fears, frustrations, needs, and hopes, and what has been helping you get through this crisis</h1></center>
                 <div>
                     <div class="recorder_wrapper">
                         <div class="recorder record_btn" id="recorder"
@@ -41,8 +41,6 @@
                 <br>
                 <br>
                 <p>
-                    <b>Please share your fears, frustrations, needs, and hopes,
-                        and what is helping you get through this crisis.</b>
                     Your recording can be up to 5 minutes long.
                     You will be able to save the recording for private use
                     or share it publicly, but

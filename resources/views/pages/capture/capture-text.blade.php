@@ -6,7 +6,7 @@
         <div class="kt-portlet">
             <div class="kt-portlet__body">
 
-                <center><h1 class="display-4">Share your thoughts and feelings in text</h1></center>
+                <center><h1 class="display-4">Please share your fears, frustrations, needs, and hopes, and what has been helping you get through this crisis</h1></center>
 
                 <center><h3>Type in the box below</h3></center>
                 <div>
@@ -26,9 +26,7 @@
                     </div>
                 </div>
 
-                <p><b>Please share your fears, frustrations, needs, and hopes,
-                and what is helping you get through this crisis.</b>
-                You will be able to save your text for private use
+                <p>You will be able to save your text for private use
                 or share it publicly, but                
                 please avoid using any identifying names or information.
                 We hope that you will come back and record more as a journal of your thoughts and experiences.</p>

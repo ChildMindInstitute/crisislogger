@@ -19,7 +19,7 @@
         <div class="kt-portlet">
             <div class="kt-portlet__body">
 
-                <center><h1 class="display-4">Share your thoughts and feelings in video</h1></center>
+                <center><h1 class="display-4">Please share your fears, frustrations, needs, and hopes, and what has been helping you get through this crisis</h1></center>
 
                 <div class="text-center d-flex justify-content-center" id="preview">
                     <div id="spinner" class="d-none kt-spinner kt-spinner--v2 kt-spinner--lg kt-spinner--primary"></div>
@@ -74,9 +74,7 @@
 
 		<br>
 
-                <p><b>Please share your fears, frustrations, needs, and hopes,
-                and what is helping you get through this crisis.</b>
-                Your recording can be up to 5 minutes long.
+                <p>Your recording can be up to 5 minutes long.
                 You will be able to save the recording for private use
                 or share it publicly, but
                 please avoid using any identifying names or information.
