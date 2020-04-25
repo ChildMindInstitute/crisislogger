@@ -15,7 +15,7 @@
 	<br>
         <div class="text-center">
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
-            <a href="http://front.crisislogger.care" class="btn-outline-primary btn btn-wide btn-lg">Hear Others' Thoughts</a>
+            <a href="http://front.crisislogger.care" class="btn-outline-primary btn btn-wide btn-lg">Listen to Others' Thoughts</a>
 {{--            <a href="{{ route('login') }}" class="btn-outline-primary btn btn-wide btn-lg">Login</a>--}}
 {{--            <a href="{{ route('openhumans-authenticate') }}" class="btn-outline-primary btn btn-wide btn-lg">Login</a>--}}
         </div>
@@ -38,15 +38,17 @@
 	including your fears, frustrations, and hopes —
 	as an audio or video recording by clicking the "Share Your Thoughts"
         link above.
-        We greatly appreciate your participation.
+        Explore what others have recorded by clicking the "Listen to Others' Thoughts".
 	If you choose to contribute your recording to science,
 	it will help us find the best ways to provide support to families.</p>
+
+	<p>Thank you!  We greatly appreciate your participation!</p>
 
         <p>The Child Mind Institute and <i>Parents</i> Magazine 
 	have partnered with 
         the National Institute of Mental Health, OpenHumans.org,
         the CRI - Université de Paris,
-        and Satrajit Ghosh and Sanu Abraham at MIT 
+        and Dr. Satrajit Ghosh and Sanu Abraham at MIT 
         on this important research project.</i></p>
 
     </div>
