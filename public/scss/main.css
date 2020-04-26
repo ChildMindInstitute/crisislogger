@@ -290,9 +290,6 @@ footer img {
         margin-right: unset;
         position: relative;
     }
-    .kt-footer {
-        position: relative !important;
-    }
     body{
         margin-bottom: 0  !important;
     }
@@ -307,7 +304,7 @@ footer img {
         font-size: 16px;
     }
     .admin-footer-padding{
-        padding-left: unset !important;
+        padding-left: 0px !important;
     }
     .footer-row {
         display: inline-grid;
