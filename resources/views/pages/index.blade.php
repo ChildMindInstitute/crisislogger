@@ -13,12 +13,10 @@
         </div>
 
 	<br>
-        <div class="text-center">
+        <div class="text-center" style="margin-bottom: 100px;">
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
             <!--a href="http://front.crisislogger.care" class="btn-outline-primary btn btn-wide btn-lg">Listen to Others' Thoughts</a-->
         </div>
-
-	<br><br>
 
 	<p>This is an incredibly challenging time,
 	and the pandemic has transformed our lives in ways we never
