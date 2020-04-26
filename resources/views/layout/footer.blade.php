@@ -51,6 +51,4 @@
 <script src="{{ asset('js/scripts.bundle.js') }}" type="text/javascript"></script>
 <!--end::Global Theme Bundle -->
 <script src="{{ asset('js/custom.js') }}?time={{ time() }}" type="text/javascript"></script>
-<script src="{{ asset('/js/gallery/2.b58f3ea7.chunk.js')}}?time={{ time() }}"></script>
-<script src="{{ asset('/js/gallery/main.1e257bc4.chunk.js')}}?time={{ time() }}"></script>
 @yield('scripts')

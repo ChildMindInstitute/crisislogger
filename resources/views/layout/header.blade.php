@@ -15,6 +15,8 @@
 
                 <div> <!--div class="float-right"-->
                     <!--a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a-->
+
+                    @if (Route::current()->getName() !== 'home')
                     @auth
                         <div class="btn-group">
 
@@ -39,6 +41,8 @@
                             <a href="{{ route('login') }}" class="btn btn-wide btn-lg">Login</a>
                         </div>
                     @endauth
+                    @endif
+
                 </div>
             </div>
         </div>
