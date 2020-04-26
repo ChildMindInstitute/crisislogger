@@ -1,6 +1,6 @@
 @include('layout.authorized.header')
 
-<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid   kt-page--loading">
 
     @include('layout.authorized.header-mobile')
 
@@ -14,28 +14,40 @@
                 <!-- begin:: Header -->
                 <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
 
-                    <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper"></div>
+                    <div class="container  kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+                        <div class="col-sm-12 col-md-4">
+                            <a href="/"><img src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" style="max-height: 100px; max-width: 150px ; margin-top: 6px;" alt="{{ config('app.name') }}"></a>
+                        </div>
+                        <div class="col-sm-12 col-md-8">
+
+                            <div class="kt-header__topbar float-right" style="margin-top: 5px;">
+
+                                <!--begin: Search -->
+
+                                <!--end: Search -->
+
+                                <!--begin: Notifications -->
+
+                                <!--end: Notifications -->
+
+                                <!--begin: Quick Actions -->
+
+                                <!--end: Quick Actions -->
+
+                                <!--begin: User Bar -->
+                            @include('layout.authorized.user-bar')
+
+                            <!--end: User Bar -->
+                            </div>
+                            <div class="float-right">
+                                <a href="{{ route('capture-choice') }}" class="btn btn-wide btn-lg">Share your thought</a>
+                            </div>
+                        </div>
+
+                    </div>
 
                     <!-- begin:: Header Topbar -->
-                    <div class="kt-header__topbar">
 
-                        <!--begin: Search -->
-
-                        <!--end: Search -->
-
-                        <!--begin: Notifications -->
-
-                        <!--end: Notifications -->
-
-                        <!--begin: Quick Actions -->
-
-                        <!--end: Quick Actions -->
-
-                        <!--begin: User Bar -->
-                        @include('layout.authorized.user-bar')
-
-                        <!--end: User Bar -->
-                    </div>
                     <!-- end:: Header Topbar -->
                 </div>
 
