@@ -315,6 +315,9 @@ footer img {
     #ConsentForm .modal-content {
         width: 100% !important;
     }
+    .desktop-none{
+        display: block !important;
+    }
 }
 .kt-footer {
     width: 100%;
@@ -333,6 +336,9 @@ footer img {
 }
 p {
     font-size: 22px;
+}
+h1 {
+    font-size: 35px !important;
 }
 footer {
     padding-top: 0;
@@ -382,5 +388,8 @@ html {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     transform: rotate(180deg);
+}
+.desktop-none{
+    display: none ;
 }
 /*# sourceMappingURL=main.css.map */
