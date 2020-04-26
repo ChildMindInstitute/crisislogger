@@ -24,8 +24,6 @@
     <link href="{{ asset('css/skins/brand/dark.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/skins/aside/dark.css') }}" rel="stylesheet" type="text/css" />        <!--end::Layout Skins -->
     <link href="{{ asset('scss/main.css') }}?time={{ time() }}" rel="stylesheet" type="text/css" />
-    <link href="/css/gallery/2.d5eda061.chunk.css" rel="stylesheet">
-    <link href="/css/gallery/main.93752755.chunk.css" rel="stylesheet">
     <style>
 
         .text-ellipsis {
