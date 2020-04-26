@@ -15,8 +15,6 @@
 
                 <div> <!--div class="float-right"-->
                     <!--a href="{{ route('capture-choice') }}" class="btn btn-primary btn-wide mr-2">Share Your Thoughts</a-->
-
-                    @if (Route::current()->getName() !== 'home')
                     @auth
                         <div class="btn-group">
 
@@ -31,7 +29,7 @@
                             @csrf
                         </form>
                     @else
-                    
+
                         <div class="float-left">
                             <a href="{{ route('home') }}"><img alt="{{ config('app.name') }}" src="{{ asset('media/logos/CrisisLogger_logo_border.png') }}" style="max-height:100px;" /></a>
                             <!--a href="{{ route('home') }}" class="btn btn-wide btn-lg"><img src="{{ asset('media/logos/home-icon.png') }}" alt="home" style="height:24px"></a-->
@@ -41,8 +39,6 @@
                             <a href="{{ route('login') }}" class="btn btn-wide btn-lg">Login</a>
                         </div>
                     @endauth
-                    @endif
-
                 </div>
             </div>
         </div>
