@@ -3,7 +3,7 @@ $(document).ready(function(){
     $('.select2').select2({
         minimumResultsForSearch:1/0
     });
-    $('#content-area').css('min-height', ($('#content-area').find('.kt-portlet').height()+ 180))
+    $('#content-area').css('min-height', ($('#content-area').find('.kt-page').height()+ 180))
     $('#kt_content').css('min-height', ($('#content-area').find('.kt-portlet').height())+ 180)
     $('#kt_content').css('min-height', ($('#content-area').find('.container-fluid ').height())+ 180)
     $('#content-privacy').css('min-height', ($('#content-area').find('.container-fluid ').height())+ 180)

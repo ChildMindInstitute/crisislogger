@@ -5,7 +5,7 @@
     <!-- begin:: Page -->
     <div class="kt-grid kt-grid--ver kt-grid--root" id="content-area">
         <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v3 kt-login--signin" id="kt_login">
-            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" style="background-image: url({{ asset('media/bg/bg-3.jpg') }});">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-page" style="background-image: url({{ asset('media/bg/bg-3.jpg') }});">
                 @include('layout.header')
                 @yield('content')
             </div>
