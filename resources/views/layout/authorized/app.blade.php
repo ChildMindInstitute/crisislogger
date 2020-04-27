@@ -40,8 +40,12 @@
                             <!--end: User Bar -->
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('capture-choice') }}" class="btn btn-wide btn-lg">Share your thought</a>
+                                <a href="http://front.crisislogger.care" class="btn btn-wide btn-lg">Explore</a>
                             </div>
+                            <div class="float-right">
+                                <a href="{{ route('capture-choice') }}" class="btn btn-wide btn-lg">Share</a>
+                            </div>
+
                         </div>
 
                     </div>
