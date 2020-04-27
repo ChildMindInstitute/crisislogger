@@ -6,7 +6,7 @@
     <div class="container">
         <div class="kt-portlet">
             <div class="kt-portlet__body">
-                <center><h1 class="display-4">Please share your fears, frustrations, needs, hopes, and what has been helping you get through this crisis</h1></center>
+                <center><h1 class="display-4">Please share any of your fears, frustrations, and needs right now, as well as what has been helping you get through this crisis.</h1></center>
                 <div>
                     <div class="recorder_wrapper">
                         <div class="recorder record_btn" id="recorder"
