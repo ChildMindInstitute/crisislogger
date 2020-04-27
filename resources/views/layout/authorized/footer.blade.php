@@ -1,4 +1,4 @@
-<footer class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop admin-footer-padding" id="kt_footer">
+<footer class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
     <div class="container  kt-container--fluid ">
         <div class="kt-footer__copyright" style="width: 100%; padding-top:15px;">
             <div class="row text-center footer-row" style="width: 100%;justify-content: space-around;">

@@ -10,6 +10,16 @@
     </div>
     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
         <div class="kt-notification">
+            <a href="{{ route('dashboard') }}" class="kt-notification__item">
+                <div class="kt-notification__item-icon">
+                    <i class="fa fa-cogs kt-font-primary"></i>
+                </div>
+                <div class="kt-notification__item-details">
+                    <div class="kt-notification__item-title kt-font-bold">
+                        Dashboard
+                    </div>
+                </div>
+            </a>
             <a href="{{ route('profile') }}" class="kt-notification__item">
                 <div class="kt-notification__item-icon">
                     <i class="flaticon2-calendar-3 kt-font-primary"></i>
