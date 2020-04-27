@@ -27,12 +27,18 @@
                                         </div>
                                         <div class="kt-portlet__body" >
                                             @if(Str::contains($upload->link, '.wav'))
-                                                <audio controls src="{{ $upload->link }}" style="width: 100%"></audio>
+                                                <audio controls src="{{ $upload->link }}"  style="width: 100%"></audio>
                                             @else
-                                                <video controls>
-                                                    <source src="{{ $upload->link }}" type="video/webm">
-                                                    Your browser does not support the video tag.
-                                                </video>
+                                                @if(Str::contains($upload->link, '.mkv'))
+                                                    <video controls type="video/mkv" src="{{ $upload->link }}"  >
+                                                    </video>
+                                                @elseif(Str::contains($upload->link, '.webm'))
+                                                    <video controls type="video/webm" src="{{ $upload->link }}"  >
+                                                    </video>
+                                                @else
+                                                    <video controls type="video/mp4" src="{{ $upload->link }}"  >
+                                                    </video>
+                                                @endif
                                             @endif
                                         </div>
                                     </div>
