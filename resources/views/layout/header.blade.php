@@ -17,9 +17,8 @@
                     @if (Route::current()->getName() !== 'home')
 
                     @auth
-                        <div class="btn-group">
-
-                            <a class="btn btn-link" href="{{ route('logout') }}"
+                        <div class="float-right">
+                            <a class="btn btn-wide btn-lg" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 <i class="ni ni-user-run"></i>
@@ -41,7 +40,10 @@
                         </div>
                     @endauth
                         <div class="float-right">
-                            <a href="{{ route('capture-choice') }}" class="btn btn-wide btn-lg">Share your thought</a>
+                            <a href="http://front.crisislogger.care" class="btn btn-wide btn-lg">Explore</a>
+                        </div>
+                        <div class="float-right">
+                            <a href="{{ route('capture-choice') }}" class="btn btn-wide btn-lg">Share</a>
                         </div>
                     @endif
 

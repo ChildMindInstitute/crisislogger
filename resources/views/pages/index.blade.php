@@ -11,6 +11,8 @@
    	    <br>
             <h1 class="display-4">Please tell us how you're feeling during this COVID-19 crisis</h1>
         </div>
+
+
         <div class="text-center" style="margin-bottom: 30px;margin-top: 30px">
             <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
             <!--a href="http://front.crisislogger.care" class="btn-outline-primary btn btn-wide btn-lg">Listen to Others' Thoughts</a-->

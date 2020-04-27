@@ -7,6 +7,7 @@ use App\Texts;
 use App\Transcription;
 use App\Upload;
 use App\User;
+use Pbmedia\LaravelFFMpeg\FFMpegFacade as FFMpeg;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -30,6 +31,20 @@ class UploadController extends Controller
 
         // Store the file name in the session in case the user decides to sign up.
         Session::put('filename', $file);
+        if (in_array($file_extension, ['mkv', 'webm']))
+        {
+            $file_name = $file;
+            $format = new \FFMpeg\Format\Video\X264('libmp3lame', 'libx264');
+            $name = str_replace(['.mkv', '.webm'], '', $file_name).".mp4";
+            FFMpeg::fromDisk('gcs')
+                ->open($file)
+                ->addFilter('-codec', 'copy')
+                ->export()
+                ->toDisk('gcs')
+                ->inFormat( $format)
+                ->save($name);
+            $file = $name;
+        }
         // Save it in the database
         $upload = new Upload();
         $upload->name = $file;
