@@ -45,5 +45,9 @@
         and Satrajit Ghosh and Sanu Abraham at MIT
         on this important research project.</p>
 
+	<p><span class="text-muted">CrisisLogger comes out 
+	of the <a href="https://matter.childmind.org">MATTER Lab</a> 
+	at the Child Mind Institute.</span></p>
+
     </div>
 @endsection
