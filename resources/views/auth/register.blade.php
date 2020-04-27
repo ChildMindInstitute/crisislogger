@@ -5,7 +5,7 @@
         <div class="kt-login__container">
             <div class="kt-login__logo">
                 <a href="#">
-                    <img style="max-width:150px;" src="{{ asset('media/logos/CMI_spot_logo.jpg') }}">
+                    <img style="max-width:150px;" src="{{ asset('media/logos/CrisisLogger_logo_border.png') }}">
                 </a>
             </div>
             <div class="kt-login__signin">

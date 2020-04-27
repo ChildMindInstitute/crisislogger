@@ -5,12 +5,6 @@
 <div class="header" style="text-align: right; padding-top: 0px; padding-bottom: 0px;">
     <div class="container">
         <div class="row">
-            <!--div class="col-6 col-md-3 my-auto">
-                <img src="{{ asset('media/logos/parents_magazine_logo.png') }}" alt="{{ config('app.name') }}" id="parents_magazine_logo">
-            </div>
-            <div class="col-6 col-md-3 my-auto">
-                <a href="/"><img src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" alt="{{ config('app.name') }}"></a>
-            </div-->
             <div class="col-12 my-auto ml-auto">
 
                 <div> <!--div class="float-right"-->
@@ -32,9 +26,7 @@
 
                         <div class="float-left">
                             <a href="{{ route('home') }}"><img alt="{{ config('app.name') }}" src="{{ asset('media/logos/CrisisLogger_logo_border.png') }}" style="max-height:100px;" /></a>
-                            <!--a href="{{ route('home') }}" class="btn btn-wide btn-lg"><img src="{{ asset('media/logos/home-icon.png') }}" alt="home" style="height:24px"></a-->
-                            <!--a href="{{ route('home') }}" class="btn btn-wide btn-lg">Home</a-->
-			            </div>
+   	                </div>
                         <div class="float-right">
                             <a href="{{ route('login') }}" class="btn btn-wide btn-lg">Login</a>
                         </div>

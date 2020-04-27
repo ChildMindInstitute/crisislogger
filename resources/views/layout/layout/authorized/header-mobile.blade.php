@@ -1,7 +1,7 @@
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
     <div class="kt-header-mobile__logo">
         <a href="{{ url('/') }}">
-            <img alt="Logo" src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" style="max-width:100px;max-height:40px;" />
+            <img alt="Logo" src="{{ asset('media/logos/CrisisLogger_logo_border.png') }}" style="max-width:100px;max-height:40px;" />
         </a>
     </div>
     <div class="kt-header-mobile__toolbar">
