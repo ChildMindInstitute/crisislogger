@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-4">
-                <a href="/"><img src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" alt="{{ config('app.name') }}"></a>
+                <a href="/"><img src="{{ asset('media/logos/CrisisLogger_logo_border.png') }}" alt="{{ config('app.name') }}"></a>
             </div>
             <div class="col-sm-12 col-md-8">
 

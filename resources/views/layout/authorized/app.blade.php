@@ -16,7 +16,7 @@
 
                     <div class="container  kt-header-menu-wrapper" id="kt_header_menu_wrapper">
                         <div class="col-sm-12 col-md-4">
-                            <a href="/"><img src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" style="max-height: 100px; max-width: 150px ; margin-top: 6px;" alt="{{ config('app.name') }}"></a>
+                            <a href="/"><img src="{{ asset('media/logos/CrisisLogger_logo_border.png') }}" style="max-height: 100px; max-width: 150px ; margin-top: 6px;" alt="{{ config('app.name') }}"></a>
                         </div>
                         <div class="col-sm-12 col-md-8">
 

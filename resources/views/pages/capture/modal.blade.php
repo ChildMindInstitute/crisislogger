@@ -22,7 +22,7 @@
                                 <span></span>
                             </label>
                         </div>
-                        <span class="form-text text-muted small-font">If you decide to contribute your recording/text to science, you are only giving permission for (1) your data to be stored by our team, and (2) to be contacted before its use in future research (note: usage of recordings for research is limited to those 18 years and older).
+                        <span class="form-text text-muted small-font">If you decide to contribute your recording/text to science, you are only giving permission for your data to be stored by our team, and to be contacted before its use in future research (use in research is limited to those 18 years and older).
                         </span>
                     </div>
 
@@ -50,7 +50,7 @@
                                 <span></span>
                             </label>
                         </div>
-                        <span class="form-text text-muted small-font" >If Yes -- The Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If No, your story will not be publicly shared in any form.</span>
+                        <span class="form-text text-muted small-font" >If Yes, the Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If No, your story will not be publicly shared in any form.</span>
                     </div>
 
                     <div class="form-group">
@@ -65,7 +65,7 @@
 
                     <a class="form-text  text-muted collapse-header collapsed" data-toggle="collapse" href="#terms-collapse" role="button"
                        aria-expanded="false" aria-controls="collapseExample" id="terms-btn">
-                        <span class="form-text small-font">By clicking {{!request()->has('type')? 'Upload' : 'Continue'}} button, you agree to the terms below:  </span>
+                        <span class="form-text small-font">By clicking the {{!request()->has('type')? 'Upload' : 'Continue'}} button, you agree to the terms below:</span>
                     </a>
                     <div class="collapse" id="terms-collapse">
                         <br>
