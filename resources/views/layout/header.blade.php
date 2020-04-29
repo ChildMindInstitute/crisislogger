@@ -32,7 +32,7 @@
                         </div>
                     @endauth
                         <div class="float-right">
-                            <a href="http://front.crisislogger.care" class="btn btn-wide btn-lg">Explore</a>
+                            <a href="https://explore.crisislogger.org" class="btn btn-wide btn-lg">Explore</a>
                         </div>
                         <div class="float-right">
                             <a href="{{ route('capture-choice') }}" class="btn btn-wide btn-lg">Share</a>

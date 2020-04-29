@@ -7,7 +7,7 @@
 ​
         @component('components.portlet')
 
-           <center><h1 class="display-4">With which voice would you like to express yourself?</h1></center>
+           <center><h1 class="display-4">Would you like to share as a parent, teacher, student, health worker, patient, or as someone else?</h1></center>
            <center><h4>Note: You must be 16 or older to upload information on this website.</h4></center>
            <br>
            <div class="text-center row">

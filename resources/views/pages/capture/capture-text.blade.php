@@ -6,7 +6,7 @@
         <div class="kt-portlet">
             <div class="kt-portlet__body">
 
-                <center><h1 class="display-4">Please share any of your fears, frustrations, and needs right now, as well as what has been helping you get through this crisis.</h1></center>
+                <center><h1 class="display-4">Please share any of your fears, frustrations, and needs, as well as what has been helping you get through this crisis.</h1></center>
 
                 <center><h3>Type in the box below</h3></center>
                 <div>
