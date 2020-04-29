@@ -12,6 +12,7 @@
         "ext-json": "*",
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
+        "fruitcake/laravel-cors": "^1.0",
         "google/cloud-speech": "^0.31.1",
         "guzzlehttp/guzzle": "^6.5",
         "jenssegers/agent": "^2.6",

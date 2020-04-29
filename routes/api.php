@@ -33,5 +33,5 @@ Route::middleware('auth')->group(function(){
 Route::prefix('transcribe')->group(function(){
    Route::get('audio/{name}', 'TranscribeController@transcribeAudio');
 });
-
+Route::resource('transcriptions', 'TranscribeController');
 Route::post('questionnaire', 'QuestionnaireController@upload')->name('questionnaire_form_upload');
