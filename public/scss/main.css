@@ -344,6 +344,9 @@ p {
     font-size: 22px;
     color: #6e6e6e;
 }
+#content-privacy p {
+    font-size: 1.25rem;
+}
 h1 {
     font-size: 35px !important;
     color: #6e6e6e;
