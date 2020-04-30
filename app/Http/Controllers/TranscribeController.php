@@ -11,11 +11,16 @@ use Storage;
 use App\Transcription;
 class TranscribeController extends Controller
 {
-	public function index() {
-		return Transcription::leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
+	public function index(Request $request) {
+		$referral_code = $request->referralCode;
+		$transcriptions = Transcription::leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
 			->where('uploads.share', '>', '0')
-			->where('uploads.hide', '=', '0')
-			->orderBy('transcriptions.id', 'DESC')
+			->where('uploads.hide', '=', '0');
+		if ($referral_code != null) {
+			$transcriptions = $transcriptions->leftJoin('users', 'users.id', '=', 'uploads.user_id')
+				->where('users.referral_code', 'like', "%$referral_code%");
+		}
+		return $transcriptions->orderBy('uploads.converted', 'DESC')
 			->select('uploads.*', 'transcriptions.*')
 			->paginate(8);
 	}
