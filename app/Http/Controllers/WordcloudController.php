@@ -15,7 +15,9 @@ class WordcloudController extends Controller
      */
     private function generateWords(string $text){
         $words = explode(' ', $text);
-        return array_count_values($words);
+        $array_diff = array_diff($words, Transcription::commonWords);
+
+        return array_count_values($array_diff);
     }
 
     /**
@@ -31,6 +33,8 @@ class WordcloudController extends Controller
 
         // Loop through the transcriptions and get a list of words
         foreach($transcriptions as $transcription){
+
+
             $words[$transcription->upload_id] = $this->generateWords($transcription->text);
         }
 
