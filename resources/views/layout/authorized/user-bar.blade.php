@@ -12,7 +12,7 @@
         <div class="kt-notification">
             <a href="{{ route('dashboard') }}" class="kt-notification__item">
                 <div class="kt-notification__item-icon">
-                    <i class="fa fa-cogs kt-font-primary"></i>
+                    <i class="fa fa-home kt-font-primary"></i>
                 </div>
                 <div class="kt-notification__item-details">
                     <div class="kt-notification__item-title kt-font-bold">
