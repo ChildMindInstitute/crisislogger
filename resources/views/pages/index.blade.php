@@ -14,8 +14,8 @@
 
 
         <div class="text-center" style="margin-bottom: 30px;margin-top: 30px">
-            <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg">Share Your Thoughts</a>
-            <a href="https://explore.crisislogger.org" class="btn-outline-primary btn btn-wide btn-lg">Listen to Others' Thoughts</a>
+            <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg mb-4">Share Your Thoughts</a>
+            <a href="https://explore.crisislogger.org" class="btn-outline-primary btn btn-wide btn-lg mb-4">Listen to Others' Thoughts</a>
         </div>
 
 	<p>This is an incredibly challenging time,
@@ -45,8 +45,8 @@
         and Satrajit Ghosh and Sanu Abraham at MIT
         on this important research project.</p>
 
-	<p><span class="text-muted">CrisisLogger comes out 
-	of the <a href="https://matter.childmind.org">MATTER Lab</a> 
+	<p><span class="text-muted">CrisisLogger comes out
+	of the <a href="https://matter.childmind.org">MATTER Lab</a>
 	at the Child Mind Institute.</span></p>
 
     </div>

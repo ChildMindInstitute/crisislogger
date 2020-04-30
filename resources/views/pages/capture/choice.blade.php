@@ -3,9 +3,9 @@
 @section('capture-active', 'kt-menu__item--active')
 @section('content')
 ​
-    <div class="container">
-​
-        @component('components.portlet')
+    <div class="container" >
+​       <div class="kt-portlet" style="margin-top: 40px;">
+            <div class="kt-portlet__body">
 
            <center><h1 class="display-4">Would you like to share as a parent, teacher, student, health worker, patient, or as someone else?</h1></center>
            <center><h4>Note: You must be 16 or older to upload information on this website.</h4></center>
@@ -61,8 +61,8 @@
                 @endcomponent
 ​
             </div>
-        @endcomponent
-​
+            </div>
+​       </div>
     </div>
 ​
 @endsection

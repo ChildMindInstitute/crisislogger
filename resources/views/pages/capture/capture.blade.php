@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container content">
-        <div class="kt-portlet">
+        <div class="kt-portlet" style="margin-top: 80px;">
             <div class="kt-portlet__body">
                 <center><h3>Create an audio recording</h3></center>
                 <p>If you wish to create a video recording, <a href="{{ route('capture-video') }}">click here.</a></p>

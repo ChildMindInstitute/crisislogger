@@ -51,7 +51,7 @@
 {{--                                            <p class="card-title text-center">No word cloud</p>--}}
                                         </div>
                                     @endif
-                                    <div class="kt-portlet   remove-btn">
+                                    <div class="remove-btn">
                                         <div class="form-group float-left mb-0">
                                             <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->contribute_to_science}}" {{$upload->contribute_to_science?'checked': ''}}  id="contribute-upload-{{$upload->id}}">
                                             <label class="form-check-label text-black" for="contribute-upload-{{$upload->id}}">Science?</label>
@@ -88,7 +88,7 @@
                                     <div class="kt-portlet text-content" id="text-content-{{$text->id}}">
                                         <p class="text-justify text-ellipsis">{{$text->text}}</p>
                                     </div>
-                                    <div class="kt-portlet" style="display: inline-grid">
+                                    <div class="" style="display: inline-grid">
                                         <div class="form-group float-left mb-0">
                                             <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$text->contribute_to_science}}"   {{$text->contribute_to_science?'checked': ''}}  id="contribute-text-{{$text->id}}">
                                             <label class="form-check-label text-black" for="contribute-text-{{$text->id}}">Science?</label>
@@ -125,6 +125,8 @@
 <style>
     .remove-btn {
         display: inline-grid;
+        bottom: 0px;
+        position: absolute;
     }
     a {
         font-size: 13px !important;
