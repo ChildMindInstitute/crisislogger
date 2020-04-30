@@ -12,7 +12,7 @@
             <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 
                 <!-- begin:: Header -->
-                <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
+                <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed header-section ">
 
                     <div class="container  kt-header-menu-wrapper" id="kt_header_menu_wrapper">
                         <div class="col-sm-12 col-md-4">
