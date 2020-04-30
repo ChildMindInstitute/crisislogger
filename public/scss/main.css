@@ -337,12 +337,15 @@ footer img {
     align-items: center;
 
 }
-.kt-footer  a {
-    font-size: 14px !important;
+.kt-footer  a, .header a {
+    font-size: 1.25rem !important;
 }
 p {
     font-size: 22px;
     color: #6e6e6e;
+}
+#content-privacy p {
+    font-size: 1.25rem;
 }
 h1 {
     font-size: 35px !important;

@@ -121,7 +121,7 @@ return [
 
     'key' => env('APP_KEY'),
 
-    'cipher' => 'AES-128-CBC',
+    'cipher' => 'AES-256-CBC',
     'google_credentials' => env('GOOGLE_APPLICATION_CREDENTIALS'),
     'google_cloud_buck' => env('GOOGLE_CLOUD_STORAGE_BUCKET'),
     /*
