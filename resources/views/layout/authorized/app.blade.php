@@ -15,8 +15,8 @@
                 <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed header-section ">
 
                     <div class="container  kt-header-menu-wrapper" id="kt_header_menu_wrapper">
-                        <div class="col-sm-12 col-md-4">
-                            <a href="/"><img src="{{ asset('media/logos/CrisisLogger_logo_border.png') }}" style="max-height: 100px; max-width: 150px ; margin-top: 6px;" alt="{{ config('app.name') }}"></a>
+                        <div class="col-sm-12 col-md-4 float-left" style="padding: unset;">
+                            <a href="{{ route('home') }}"><img alt="{{ config('app.name') }}" src="{{ asset('media/logos/CrisisLogger_logo_border.png') }}" style="max-height: 48px; max-width: 150px;margin-top: 5px" alt="{{ config('app.name') }}" /></a>
                         </div>
                         <div class="col-sm-12 col-md-8">
 

@@ -25,8 +25,8 @@
                     @else
 
                         <div class="float-left">
-                            <a href="{{ route('home') }}"><img alt="{{ config('app.name') }}" src="{{ asset('media/logos/CrisisLogger_logo_border.png') }}" style="max-height:100px;" /></a>
-   	                </div>
+                            <a href="{{ route('home') }}"><img alt="{{ config('app.name') }}" src="{{ asset('media/logos/CrisisLogger_logo_border.png') }}" style="max-height:48px;margin-top: 5px" /></a>
+   	                    </div>
                         <div class="float-right">
                             <a href="{{ route('login') }}" class="btn btn-wide btn-lg">Login</a>
                         </div>
