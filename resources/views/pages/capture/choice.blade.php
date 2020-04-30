@@ -10,7 +10,7 @@
            <center><h1 class="display-4">Would you like to share as a parent, teacher, student, health worker, patient, or as someone else?</h1></center>
            <center><h4>Note: You must be 16 or older to upload information on this website.</h4></center>
            <br>
-           <div class="text-center row">
+           <div class="text-center row" style="font-family: 'times new roman';">
 ​
                 @component('components.voice', ['voice' => 'Parent'])
                     <p>Parents are facing unique challenges of working from home
