@@ -337,6 +337,9 @@ footer img {
     align-items: center;
 
 }
+.kt-footer  a {
+    font-size: 14px !important;
+}
 p {
     font-size: 22px;
     color: #6e6e6e;
@@ -350,7 +353,11 @@ h4, h3 {
 }
  a {
      font-size: 22px !important;
+     font-family: sans-serif;
  }
+body {
+    font-family: sans-serif;
+}
 footer {
     padding-top: 0;
     padding-bottom: 0;
