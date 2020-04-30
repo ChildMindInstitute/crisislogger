@@ -69,7 +69,7 @@ class ConvertVideos extends Command
 
 				echo $file_name."\n";
 
-				$format = new \FFMpeg\Format\Video\X264('libmp3lame', 'libx264');
+				$format = new \FFMpeg\Format\Video\X264('libfdk_aac', 'libx264');
 				$name = str_replace(['.mkv', '.webm'], '', $file_name).".mp4";
 				FFMpeg::fromDisk('gcs')
 					->open($file_name)
