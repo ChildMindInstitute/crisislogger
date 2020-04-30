@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Http\Controllers;
@@ -9,8 +10,9 @@ use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
 use Illuminate\Http\Response;
 use Storage;
 use App\Transcription;
-class TranscribeController extends Controller
-{
+use Illuminate\Http\Request;
+
+class TranscribeController extends Controller {
 	public function index(Request $request) {
 		$referral_code = $request->referralCode;
 		$transcriptions = Transcription::leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
