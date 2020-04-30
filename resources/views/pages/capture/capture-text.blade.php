@@ -3,7 +3,7 @@
 @section('capture-active', 'kt-menu__item--active')
 @section('content')
     <div class="container">
-        <div class="kt-portlet">
+        <div class="kt-portlet" style="margin-top: 80px;">
             <div class="kt-portlet__body">
 
                 <center><h1 class="display-4">Please share any of your fears, frustrations, and needs, as well as what has been helping you get through this crisis.</h1></center>
@@ -27,11 +27,11 @@
                 </div>
 
                 <p>You will be able to save your text for private use
-                or share it publicly, but                
+                or share it publicly, but
                 please avoid using any identifying names or information.
                 We hope that you will come back and record more as a journal of your thoughts and experiences.</p>
 
-                <p>If you would prefer, you can  
+                <p>If you would prefer, you can
                 <a href="{{ route('capture-video') }}">record video</a> or
                 <a href="{{ route('capture-audio') }}">record audio</a> instead.</p>
 

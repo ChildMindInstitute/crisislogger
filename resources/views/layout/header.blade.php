@@ -3,7 +3,7 @@
     $isMobile = $agent->isMobile();
 ?>
 <div class="header" style="text-align: right; padding-top: 0px; padding-bottom: 0px;">
-    <div class="container kt-header">
+    <div class="container header-section">
         <div class="row">
             <div class="col-12 my-auto ml-auto">
 

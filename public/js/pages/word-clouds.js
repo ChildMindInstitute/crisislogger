@@ -88,6 +88,7 @@ axios.post('/api/word_cloud', {
         var portlet_body = document.createElement('div');
         $('#transcript-'+i).find('#spinner').remove();
         portlet_body.classList.add('kt-portlet__body');
+        portlet_body.style.marginBottom = "30px";
         document.getElementById('transcript-'+i).append(portlet_body);
         var myWordCloud = wordCloud(portlet_body);
         myWordCloud.update(words);

@@ -286,9 +286,12 @@ footer img {
     .login-btn{
         float: right;
         margin-top: -37px;
-        font-size: 12px;
+        font-size: 12px !important;
         margin-right: unset;
         position: relative;
+    }
+    .remove-btn {
+        position: relative !important;
     }
     body{
         margin-bottom: 0  !important;
@@ -337,7 +340,7 @@ footer img {
     align-items: center;
 
 }
-.kt-footer  a, .kt-header a {
+.kt-footer  a, .header-section a {
     font-size: 1.25rem !important;
 }
 p {
@@ -348,7 +351,7 @@ p {
     font-size: 1.25rem;
 }
 h1 {
-    font-size: 35px !important;
+    font-size: 30px !important;
     color: #6e6e6e;
 }
 h4, h3 {

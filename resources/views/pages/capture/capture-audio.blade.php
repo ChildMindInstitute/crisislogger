@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container">
-        <div class="kt-portlet">
+        <div class="kt-portlet" style="margin-top: 80px;">
             <div class="kt-portlet__body">
                 <center><h1 class="display-4">Please share any of your fears, frustrations, and needs, as well as what has been helping you get through this crisis.</h1></center>
                 <div>
