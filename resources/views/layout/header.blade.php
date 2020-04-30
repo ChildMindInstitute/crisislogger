@@ -4,8 +4,8 @@
 ?>
 <div class="header" style="text-align: right; padding-top: 0px; padding-bottom: 0px;">
     <div class="container header-section">
-        <div class="row">
-            <div class="col-12 my-auto ml-auto">
+        <div class="row" style="margin: unset !important;">
+            <div class="col-12 my-auto ml-auto" style="padding: unset">
 
                 <div> <!--div class="float-right"-->
                     @if (Route::current()->getName() !== 'home')
