@@ -24,9 +24,10 @@ function wordCloud(selector) {
         cloud.enter()
             .append("text")
             .style("font-style", "Normal")
-            .style("font-family", "sans-serif")
+            .style("font-weight", "middle")
+            .style("font-family", "times new roman")
             .style("color", "#6E6E6E")
-            .style("fill", function(d, i) { return fill(i); })
+            .style("fill", '#6e6e6e')
             .attr("text-anchor", "middle")
             .attr('font-size', 1)
             .text(function(d) { return d.text; });
@@ -60,7 +61,7 @@ function wordCloud(selector) {
                 .words(words)
                 .padding(1)
                 .rotate(0)
-                .font("sans-serif")
+                .font("times new roman")
                 .fontSize(function(d) { return d.size; })
                 .on("end", draw)
                 .start();
