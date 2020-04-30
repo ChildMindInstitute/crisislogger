@@ -283,6 +283,9 @@ footer img {
 }
 
 @media only screen and (max-width: 600px) {
+    .btn-primary{
+        width: 100%;
+    }
     .login-btn{
         float: right;
         margin-top: -37px;
