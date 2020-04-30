@@ -60,7 +60,7 @@
                                             <input type="checkbox" class="form-check-input contribute-to-science"  value="{{$upload->share}}"   {{$upload->share?'checked': ''}}  id="share-upload-{{$upload->id}}">
                                             <label class="form-check-label text-black" for="share-upload-{{$upload->id}}">Public?</label>
                                         </div>
-                                        <a class="remove-resource" href="#" id="upload-{{$upload->id}}" ><i class="fa fa-trash" style="margin-right: 10px" ></i> Delete?</a>
+                                        <a class="remove-resource"  style="    font-size: 13px;" href="#" id="upload-{{$upload->id}}" ><i class="fa fa-trash" style="margin-right: 10px;" ></i> Delete?</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -127,7 +127,7 @@
         display: inline-grid;
     }
     a {
-        font-size: 13px;
+        font-size: 13px !important;
         color: #000000 !important;
     }
     input[type="checkbox"] {
