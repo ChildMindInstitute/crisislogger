@@ -8,7 +8,7 @@
             @component('components/flash-message')
             @endcomponent
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 100px;">
             <h4>Uploaded video and audio</h4>
             <div class="card col-lg-12">
                 <div class="card-body">
