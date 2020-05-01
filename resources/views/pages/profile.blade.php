@@ -3,8 +3,8 @@
 @section('profile-active', 'kt-menu__item--active')
 @section('content')
 
-    <div class="container kt-portlet">
-        <div class="row">
+    <div class="container kt-portlet" style="margin-top: 100px;">
+        <div class="row" >
             <div class="col-sm-12 col-md-6">
                 <div class="kt-portlet">
                     <div class="kt-portlet__head">
