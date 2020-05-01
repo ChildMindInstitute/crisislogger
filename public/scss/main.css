@@ -281,9 +281,20 @@ footer img {
     position: relative;
     text-align: right;
 }
-
+@media only screen and (max-width: 1024px) {
+    .kp-mobile-show {
+        visibility: initial !important;
+    }
+}
+.kp-mobile-show {
+    visibility: hidden;
+}
 @media only screen and (max-width: 600px) {
+
     .btn-primary{
+        width: 100%;
+    }
+    .btn-outline-primary {
         width: 100%;
     }
     .login-btn{
@@ -320,12 +331,6 @@ footer img {
     }
     #ConsentForm .modal-content {
         width: 100% !important;
-    }
-    .desktop-none{
-        display: block !important;
-    }
-    .kt-grid.kt-grid--hor-desktop.kt-grid--desktop{
-        display: block;
     }
 }
 .kt-footer {
@@ -416,10 +421,5 @@ html {
     -moz-transform: rotate(180deg);
     transform: rotate(180deg);
 }
-.desktop-none{
-    display: none ;
-}
-.kt-grid.kt-grid--hor-desktop.kt-grid--desktop {
-    display: none;
-}
+
 /*# sourceMappingURL=main.css.map */
