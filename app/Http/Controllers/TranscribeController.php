@@ -13,13 +13,13 @@ use Illuminate\Http\Request;
 
 class TranscribeController extends Controller {
 	public function index(Request $request) {
-		$referral_code = $request->referralCode;
+		$searchTxt = $request->searchTxt;
 		$transcriptions = Transcription::leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
 			->where('uploads.share', '>', '0')
 			->where('uploads.hide', '=', '0');
-		if ($referral_code != null) {
+		if ($searchTxt != null) {
 			$transcriptions = $transcriptions->leftJoin('users', 'users.id', '=', 'uploads.user_id')
-				->where('users.referral_code', 'like', "%$referral_code%");
+				->where('transcriptions.text', 'like', "%$searchTxt%");
 		}
 		return $transcriptions->orderBy('uploads.converted', 'DESC')
 			->select('uploads.*', 'transcriptions.*')
