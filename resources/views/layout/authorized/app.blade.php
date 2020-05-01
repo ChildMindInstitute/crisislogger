@@ -6,9 +6,7 @@
     <div class="kt-grid kt-grid--hor kt-grid--root" id="content-area">
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
                 @include('layout.authorized.menu.aside')
-            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-
-                <!-- begin:: Header -->
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor " id="kt_wrapper">
                 <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed header-section ">
 
                     <div class="container  kt-header-menu-wrapper" id="kt_header_menu_wrapper">
@@ -51,22 +49,12 @@
 
                     <!-- end:: Header Topbar -->
                 </div>
-
-                <!-- end:: Header -->
-                <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-
-                    <!-- begin:: Subheader -->
-                    <!-- end:: Subheader -->
-
-                    <!-- begin:: Content -->
+                <div class=" kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
                     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid" >
                         @yield('content')
                     </div>
-                    <!-- end:: Content -->
                 </div>
-
             </div>
-
         </div>
     </div>
     @include('layout.authorized.footer')

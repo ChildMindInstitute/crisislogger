@@ -1,10 +1,8 @@
 @extends(isset(Auth::user()->id) ? 'layout.authorized.app' : 'layout.app')
-@section('title', '')
 @section('capture-active', 'kt-menu__item--active')
 @section('content')
-​
-    <div class="container" >
-​       <div class="kt-portlet" style="margin-top: 40px;">
+    <div class="container">
+        <div class="kt-portlet" style="margin-top: 80px;">
             <div class="kt-portlet__body">
 
            <center><h1 class="display-4">Would you like to share as a parent, teacher, student, health worker, patient, or as someone else?</h1></center>
@@ -61,8 +59,6 @@
                 @endcomponent
 ​
             </div>
-            </div>
-​       </div>
+        </div>
     </div>
-​
 @endsection
