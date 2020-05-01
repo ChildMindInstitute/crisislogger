@@ -21,9 +21,7 @@
             </div>
         </div>
     </div>
-
 @endsection
-
 @section('scripts')
     <script src="{{ asset('js/pages/choose-method.js') }}?time={{ time() }}"></script>
 @endsection
