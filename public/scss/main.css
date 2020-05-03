@@ -218,6 +218,8 @@ footer img {
 .recording {
   animation: recording 2s infinite ease-in-out;
   position: relative;
+  color: #4ce73c !important;
+  border-color: #4ce73c !important;
 }
 
 .recording:before {
