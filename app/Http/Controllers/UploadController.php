@@ -7,9 +7,8 @@ use App\Texts;
 use App\Transcription;
 use App\Upload;
 use App\User;
-use Pbmedia\LaravelFFMpeg\FFMpegFacade as FFMpeg;
+use GuzzleHttp\Client;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Session;
 use Storage;
@@ -27,24 +26,10 @@ class UploadController extends Controller
      */
     public function upload(UploadRequest $request){
         $file_extension = $request->file('data')->guessExtension();
-        $file = Storage::disk('gcs')->putFile('', $request->file('data'));
+        $file = Storage::disk('local')->putFile('', $request->file('data'));
 
         // Store the file name in the session in case the user decides to sign up.
         Session::put('filename', $file);
-        if (in_array($file_extension, ['mkv', 'webm']))
-        {
-            $file_name = $file;
-            $format = new \FFMpeg\Format\Video\X264('libmp3lame', 'libx264');
-            $name = str_replace(['.mkv', '.webm'], '', $file_name).".mp4";
-            FFMpeg::fromDisk('gcs')
-                ->open($file)
-                ->addFilter('-codec', 'copy')
-                ->export()
-                ->toDisk('gcs')
-                ->inFormat( $format)
-                ->save($name);
-            $file = $name;
-        }
         // Save it in the database
         $upload = new Upload();
         $upload->name = $file;
@@ -74,13 +59,30 @@ class UploadController extends Controller
             session()->put('need-to-question-air', 1);
         }
         // If the are contributing to science, we will transcribe the message and save it
-//        if($upload->contribute_to_science){
-            if($file_extension == 'wav' || $file_extension == 'mp3'){
-                $transcription = Transcription::audio($upload);
-            } else {
-                $transcription = Transcription::video($upload);
+        if($file_extension == 'wav' || $file_extension == 'mp3'){
+            $transcription = Transcription::audio($upload);
+        }
+
+        else {
+
+            // request the video conversion.
+            $client = new Client();
+            try {
+                $request = $client->post(config('app.convert_app_url')."/api/convert/video", [
+                    'headers' => array(
+                        'Accept' => 'application/json',
+                        'Content-Type' => 'application/json'
+                    ),
+                    'form_params' => array('upload_id' => $upload->id)
+                ]);
+                $result = $client->send($request);
+                $result->getBody();
             }
-//        }
+            catch (\Exception $exception)
+            {
+                \Log::error('Upload error: '.$exception->getMessage());
+            }
+        }
         $response = [
             'message' => 'File uploaded successfully.',
             'file' => $file,

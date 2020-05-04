@@ -13,11 +13,11 @@ class AddColumnToTranscriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('transcriptions', function (Blueprint $table) {
-		$table->integer('upload_id');
-		$table->string('text');
-           	
-        });
+//        Schema::table('transcriptions', function (Blueprint $table) {
+//		$table->integer('upload_id');
+//		$table->string('text');
+//
+//        });
     }
 
     /**
@@ -27,9 +27,9 @@ class AddColumnToTranscriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('transcriptions', function (Blueprint $table) {
-            $table->dropColumn('upload_id');
-		$table->dropColumn('text');
-        });
+//        Schema::table('transcriptions', function (Blueprint $table) {
+//            $table->dropColumn('upload_id');
+//		$table->dropColumn('text');
+//        });
     }
 }
