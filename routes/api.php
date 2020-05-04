@@ -19,17 +19,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('upload', 'UploadController@upload')->name('upload');
 Route::post('save-text', 'UploadController@saveText')->name('save-text');
-Route::prefix('convert')->namespace('api')->group(function ()
-{
-    Route::post('/video', 'ConvertController@convertVideo');
-});
+
 Route::middleware('auth')->group(function(){
     Route::put('/update-resource-status', 'UserController@updateResourceStatus')->name('update-resource-status');
-    Route::prefix('user')->group(function() {
+    Route::prefix('user')->group(function(){
         Route::post('update', 'UserController@update')->name('user_update');
         Route::post('change_password', 'UserController@changePassword')->name('user_change_password');
     });
+
     Route::post('word_cloud', 'WordcloudController@generate');
+
 });
 Route::prefix('transcribe')->group(function(){
    Route::get('audio/{name}', 'TranscribeController@transcribeAudio');

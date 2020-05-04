@@ -425,4 +425,11 @@ html {
     transform: rotate(180deg);
 }
 
+.btn-disabled, .btn-disabled:hover {
+    background-color: #ddd !important;
+    border-color: #aaa !important;
+    color: #aaa !important;
+    background: center no-repeat url(/media/icons/wait.gif) !important;
+}
+
 /*# sourceMappingURL=main.css.map */
