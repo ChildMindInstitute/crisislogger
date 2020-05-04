@@ -73,7 +73,7 @@ class UploadController extends Controller
                         'Accept' => 'application/json',
                         'Content-Type' => 'application/json'
                     ),
-                    'form_params' => array('upload_id' => $upload->id)
+                    'form_params' => array('upload_id' => $upload->id,  'environment' => config('app.env'))
                 ]);
                 $result = $client->send($request);
                 $result->getBody();

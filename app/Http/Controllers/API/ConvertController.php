@@ -17,18 +17,26 @@ class ConvertController extends Controller
     public function convertVideoTranscode(Request $request)
     {
         $params = $request->all();
-        $host = $request->getHost();
         if (!isset($params['upload_id']))
         {
              throw new BadRequestHttpException('Upload id is required', null, 400);
         }
+        if (!isset($params['environment']))
+        {
+            throw new BadRequestHttpException('Environment mode id is required', null, 400);
+        }
+        if (!in_array($params['environment'], array('staging', 'local', 'production')))
+        {
+            throw new BadRequestHttpException('Environment need to be one of staging, local, production', null, 400);
+        }
         $env = 'local';
-        if (preg_match('/^staging/', $host))
+        $environment = $params['environment'];
+        if (preg_match('/^staging/', $environment))
         {
             DB::setDefaultConnection('mysql_staging');
             $env = 'staging';
         }
-        if (preg_match('/^local/', $host))
+        if (preg_match('/^local/', $environment))
         {
             DB::setDefaultConnection('mysql');
         }
