@@ -432,4 +432,8 @@ html {
     background: center no-repeat url(/media/icons/wait.gif) !important;
 }
 
+.kt-aside:not(.kt-aside--on) {
+  transition: none !important;
+}
+
 /*# sourceMappingURL=main.css.map */
