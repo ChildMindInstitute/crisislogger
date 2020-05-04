@@ -52,6 +52,7 @@ class VideoConversionJob implements ShouldQueue
             $this->upload->audio_generated = true;
             $this->upload->status = 'finished';
             $this->upload->update();
+            session()->put('upload_id', $upload->getKey());
             Transcription::audio($upload, 1);
         }
         catch (\Exception $exception)
