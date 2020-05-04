@@ -113,7 +113,7 @@ class Transcription extends Model
 
             // If not empty, save into transcriptions table
             $upload_id =  $upload->id;
-            if (!isset($parentUpload->id))
+            if (isset($parentUpload->id))
             {
                 $upload_id = $parentUpload->id;
             }
@@ -122,10 +122,6 @@ class Transcription extends Model
             $transcription->user_id = isset($parentUpload->user_id)? $parentUpload->user_id: null;
             $transcription->text = $response;
             $transcription->save();
-            if (!Auth::check())
-            {
-                session()->put('transaction_id', $transcription->getKey());
-            }
             return $transcription;
         }
         catch (\Exception $exception)
