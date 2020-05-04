@@ -37,12 +37,14 @@ class Transcription extends Model
     /**
      * Transcribe an audio file to text.
      * @param Upload $upload
+     * @param Upload $parentUpload
+     * @param integer $audio_channel_count
      * @return Transcription
      * @throws ApiException
      * @throws ValidationException
      * @throws FileNotFoundException
      */
-    public static function audio(Upload $upload , $parent_id = null, $audio_channel_count=1){
+    public static function audio(Upload $upload , Upload $parentUpload = null, $audio_channel_count=1){
         $content = Storage::disk('gcs')->get($upload->name);
 
         # set string as audio content
@@ -111,13 +113,13 @@ class Transcription extends Model
 
             // If not empty, save into transcriptions table
             $upload_id =  $upload->id;
-            if (!is_null($parent_id))
+            if (!isset($parentUpload->id))
             {
-                $upload_id = $parent_id;
+                $upload_id = $parentUpload->id;
             }
             $transcription = new Transcription();
             $transcription->upload_id = $upload_id;
-            $transcription->user_id = Auth::check()? Auth::user()->getKey(): null;
+            $transcription->user_id = isset($parentUpload->user_id)? $parentUpload->user_id: null;
             $transcription->text = $response;
             $transcription->save();
             if (!Auth::check())

@@ -26,7 +26,7 @@ class UploadController extends Controller
      */
     public function upload(UploadRequest $request){
         $file_extension = $request->file('data')->guessExtension();
-        $file = Storage::disk('local')->putFile('', $request->file('data'));
+        $file = Storage::disk('gcs')->putFile('', $request->file('data'));
 
         // Store the file name in the session in case the user decides to sign up.
         Session::put('filename', $file);
