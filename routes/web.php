@@ -90,6 +90,10 @@ Route::middleware('auth')->group(function () {
         return view('pages.word-clouds');
     })->name('word-clouds');
 
+    Route::get('admin', function () {
+        return view('pages.admin.index');
+    })->name('admin');
+
 });
 
 Auth::routes();
