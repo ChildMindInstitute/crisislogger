@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-
+use Illuminate\Support\Facades\DB;
 class VideoConversionJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -41,10 +41,16 @@ class VideoConversionJob implements ShouldQueue
             return -1;
         }
         try {
+            if ($this->env == 'local')
+            {
+                DB::setDefaultConnection('mysql');
+            }
+            else {
+                DB::setDefaultConnection('mysql_'.$this->env);
+            }
             $upload  = $this->upload->convertToAudio();
             $this->upload->audio_generated = true;
             $this->upload->status = 'finished';
-            $this->upload->setConnection('mysql_'.$this->env);
             $this->upload->update();
             Transcription::audio($upload, 1);
         }

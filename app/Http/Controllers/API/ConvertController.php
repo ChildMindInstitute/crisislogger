@@ -8,7 +8,7 @@ use App\Upload;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Queue\Jobs\Job;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ConvertController extends Controller
@@ -22,22 +22,21 @@ class ConvertController extends Controller
         {
              throw new BadRequestHttpException('Upload id is required', null, 400);
         }
-        $upload  = new Upload();
         $env = 'local';
         if (preg_match('/^staging/', $host))
         {
-            $upload->setConnection('mysql_staging');
+            DB::setDefaultConnection('mysql_staging');
             $env = 'staging';
         }
         if (preg_match('/^local/', $host))
         {
-            $upload->setConnection('mysql_local');
+            DB::setDefaultConnection('mysql');
         }
         else {
-            $upload->setConnection('mysql_prod');
+            DB::setDefaultConnection('mysql_prod');
             $env = 'prod';
         }
-        $upload = Upload::findOrFail($params['upload_id'])->where('audio_generated', false);
+        $upload = Upload::where('audio_generated', false)->findOrFail($params['upload_id']);
         if (!$upload)
         {
             throw new ModelNotFoundException('Upload data not found',400);
