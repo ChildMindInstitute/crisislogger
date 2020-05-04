@@ -18,6 +18,7 @@ use Storage;
  * @property int share
  * @property int contribute_to_science
  * @property boolean video_generated
+ * @property boolean audio_generated
  * @property string voice
  * @property CarbonImmutable created_at
  */
@@ -42,7 +43,6 @@ class Upload extends Model
      */
     public function convertToAudio(){
         $name = str_replace(['.mkv', '.webm', '.mp4'], '', $this->name);
-
         FFMpeg::fromDisk('gcs')
             ->open($this->name)
               ->addFilter('-ac', 1)
