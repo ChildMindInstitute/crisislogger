@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('upload', 'UploadController@upload')->name('upload');
 Route::post('save-text', 'UploadController@saveText')->name('save-text');
-Route::prefix('convert')->namespace('api')->group(function ()
+Route::prefix('convert')->namespace('API')->group(function ()
 {
     Route::post('/video', 'ConvertController@convertVideo');
 });
