@@ -26,7 +26,7 @@ class UploadController extends Controller
      */
     public function upload(UploadRequest $request){
         $file_extension = $request->file('data')->guessExtension();
-        $file = Storage::disk('local')->putFile('', $request->file('data'));
+        $file = Storage::disk('gcs')->putFile('', $request->file('data'));
 
         // Store the file name in the session in case the user decides to sign up.
         Session::put('filename', $file);
@@ -73,10 +73,9 @@ class UploadController extends Controller
                         'Accept' => 'application/json',
                         'Content-Type' => 'application/json'
                     ),
-                    'form_params' => array('upload_id' => $upload->id,  'environment' => config('app.env'))
+                    'body' => json_encode(array('upload_id' => $upload->id,  'environment' => config('app.env')))
                 ]);
-                $result = $client->send($request);
-                $result->getBody();
+                $request->getBody();
             }
             catch (\Exception $exception)
             {
