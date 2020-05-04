@@ -21,7 +21,7 @@ Route::post('upload', 'UploadController@upload')->name('upload');
 Route::post('save-text', 'UploadController@saveText')->name('save-text');
 Route::prefix('convert')->group(function ()
 {
-    Route::post('/video', 'API\ConvertController@convertVideo');
+    Route::post('/video', 'API\ConvertController@convertVideoTranscode');
 });
 Route::middleware('auth')->group(function(){
     Route::put('/update-resource-status', 'UserController@updateResourceStatus')->name('update-resource-status');
