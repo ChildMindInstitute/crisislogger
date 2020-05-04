@@ -41,7 +41,7 @@ class VideoConversionJob implements ShouldQueue
             return -1;
         }
         try {
-            if ($this->env == 'local')
+            if ($this->env === 'local')
             {
                 DB::setDefaultConnection('mysql');
             }

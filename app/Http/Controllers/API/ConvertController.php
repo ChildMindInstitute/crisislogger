@@ -33,10 +33,11 @@ class ConvertController extends Controller
         $environment = $params['environment'];
         if (preg_match('/^staging/', $environment))
         {
+
             DB::setDefaultConnection('mysql_staging');
             $env = 'staging';
         }
-        if (preg_match('/^local/', $environment))
+        else if (preg_match('/^local/', $environment))
         {
             DB::setDefaultConnection('mysql');
         }
