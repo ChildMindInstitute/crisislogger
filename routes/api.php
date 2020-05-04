@@ -19,9 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('upload', 'UploadController@upload')->name('upload');
 Route::post('save-text', 'UploadController@saveText')->name('save-text');
-Route::prefix('convert')->namespace('API')->group(function ()
+Route::prefix('convert')->group(function ()
 {
-    Route::post('/video', 'ConvertController@convertVideo');
+    Route::post('/video', 'API\ConvertController@convertVideo');
 });
 Route::middleware('auth')->group(function(){
     Route::put('/update-resource-status', 'UserController@updateResourceStatus')->name('update-resource-status');
