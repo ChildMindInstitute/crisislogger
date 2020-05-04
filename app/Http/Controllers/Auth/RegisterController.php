@@ -80,16 +80,6 @@ class RegisterController extends Controller
             $user->referral_code = $data['referral_code'];
         }
         $user->save();
-        if (session()->has('transaction_id'))
-        {
-            $transaction = Transcription::whereKey(session()->get('transaction_id'))->first();
-            if ($transaction)
-            {
-                $transaction->user_id = $user->getKey();
-                $transaction->update();
-                session()->forget('transaction_id');
-            }
-        }
         if (session()->has('upload_id'))
         {
             $upload = Upload::whereKey(session()->get('upload_id'))->first();
@@ -97,9 +87,16 @@ class RegisterController extends Controller
             {
                 $upload->user_id = $user->getKey();
                 $upload->update();
+                $transaction = Transcription::where('upload_id', $upload->getKey())->first();
+                if ($transaction)
+                {
+                    $transaction->user_id = $user->getKey();
+                    $transaction->update();
+                }
                 session()->forget('upload_id');
             }
         }
+
         if (session()->has('text_id'))
         {
             $text = Texts::whereKey(session()->get('text_id'))->first();

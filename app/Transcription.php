@@ -42,7 +42,7 @@ class Transcription extends Model
      * @throws ValidationException
      * @throws FileNotFoundException
      */
-    public static function audio(Upload $upload , $audio_channel_count=1){
+    public static function audio(Upload $upload , $parent_id = null, $audio_channel_count=1){
         $content = Storage::disk('gcs')->get($upload->name);
 
         # set string as audio content
@@ -111,10 +111,9 @@ class Transcription extends Model
 
             // If not empty, save into transcriptions table
             $upload_id =  $upload->id;
-            if (session()->has('upload_id'))
+            if (!is_null($parent_id))
             {
-                $upload_id = session()->get('upload_id');
-                session()->forget('upload_id');
+                $upload_id = $parent_id;
             }
             $transcription = new Transcription();
             $transcription->upload_id = $upload_id;
