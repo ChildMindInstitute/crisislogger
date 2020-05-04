@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Transcription;
 use App\Upload;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -38,7 +39,11 @@ class VideoConversionJob implements ShouldQueue
             return -1;
         }
         try {
-            $this->upload->convertToAudio();
+            $upload  = $this->upload->convertToAudio();
+            $this->upload->audio_generated = true;
+            $this->upload->status = 'finished';
+            $this->upload->update();
+            Transcription::audio($upload, 1);
         }
         catch (\Exception $exception)
         {

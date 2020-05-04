@@ -55,7 +55,7 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
-
+    'convert_app_url' => env('CONVERT_APP_URL', 'convert.crisislogger.org'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

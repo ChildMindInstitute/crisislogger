@@ -19,6 +19,7 @@ use Storage;
  * @property int contribute_to_science
  * @property boolean video_generated
  * @property boolean audio_generated
+ * @property string  status
  * @property string voice
  * @property CarbonImmutable created_at
  */

@@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 class ConvertController extends Controller
 {
     //
-    public function convertVideo(Request $request)
+    public function convertVideoTranscode(Request $request)
     {
         $params = $request->all();
         if (!isset($params['upload_id']))
