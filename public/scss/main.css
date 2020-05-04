@@ -218,6 +218,8 @@ footer img {
 .recording {
   animation: recording 2s infinite ease-in-out;
   position: relative;
+  color: #4ce73c !important;
+  border-color: #4ce73c !important;
 }
 
 .recording:before {
@@ -421,6 +423,13 @@ html {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     transform: rotate(180deg);
+}
+
+.btn-disabled, .btn-disabled:hover {
+    background-color: #ddd !important;
+    border-color: #aaa !important;
+    color: #aaa !important;
+    background: center no-repeat url(/media/icons/wait.gif) !important;
 }
 
 /*# sourceMappingURL=main.css.map */
