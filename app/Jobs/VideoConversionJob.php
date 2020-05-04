@@ -15,16 +15,18 @@ class VideoConversionJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $upload;
+    public $env;
 
     /**
      * Create a new job instance.
      * @param Upload $upload
      * @return void
      */
-    public function __construct(Upload $upload)
+    public function __construct(Upload $upload, $env = 'local')
     {
         //
         $this->upload = $upload;
+        $this->env = $env;
     }
 
     /**
@@ -42,6 +44,7 @@ class VideoConversionJob implements ShouldQueue
             $upload  = $this->upload->convertToAudio();
             $this->upload->audio_generated = true;
             $this->upload->status = 'finished';
+            $this->upload->setConnection('mysql_'.$this->env);
             $this->upload->update();
             Transcription::audio($upload, 1);
         }

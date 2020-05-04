@@ -17,9 +17,25 @@ class ConvertController extends Controller
     public function convertVideoTranscode(Request $request)
     {
         $params = $request->all();
+        $host = $request->getHost();
         if (!isset($params['upload_id']))
         {
              throw new BadRequestHttpException('Upload id is required', null, 400);
+        }
+        $upload  = new Upload();
+        $env = 'local';
+        if (preg_match('/^staging/', $host))
+        {
+            $upload->setConnection('mysql_staging');
+            $env = 'staging';
+        }
+        if (preg_match('/^local/', $host))
+        {
+            $upload->setConnection('mysql_local');
+        }
+        else {
+            $upload->setConnection('mysql_prod');
+            $env = 'prod';
         }
         $upload = Upload::findOrFail($params['upload_id'])->where('audio_generated', false);
         if (!$upload)
@@ -28,7 +44,7 @@ class ConvertController extends Controller
         }
 
         try {
-            VideoConversionJob::dispatch($upload);
+            VideoConversionJob::dispatch($upload, $env);
         }
         catch (\Exception $exception)
         {
