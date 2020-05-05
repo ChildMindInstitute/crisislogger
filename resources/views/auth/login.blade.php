@@ -6,7 +6,7 @@
         <div class="kt-login__container">
             <div class="kt-login__signin">
                 <div class="kt-login__head">
-                    <h3 class="kt-login__title">Sign In To {{ config('app.name') }}</h3>
+                    <h3 class="kt-login__title">Sign in to CrisisLogger</h3>
                 </div>
                 <form class="kt-form" method="POST" action="{{ route('login') }}">
                     @csrf

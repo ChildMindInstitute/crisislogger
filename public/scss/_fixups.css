@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+.kt-aside:not(.kt-aside--on) {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
