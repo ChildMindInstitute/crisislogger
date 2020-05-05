@@ -90,10 +90,28 @@ Route::middleware('auth')->group(function () {
         return view('pages.word-clouds');
     })->name('word-clouds');
 
-    Route::get('admin', function () {
-        return view('pages.admin.index');
-    })->name('admin');
+});
 
+Route::prefix('admin')->group(function () {
+    Route::get('', 'AdminController@index')
+      ->name('admin-index')
+      ->middleware('can:admin');
+
+    Route::get('video', 'AdminController@video')
+      ->name('admin-video')
+      ->middleware('can:admin');
+
+    Route::get('audio', 'AdminController@audio')
+      ->name('admin-audio')
+      ->middleware('can:admin');
+
+    Route::get('text', 'AdminController@text')
+      ->name('admin-text')
+      ->middleware('can:admin');
+
+    Route::post('hide', 'AdminController@hide')
+      ->name('admin-hide')
+      ->middleware('can:admin');
 });
 
 Auth::routes();
