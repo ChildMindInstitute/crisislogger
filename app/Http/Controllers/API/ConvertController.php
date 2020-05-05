@@ -45,7 +45,7 @@ class ConvertController extends Controller
             DB::setDefaultConnection('mysql_prod');
             $env = 'prod';
         }
-        $upload = Upload::where('audio_generated', false)->first($params['upload_id']);
+        $upload = Upload::where('audio_generated', false)->findOrFail($params['upload_id']);
         if (!$upload)
         {
             throw new ModelNotFoundException('Upload data not found',400);
