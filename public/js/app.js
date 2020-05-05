@@ -97416,7 +97416,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var AxiosClient = function AxiosClient() {
   _classCallCheck(this, AxiosClient);
 
-  var BASE_URL_API = "http://localhost" + ':8000';
+  var BASE_URL_API = "http://localhost:8000";
   this.session = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
     baseURL: BASE_URL_API,
     headers: {
