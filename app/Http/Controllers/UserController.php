@@ -110,11 +110,13 @@ class UserController extends Controller
         catch (\Exception $exception)
         {
             \DB::rollBack();
-            \Session::flash('session_error', $exception->getMessage());
-            return redirect('/dashboard');
+            return \Response::json(
+                ['success' => 0]
+            );
         }
-        \Session::flash('session_success', 'Successfully deleted');
-        return redirect('/dashboard');
+        return \Response::json(
+            ['success' => 1]
+        );
     }
 
     public function updateResourceStatus(Request $request)
@@ -162,14 +164,12 @@ class UserController extends Controller
         catch (\Exception $exception)
         {
             \DB::rollBack();
-            \Session::flash('session_error', $exception->getMessage());
             return \Response::json(
-                ['url' => route('dashboard')]
+                ['success' => 0]
             );
         }
-        \Session::flash('session_success', 'Successfully updated');
         return \Response::json(
-            ['url' => route('dashboard')]
+            ['success' => 1]
         );
     }
 }

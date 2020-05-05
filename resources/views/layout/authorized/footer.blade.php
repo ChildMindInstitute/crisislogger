@@ -14,3 +14,4 @@
         </div>
     </div>
 </footer>
+<script src="{{asset('/js/app.js')."?time=".time()}}"></script>
