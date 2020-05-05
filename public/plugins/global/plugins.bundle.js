@@ -53001,7 +53001,7 @@ Dropzone.version = "5.5.1";
 // This is a map of options for your different dropzones. Add configurations
 // to this object for your different dropzone elemens.
 //
-// App:
+// Example:
 //
 //     Dropzone.options.myDropzoneElementId = { maxFilesize: 1 };
 //
@@ -86469,7 +86469,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Creates a path element by given path data string.
      > Parameters
      - pathString (string) #optional path string in SVG format.
-     * Path string consists of one-letter commands, followed by comma seprarated arguments in numercal form. App:
+     * Path string consists of one-letter commands, followed by comma seprarated arguments in numercal form. Example:
      | "M10,20L30,40"
      * Here we can see two commands: “M”, with arguments `(10, 20)` and “L” with arguments `(30, 40)`. Upper case letter mean command is absolute, lower case—relative.
      *
@@ -91207,7 +91207,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
      - f (function) event handler function
      **
      = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment.
-     > App:
+     > Example:
      | eve.on("mouse", eatIt)(2);
      | eve.on("mouse", scream);
      | eve.on("mouse", catchIt)(1);

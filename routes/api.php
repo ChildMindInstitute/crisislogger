@@ -37,4 +37,5 @@ Route::prefix('transcribe')->group(function(){
 Route::resource('transcriptions', 'TranscribeController');
 Route::get('user-transcription', 'TranscribeController@userTranscription');
 Route::get('user-texts', 'TextController@userTexts');
+Route::delete('remove-resource', 'UserController@removeResource');
 Route::post('questionnaire', 'QuestionnaireController@upload')->name('questionnaire_form_upload');

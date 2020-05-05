@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import WordCloudComponent from "./WordCloudComponent";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
+import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -123,7 +122,7 @@ class App extends Component {
                             : null
                     }
                     <h3>Uploads: </h3>
-                    <Row>
+                    <Row >
 
                         {transData.length ? transData.map((value, index) => {
                                 let isVideo = value.name.split(".")[1] === 'webm' || value.name.split(".")[1] === 'mkv' || value.name.split(".")[1] === 'mp4';
@@ -162,13 +161,39 @@ class App extends Component {
                                                                  controls={true}/>
                                                 </div>
                                             }
+                                            <div style={{display: 'flex',padding: 8, fontSize:14, justifyContent: 'space-between', marginTop: 5, marginBottom: 5}}>
+                                            <span >
+                                                 <Form.Check
+                                                     type={'checkbox'}
+                                                     checked={value.contribute_to_science}
+                                                     onChange={(e)=>this.shareResource(index, value.id, 'upload','contribute', e.target.checked)}
+                                                     id={`default-${value.id}-share`}
+                                                     label={`Science`}
+                                                 />
+                                            </span>
+                                                <span>
+                                                 <Form.Check
+                                                     type={'checkbox'}
+                                                     checked={value.share}
+                                                     onChange={(e)=>this.shareResource(index, value.id, 'upload','public',  e.target.checked)}
+                                                     id={`default-${value.id}-public`}
+                                                     label={`Public`}
+                                                 />
+                                            </span>
+                                                <span
+                                                    style={{cursor: 'pointer'}}
+                                                    onClick={()=> this.removeResource(index,'upload', value.id)}
+                                                >
+                                                <i className="fa fa-trash"> </i> Delete
+                                            </span>
+                                            </div>
                                         </div>
                                     </Col>
                                 )
                             })
                             :
                             !transLoading &&
-                            <div style={{display: 'flex', flex: 1, flexWrap: 'wrap', justifyContent: 'center'}}>
+                            <div style={{display: 'flex', flex: 1, flexWrap: 'wrap', justifyContent: 'center', padding: 20, background: '#fff', borderRadius: 14}}>
                                 <p>No uploads are found</p>
                             </div>
                         }
@@ -209,15 +234,52 @@ class App extends Component {
                              textData.map((value, index) => {
                                 return (
                                     <Col xs={12} sm={6} md={4} lg={3} xl={3} style={{marginTop: 20}} key={index}>
-                                        <div className={'kt-portlet text-content'}>
+                                        <div
+                                            style={{
+                                                overflow: 'hidden',
+                                                backgroundColor: '#fafafa',
+                                                boxShadow: '0px 0px 1px 0px rgba(0,0,0,0.35)',
+                                            }}
+                                        >
                                             <p className="text-justify text-ellipsis" onClick={() => this.showText(value.text)}>{value.text}</p>
+                                            <div style={{display: 'flex',
+                                                fontSize: 14,
+                                                justifyContent: 'space-between',
+                                                marginTop: 5,
+                                                padding: 8,
+                                                marginBottom: 5}}>
+                                                <span >
+                                                     <Form.Check
+                                                         type={'checkbox'}
+                                                         id={`default--text-${value.id}-share`}
+                                                         checked={value.contribute_to_science}
+                                                         onChange={(e)=>this.shareResource(index, value.id, 'text','contribute', e.target.checked)}
+                                                         label={`Science`}
+                                                     />
+                                                </span>
+                                                    <span>
+                                                     <Form.Check
+                                                         type={'checkbox'}
+                                                         id={`default--text-${value.id}-share`}
+                                                         checked={value.share}
+                                                         onChange={(e)=>this.shareResource(index, value.id, 'text','public',  e.target.checked)}
+                                                         label={`Public`}
+                                                     />
+                                                </span>
+                                                <span
+                                                    style={{cursor: 'pointer'}}
+                                                    onClick={()=> this.removeResource(index,'text', value.id)}
+                                                >
+                                                    <i className="fa fa-trash"> </i> Delete
+                                                </span>
+                                            </div>
                                         </div>
                                     </Col>
                                 )
                             })
                          :
                              !textLoading &&
-                             <div style={{display: 'flex', flex: 1, flexWrap: 'wrap', justifyContent: 'center'}}>
+                             <div style={{display: 'flex', flex: 1, flexWrap: 'wrap', justifyContent: 'center', padding: 20, background: '#fff', borderRadius: 14}}>
                                  <p>No texts are found</p>
                              </div>
                          }
@@ -260,6 +322,160 @@ class App extends Component {
     closeModal()
     {
         this.setState({showTextModal: false})
+    }
+    removeResource(index, type, id)
+    {
+        swal.fire({
+            text: 'Are you sure you want to delete this?',
+            confirmButtonText: 'Yes',
+            showCancelButton: true,
+            cancelButtonText:  'Cancel',
+        })
+            .then(result => {
+                if (result.value) {
+                    APIinterface.session.delete('/api/remove-resource', {
+                        data: { id: id, type: type}
+                    })
+                        .then(({data}) => {
+                            swal.fire({
+                                type: 'success',
+                                text: "Successfully deleted"
+                            });
+                            if (type === 'upload')
+                            {
+                                let transData = this.state.transData;
+                                this.setState({transData: transData.filter(el => el.id !== id)})
+                            }
+                            else {
+                                let textData = this.state.textData;
+                                this.setState({textData: textData.filter(el => el.id !== id)})
+                            }
+                        })
+                        .catch(error => {
+                            swal.fire({
+                                type: 'error',
+                                text: "Something went wrong, please try again later"
+                            })
+                        })
+                }
+            });
+    }
+    shareResource(index, id, type, resourceType, value)
+    {
+        if (value)
+        {
+            swal.fire({
+                title: (resourceType ==='contribute'? 'Are you sure you want to contribute this for science?': 'Are you sure you want to share this publicly?'),
+                text: (resourceType === 'contribute'?' If Yes, you are only giving permission for (1) your data to be stored by our team, and (2) to be contacted before its use in future research.':
+                    'If Public, the Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If Private, your story will not be publicly shared in any form.'),
+                showCancelButton: true,
+                confirmButtonText:  resourceType === 'contribute' ? 'Contribute to science' : 'Public',
+                cancelButtonText:  resourceType === 'contribute' ? 'Do not contribute' : 'Private',
+            })
+                .then(result => {
+                    if (result.value)
+                    {
+                        const data =  { id: id, type: type, status:  1, contentType: resourceType};
+                        APIinterface.session.put('/api/update-resource-status', data)
+                            .then(({data}) => {
+                                swal.fire({
+                                    type: 'success',
+                                    text: "Successfully updated"
+                                });
+                                if (type === 'upload')
+                                {
+                                    let transData = this.state.transData;
+                                    let selectedTransData = transData[index]
+                                    if (resourceType ==='contribute')
+                                    {
+                                        selectedTransData.contribute_to_science = value;
+                                    }
+                                    else {
+                                        selectedTransData.share = value;
+                                    }
+                                    transData[index] = selectedTransData;
+                                    this.setState({transData: transData})
+                                }
+                                else {
+                                    let textData = this.state.textData;
+                                    let selectedData = textData[index]
+                                    if (resourceType ==='contribute')
+                                    {
+                                        selectedData.contribute_to_science = value;
+                                    }
+                                    else {
+                                        selectedData.share = value;
+                                    }
+                                    textData[index] = selectedData;
+                                    this.setState({textData: textData})
+                                }
+
+                            })
+                            .catch(error => {
+                                swal.fire({
+                                    type: 'error',
+                                    text: "Something went wrong, please try again later"
+                                })
+                            })
+                    }
+                })
+        }
+        else {
+            swal.fire({
+                title: (resourceType ==='contribute'? 'Are you sure you do not want to contribute this for science? ': 'Are you sure you want to make this private?'),
+                text: (resourceType ==='contribute'? 'Contributing to science means that you are only giving permission for (1) your data to be stored by our team, and (2) to be contacted before its use in future research.':
+                    'If Public, the Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If Private, your story will not be publicly shared in any form.'),
+                confirmButtonText:  resourceType === 'contribute' ? 'Do not contribute' : 'Private',
+                showCancelButton: true,
+                cancelButtonText:  resourceType === 'contribute' ? 'Contribute to science' : 'Public',
+            })
+                .then(result => {
+                    if (result.value)
+                    {
+                        const data =  { id: id, type: type, status:  0, contentType: resourceType};
+                        APIinterface.session.put('/api/update-resource-status', data)
+                            .then(({data}) => {
+                                swal.fire({
+                                    type: 'success',
+                                    text: "Successfully updated"
+                                })
+                                if (type === 'upload')
+                                {
+                                    let transData = this.state.transData;
+                                    let selectedTransData = transData[index]
+                                    if (resourceType ==='contribute')
+                                    {
+                                        selectedTransData.contribute_to_science = value;
+                                    }
+                                    else {
+                                        selectedTransData.share = value;
+                                    }
+                                    transData[index] = selectedTransData;
+                                    this.setState({transData: transData})
+                                }
+                                else {
+                                    let textData = this.state.textData;
+                                    let selectedData = textData[index]
+                                    if (resourceType ==='contribute')
+                                    {
+                                        selectedData.contribute_to_science = value;
+                                    }
+                                    else {
+                                        selectedData.share = value;
+                                    }
+                                    textData[index] = selectedData;
+                                    this.setState({textData: textData})
+                                }
+                            })
+                            .catch(error => {
+                                swal.fire({
+                                    type: 'error',
+                                    text: "Something went wrong, please try again later"
+                                })
+                            })
+                    }
+                })
+        }
     }
     nextPage(type) {
         if (type ==='trans') {

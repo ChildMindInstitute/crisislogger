@@ -2,7 +2,7 @@ import axios from "axios";
 import {attach as raxAttach, getConfig as raxConfig} from 'retry-axios';
 class AxiosClient {
     constructor() {
-        const BASE_URL_API = process.env.MIX_APP_URL;
+        const BASE_URL_API = process.env.MIX_APP_URL+':8000';
         this.session = axios.create({
             baseURL: BASE_URL_API,
             headers: {
