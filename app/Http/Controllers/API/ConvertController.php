@@ -52,7 +52,7 @@ class ConvertController extends Controller
         }
 
         try {
-            $this->dispatch(new VideoConversionJob($upload, $env));
+            VideoConversionJob::dispatch($upload, $env)->onConnection('redis')->onQueue('video-processing-'.$upload->getKey());
         }
         catch (\Exception $exception)
         {
