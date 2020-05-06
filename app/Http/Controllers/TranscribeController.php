@@ -21,8 +21,7 @@ class TranscribeController extends Controller {
     public function index(Request $request) {
 		$searchTxt = $request->searchTxt;
 		$transcriptions = Transcription::leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
-			->where('uploads.share', '>', '0')
-			->where('uploads.hide', '=', '0');
+			->where('uploads.share', '>', '0');
 		if ($searchTxt != null) {
 			$transcriptions = $transcriptions->leftJoin('users', 'users.id', '=', 'uploads.user_id')
 				->where('transcriptions.text', 'like', "%$searchTxt%");
