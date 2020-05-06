@@ -40,18 +40,18 @@ class ConvertVideos extends Command
      */
     public function handle()
     {
-		$convertedFiles = array(
-			'9PJX1Pqj6cf4lbQGohoUA5Smq1z4g8VDcEETIBZx.mkv',
-			'9PJX1Pqj6cf4lbQGohoUA5Smq1z4g8VDcEETIBZx.webm',
-			'XueCR1uy5cw8RQZjFpS2jGY3rFhFsEzcwMT0ZTVz.mkv',
-			'XueCR1uy5cw8RQZjFpS2jGY3rFhFsEzcwMT0ZTVz.webm',
-			'A1tdFxh4AK2kJKpV9GO65BAuq12KjdHkBWbIDMjV.mkv',
-			'A1tdFxh4AK2kJKpV9GO65BAuq12KjdHkBWbIDMjV.webm',
-			'uakcE5q0szfHsOImeHKqaU0hjFm5uZfDKzoVgDIr.mkv',
-			'uakcE5q0szfHsOImeHKqaU0hjFm5uZfDKzoVgDIr.webm',
-		);
-        $uploads = Upload::where('video_generated', false)->where('converted', false)->whereIn('name', $convertedFiles)->get();
-		
+//		$convertedFiles = array(
+//			'9PJX1Pqj6cf4lbQGohoUA5Smq1z4g8VDcEETIBZx.mkv',
+//			'9PJX1Pqj6cf4lbQGohoUA5Smq1z4g8VDcEETIBZx.webm',
+//			'XueCR1uy5cw8RQZjFpS2jGY3rFhFsEzcwMT0ZTVz.mkv',
+//			'XueCR1uy5cw8RQZjFpS2jGY3rFhFsEzcwMT0ZTVz.webm',
+//			'A1tdFxh4AK2kJKpV9GO65BAuq12KjdHkBWbIDMjV.mkv',
+//			'A1tdFxh4AK2kJKpV9GO65BAuq12KjdHkBWbIDMjV.webm',
+//			'uakcE5q0szfHsOImeHKqaU0hjFm5uZfDKzoVgDIr.mkv',
+//			'uakcE5q0szfHsOImeHKqaU0hjFm5uZfDKzoVgDIr.webm',
+//		);
+        $uploads = Upload::where('video_generated', false)->where('converted', false)->get();
+
 		if(count($uploads) > 0)
 		{
 			foreach($uploads as $upload)
@@ -63,7 +63,7 @@ class ConvertVideos extends Command
 				}
 				$file_name = $upload->name;
 				if(strpos($file_name, "mkv") === false &&  strpos( $file_name, "webm") === false)
-				{					
+				{
 					continue;
 				}
 
@@ -83,6 +83,6 @@ class ConvertVideos extends Command
 				$upload->update();
 			}
 		}
-		
+
     }
 }
