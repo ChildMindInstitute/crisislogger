@@ -14,7 +14,9 @@ class UpdateUploadsTableAddHide extends Migration
     public function up()
     {
         Schema::table('uploads', function (Blueprint $table) {
-			$table->boolean('hide')->default(1);
+            if (!Schema::hasColumn('uploads', 'hide')) {
+                $table->boolean('hide')->default(1);
+            }
         });
     }
 
@@ -26,7 +28,9 @@ class UpdateUploadsTableAddHide extends Migration
     public function down()
     {
         Schema::table('uploads', function (Blueprint $table) {
-			$table->dropColumn('hide');
+            if (Schema::hasColumn('uploads', 'hide')) {
+                $table->boolean('hide')->default(1);
+            }
         });
     }
 }
