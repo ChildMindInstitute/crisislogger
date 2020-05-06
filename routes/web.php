@@ -112,6 +112,11 @@ Route::prefix('admin')->group(function () {
     Route::post('hide', 'AdminController@hide')
       ->name('admin-hide')
       ->middleware('can:admin');
+
+    Route::post('rank', 'AdminController@rank')
+      ->name('admin-rank')
+      ->middleware('can:admin');
+
 });
 
 Auth::routes();
