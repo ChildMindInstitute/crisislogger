@@ -4,6 +4,7 @@ th, td {vertical-align:top; background-color: #fff; padding:4px 8px; border:2px 
 </style>
 @yield('styles')
 <body style="margin: 20px">
+@yield('content-pre')
 <table>
     <tr>
 @foreach ($columns as $col)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Transcription;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Http\Response;
@@ -23,21 +24,10 @@ class WordcloudController extends Controller
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    public function generate(){
-        $user = Auth::user();
+    public function generate(Request $request){
+        $user = auth()->user();
+        $searchTxt = $request->get('searchTxt');
 
-        // Get a list of transcriptions
-        /** @var Transcription[] $transcriptions */
-        $transcriptions = $user->transcriptions()->get();
-        $words = [];
-
-        // Loop through the transcriptions and get a list of words
-        foreach($transcriptions as $transcription){
-
-
-            $words[$transcription->upload_id] = $this->generateWords($transcription->text);
-        }
-
-        return response()->json($words, Response::HTTP_OK);
+        return \response()->json($data);
     }
 }

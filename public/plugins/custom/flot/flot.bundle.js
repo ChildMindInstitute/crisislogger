@@ -1312,7 +1312,7 @@ The plugin also adds four public methods:
     the user moves the mouse. Optionally supply a position (passed on to
     setCrosshair()) to move it to.
 
-    Example usage:
+    App usage:
 
     var myFlot = $.plot( $("#graph"), ..., { crosshair: { mode: "x" } } };
     $("#graph").bind( "plothover", function ( evt, position, item ) {

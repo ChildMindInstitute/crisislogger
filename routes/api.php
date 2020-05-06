@@ -29,10 +29,13 @@ Route::middleware('auth')->group(function(){
         Route::post('update', 'UserController@update')->name('user_update');
         Route::post('change_password', 'UserController@changePassword')->name('user_change_password');
     });
-    Route::post('word_cloud', 'WordcloudController@generate');
+    Route::get('word_cloud', 'WordcloudController@generate');
 });
 Route::prefix('transcribe')->group(function(){
    Route::get('audio/{name}', 'TranscribeController@transcribeAudio');
 });
 Route::resource('transcriptions', 'TranscribeController');
+Route::get('user-transcription', 'TranscribeController@userTranscription');
+Route::get('user-texts', 'TextController@userTexts');
+Route::delete('remove-resource', 'UserController@removeResource');
 Route::post('questionnaire', 'QuestionnaireController@upload')->name('questionnaire_form_upload');

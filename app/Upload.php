@@ -26,7 +26,7 @@ use Storage;
 class Upload extends Model
 {
     protected $appends = [
-	    'link', 'text'
+	    'link'
     ];
 
     /**

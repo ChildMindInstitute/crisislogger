@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUploadsTableAddHide extends Migration
+class UpdateUploadsTableAddRank extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class UpdateUploadsTableAddHide extends Migration
     public function up()
     {
         Schema::table('uploads', function (Blueprint $table) {
-            if (!Schema::hasColumn('uploads', 'hide')) {
-                $table->boolean('hide')->default(1);
+            if (!Schema::hasColumn('uploads', 'rank')) {
+                $table->tinyInteger('rank')->nullable();
             }
         });
     }
@@ -28,8 +28,8 @@ class UpdateUploadsTableAddHide extends Migration
     public function down()
     {
         Schema::table('uploads', function (Blueprint $table) {
-            if (Schema::hasColumn('uploads', 'hide')) {
-                $table->boolean('hide')->default(1);
+            if (Schema::hasColumn('uploads', 'rank')) {
+                $table->dropColumn('rank');
             }
         });
     }
