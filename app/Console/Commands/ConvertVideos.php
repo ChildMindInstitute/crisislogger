@@ -71,13 +71,7 @@ class ConvertVideos extends Command
                     }
 
                     echo $file_name."\n";
-                    if (strpos( $file_name, "webm") !== false)
-                    {
-                        $format = new \FFMpeg\Format\Video\X264();
-                    }
-                    else {
-                        $format = new \FFMpeg\Format\Video\X264('libfdk_aac', 'libx264');
-                    }
+                    $format = new \FFMpeg\Format\Video\X264('libfdk_aac', 'libx264');
                     $name = str_replace(['.mkv', '.webm'], '', $file_name).".mp4";
                     try {
                         FFMpeg::fromDisk('gcs')
@@ -93,7 +87,8 @@ class ConvertVideos extends Command
                     }
                     catch (\Exception $exception)
                     {
-                        echo 'FFmpeg conversion failed: '.$file_name;
+                        echo $exception->getMessage();
+                        echo 'FFmpeg conversion failed: '.$file_name."\n";
                         \Log::error('FFmpeg conversion failed: '.$file_name);
                     }
 
