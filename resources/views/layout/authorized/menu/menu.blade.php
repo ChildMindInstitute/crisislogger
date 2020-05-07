@@ -21,6 +21,13 @@
             <span class="kt-menu__link-text">Share Your Thoughts</span>
         </a>
     </li>
+    <li class="kt-menu__item aria-haspopup="true">
+        <a href="https://explore.crisislogger.org/" class="kt-menu__link ">
+            <i class="kt-menu__link-icon fa fa-eye">
+            </i>
+            <span class="kt-menu__link-text">Explore</span>
+        </a>
+    </li>
     <li class="kt-menu__item @yield('profile-active')" aria-haspopup="true">
         <a href="{{ route('profile') }}" class="kt-menu__link ">
             <i class="kt-menu__link-icon">

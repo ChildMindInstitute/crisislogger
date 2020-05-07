@@ -10,8 +10,7 @@ use App\User;
 use Auth;
 use Hash;
 use Illuminate\Http\Request;
-use function GuzzleHttp\Psr7\uri_for;
-
+use Illuminate\Support\Facades\Session;
 class UserController extends Controller
 {
     /**
@@ -110,13 +109,11 @@ class UserController extends Controller
         catch (\Exception $exception)
         {
             \DB::rollBack();
-            return \Response::json(
-                ['success' => 0]
-            );
+            Session::flash('session_error', $exception->getMessage());
+            return redirect('/dashboard');
         }
-        return \Response::json(
-            ['success' => 1]
-        );
+        Session::flash('session_success', 'Successfully deleted');
+        return redirect('/dashboard');
     }
 
     public function updateResourceStatus(Request $request)

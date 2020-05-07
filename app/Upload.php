@@ -35,7 +35,7 @@ class Upload extends Model
     public function getLinkAttribute()
     {
         $name = str_replace('/storage/', '', $this->name);
-        return 'https://storage.googleapis.com/' . config('app.google_cloud_buck') . "/$name";
+        return 'https://storage.googleapis.com/crisislogger_uploads' . config('app.google_cloud_buck') . "/$name";
     }
 
     /**

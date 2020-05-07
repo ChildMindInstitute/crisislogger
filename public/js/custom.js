@@ -42,7 +42,10 @@ $(document).ready(function(){
                         const data =  { id: resource_id, type: $type, status:  1, contentType: $contentType};
                         axios.put('/api/update-resource-status', data)
                             .then(({data}) => {
-                                window.location.href = data.url
+                                swal.fire({
+                                    type: 'success',
+                                    text: "Successfully Updated"
+                                });
                             })
                             .catch(error => {
                                 swal.fire({
@@ -71,7 +74,10 @@ $(document).ready(function(){
                         const data =  { id: resource_id, type: $type, status:  0, contentType: $contentType};
                         axios.put('/api/update-resource-status', data)
                             .then(({data}) => {
-                                window.location.href = data.url
+                                swal.fire({
+                                    type: 'success',
+                                    text: "Successfully Updated"
+                                });
                             })
                             .catch(error => {
                                 swal.fire({
@@ -110,8 +116,24 @@ $(document).ready(function(){
         $('#text-content-modal').find('.modal-content').find('.modal-footer').before(html);
         $('#text-content-modal').modal('show');
     })
+    $('.show-more-cloud p').on('click', function () {
+        let html = $('.video-box p').text();
+        html = "<p style='padding: 20px;max-height: 400px;overflow: scroll;'>"+html+"</p>"
+        $('#text-content-modal').find('.modal-content').find('.modal-footer').before(html);
+        $('#text-content-modal').modal('show');
+    })
+    $('.show-more-cloud span').on('click', function () {
+        if ($('.video-box p').hasClass('d-none'))
+        {
+            $('.video-box p').removeClass('d-none');
+            $('.video-box div').addClass('d-none')
+        }
+        else {
+            $('.video-box p').addClass('d-none');
+            $('.video-box div').removeClass('d-none')
+        }
+    })
     $('#text-content-modal').on('hide.bs.modal', function (event) {
-        console.log('here')
         $(this).find('.modal-content').find('p').remove();
     })
     $('#terms-btn').click(function () {

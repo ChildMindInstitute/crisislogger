@@ -3,7 +3,7 @@ let spinner = document.getElementById('spinner');
 // Encapsulate the word cloud functionality
 function wordCloud(selector) {
     let width, height;
-    width = $('.kt-portlet__body').innerWidth() - 20;
+    width = $('.video-box').innerWidth() - 20;
     height = 200;
 
     var fill = d3.scale.sqrt();
@@ -69,14 +69,15 @@ function wordCloud(selector) {
     }
 }
 
-axios.post('/api/word_cloud', {
+axios.get('/api/word_cloud', {
 })
 .then(function (response) {
     spinner.remove();
     let data = response.data;
     for(let i in data){
         let words = [];
-        let obj = data[i];
+        let obj = data[i]['word'];
+        let text = data[i]['text'];
         Object.keys(obj)
             .forEach(function eachKey(key) {
                 words.push({
@@ -86,10 +87,11 @@ axios.post('/api/word_cloud', {
             });
 
         var portlet_body = document.createElement('div');
-        $('#transcript-'+i).find('#spinner').remove();
-        portlet_body.classList.add('kt-portlet__body');
-        portlet_body.style.marginBottom = "30px";
-        document.getElementById('transcript-'+i).append(portlet_body);
+        // $('#transcript-'+i).find('#spinner').remove();
+        $('#transcript-'+i).find('.show-more-cloud').removeClass('d-none');
+        $('#transcript-'+i).find('.video-box').append("<p class='d-none' id='show-more-text'>"+text+"</p>");
+        portlet_body.classList.add('word-cloud');
+        $('#transcript-'+i).find('.video-box').append(portlet_body);
         var myWordCloud = wordCloud(portlet_body);
         myWordCloud.update(words);
     }
