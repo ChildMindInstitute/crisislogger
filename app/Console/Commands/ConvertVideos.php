@@ -74,16 +74,23 @@ class ConvertVideos extends Command
 
                     $format = new \FFMpeg\Format\Video\X264('libfdk_aac', 'libx264');
                     $name = str_replace(['.mkv', '.webm'], '', $file_name).".mp4";
-                    FFMpeg::fromDisk('gcs')
-                        ->open($file_name)
-                        ->addFilter('-codec', 'copy')
-                        ->export()
-                        ->toDisk('gcs')
-                        ->inFormat( $format)
-                        ->save($name);
-                    $upload->name = $name;
-                    $upload->converted = true;
-                    $upload->update();
+                    try {
+                        FFMpeg::fromDisk('gcs')
+                            ->open($file_name)
+                            ->addFilter('-codec', 'copy')
+                            ->export()
+                            ->toDisk('gcs')
+                            ->inFormat( $format)
+                            ->save($name);
+                        $upload->name = $name;
+                        $upload->converted = true;
+                        $upload->update();
+                    }
+                    catch (\Exception $exception)
+                    {
+                        \Log::error('FFmpeg conversion failed: '.$file_name);
+                    }
+
                 }
             }
         }
