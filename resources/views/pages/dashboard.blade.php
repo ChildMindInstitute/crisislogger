@@ -55,18 +55,18 @@
                                 <input type="checkbox" class="form-check-input contribute-to-science"
                                        value="{{$upload->contribute_to_science}}"
                                        {{$upload->contribute_to_science?'checked': ''}}  id="contribute-upload-{{$upload->id}}">
-                                <label class="form-check-label text-black" for="contribute-upload-{{$upload->id}}">Science?</label>
+                                <label class="form-check-label text-black" for="contribute-upload-{{$upload->id}}">Science</label>
                             </div>
                             <div class="form-group float-left mb-0" style="flex: 1">
                                 <input type="checkbox" class="form-check-input contribute-to-science"
                                        value="{{$upload->share}}"
                                        {{$upload->share?'checked': ''}}  id="share-upload-{{$upload->id}}">
                                 <label class="form-check-label text-black"
-                                       for="share-upload-{{$upload->id}}">Public?</label>
+                                       for="share-upload-{{$upload->id}}">Public</label>
                             </div>
                             <a class="remove-resource" style=" font-size: 13px !important;flex: 1" href="#"
                                id="upload-{{$upload->id}}"><i class="fa fa-trash" style="margin-right: 10px;"></i>
-                                Delete?</a>
+                                Delete</a>
                         </div>
                     </div>
                 @endforeach
@@ -94,7 +94,7 @@
                                 <input type="checkbox" class="form-check-input contribute-to-science"
                                        value="{{$text->contribute_to_science}}"
                                        {{$text->contribute_to_science?'checked': ''}}  id="contribute-text-{{$text->id}}">
-                                <label class="form-check-label text-black" for="contribute-text-{{$text->id}}">Science?</label>
+                                <label class="form-check-label text-black" for="contribute-text-{{$text->id}}">Science</label>
                             </div>
                             <div class="form-group float-left mb-0" style="flex: 1">
                                 <input type="checkbox" class="form-check-input contribute-to-science"
