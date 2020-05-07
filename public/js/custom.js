@@ -117,7 +117,7 @@ $(document).ready(function(){
         $('#text-content-modal').modal('show');
     })
     $('.show-more-cloud p').on('click', function () {
-        let html = $('.video-box p').text();
+        let html =  $(this).parent().parent().find('.video-box p').text();
         html = "<p style='padding: 20px;max-height: 400px;overflow: scroll;'>"+html+"</p>"
         $('#text-content-modal').find('.modal-content').find('.modal-footer').before(html);
         $('#text-content-modal').modal('show');
@@ -134,6 +134,7 @@ $(document).ready(function(){
         }
     })
     $('#text-content-modal').on('hide.bs.modal', function (event) {
+        $(this).find('.modal-content').find('p').remove();
         $(this).find('.modal-content').find('p').remove();
     })
     $('#terms-btn').click(function () {
