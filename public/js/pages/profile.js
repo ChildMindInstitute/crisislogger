@@ -1,5 +1,5 @@
 $(function () {
-    $('#close-account').one('submit',function (event) {
+    $('#close-account').on('click',function (event) {
         event.preventDefault();
         swal.fire({
             title: '',
