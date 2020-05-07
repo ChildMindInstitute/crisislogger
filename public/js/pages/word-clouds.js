@@ -87,7 +87,7 @@ axios.get('/api/word_cloud', {
             });
 
         var portlet_body = document.createElement('div');
-        // $('#transcript-'+i).find('#spinner').remove();
+        $('#transcript-'+i).find('#spinner').remove();
         $('#transcript-'+i).find('.show-more-cloud').removeClass('d-none');
         $('#transcript-'+i).find('.video-box').append("<p class='d-none' id='show-more-text'>"+text+"</p>");
         portlet_body.classList.add('word-cloud');
