@@ -25,7 +25,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('convert:video-files')
-              ->dailyAt('21:00');
+              ->hourly()
+        ->withoutOverlapping(1)
+        ->appendOutputTo('cron.log');
     }
 
     /**
