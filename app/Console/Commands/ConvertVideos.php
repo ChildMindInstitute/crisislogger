@@ -93,6 +93,7 @@ class ConvertVideos extends Command
                     }
                     catch (\Exception $exception)
                     {
+                        echo 'FFmpeg conversion failed: '.$file_name;
                         \Log::error('FFmpeg conversion failed: '.$file_name);
                     }
 
