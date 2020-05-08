@@ -133,9 +133,24 @@
                         $("#state").empty();
                         $("#city").empty();
                         $("#country").append('<option>Select Country</option>');
+                        let output = []
+                        let usKey = 0;
                         $.each(res, function (key, value) {
-                            $("#country").append('<option value="' + value.name.common + '" data-id="' + value.ne_id + '">' + value.name.common + '</option>');
+                            if (usKey === 0 && value.abbrev !== undefined && value.abbrev.toString().toLowerCase() == 'u.s.a.')
+                            {
+                                usKey = '<option value="' + value.name.common + '" data-id="' + value.ne_id + '">' + value.name.common + '</option>';
+                            }
+                            else {
+                                output.push('<option value="' + value.name.common + '" data-id="' + value.ne_id + '">' + value.name.common + '</option>');
+                            }
                         });
+                        if(output.length > 0 && usKey !== 0)
+                        {
+                            output.sort()
+                            output.unshift(usKey, output);
+                        }
+                        $('#country').append(output.join(' '))
+
                     }
                 }
             });

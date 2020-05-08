@@ -9,12 +9,11 @@
             </div>
             <form id="ConsentForm">
                 <div class="modal-body" id="upload-modal">
-
-                    <div class="form-group">
+                    <div class="form-group contribute-section">
                         <h4>Would you like to contribute to science?</h4>
                         <div class="kt-radio-inline">
                             <label class="kt-radio">
-                                <input type="radio" name="contribute" value="1" checked="checked"> Yes
+                                <input type="radio" name="contribute" value="1"> Yes
                                 <span></span>
                             </label>
                             <label class="kt-radio">
@@ -50,11 +49,20 @@
                                 <span></span>
                             </label>
                         </div>
-                        <span class="form-text text-muted small-font" >If Yes, the Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If No, your story will not be publicly shared in any form.</span>
+                        <span class="form-text text-muted small-font">If Yes, the Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If No, your story will not be publicly shared in any form.</span>
                     </div>
-
                     <div class="form-group">
-                        <input type="checkbox" name="years-old" id="years-old" >
+                        <label for="country"><h4>What country do you live in?</h4></label>
+                        <select class="form-control" name="country" id="country">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="state"><h4>What state do you live in?</h4></label>
+                        <select class="form-control" name="state" id="state">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="years-old" id="years-old">
                         <label for="years-old" id="years-old-label">I am at least 16 years old.</label>
                     </div>
                     <div class="modal-footer" style="border-bottom: 1px solid #ebedf2;">
@@ -63,7 +71,8 @@
                                 id="upload"> {{!request()->has('type')? 'Upload' : 'Continue'}}</button>
                     </div>
 
-                    <a class="form-text  text-muted collapse-header collapsed" data-toggle="collapse" href="#terms-collapse" role="button"
+                    <a class="form-text  text-muted collapse-header collapsed" data-toggle="collapse"
+                       href="#terms-collapse" role="button"
                        aria-expanded="false" aria-controls="collapseExample" id="terms-btn">
                         <span class="form-text small-font">By clicking the {{!request()->has('type')? 'Upload' : 'Continue'}} button, you agree to the terms below:</span>
                     </a>
@@ -87,3 +96,79 @@
         </div>
     </div>
 </div>
+@section('scripts')
+    @parent
+   <script>
+       $(function () {
+           $.ajax({
+               type: "get",
+               url: "/getCountries/",
+               success: function (res) {
+                   if (res) {
+                       $("#country").empty();
+                       $("#state").empty();
+                       $("#city").empty();
+                       $("#country").append('<option>Select Country</option>');
+                       let output = []
+                       let usKey = 0;
+                       $.each(res, function (key, value) {
+                           if (usKey === 0 && value.abbrev !== undefined && value.abbrev.toString().toLowerCase() == 'u.s.a.') {
+                               usKey = '<option value="' + value.name.common + '" data-id="' + value.ne_id + '">' + value.name.common + '</option>';
+                           } else {
+                               output.push('<option value="' + value.name.common + '" data-id="' + value.ne_id + '">' + value.name.common + '</option>');
+                           }
+                       });
+                       if (output.length > 0 && usKey !== 0) {
+                           output.sort()
+                           output.unshift(usKey, output);
+                       }
+                       $('#country').append(output.join(' '))
+
+                   }
+               }
+           });
+       });
+
+       $('#country').change(function () {
+           var cid = $(this).find(':selected').data('id');
+           if (cid) {
+               $.ajax({
+                   type: "get",
+                   url: "/getStates/" + cid,
+                   success: function (res) {
+                       if (res) {
+                           $("#state").empty();
+                           $("#city").empty();
+                           $("#state").append('<option>Select State</option>');
+                           $.each(res, function (key, value) {
+                               $("#state").append('<option value="' + value.name + '">' + value.name + '</option>');
+                           });
+                       }
+                   }
+
+               });
+           }
+       });
+
+       $('#state').change(function () {
+           var sid = $(this).val();
+           var cid = $("#country").find(':selected').data('id');
+           if (sid) {
+               $.ajax({
+                   type: "get",
+                   url: "/getCities/" + cid + "/" + sid,
+                   success: function (res) {
+                       if (res) {
+                           $("#city").empty();
+                           $("#city").append('<option>Select City</option>');
+                           $.each(res, function (key, value) {
+                               $("#city").append('<option value="' + value.name + '">' + value.name + '</option>');
+                           });
+                       }
+                   }
+
+               });
+           }
+       });
+   </script>
+@endsection

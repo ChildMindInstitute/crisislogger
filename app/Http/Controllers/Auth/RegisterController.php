@@ -74,7 +74,15 @@ class RegisterController extends Controller
         $user = new User();
         $user->name = !isset($data['name']) ? 'unnamed': $data['name'];
         $user->email = $data['email'];
-          $user->password = $data['password'] == null ? null : Hash::make($data['password']);
+        $user->password = $data['password'] == null ? null : Hash::make($data['password']);
+        if (session()->has('country'))
+        {
+            $user->country = session()->get('country');
+        }
+        if (session()->has('state'))
+        {
+            $user->state = session()->get('state');
+        }
         if (isset($data['referral_code']))
         {
             $user->referral_code = $data['referral_code'];
@@ -108,6 +116,8 @@ class RegisterController extends Controller
             }
         }
 
+        session()->put('country', $request->country);
+        session()->put('state', $request->state);
         if (isset($data['referral_code'])) {
             session()->put('referral_code', $data['referral_code']);
         }

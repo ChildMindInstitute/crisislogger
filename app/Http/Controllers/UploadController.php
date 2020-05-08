@@ -47,11 +47,17 @@ class UploadController extends Controller
         }
         if (Auth::check())
         {
+            $user = Auth::user();
+            $user->country = $request->country;
+            $user->state = $request->state;
+            $user->update();
             Auth::user()->uploads()->save($upload);
         }
         else {
             $upload->save();
             session()->put('upload_id', $upload->getKey());
+            session()->put('country', $request->country);
+            session()->put('state', $request->state);
         }
         $redirect = route('capture-create-account');
         // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
@@ -105,11 +111,17 @@ class UploadController extends Controller
         }
         if (Auth::check())
         {
+            $user = Auth::user();
+            $user->country = $request->country;
+            $user->state = $request->state;
+            $user->update();
             Auth::user()->texts()->save($text);
         }
         else {
             $text->save();
             session()->put('text_id', $text->getKey());
+            session()->put('country', $request->country);
+            session()->put('state', $request->state);
         }
         $redirect = route('capture-create-account');
         // Check and see if the user needs to be redirected to the questionnaire page (if sharing)

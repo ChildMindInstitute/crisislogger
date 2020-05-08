@@ -33,7 +33,8 @@ function uploadButtonClicked(file, filename){
     fd.append("share", $("input[name='share']:checked").val());
     fd.append("contribute", $("input[name='contribute']:checked").val());
     fd.append("voice", getParameterByName("voice"));
-
+    fd.append("country", $("select[name='country']").val());
+    fd.append("state", $("select[name='state']").val());
     console.log(getParameterByName("voice"));
 
 	uploadInfo.classList.add(DISABLED);

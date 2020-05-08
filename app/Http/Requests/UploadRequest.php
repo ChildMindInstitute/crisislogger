@@ -11,6 +11,8 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property int share
  * @property int contribute
  * @property string voice
+ * @property string country
+ * @property string state
  */
 class UploadRequest extends FormRequest
 {
@@ -33,9 +35,11 @@ class UploadRequest extends FormRequest
     {
         return [
             'data' => 'required',
-            'share' => 'required',
-            'contribute' => 'required',
-            'voice' => 'nullable'
+            'share' => 'required|boolean',
+            'contribute' => 'required| boolean',
+            'voice' => 'nullable',
+            'country' => 'nullable',
+            'state' => 'nullable'
         ];
     }
 }

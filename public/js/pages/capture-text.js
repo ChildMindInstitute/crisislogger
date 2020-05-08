@@ -13,8 +13,16 @@ $(function () {
 
         e.preventDefault();
         // Block UI
+        if (!$('input[name="contribute"]').is(':checked'))
+        {
+            $('.contribute-section').after().find('.invalid-feedback').remove();
+            $('.contribute-section').after().append("<span class='invalid-feedback'>You need to choose one of above.</span>").show()
+            return false;
+        }
         if (!$('#years-old').is(':checked'))
         {
+
+            $('#years-old-label').after().find('.invalid-feedback').remove();
             $('#years-old-label').after("<span class='invalid-feedback'>You need to click above checkbox before continue.</span>").show()
             return false;
         }
@@ -26,6 +34,8 @@ $(function () {
         fd.append("data", $("textarea[name='mind-text']").val());
         fd.append("share", $("input[name='share']:checked").val());
         fd.append("contribute", $("input[name='contribute']:checked").val());
+        fd.append("country", $("select[name='country']").val());
+        fd.append("state", $("select[name='state']").val());
         axios.post('/api/save-text', fd, {
             headers: {
                 'Content-Type': 'multipart/form-data'
