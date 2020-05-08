@@ -54,6 +54,12 @@ class Syncuserupload extends Command
 
             }
         }
+        $uploads = Upload::where('status', 'processing')->get();
+        foreach ($uploads as $upload)
+        {
+            $upload->status = 'finished';
+            $upload->update();
+        }
 
     }
 }

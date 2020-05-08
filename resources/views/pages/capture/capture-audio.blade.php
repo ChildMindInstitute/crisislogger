@@ -43,8 +43,8 @@
                 <p>
                     Your recording can be up to 5 minutes long.
                     You will be able to save the recording for private use
-                    or share it publicly, but
-                    please avoid using any identifying names or information.
+                    or share it publicly.
+                    <span style="color: red">Please avoid using any identifying names or information. </span>
                     It will be transcribed by Google's transcription service,
                     and you will be able to view a word cloud created from the transcript.
                     We hope that you will come back and record more as a journal of your thoughts and experiences.</p>

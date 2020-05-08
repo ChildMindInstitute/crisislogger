@@ -27,8 +27,8 @@
                 </div>
 
                 <p>You will be able to save your text for private use
-                or share it publicly, but
-                please avoid using any identifying names or information.
+                or share it publicly.
+                <span style="color: red">Please avoid using any identifying names or information. </span>
                 We hope that you will come back and record more as a journal of your thoughts and experiences.</p>
 
                 <p>If you would prefer, you can
