@@ -121,7 +121,7 @@ class AdminController extends Controller
 
     public function text(Request $request) {
         $type = 'text';
-        $report = DB::select( DB::raw("select t.id, t.created_at, null name, t.text, null hide, null rank"
+        $report = DB::select( DB::raw("select t.id, t.created_at, null name, t.text, null hide, null `rank`"
             ." from text t"
             ." where t.id in (".AdminController::safe_ids($request).")"
             ." order by t.created_at") );
@@ -134,7 +134,7 @@ class AdminController extends Controller
     }
 
     public function rank(Request $request) {
-        DB::update( DB::raw("update uploads set rank=? where id=?"), [$request->rank, $request->id] );
+        DB::update( DB::raw("update uploads set `rank`=? where id=?"), [$request->rank, $request->id] );
         return response()->noContent(201);
     }
 
