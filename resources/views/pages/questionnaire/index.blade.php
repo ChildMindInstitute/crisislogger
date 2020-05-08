@@ -189,7 +189,10 @@
                             $("#city").empty();
                             $("#city").append('<option>Select City</option>');
                             $.each(res, function (key, value) {
-                                $("#city").append('<option value="' + value.name + '">' + value.name + '</option>');
+                                if (value.name !== undefined)
+                                {
+                                    $("#city").append('<option value="' + value.name + '">' + value.name + '</option>');
+                                }
                             });
                         }
                     }
