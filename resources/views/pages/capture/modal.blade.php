@@ -58,8 +58,8 @@
                                 <select class="form-control" name="country" id="country">
                                 </select>
                             </div>
-                            <div class="col-lg-6 col-md-6  col-sm-6">
-                                <select class="form-control" name="state" id="state">
+                            <div class="col-lg-6 col-md-6  col-sm-6" >
+                                <select class="form-control" name="state" id="state" style="display: none">
                                 </select>
                             </div>
                         </div>
@@ -135,6 +135,7 @@
 
        $('#country').change(function () {
            var cid = $(this).find(':selected').data('id');
+           $("#state").show();
            if (cid) {
                $.ajax({
                    type: "get",
