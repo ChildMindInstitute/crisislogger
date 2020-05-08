@@ -17,9 +17,6 @@ class UpdateUploadTableRemoveHide2Field extends Migration
             if (Schema::hasColumn('uploads', 'hide')) {
                 $table->dropColumn('hide');
             }
-            if (Schema::hasColumn('uploads', 'hide2')) {
-                $table->renameColumn('hide2', 'hide');
-            }
         });
     }
 
@@ -31,9 +28,7 @@ class UpdateUploadTableRemoveHide2Field extends Migration
     public function down()
     {
         Schema::table('uploads', function (Blueprint $table) {
-            if (!Schema::hasColumn('uploads', 'hide')) {
-                $table->renameColumn('hide1', 'hide2');
-            }
+          //
         });
     }
 }
