@@ -115,9 +115,6 @@ class RegisterController extends Controller
                 session()->forget('text_id');
             }
         }
-
-        session()->put('country', $request->country);
-        session()->put('state', $request->state);
         if (isset($data['referral_code'])) {
             session()->put('referral_code', $data['referral_code']);
         }
