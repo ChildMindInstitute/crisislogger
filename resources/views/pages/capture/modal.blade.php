@@ -31,7 +31,7 @@
                         <div class="kt-radio-inline">
                             @if(!request()->has('type'))
                                 <label class="kt-radio">
-                                    <input type="radio" name="share" value="1" checked="checked"> Yes -- recording +
+                                    <input type="radio" name="share" value="1"> Yes -- recording +
                                     transcript
                                     <span></span>
                                 </label>
@@ -41,7 +41,7 @@
                                 </label>
                             @else
                                 <label class="kt-radio">
-                                    <input type="radio" name="share" value="1" checked="checked"> Yes
+                                    <input type="radio" name="share" value="1"> Yes
                                     <span></span>
                                 </label>
                             @endif
