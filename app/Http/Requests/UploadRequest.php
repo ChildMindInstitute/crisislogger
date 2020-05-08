@@ -35,8 +35,8 @@ class UploadRequest extends FormRequest
     {
         return [
             'data' => 'required',
-            'share' => 'required|boolean',
-            'contribute' => 'required| boolean',
+            'share' => 'required',
+            'contribute' => 'required',
             'voice' => 'nullable',
             'country' => 'nullable',
             'state' => 'nullable'
