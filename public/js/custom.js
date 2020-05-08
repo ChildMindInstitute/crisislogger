@@ -123,14 +123,14 @@ $(document).ready(function(){
         $('#text-content-modal').modal('show');
     })
     $('.show-more-cloud span').on('click', function () {
-        if ($('.video-box p').hasClass('d-none'))
+        if ($(this).parent().parent().find('.video-box p').hasClass('d-none'))
         {
-            $('.video-box p').removeClass('d-none');
-            $('.video-box div').addClass('d-none')
+            $(this).parent().parent().find('.video-box p').removeClass('d-none');
+            $(this).parent().parent().find('.video-box div').addClass('d-none')
         }
         else {
-            $('.video-box p').addClass('d-none');
-            $('.video-box div').removeClass('d-none')
+            $(this).parent().parent().find('.video-box p').addClass('d-none');
+            $(this).parent().parent().find('.video-box div').removeClass('d-none')
         }
     })
     $('#text-content-modal').on('hide.bs.modal', function (event) {

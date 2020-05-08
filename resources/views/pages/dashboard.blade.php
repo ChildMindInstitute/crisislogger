@@ -15,7 +15,7 @@
         <div class="row">
             @if(count($uploads) > 0)
                 @foreach($uploads  as $upload)
-                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 gallery-box mb-5" style="height: 100%">
+                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 gallery-box mb-5"  style="height: max-content;">
                         @if(isset($upload->transcript->id))
                             <div id="{{'transcript-'.$upload->id}}">
                                 @include('components.spinner')
@@ -85,7 +85,7 @@
         <div class="row">
             @if(count($texts) > 0)
                 @foreach($texts  as $text)
-                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 text-box mb-5" style="height: 100%">
+                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 text-box mb-5" >
                         <div class="text-content" id="text-content-{{$text->id}}">
                             <p class="text-justify text-ellipsis">{{$text->text}}</p>
                         </div>
@@ -151,6 +151,8 @@
         margin-bottom: 20px;
         width: 100%;
         border-radius: 10px;
+        max-height: 180px;
+        min-height: 180px;
     }
     .text-content{
         margin-bottom: 20px;

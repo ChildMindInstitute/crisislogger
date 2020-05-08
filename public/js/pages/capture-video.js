@@ -62,6 +62,7 @@ function requestVideo() {
     }).catch(e => {
         if (e)
         {
+
             let errorMsg = 'We can not find the camera device. please check and try again';
             let error = document.createElement('p');
             error.innerText =  errorMsg;
@@ -74,22 +75,38 @@ function requestVideo() {
 }
 
 function startRecording() {
-    console.log('recording started');
     isRecording = true;
     button.innerHTML = stopIcon;
     button.classList.add('recording');
-
+    if (document.getElementById('error-id'))
+    {
+        document.getElementById('error-id').remove();
+    }
     if ( navigator.vibrate ) navigator.vibrate( 150 );
 
     preview.classList.remove('d-none');
-    recorder = new MediaRecorder(stream, {
-        mimeType: 'video/webm'
-    });
-    recorder.start();
+    try {
+        recorder = new MediaRecorder(stream, {
+            mimeType: 'video/webm'
+        });
+        recorder.start();
+    }
+    catch (e) {
+
+        isRecording = false
+        button.classList.remove('recording');
+        button.innerHTML = camIcon;
+        let errorMsg = 'Seems like your browser does\'t support video recording, please try to use Chrome or Firefox';
+        let error = document.createElement('p');
+        error.innerText =  errorMsg;
+        error.setAttribute('id', 'error-id');
+        error.classList.add('error');
+        recordButton.after(error);
+    }
+
 
     //limit recording to 5 mins = 300,000 ms
     timeoutRequest = setTimeout(function() {
-        console.log('Recording time limit reached')
         stopRecording();
     }, 300000);
 }
