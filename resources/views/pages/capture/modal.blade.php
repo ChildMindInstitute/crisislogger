@@ -112,7 +112,7 @@
                        $("#country").empty();
                        $("#state").empty();
                        $("#city").empty();
-                       $("#country").append('<option>Select Country</option>');
+                       $("#country").append('<option value="null">Select Country</option>');
                        let output = []
                        let usKey = 0;
                        $.each(res, function (key, value) {
@@ -144,7 +144,7 @@
                        if (res) {
                            $("#state").empty();
                            $("#city").empty();
-                           $("#state").append('<option>Select State</option>');
+                           $("#state").append('<option value="null">Select State</option>');
                            $.each(res, function (key, value) {
                                $("#state").append('<option value="' + value.name + '">' + value.name + '</option>');
                            });
@@ -165,7 +165,7 @@
                    success: function (res) {
                        if (res) {
                            $("#city").empty();
-                           $("#city").append('<option>Select City</option>');
+                           $("#city").append('<option value="null">Select City</option>');
                            $.each(res, function (key, value) {
                                $("#city").append('<option value="' + value.name + '">' + value.name + '</option>');
                            });
