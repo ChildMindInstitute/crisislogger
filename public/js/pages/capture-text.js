@@ -13,10 +13,10 @@ $(function () {
 
         e.preventDefault();
         // Block UI
-        if (!$('input[name="contribute"]').is(':checked'))
+        if (!$('input[name="share"]').is(':checked'))
         {
-            $('.contribute-section').after().find('.invalid-feedback').remove();
-            $('.contribute-section').after().append("<span class='invalid-feedback'>You need to choose one of above.</span>").show()
+            $('.share-section').after().find('.invalid-feedback').remove();
+            $('.share-section').after().append("<span class='invalid-feedback'>You need to choose one of the above options.</span>").show()
             return false;
         }
         if (!$('#years-old').is(':checked'))

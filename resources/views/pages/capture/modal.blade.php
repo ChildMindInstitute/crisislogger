@@ -13,7 +13,7 @@
                         <h4>Would you like to contribute to science?</h4>
                         <div class="kt-radio-inline">
                             <label class="kt-radio">
-                                <input type="radio" name="contribute" value="1"> Yes
+                                <input type="radio" name="contribute" value="1" checked> Yes
                                 <span></span>
                             </label>
                             <label class="kt-radio">
@@ -25,12 +25,12 @@
                         </span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group share-section">
                         <h4>Would you like to share publicly?</h4>
                         <div class="kt-radio-inline">
                             @if(!request()->has('type'))
                                 <label class="kt-radio">
-                                    <input type="radio" name="share" value="1" checked="checked"> Yes -- recording +
+                                    <input type="radio" name="share" value="1"> Yes -- recording +
                                     transcript
                                     <span></span>
                                 </label>
@@ -40,7 +40,7 @@
                                 </label>
                             @else
                                 <label class="kt-radio">
-                                    <input type="radio" name="share" value="1" checked="checked"> Yes
+                                    <input type="radio" name="share" value="1"> Yes
                                     <span></span>
                                 </label>
                             @endif
@@ -52,14 +52,18 @@
                         <span class="form-text text-muted small-font">If Yes, the Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If No, your story will not be publicly shared in any form.</span>
                     </div>
                     <div class="form-group">
-                        <label for="country"><h4>What country do you live in?</h4></label>
-                        <select class="form-control" name="country" id="country">
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="state"><h4>What state do you live in?</h4></label>
-                        <select class="form-control" name="state" id="state">
-                        </select>
+                        <label for="country"><h4>What country and state  do you live in?</h4></label>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <select class="form-control" name="country" id="country">
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-md-6  col-sm-6">
+                                <select class="form-control" name="state" id="state">
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="years-old" id="years-old">
