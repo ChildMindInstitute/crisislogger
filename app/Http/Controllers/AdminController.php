@@ -72,22 +72,21 @@ class AdminController extends Controller
             .($date_from? " and created_at >= date('".$date_from."')": "")
             .($date_till? " and created_at < adddate('".$date_till."', 1)": "");
 
-
         $report = DB::select( DB::raw("select d,"
             ." group_concat(if(type not in ('txt', 'wav'), id, null) separator '|') video,"
             ." group_concat(if(type='wav', id, null) separator '|') audio,"
             ." group_concat(if(type='txt', id, null) separator '|') text"
             ." from ("
-            ."   select date(created_at) d, id, substring_index(name, '.', -1) type, user_id from uploads".$where_date
+            ."   select date(created_at) d, id, substring_index(name, '.', -1) type, user_id, share as public from uploads".$where_date
             ."   union all"
-            ."   select date(created_at) d, id, 'txt', user_id from text".$where_date
+            ."   select date(created_at) d, id, 'txt', user_id , share  from text".$where_date
             .") t "
             ." where 1"
             .($users_include? " and user_id in (select id from users where ".$users_include.")": "")
             .($users_exclude? " and user_id not in (select id from users where ".$users_exclude.")": "")
+            ." OR (user_id IS NULL and   public = 1)"
             ." group by d"
             ." order by d desc") );
-
         return view('pages.admin.index', compact('report', 'users_include', 'users_exclude', 'date_from', 'date_till'));
     }
 
