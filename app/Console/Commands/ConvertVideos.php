@@ -43,48 +43,48 @@ class ConvertVideos extends Command
     {
         if (app()->environment('convert'))
         {
-//            DB::setDefaultConnection('mysql_prod');
-//            $uploads = Upload::where('video_generated', false)->where('converted', false)->get();
-//
-//            if(count($uploads) > 0)
-//            {
-//                foreach($uploads as $upload)
-//                {
-//                    $exists = Storage::disk('gcs')->has($upload->name);
-//                    if(!$exists)
-//                    {
-//                        continue;
-//                    }
-//                    $file_name = $upload->name;
-//                    if(strpos($file_name, "mkv") === false &&  strpos( $file_name, "webm") === false)
-//                    {
-//                        continue;
-//                    }
-//
-//                    echo $file_name."\n";
-//                    $format = new \FFMpeg\Format\Video\X264('libfdk_aac', 'libx264');
-//                    $name = str_replace(['.mkv', '.webm'], '', $file_name).".mp4";
-//                    try {
-//                        FFMpeg::fromDisk('gcs')
-//                            ->open($file_name)
-//                            ->addFilter('-codec', 'copy')
-//                            ->export()
-//                            ->toDisk('gcs')
-//                            ->inFormat( $format)
-//                            ->save($name);
-//                        $upload->name = $name;
-//                        $upload->converted = true;
-//                        $upload->update();
-//                    }
-//                    catch (\Exception $exception)
-//                    {
-//                        echo $exception->getMessage();
-//                        echo 'FFmpeg conversion failed: '.$file_name."\n";
-//                        \Log::error('FFmpeg conversion failed: '.$file_name);
-//                    }
-//
-//                }
-//            }
+            DB::setDefaultConnection('mysql_prod');
+            $uploads = Upload::where('video_generated', false)->where('converted', false)->get();
+
+            if(count($uploads) > 0)
+            {
+                foreach($uploads as $upload)
+                {
+                    $exists = Storage::disk('gcs')->has($upload->name);
+                    if(!$exists)
+                    {
+                        continue;
+                    }
+                    $file_name = $upload->name;
+                    if(strpos($file_name, "mkv") === false &&  strpos( $file_name, "webm") === false)
+                    {
+                        continue;
+                    }
+
+                    echo $file_name."\n";
+                    $format = new \FFMpeg\Format\Video\X264('libfdk_aac', 'libx264');
+                    $name = str_replace(['.mkv', '.webm'], '', $file_name).".mp4";
+                    try {
+                        FFMpeg::fromDisk('gcs')
+                            ->open($file_name)
+                            ->addFilter('-codec', 'copy')
+                            ->export()
+                            ->toDisk('gcs')
+                            ->inFormat( $format)
+                            ->save($name);
+                        $upload->name = $name;
+                        $upload->converted = true;
+                        $upload->update();
+                    }
+                    catch (\Exception $exception)
+                    {
+                        echo $exception->getMessage();
+                        echo 'FFmpeg conversion failed: '.$file_name."\n";
+                        \Log::error('FFmpeg conversion failed: '.$file_name);
+                    }
+
+                }
+            }
             $notTransUploads  = Upload::with('transcript')->where('converted', false)->get();
             foreach ($notTransUploads as $notTransUpload)
             {
