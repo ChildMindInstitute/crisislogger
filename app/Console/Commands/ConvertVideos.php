@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\VideoConversionJob;
 use Illuminate\Console\Command;
 use App\Upload;
 use Pbmedia\LaravelFFMpeg\FFMpegFacade as FFMpeg;
@@ -40,16 +41,6 @@ class ConvertVideos extends Command
      */
     public function handle()
     {
-//		$convertedFiles = array(
-//			'9PJX1Pqj6cf4lbQGohoUA5Smq1z4g8VDcEETIBZx.mkv',
-//			'9PJX1Pqj6cf4lbQGohoUA5Smq1z4g8VDcEETIBZx.webm',
-//			'XueCR1uy5cw8RQZjFpS2jGY3rFhFsEzcwMT0ZTVz.mkv',
-//			'XueCR1uy5cw8RQZjFpS2jGY3rFhFsEzcwMT0ZTVz.webm',
-//			'A1tdFxh4AK2kJKpV9GO65BAuq12KjdHkBWbIDMjV.mkv',
-//			'A1tdFxh4AK2kJKpV9GO65BAuq12KjdHkBWbIDMjV.webm',
-//			'uakcE5q0szfHsOImeHKqaU0hjFm5uZfDKzoVgDIr.mkv',
-//			'uakcE5q0szfHsOImeHKqaU0hjFm5uZfDKzoVgDIr.webm',
-//		);
         if (app()->environment('convert'))
         {
             DB::setDefaultConnection('mysql_prod');
@@ -94,7 +85,23 @@ class ConvertVideos extends Command
 
                 }
             }
+            $notTransUploads  = Upload::with('transcript')->where('converted', false)->get();
+            foreach ($notTransUploads as $notTransUpload)
+            {
+                if (isset($notTransUpload->transcript->id) && isset($notTransUpload->transcript->user_id)  )
+                {
+                    continue;
+                }
+                if (isset($notTransUpload->transcript->id) && !isset($notTransUpload->transcript->user_id))
+                {
+                    $notTransUpload->transcript->user_id = $notTransUpload->user_id;
+                    $notTransUpload->transcript->update();
+                }
+                if (!isset($notTransUpload->transcript->id))
+                {
+                    \Illuminate\Support\Facades\Queue::push(new VideoConversionJob($notTransUpload, 'prod'));
+                }
+            }
         }
-
     }
 }

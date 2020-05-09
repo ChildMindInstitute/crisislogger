@@ -57,8 +57,16 @@ class Syncuserupload extends Command
         $uploads = Upload::where('status', 'processing')->get();
         foreach ($uploads as $upload)
         {
-            $upload->status = 'finished';
-            $upload->update();
+            $transaction = Transcription::where('upload_id', $upload->getKey())->first();
+            if ($transaction)
+            {
+                if (isset($upload->user_id))
+                {
+                    $upload->status = 'finished';
+                    $upload->update();
+                }
+
+            }
         }
 
     }
