@@ -65,25 +65,28 @@ class UploadController extends Controller
             session()->put('need-to-question-air', 1);
         }
         // If the are contributing to science, we will transcribe the message and save it
-        if($file_extension == 'wav' || $file_extension == 'mp3'){
-            $transcription = Transcription::audio($upload);
-        }
-        else {
-            // request the video conversion.
-            $client = new Client();
-            try {
-                $request = $client->post(config('app.convert_app_url')."/api/convert/video", [
-                    'headers' => array(
-                        'Accept' => 'application/json',
-                        'Content-Type' => 'application/json'
-                    ),
-                    'body' => json_encode(array('upload_id' => $upload->id,  'environment' => config('app.env')))
-                ]);
-                $request->getBody();
+        if ($upload->share)
+        {
+            if($file_extension == 'wav' || $file_extension == 'mp3'){
+                $transcription = Transcription::audio($upload);
             }
-            catch (\Exception $exception)
-            {
-                \Log::error('Upload error: '.$exception->getMessage());
+            else {
+                // request the video conversion.
+                $client = new Client();
+                try {
+                    $request = $client->post(config('app.convert_app_url')."/api/convert/video", [
+                        'headers' => array(
+                            'Accept' => 'application/json',
+                            'Content-Type' => 'application/json'
+                        ),
+                        'body' => json_encode(array('upload_id' => $upload->id,  'environment' => config('app.env')))
+                    ]);
+                    $request->getBody();
+                }
+                catch (\Exception $exception)
+                {
+                    \Log::error('Upload error: '.$exception->getMessage());
+                }
             }
         }
         $response = [
