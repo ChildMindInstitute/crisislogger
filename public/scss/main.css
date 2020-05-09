@@ -3,7 +3,9 @@ body {
   font-weight: normal;
   color: #111;
 }
-
+#kt_content, #content-area {
+    min-height: max-content !important;
+}
 .content {
   padding-top: 50px;
   padding-bottom: 50px;

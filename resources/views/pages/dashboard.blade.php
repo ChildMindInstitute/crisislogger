@@ -15,62 +15,64 @@
         <div class="row">
             @if(count($uploads) > 0)
                 @foreach($uploads  as $upload)
-                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 gallery-box mb-5"  style="height: max-content;">
-                        @if(isset($upload->transcript->id))
-                            <div id="{{'transcript-'.$upload->id}}">
-                                @include('components.spinner')
-                                <div class="video-box">
-                                    @if($upload->status === 'processing')
-                                        <p style="color: #0abb87; font-size: 14px; text-align: center">
-                                            Transcription not completed yet.
-                                        </p>
-                                    @endif
-                                </div>
-                                <div class="show-more-cloud d-none">
-                                    <p style="font-size: 14px;flex: 1; cursor: pointer; color: rgb(110, 110, 110); font-family: sans-serif;cursor: pointer"
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-5"  style="height: max-content;">
+                        <div class="gallery-box">
+                            @if(isset($upload->transcript->id))
+                                <div id="{{'transcript-'.$upload->id}}">
+                                    @include('components.spinner')
+                                    <div class="video-box">
+                                        @if($upload->status === 'processing')
+                                            <p style="color: #0abb87; font-size: 14px; text-align: center">
+                                                Transcription not completed yet.
+                                            </p>
+                                        @endif
+                                    </div>
+                                    <div class="show-more-cloud d-none">
+                                        <p style="font-size: 14px;flex: 1; cursor: pointer; color: rgb(110, 110, 110); font-family: sans-serif;cursor: pointer"
 
-                                    >show more</p>
-                                    <span style="flex: 1; text-align: right; color: rgb(110, 110, 110); cursor: pointer"
-                                    ><i class="fa fa-cloud"></i>
-                                    </span>
+                                        >show more</p>
+                                        <span style="flex: 1; text-align: right; color: rgb(110, 110, 110); cursor: pointer"
+                                        ><i class="fa fa-cloud"></i>
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        @else
-                            <div id="{{'transcript-'.$upload->id}}">
-                                {{--                                            <p class="card-title text-center">No word cloud</p>--}}
-                            </div>
-                        @endif
-                        @if(Str::contains($upload->link, '.wav'))
-                            <audio controls src="{{ $upload->link }}" style="width: 100%"></audio>
-                        @else
-                            @if(Str::contains($upload->link, '.mkv'))
-                                <video controls type="video/mkv" src="{{ $upload->link }}">
-                                </video>
-                            @elseif(Str::contains($upload->link, '.webm'))
-                                <video controls type="video/webm" src="{{ $upload->link }}">
-                                </video>
                             @else
-                                <video controls type="video/mp4" src="{{ $upload->link }}">
-                                </video>
+                                <div id="{{'transcript-'.$upload->id}}">
+                                    {{--                                            <p class="card-title text-center">No word cloud</p>--}}
+                                </div>
                             @endif
-                        @endif
-                        <div class="remove-btn">
-                            <div class="form-group float-left mb-0" style="flex: 1">
-                                <input type="checkbox" class="form-check-input contribute-to-science"
-                                       value="{{$upload->contribute_to_science}}"
-                                       {{$upload->contribute_to_science?'checked': ''}}  id="contribute-upload-{{$upload->id}}">
-                                <label class="form-check-label text-black" for="contribute-upload-{{$upload->id}}">Science</label>
+                            @if(Str::contains($upload->link, '.wav'))
+                                <audio controls src="{{ $upload->link }}" style="width: 100%"></audio>
+                            @else
+                                @if(Str::contains($upload->link, '.mkv'))
+                                    <video controls type="video/mkv" src="{{ $upload->link }}">
+                                    </video>
+                                @elseif(Str::contains($upload->link, '.webm'))
+                                    <video controls type="video/webm" src="{{ $upload->link }}">
+                                    </video>
+                                @else
+                                    <video controls type="video/mp4" src="{{ $upload->link }}">
+                                    </video>
+                                @endif
+                            @endif
+                            <div class="remove-btn">
+                                <div class="form-group float-left mb-0" style="flex: 1">
+                                    <input type="checkbox" class="form-check-input contribute-to-science"
+                                           value="{{$upload->contribute_to_science}}"
+                                           {{$upload->contribute_to_science?'checked': ''}}  id="contribute-upload-{{$upload->id}}">
+                                    <label class="form-check-label text-black" for="contribute-upload-{{$upload->id}}">Science</label>
+                                </div>
+                                <div class="form-group float-left mb-0" style="flex: 1">
+                                    <input type="checkbox" class="form-check-input contribute-to-science"
+                                           value="{{$upload->share}}"
+                                           {{$upload->share?'checked': ''}}  id="share-upload-{{$upload->id}}">
+                                    <label class="form-check-label text-black"
+                                           for="share-upload-{{$upload->id}}">Public</label>
+                                </div>
+                                <a class="remove-resource" style=" font-size: 13px !important;flex: 1" href="#"
+                                   id="upload-{{$upload->id}}"><i class="fa fa-trash" style="margin-right: 10px;"></i>
+                                    Delete</a>
                             </div>
-                            <div class="form-group float-left mb-0" style="flex: 1">
-                                <input type="checkbox" class="form-check-input contribute-to-science"
-                                       value="{{$upload->share}}"
-                                       {{$upload->share?'checked': ''}}  id="share-upload-{{$upload->id}}">
-                                <label class="form-check-label text-black"
-                                       for="share-upload-{{$upload->id}}">Public</label>
-                            </div>
-                            <a class="remove-resource" style=" font-size: 13px !important;flex: 1" href="#"
-                               id="upload-{{$upload->id}}"><i class="fa fa-trash" style="margin-right: 10px;"></i>
-                                Delete</a>
                         </div>
                     </div>
                 @endforeach
@@ -89,26 +91,28 @@
         <div class="row">
             @if(count($texts) > 0)
                 @foreach($texts  as $text)
-                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 text-box mb-5" >
-                        <div class="text-content" id="text-content-{{$text->id}}">
-                            <p class="text-justify text-ellipsis">{{$text->text}}</p>
-                        </div>
-                        <div class="remove-btn">
-                            <div class="form-group float-left mb-0" style="flex: 1">
-                                <input type="checkbox" class="form-check-input contribute-to-science"
-                                       value="{{$text->contribute_to_science}}"
-                                       {{$text->contribute_to_science?'checked': ''}}  id="contribute-text-{{$text->id}}">
-                                <label class="form-check-label text-black" for="contribute-text-{{$text->id}}">Science</label>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-5" >
+                        <div class="text-box ">
+                            <div class="text-content" id="text-content-{{$text->id}}">
+                                <p class="text-justify text-ellipsis">{{$text->text}}</p>
                             </div>
-                            <div class="form-group float-left mb-0" style="flex: 1">
-                                <input type="checkbox" class="form-check-input contribute-to-science"
-                                       value="{{$text->share}}"
-                                       {{$text->share?'checked': ''}}  id="share-text-{{$text->id}}">
-                                <label class="form-check-label text-black"
-                                       for="share-text-{{$text->id}}">Public</label>
+                            <div class="remove-btn">
+                                <div class="form-group float-left mb-0" style="flex: 1">
+                                    <input type="checkbox" class="form-check-input contribute-to-science"
+                                           value="{{$text->contribute_to_science}}"
+                                           {{$text->contribute_to_science?'checked': ''}}  id="contribute-text-{{$text->id}}">
+                                    <label class="form-check-label text-black" for="contribute-text-{{$text->id}}">Science</label>
+                                </div>
+                                <div class="form-group float-left mb-0" style="flex: 1">
+                                    <input type="checkbox" class="form-check-input contribute-to-science"
+                                           value="{{$text->share}}"
+                                           {{$text->share?'checked': ''}}  id="share-text-{{$text->id}}">
+                                    <label class="form-check-label text-black"
+                                           for="share-text-{{$text->id}}">Public</label>
+                                </div>
+                                <a class="remove-resource" style=" font-size: 13px !important; flex: 1" id="text-{{$text->id}}"><i
+                                        class="fa fa-trash"></i> Delete</a>
                             </div>
-                            <a class="remove-resource" style=" font-size: 13px !important; flex: 1" id="text-{{$text->id}}"><i
-                                    class="fa fa-trash"></i> Delete</a>
                         </div>
                     </div>
                 @endforeach
@@ -138,6 +142,25 @@
         margin-bottom: 5px;
         text-align: center;
     }
+    .container {
+        width: 100% !important;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    @media (max-width: 992px) {
+        .container {
+            max-width: 100% !important;
+            padding: unset !important;
+        }
+    }
+    @media (max-width: 768px) {
+        .container {
+            max-width: 100% !important;
+            padding: unset !important;
+        }
+    }
     .no-data-box{
         width: 100%;
         padding: 15px;
@@ -148,8 +171,7 @@
     }
     .text-box{
         background: #ffffff;
-        margin-left: 15px;
-        margin-right: 15px;
+        margin: 0 auto;
     }
     .gallery-box video {
         margin-bottom: 20px;
@@ -158,11 +180,13 @@
         max-height: 180px;
         min-height: 180px;
     }
+    .gallery-box audio {
+        margin-bottom: 20px;
+    }
     .text-content{
         margin-bottom: 20px;
     }
     .gallery-box {
-        margin: 15px;
         border-radius: 14px;
         overflow: hidden;
         padding:  10px;
@@ -182,8 +206,9 @@
         font-size: 18px !important;
     }
     .video-box {
-        min-height: 200px;
-        max-height: 200px;
+        height: 200px;
+        overflow: hidden;
+        overflow-y: scroll;
     }
     label {
         cursor: pointer;
