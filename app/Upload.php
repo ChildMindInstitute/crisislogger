@@ -60,8 +60,9 @@ class Upload extends Model
         $upload->contribute_to_science = $this->contribute_to_science;
         $upload->name = $name . '.wav';
         $upload->share = $this->share;
-        $upload->recorded_time = $this->recorded_time;
+        $upload->created_at = $this->created_at;
 	    $upload->voice = $this->voice;
+	    $upload->recorded_time = $this->recorded_time;
 	    $upload->video_id = $this->id;
 	    $upload->video_generated = true;
         $upload->save();

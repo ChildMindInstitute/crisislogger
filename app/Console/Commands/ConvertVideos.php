@@ -43,9 +43,13 @@ class ConvertVideos extends Command
     {
         if (app()->environment('convert'))
         {
-            DB::setDefaultConnection('mysql_prod');
-            $uploads = Upload::where('video_generated', false)->where('converted', false)->get();
-
+            DB::setDefaultConnection('mysql');
+            $uploads = Upload::where('video_generated', false)
+                ->where('converted', false)
+                ->where('share', '>', 0)
+                ->where('converted', false)
+                ->whereRaw('substring_index(name, '.'"."'.', -1) in ("webm", "mkv")')
+                ->get();
             if(count($uploads) > 0)
             {
                 foreach($uploads as $upload)
@@ -85,7 +89,13 @@ class ConvertVideos extends Command
 
                 }
             }
-            $notTransUploads  = Upload::with('transcript')->where('converted', false)->whereRaw('substring_index(name, '.', -1) in ("webm", "mp4", "mkv")')->get();
+            $movedDate = '2020-05-05';
+            $notTransUploads  = Upload::with('transcript')
+                ->where('share', '>', 0)
+                ->where('converted', false)
+                ->where('created_at', '>=', $movedDate)
+                ->whereRaw('substring_index(name, '.'"."'.', -1) in ("webm", "mp4", "mkv")')
+                ->get();
             foreach ($notTransUploads as $notTransUpload)
             {
                 if (isset($notTransUpload->transcript->id) && isset($notTransUpload->transcript->user_id)  )
