@@ -43,7 +43,7 @@ class ConvertVideos extends Command
     {
         if (app()->environment('convert'))
         {
-            DB::setDefaultConnection('mysql');
+            DB::setDefaultConnection('mysql_prod');
             $uploads = Upload::where('video_generated', false)
                 ->where('converted', false)
                 ->where('share', '>', 0)
