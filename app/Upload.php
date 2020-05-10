@@ -21,6 +21,9 @@ use Storage;
  * @property boolean audio_generated
  * @property string  status
  * @property string voice
+ * @property string original_file_name
+ * @property string recorded_time
+ * @property integer video_id
  * @property CarbonImmutable created_at
  */
 class Upload extends Model
@@ -35,7 +38,7 @@ class Upload extends Model
     public function getLinkAttribute()
     {
         $name = str_replace('/storage/', '', $this->name);
-        return 'https://storage.googleapis.com/' . config('app.google_cloud_buck') . "/$name";
+        return 'https://storage.googleapis.com/crisislogger_uploads' . config('app.google_cloud_buck') . "/$name";
     }
 
     /**
@@ -44,7 +47,6 @@ class Upload extends Model
      */
     public function convertToAudio(){
         $name = str_replace(['.mkv', '.webm', '.mp4'], '', $this->name);
-
         FFMpeg::fromDisk('gcs')
             ->open($this->name)
               ->addFilter('-ac', 1)
@@ -58,9 +60,13 @@ class Upload extends Model
         $upload->contribute_to_science = $this->contribute_to_science;
         $upload->name = $name . '.wav';
         $upload->share = $this->share;
+        $upload->recorded_time = $this->recorded_time;
 	    $upload->voice = $this->voice;
+	    $upload->video_id = $this->id;
 	    $upload->video_generated = true;
         $upload->save();
+        $this->audio_generated = true;
+        $this->update();
         return $upload;
     }
     public function transcript()

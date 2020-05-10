@@ -35,6 +35,8 @@ class UploadController extends Controller
         $upload->name = $file;
         $upload->share = $request->share;
         $upload->contribute_to_science = $request->contribute;
+        $upload->recorded_time = date('Y-m-d h:i:sa');
+        $upload->original_file_name = $file;
         // If we are logged in, save that user's id
         if(Auth::user()) $upload->user_id = Auth::user()->id;
 

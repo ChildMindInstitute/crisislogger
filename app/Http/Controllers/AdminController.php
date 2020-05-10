@@ -84,7 +84,7 @@ class AdminController extends Controller
             ." where 1"
             .($users_include? " and user_id in (select id from users where ".$users_include.")": "")
             .($users_exclude? " and user_id not in (select id from users where ".$users_exclude.")": "")
-            ." OR (user_id IS NULL and   public = 1)"
+            ." OR (user_id IS NULL and   public > 1)"
             ." group by d"
             ." order by d desc") );
         return view('pages.admin.index', compact('report', 'users_include', 'users_exclude', 'date_from', 'date_till'));
@@ -109,11 +109,11 @@ class AdminController extends Controller
 
     public function audio(Request $request) {
         $type = 'audio';
-        $report = DB::select( DB::raw("select u.id, u.created_at, u.name, t.text, u.hide, u.rank"
+        $report = DB::select( DB::raw("select  distinct u.id, u.created_at, u.name, t.text, u.hide, u.rank"
             ." from uploads u left outer join transcriptions t on t.upload_id=u.id"
             ." where u.id in (".AdminController::safe_ids($request).")"
             ." and substring_index(u.name, '.', -1) in ('wav')"
-            ." order by u.created_at") );
+            ." order by u.created_at ") );
 
         return view('pages.admin.list', compact('report', 'type'));
     }

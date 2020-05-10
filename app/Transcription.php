@@ -45,8 +45,6 @@ class Transcription extends Model
      * @throws FileNotFoundException
      */
     public static function audio(Upload $upload , Upload $parentUpload = null, $audio_channel_count=1){
-        $content = Storage::disk('gcs')->get($upload->name);
-
         # set string as audio content
         try {
             $audio = (new RecognitionAudio())

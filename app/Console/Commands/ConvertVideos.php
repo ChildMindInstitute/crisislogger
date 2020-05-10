@@ -85,7 +85,7 @@ class ConvertVideos extends Command
 
                 }
             }
-            $notTransUploads  = Upload::with('transcript')->where('converted', false)->get();
+            $notTransUploads  = Upload::with('transcript')->where('converted', false)->whereRaw('substring_index(name, '.', -1) in ("webm", "mp4", "mkv")')->get();
             foreach ($notTransUploads as $notTransUpload)
             {
                 if (isset($notTransUpload->transcript->id) && isset($notTransUpload->transcript->user_id)  )
