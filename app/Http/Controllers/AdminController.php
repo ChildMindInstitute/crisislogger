@@ -84,7 +84,7 @@ class AdminController extends Controller
             ." where 1"
             .($users_include? " and user_id in (select id from users where ".$users_include.")": "")
             .($users_exclude? " and user_id not in (select id from users where ".$users_exclude.")": "")
-            ." OR (user_id IS NULL and   public > 1)"
+            ." OR (user_id IS NULL and   public > 0)"
             ." group by d"
             ." order by d desc") );
         return view('pages.admin.index', compact('report', 'users_include', 'users_exclude', 'date_from', 'date_till'));
