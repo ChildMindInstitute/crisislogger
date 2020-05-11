@@ -13,7 +13,7 @@ button { width:30px; height: 30px; background-repeat: no-repeat; background-posi
 @endsection
 @section('scripts')
 <script>
-function toggleHide(e, id) { 
+function toggleHide(e, id) {
     var tr = e.parentNode.parentNode;
     var h = tr.classList.contains("hide1")? 1: 0;
     var h2 = (h+1)%2;
@@ -42,9 +42,12 @@ function setRank(e, id) {
 @endsection
 @section('content')
 @foreach ($report as $row)
+    @if(is_null($row->hide))
+        {{$row->hide = 1}}
+    @endif
     <tr class="hide{{$row->hide}}">
         <td>
-@if($row->hide === 1 || $row->hide === 0)
+@if($row->hide === 1 || $row->hide === 0 || $row->hide=== null)
     <button onclick="toggleHide(this, {{ $row->id }})"></button>&nbsp;{{ $row->id }}<br>
     <input type="range" min="1" max="100" value="{{ $row->rank }}" onchange="setRank(this, {{ $row->id }})" onmouseover="showRank(this)"><span class="rank">{{ $row->rank }}</span>
 @else

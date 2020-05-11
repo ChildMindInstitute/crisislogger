@@ -21,7 +21,7 @@ class AddOriginalNameUploadTable extends Migration
                 $table->dateTime('recorded_date')->nullable();
             }
             if (!Schema::hasColumn('uploads', 'video_id')) {
-                $table->integer('video_id')->nullable();
+                $table->bigInteger('video_id')->nullable();
             }
         });
     }
