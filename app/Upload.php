@@ -22,7 +22,7 @@ use Storage;
  * @property string  status
  * @property string voice
  * @property string original_file_name
- * @property string recorded_time
+ * @property string recorded_date
  * @property integer video_id
  * @property CarbonImmutable created_at
  */
@@ -62,7 +62,7 @@ class Upload extends Model
         $upload->share = $this->share;
         $upload->created_at = $this->created_at;
 	    $upload->voice = $this->voice;
-	    $upload->recorded_time = $this->recorded_time;
+	    $upload->recorded_date = $this->recorded_date;
 	    $upload->video_id = $this->id;
 	    $upload->video_generated = true;
         $upload->save();
