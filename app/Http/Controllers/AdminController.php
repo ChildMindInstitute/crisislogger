@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Texts;
 use App\Transcription;
 use App\Upload;
 use Auth;
@@ -144,10 +145,10 @@ class AdminController extends Controller
         $type = $request->get('type');
         if ($type ==='text')
         {
-            DB::update( DB::raw("update text set rank=? where id=?"), [$request->rank, $request->id] );
+            Texts::where('id', $request->id)->update(['rank' => $request->rank]);
         }
         {
-            DB::update( DB::raw("update uploads set rank=? where id=?"), [$request->rank, $request->id] );
+            Upload::where('id', $request->id)->update(['rank' => $request->rank]);
         }
         return response()->noContent(201);
     }
