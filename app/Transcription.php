@@ -111,13 +111,17 @@ class Transcription extends Model
 
             // If not empty, save into transcriptions table
             $upload_id =  $upload->id;
+            $user_id =  $upload->user_id;
             if (isset($parentUpload->id))
             {
                 $upload_id = $parentUpload->id;
+                $user_id = $parentUpload->user_id;
+                $upload->status ='finished';
+                $upload->update();
             }
             $transcription = new Transcription();
             $transcription->upload_id = $upload_id;
-            $transcription->user_id = isset($parentUpload->user_id)? $parentUpload->user_id: null;
+            $transcription->user_id = $user_id;
             $transcription->text = $response;
             $transcription->save();
             return $transcription;
