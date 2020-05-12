@@ -18,9 +18,15 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-5"  style="height: max-content;">
                         <div class="gallery-box">
                             @if($upload->status === 'processing')
-                                <p style="color: #0abb87; font-size: 14px; text-align: center">
-                                    Video conversion is in progress.
-                                </p>
+                                @if(Str::contains($upload->link, '.wav'))
+                                    <p style="color: #0abb87; font-size: 14px; text-align: center">
+                                        Audio conversion is in progress.
+                                    </p>
+                                @else
+                                    <p style="color: #0abb87; font-size: 14px; text-align: center">
+                                        Video conversion is in progress.
+                                    </p>
+                                @endif
                             @endif
                             @if(isset($upload->transcript->id))
                                 <div id="{{'transcript-'.$upload->id}}">
