@@ -51,7 +51,7 @@ function setRank(e, id, type) {
         <td>
 @if($row->hide === 1 || $row->hide === 0 || $row->hide=== null)
     <button onclick="toggleHide(this, {{ $row->id }}, '{{$type}}')"></button>&nbsp;{{ $row->id }}<br>
-    <input type="range" min="1" max="100" value="{{ $row->rank }}" onchange="setRank(this, {{ $row->id }}, '{{$type}}')" onmouseover="showRank(this)"><span class="rank">{{ $row->rank }}</span>
+    <input type="range" min="1" max="100" value="{{ $row->rank }}" onchange="setRank(this, {{ $row->id }}, '{{$type}}')" ><span class="rank">{{ $row->rank }}</span>
 @else
     {{ $row->id }}
 @endif
