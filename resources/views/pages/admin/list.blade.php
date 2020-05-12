@@ -13,12 +13,12 @@ button { width:30px; height: 30px; background-repeat: no-repeat; background-posi
 @endsection
 @section('scripts')
 <script>
-function toggleHide(e, id) {
+function toggleHide(e, id, type) {
     var tr = e.parentNode.parentNode;
     var h = tr.classList.contains("hide1")? 1: 0;
     var h2 = (h+1)%2;
 
-    axios.post('{{ route('admin-hide') }}', { id: id, hide: h2 })
+    axios.post('{{ route('admin-hide') }}', { id: id, hide: h2 , type: type})
         .then(() => {
             tr.classList.remove('hide'+h);
             tr.classList.add('hide'+h2);
@@ -28,8 +28,8 @@ function toggleHide(e, id) {
             console.log(error);
         })
 }
-function setRank(e, id) {
-    axios.post('{{ route('admin-rank') }}', { id: id, rank: e.value })
+function setRank(e, id, type) {
+    axios.post('{{ route('admin-rank') }}', { id: id, rank: e.value, type: type })
         .then(() => {
             e.nextSibling.innerHTML = e.value == 1? "top": e.value;
         })
@@ -43,19 +43,21 @@ function setRank(e, id) {
 @section('content')
 @foreach ($report as $row)
     @if(is_null($row->hide))
-        {{$row->hide = 1}}
+        @php
+            $row->hide = 1;
+        @endphp
     @endif
     <tr class="hide{{$row->hide}}">
         <td>
 @if($row->hide === 1 || $row->hide === 0 || $row->hide=== null)
-    <button onclick="toggleHide(this, {{ $row->id }})"></button>&nbsp;{{ $row->id }}<br>
-    <input type="range" min="1" max="100" value="{{ $row->rank }}" onchange="setRank(this, {{ $row->id }})" onmouseover="showRank(this)"><span class="rank">{{ $row->rank }}</span>
+    <button onclick="toggleHide(this, {{ $row->id }}, '{{$type}}')"></button>&nbsp;{{ $row->id }}<br>
+    <input type="range" min="1" max="100" value="{{ $row->rank }}" onchange="setRank(this, {{ $row->id }}, '{{$type}}')" onmouseover="showRank(this)"><span class="rank">{{ $row->rank }}</span>
 @else
     {{ $row->id }}
 @endif
-        </td>
-        <td>{{ $row->created_at }}</td>
-        <td>{{ $row->name }}<br/>
+    </td>
+    <td>{{ $row->created_at }}</td>
+    <td>{{ $row->name }}<br/>
 @if($type=='audio')
 <audio controls preload="auto" src="https://storage.googleapis.com/{{ config('app.google_cloud_buck')}}/{{ $row->name }}"></audio>
 @elseif($type=='video')

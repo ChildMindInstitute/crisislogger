@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Texts;
 use App\Upload;
 use Google\Cloud\Speech\V1\SpeechClient;
 use Google\Cloud\Speech\V1\RecognitionAudio;
@@ -20,16 +21,22 @@ class TranscribeController extends Controller {
 
     public function index(Request $request) {
 		$searchTxt = $request->searchTxt;
-		$transcriptions = Transcription::leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
-			->where('uploads.share', '>', '0')
-			->where('uploads.hide', '=', '0');
-		if ($searchTxt != null) {
-			$transcriptions = $transcriptions->leftJoin('users', 'users.id', '=', 'uploads.user_id')
-				->where('transcriptions.text', 'like', "%$searchTxt%");
-		}
-		return $transcriptions->orderBy('uploads.converted', 'DESC')
-			->select('uploads.*', 'transcriptions.*')
-			->paginate(8);
+        $transcriptions = Transcription::select(['name', 'transcriptions.text as text', 'uploads.share as share', 'uploads.hide as hide','converted', 'uploads.id'])->leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
+            ->where('uploads.hide', '=', '0')
+            ->where('uploads.share', '>', '0');
+        if ($searchTxt != null) {
+            $transcriptions = $transcriptions->where('transcriptions.text', 'like', "%$searchTxt%");
+        }
+        $texts = Texts::select(\DB::raw('"null" as name, text, share, hide, false as converted, (id+ "-text") as id'))
+            ->where('hide', '=', '0')
+            ->where('share', '>', '0');
+        if ($searchTxt != null) {
+            $texts = $texts->where('text', 'like', "%$searchTxt%");
+        }
+        $data = $transcriptions->union($texts)
+            ->orderBy('converted', 'DESC')
+            ->paginate(8);
+		return $data;
 	}
 	public function userTranscription(Request $request)
     {

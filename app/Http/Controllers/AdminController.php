@@ -120,7 +120,7 @@ class AdminController extends Controller
 
     public function text(Request $request) {
         $type = 'text';
-        $report = DB::select( DB::raw("select t.id, t.created_at, null name, t.text, null hide, null `rank`"
+        $report = DB::select( DB::raw("select t.id, t.created_at, null name, t.text, hide, `rank`"
             ." from text t"
             ." where t.id in (".AdminController::safe_ids($request).")"
             ." order by t.created_at") );
@@ -128,12 +128,27 @@ class AdminController extends Controller
     }
 
     public function hide(Request $request) {
-        DB::update( DB::raw("update uploads set hide=? where id=?"), [$request->hide, $request->id] );
+        $type = $request->get('type');
+        if ($type =='text')
+        {
+            DB::update( DB::raw("update text set hide=? where id=?"), [$request->hide, $request->id] );
+        }
+        {
+            DB::update( DB::raw("update uploads set hide=? where id=?"), [$request->hide, $request->id] );
+        }
+
         return response()->noContent(201);
     }
 
     public function rank(Request $request) {
-        DB::update( DB::raw("update uploads set `rank`=? where id=?"), [$request->rank, $request->id] );
+        $type = $request->get('type');
+        if ($type ==='text')
+        {
+            DB::update( DB::raw("update text set rank=? where id=?"), [$request->rank, $request->id] );
+        }
+        {
+            DB::update( DB::raw("update uploads set rank=? where id=?"), [$request->rank, $request->id] );
+        }
         return response()->noContent(201);
     }
 
