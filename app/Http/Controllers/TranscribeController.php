@@ -27,7 +27,7 @@ class TranscribeController extends Controller {
         if ($searchTxt != null) {
             $transcriptions = $transcriptions->where('transcriptions.text', 'like', "%$searchTxt%");
         }
-        $texts = Texts::select(\DB::raw('"null" as name, text, share, hide, false as converted, text.created_at, (id+ "-text") as id'))
+        $texts = Texts::select(\DB::raw('"null" as name, text, share, hide, false as converted,  (id+ "-text") as id, created_at'))
             ->where('hide', '=', '0')
             ->where('share', '>', '0');
         if ($searchTxt != null) {
