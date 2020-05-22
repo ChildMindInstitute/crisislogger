@@ -21,13 +21,13 @@ class TranscribeController extends Controller {
 
     public function index(Request $request) {
 		$searchTxt = $request->searchTxt;
-        $transcriptions = Transcription::select(['name', 'transcriptions.text as text', 'uploads.share as share', 'uploads.hide as hide','converted', 'uploads.id'])->leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
+        $transcriptions = Transcription::select(['name', 'transcriptions.text as text', 'uploads.share as share', 'uploads.hide as hide','converted', 'uploads.id' ,'uploads.created_at'])->leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
             ->where('uploads.hide', '=', '0')
             ->where('uploads.share', '>', '0');
         if ($searchTxt != null) {
             $transcriptions = $transcriptions->where('transcriptions.text', 'like', "%$searchTxt%");
         }
-        $texts = Texts::select(\DB::raw('"null" as name, text, share, hide, false as converted, (id+ "-text") as id'))
+        $texts = Texts::select(\DB::raw('"null" as name, text, share, hide, false as converted, created_at, (id+ "-text") as id'))
             ->where('hide', '=', '0')
             ->where('share', '>', '0');
         if ($searchTxt != null) {
@@ -35,6 +35,7 @@ class TranscribeController extends Controller {
         }
         $data = $transcriptions->union($texts)
             ->orderBy('converted', 'DESC')
+            ->orderBy('share', 'ASC')
             ->paginate(8);
 		return $data;
 	}
