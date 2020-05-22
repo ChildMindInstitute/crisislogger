@@ -68,7 +68,14 @@ class AdminController extends Controller
         $users_exclude = AdminController::get($request, 'ex', 'App\Http\Controllers\AdminController::safe_where', 'admin_users_ex', AdminController::DEFAULT_USERS_EXCLUDE);
         $date_from = AdminController::get($request, 'from', 'App\Http\Controllers\AdminController::safe_date', 'admin_date_from', AdminController::DEFAULT_DATE_FROM);
         $date_till = AdminController::get($request, 'till', 'App\Http\Controllers\AdminController::safe_date', 'admin_date_till', AdminController::DEFAULT_DATE_TILL);
-
+        $searchText = $request->get('search-text');
+        if (isset($searchText) && strlen($searchText))
+        {
+            $searchWhere = ' and t.text LIKE "%'.$searchText.'%"';
+        }
+        else {
+            $searchWhere = '';
+        }
         $where_date = " where 1"
             .($date_from? " and created_at >= date('".$date_from."')": "")
             .($date_till? " and created_at < adddate('".$date_till."', 1)": "");
@@ -78,9 +85,10 @@ class AdminController extends Controller
             ." group_concat(if(type='wav', id, null) separator '|') audio,"
             ." group_concat(if(type='txt', id, null) separator '|') text"
             ." from ("
-            ."   select date(created_at) d, id, substring_index(name, '.', -1) type, user_id, share as public from uploads".$where_date
+            ."   select date(u.created_at) d, u.id, substring_index(u.name, '.', -1) type, u.user_id, u.share as public from uploads as u left outer join transcriptions t on t.upload_id=u.id
+ ".$where_date ." and video_generated != 1".$searchWhere
             ."   union all"
-            ."   select date(created_at) d, id, 'txt', user_id , share  from text".$where_date
+            ."   select date(t.created_at) d, t.id, 'txt',t.user_id , t.share  from text as t ".$where_date.$searchWhere
             .") t "
             ." where 1"
             .($users_include? " and user_id in (select id from users where ".$users_include.")": "")
@@ -88,7 +96,7 @@ class AdminController extends Controller
             ." OR (user_id IS NULL and   public > 0)"
             ." group by d"
             ." order by d desc") );
-        return view('pages.admin.index', compact('report', 'users_include', 'users_exclude', 'date_from', 'date_till'));
+        return view('pages.admin.index', compact('report', 'users_include', 'users_exclude', 'date_from', 'date_till', 'searchText'));
     }
 
     private static function safe_ids(Request $request) {
@@ -99,7 +107,7 @@ class AdminController extends Controller
     public function video(Request $request) {
         #\Log::info("query: ".AdminController::ids($request));
         $type = 'video';
-        $report = DB::select( DB::raw("select u.id, u.created_at, u.name, t.text, u.hide, u.rank"
+        $report = DB::select( DB::raw("select u.id, u.created_at, u.name, t.text, u.hide, u.rank, u.share"
             ." from uploads u left outer join transcriptions t on t.upload_id=u.id"
             ." where u.id in (".AdminController::safe_ids($request).")"
             ." and substring_index(u.name, '.', -1) not in ('wav')"
@@ -110,7 +118,7 @@ class AdminController extends Controller
 
     public function audio(Request $request) {
         $type = 'audio';
-        $report = DB::select( DB::raw("select  distinct u.id, u.created_at, u.name, t.text, u.hide, u.rank"
+        $report = DB::select( DB::raw("select  distinct u.id, u.created_at, u.name, t.text, u.hide, u.rank, u.share"
             ." from uploads u left outer join transcriptions t on t.upload_id=u.id"
             ." where u.id in (".AdminController::safe_ids($request).")"
             ." and substring_index(u.name, '.', -1) in ('wav')"
@@ -121,7 +129,7 @@ class AdminController extends Controller
 
     public function text(Request $request) {
         $type = 'text';
-        $report = DB::select( DB::raw("select t.id, t.created_at, null name, t.text, hide, `rank`"
+        $report = DB::select( DB::raw("select t.id, t.created_at, null name, t.text, hide, share, `rank`"
             ." from text t"
             ." where t.id in (".AdminController::safe_ids($request).")"
             ." order by t.created_at") );

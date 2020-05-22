@@ -57,15 +57,20 @@ function setRank(e, id, type) {
 @endif
     </td>
     <td>{{ $row->created_at }}</td>
-    <td>{{ $row->name }}<br/>
-@if($type=='audio')
-<audio controls preload="auto" src="https://storage.googleapis.com/{{ config('app.google_cloud_buck')}}/{{ $row->name }}"></audio>
-@elseif($type=='video')
-<video controls preload="auto"><source src="https://storage.googleapis.com/{{ config('app.google_cloud_buck')}}/{{ $row->name }}"></video>
-@endif
-        </td>
-        <td>{{ $row->text }}</td>
-    </tr>
+        <td>
+        @if($row->share === 1)
+            {{ $row->name }}<br/>
+            @if($type=='audio')
+            <audio controls preload="auto" src="https://storage.googleapis.com/crisislogger_uploads{{ config('app.google_cloud_buck')}}/{{ $row->name }}"></audio>
+            @elseif($type=='video')
+            <video controls preload="auto"><source src="https://storage.googleapis.com/crisislogger_uploads{{ config('app.google_cloud_buck')}}/{{ $row->name }}"></video>
+            @endif
+        @endif
+    </td>
+<td>
+    {{ $row->text }}
+</td>
+</tr>
 @endforeach
 <form method="POST" name="hide" action="{{ route('admin-hide') }}">
     @csrf

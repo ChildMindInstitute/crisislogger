@@ -63,7 +63,7 @@ class Upload extends Model
         $upload->created_at = $this->created_at;
 	    $upload->voice = $this->voice;
 	    $upload->recorded_date = $this->recorded_date;
-	    $upload->video_id = $this->id;
+	    $upload->video_id = $this->getKey();
 	    $upload->video_generated = true;
         $upload->save();
         $this->audio_generated = true;
