@@ -151,7 +151,7 @@ class UserController extends Controller
                         $upload->contribute_to_science = $status;
                    }
                     else {
-                        $upload->share = $status ? 2 : $status;
+                        $upload->share = $status;
                     }
                     $upload->update();
                     \DB::commit();
