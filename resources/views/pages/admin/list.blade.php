@@ -68,7 +68,9 @@ function setRank(e, id, type) {
         @endif
     </td>
 <td>
+    @if($row->share  > 0)
     {{ $row->text }}
+    @endif
 </td>
 </tr>
 @endforeach
