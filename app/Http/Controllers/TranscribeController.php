@@ -23,6 +23,7 @@ class TranscribeController extends Controller {
 		$searchTxt = $request->searchTxt;
         $transcriptions = Transcription::select(['name', 'transcriptions.text as text', 'uploads.share as share', 'uploads.hide as hide','converted', 'uploads.id' ,'uploads.created_at'])->leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
             ->where('uploads.hide', '=', '0')
+            ->where('uploads.video_generated', '=', '0')
             ->where('uploads.share', '>', '0');
         if ($searchTxt != null) {
             $transcriptions = $transcriptions->where('transcriptions.text', 'like', "%$searchTxt%");

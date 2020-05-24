@@ -123,7 +123,6 @@ class AdminController extends Controller
             ." where u.id in (".AdminController::safe_ids($request).")"
             ." and substring_index(u.name, '.', -1) in ('wav')"
             ." order by u.created_at ") );
-
         return view('pages.admin.list', compact('report', 'type'));
     }
 
