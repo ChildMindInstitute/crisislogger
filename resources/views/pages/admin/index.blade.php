@@ -1,7 +1,7 @@
 @extends('layout.admin', ['columns' => ['Date', 'Video', 'Audio', 'Text']])
 <style>
 label { margin:4px; padding: 2px; width:15%; text-align:right; float:left; }
-textarea, input[name='search-text'] { margin:4px !important; padding: 2px; width:80%; height: 50px; float:left; }
+textarea, input[name='search-text'], input[name='referral-code'] { margin:4px !important; padding: 2px; width:80%; height: 50px; float:left; }
 input { float:left; width: 6em; margin:4px !important; padding: 2px 4px; }
 .delim { margin:4px; padding: 2px; float:left; }
 </style>
@@ -14,6 +14,10 @@ input { float:left; width: 6em; margin:4px !important; padding: 2px 4px; }
     <textarea name="ex" placeholder="Where condition for users.&#10;Exclude None, if empty">{{ $users_exclude }}</textarea>
 <label for="search-text">Search text</label>
 <input name="search-text" placeholder="Search text here" value="{{$searchText}}">
+<br/>
+<br/>
+<label for="referral-code">Search text</label>
+<input name="referral-code" placeholder="Referral code here" value="{{$referral_code}}">
 <br/>
 <br/>
 <label for="from">Date Range</label>

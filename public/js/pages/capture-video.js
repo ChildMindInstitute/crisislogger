@@ -90,6 +90,10 @@ function startRecording() {
             mimeType: 'video/webm'
         });
         recorder.start();
+        timeoutRequest = setTimeout(function() {
+            console.log('Recording time limit reached')
+            stopRecording();
+        }, 300000);
     }
     catch (e) {
 

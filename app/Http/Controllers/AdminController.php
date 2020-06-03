@@ -69,12 +69,22 @@ class AdminController extends Controller
         $date_from = AdminController::get($request, 'from', 'App\Http\Controllers\AdminController::safe_date', 'admin_date_from', AdminController::DEFAULT_DATE_FROM);
         $date_till = AdminController::get($request, 'till', 'App\Http\Controllers\AdminController::safe_date', 'admin_date_till', AdminController::DEFAULT_DATE_TILL);
         $searchText = $request->get('search-text');
+        $referral_code = $request->get('referral-code');
+        $searchWhere = $referralWhere = '';
         if (isset($searchText) && strlen($searchText))
         {
             $searchWhere = ' and t.text LIKE "%'.$searchText.'%"';
         }
-        else {
-            $searchWhere = '';
+        if (isset($referral_code) && strlen($referral_code))
+        {
+            $referral_code = strtolower($referral_code);
+            if (strlen($users_include))
+            {
+                $referralWhere = ' and referral_code like "%'.$referral_code.'%"';
+            }
+            else {
+                $referralWhere = ' referral_code like "%'.$referral_code. '%"';
+            }
         }
         $where_date = " where 1"
             .($date_from? " and created_at >= date('".$date_from."')": "")
@@ -91,12 +101,12 @@ class AdminController extends Controller
             ."   select date(t.created_at) d, t.id, 'txt',t.user_id , t.share  from text as t ".$where_date.$searchWhere
             .") t "
             ." where 1"
-            .($users_include? " and user_id in (select id from users where ".$users_include.")": "")
+            .($users_include || $referralWhere? " and user_id in (select id from users where ".$users_include." ".$referralWhere.")": "")
             .($users_exclude? " and user_id not in (select id from users where ".$users_exclude.")": "")
-            ." OR (user_id IS NULL and   public > 0)"
+            .($users_include || $referralWhere? "" : " OR (user_id IS NULL and   public > 0)")
             ." group by d"
             ." order by d desc") );
-        return view('pages.admin.index', compact('report', 'users_include', 'users_exclude', 'date_from', 'date_till', 'searchText'));
+        return view('pages.admin.index', compact('report', 'users_include', 'users_exclude', 'date_from', 'date_till', 'searchText', 'referral_code'));
     }
 
     private static function safe_ids(Request $request) {
