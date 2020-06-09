@@ -116,9 +116,9 @@ class Transcription extends Model
             {
                 $upload_id = $parentUpload->id;
                 $user_id = $parentUpload->user_id;
-                $upload->status ='finished';
-                $upload->update();
             }
+            $upload->status ='finished';
+            $upload->update();
             $transcription = new Transcription();
             $transcription->upload_id = $upload_id;
             $transcription->user_id = $user_id;
