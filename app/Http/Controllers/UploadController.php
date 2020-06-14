@@ -64,7 +64,8 @@ class UploadController extends Controller
         }
         $redirect = route('capture-create-account');
         // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
-        if($upload->contribute_to_science && (!Auth::check() || Auth::user() && !Auth::user()->questionaires())){
+        $isSubdomain = session()->has('subdomain');
+        if($upload->contribute_to_science && (!Auth::check() || Auth::user() && !Auth::user()->questionaires()) && !$isSubdomain){
             session()->put('need-to-question-air', 1);
         }
         // If the are contributing to science, we will transcribe the message and save it
@@ -133,7 +134,8 @@ class UploadController extends Controller
         $redirect = route('capture-create-account');
         // Check and see if the user needs to be redirected to the questionnaire page (if sharing)
         //if(!$upload->share){
-        if($text->contribute_to_science && (!Auth::check() || Auth::user() && !Auth::user()->questionaires())){
+        $isSubdomain = session()->has('subdomain');
+        if($text->contribute_to_science && (!Auth::check() || Auth::user() && !Auth::user()->questionaires()) && !$isSubdomain){
             session()->put('need-to-question-air', 1);
         }
         // If the are contributing to science, we will transcribe the message and save it

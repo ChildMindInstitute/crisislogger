@@ -29,6 +29,9 @@ Route::group(array('domain' => '{subdomain}.crisislogger.app'), function () {
             return view('pages.subdomain.capture.capture-text');
         })->name('capture-text');
     });
+    Route::get('questionnaire', function () {
+        return view('pages.subdomain.questionnaire.index');
+    })->name('questionnaire');
 });
 Route::get('/', function () {
     session()->remove('subdomain');
