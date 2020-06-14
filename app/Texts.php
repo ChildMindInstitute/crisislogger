@@ -14,6 +14,7 @@ use Eloquent;
  * @property boolean $contribute_to_science
  * @property integer $user_id
  * @property string $voice
+ * @property string $where_from
  */
 class Texts extends Model
 {

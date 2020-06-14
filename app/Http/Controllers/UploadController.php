@@ -34,6 +34,7 @@ class UploadController extends Controller
         $upload = new Upload();
         $upload->name = $file;
         $upload->share = $request->share;
+        $upload->where_from = \URL::to('/');
         $upload->contribute_to_science = $request->contribute;
         $upload->recorded_date = date('Y-m-d h:i:s');
         $upload->original_file_name = $file;
@@ -105,6 +106,7 @@ class UploadController extends Controller
         $text = new Texts();
         $text->text = $request->data;
         $text->share = $request->share;
+        $text->where_from = \URL::to('/');
         $text->contribute_to_science = $request->contribute;
         // If we are logged in, save that user's id
         if($request->has('voice')){

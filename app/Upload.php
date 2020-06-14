@@ -25,6 +25,7 @@ use Storage;
  * @property string recorded_date
  * @property integer video_id
  * @property CarbonImmutable created_at
+ * @property string where_from
  */
 class Upload extends Model
 {
@@ -60,6 +61,7 @@ class Upload extends Model
         $upload->contribute_to_science = $this->contribute_to_science;
         $upload->name = $name . '.wav';
         $upload->share = $this->share;
+        $upload->where_from = $this->where_from;
         $upload->created_at = $this->created_at;
 	    $upload->voice = $this->voice;
 	    $upload->recorded_date = $this->recorded_date;
