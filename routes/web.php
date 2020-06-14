@@ -12,8 +12,7 @@
 */
 
 use App\Upload;
-
-Route::group(array('domain' => '{subdomain}.crisislogger.app'), function () {
+Route::group(array('domain' => '{subdomain}.'.config('app.app_domain').''), function () {
     Route::get('/', function ($subdomain) {
         session()->put('subdomain', $subdomain);
         return view('pages.index');
