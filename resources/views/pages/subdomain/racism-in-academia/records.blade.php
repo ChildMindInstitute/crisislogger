@@ -18,7 +18,6 @@
         <div class="kt-portlet" style="margin-top: 80px;">
             <div class="kt-portlet__body">
                 <center><h1 class="display-4">Please record a video, audio, or text.</h1></center>
-                <center><h3>Type in the box below</h3></center>
                 <div id="recording-widget" class="row">
                 <div id="text-record-area" class="col-lg-4 col-md-4 col-sm-12">
                     <div id="recordingsList-txt" class="d-none">
