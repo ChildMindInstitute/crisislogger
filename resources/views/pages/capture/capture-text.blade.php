@@ -21,7 +21,7 @@
                     </form>
                     <div class="text-center">
                         <div class="btn-group mb-3 mt-3">
-                            <button class="btn btn-success d-none" id="uploadInfo" data-toggle="modal" data-target="#uploadModal" data-backdrop="static" data-keyboard="false">Submit</button>
+                            <button class="btn btn-success d-none" id="uploadInfo-text" data-toggle="modal" data-target="#uploadModal" data-backdrop="static" data-keyboard="false">Submit</button>
                         </div>
                     </div>
                 </div>

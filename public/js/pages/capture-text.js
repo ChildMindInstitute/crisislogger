@@ -2,10 +2,10 @@ $(function () {
     $("textarea[name='mind-text']").bind('keydown change', function () {
         if ($(this).val().length > 0)
         {
-            $('#uploadInfo').removeClass('d-none');
+            $('#uploadInfo-text').removeClass('d-none');
         }
         else {
-            $('#uploadInfo').addClass('d-none');
+            $('#uploadInfo-text').addClass('d-none');
         }
     });
     let upload = document.getElementById('upload');
@@ -41,7 +41,6 @@ $(function () {
                 'Content-Type': 'multipart/form-data'
             }
         }).then(response => {
-            console.log(response);
             let data = response.data;
             KTApp.unblockPage();
 

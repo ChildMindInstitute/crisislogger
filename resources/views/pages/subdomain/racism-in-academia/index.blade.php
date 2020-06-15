@@ -1,9 +1,8 @@
-@extends('layout.app')
+@extends('layout.subdomain.app')
 @section('title', 'Home')
 @section('description', '')
 @section('content')
     <div class="container kt-portlet pt-0">
-        <p>Subdomain</p>
         <img src="{{ asset('media/photos/crisislogger-banner-plus-logo.png') }}" alt="">
         <a href="{{ route('login') }}" class="login-btn text-white btn-lg">Login</a>
         <div class="text-center">
@@ -13,7 +12,7 @@
 
 
         <div class="text-center" style="margin-bottom: 30px;margin-top: 30px">
-            <a href="{{ route('capture-video') }}" class="btn-primary btn btn-wide btn-lg mb-4">Share Your Thoughts</a>
+            <a href="{{ route('capture-records') }}" class="btn-primary btn btn-wide btn-lg mb-4">Share Your Thoughts</a>
         </div>
 
         <p>This is an incredibly challenging time,

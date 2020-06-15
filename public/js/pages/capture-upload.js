@@ -1,6 +1,6 @@
 let uploadInfo = document.getElementById('uploadInfo');
 let DISABLED = "btn-disabled";
-
+console.log(uploadInfo)
 uploadInfo.addEventListener("click", swapModals);
 
 function swapModals() {

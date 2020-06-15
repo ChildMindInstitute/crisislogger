@@ -1,7 +1,7 @@
 @auth
     <script>window.location.href = '{{ \App\Providers\RouteServiceProvider::HOME }}';</script>
 @endauth
-@extends('layout.app')
+@extends('layout.root.app')
 @section('title', '')
 @section('content')
 

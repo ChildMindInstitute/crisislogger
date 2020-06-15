@@ -1,4 +1,4 @@
-@include('layout.head')
+@include('layout.root.head')
 <style>
 th, td {vertical-align:top; background-color: #fff; padding:4px 8px; border:2px solid #eee}
 </style>

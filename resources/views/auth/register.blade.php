@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.root.app')
 
 @section('content')
     <div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">

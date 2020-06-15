@@ -57,8 +57,11 @@
             </div>
         </div>
     </div>
-    @include('layout.authorized.footer')
-
+    @if(!session()->has('subdomain'))
+         @include('layout.authorized.footer')
+    @else
+        @include('layout.subdomain.'.session()->get('subdomain').'.footer')
+    @endif
     <script>
         var KTAppOptions = {
             "colors": {

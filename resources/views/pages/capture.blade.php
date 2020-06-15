@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.root.app')
 @section('title', 'Capture Thoughts')
 @section('content')
 

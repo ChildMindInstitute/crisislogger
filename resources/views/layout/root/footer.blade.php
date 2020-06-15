@@ -2,7 +2,7 @@
     <div class="container  kt-container--fluid ">
         <div class="kt-footer__copyright" style="width: 100%; padding-top:15px;">
             <div class="row text-center footer-row" style="width: 100%;justify-content: space-around;">
-                <p class="col-lg-1 col-md-4 col-sm-12" style="font-size: 1.25rem;"><a href="/privacy.html" style="color: #74788d !important;">Privacy</a></p>
+                <p class="col-lg-1 col-md-4 col-sm-12" style="font-size: 1.25rem;"><a href="../../../../public/privacy.html" style="color: #74788d !important;">Privacy</a></p>
                 <p class="col-lg-2 col-md-4 col-sm-12 " style="font-size: 1.25rem;">©2020 Child Mind Institute</p>
                 <a href="https://childmind.org"><img class="third-party-logos" src="{{ asset('media/logos/CMI_spot_logo.jpg') }}" alt="" style="min-height:40px;" /></a>
                 <a href="https://www.parents.com/"><img class="third-party-logos" src="{{ asset('media/logos/parents_magazine_logo.png') }}" alt=""  /></a>

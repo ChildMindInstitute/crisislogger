@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.subdomain.app')
 @section('title', 'Questionnaire')
 @section('description', '')
 @section('content')

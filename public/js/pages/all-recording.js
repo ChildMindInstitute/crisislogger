@@ -1,17 +1,16 @@
-var video, timeoutRequest, reqBtn, recordButton, stream, recorder, uploadBtn;
+var video, timeoutRequest, reqBtn, recordButton, stream, recorder;
 video = document.getElementById('video');
 video.setAttribute('style', 'width: 100%');
 reqBtn = document.getElementById('cameraButton');
 reqBtn.onclick = requestVideo;
-recordButton = document.getElementById('button');
+recordButton = document.getElementById('video-record-button');
 videoContainer = document.getElementById('recordingsList');
-uploadBtn = document.getElementById('uploadInfo');
 
 let videoUpload = document.getElementById('upload');
 let preview = document.getElementById('live-video');
 let spinner = document.getElementById('spinner');
 
-let isRecording = false;
+let isVideoRecording = false;
 const camIcon = `
 <svg class="bi bi-camera-video-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path d="M2.667 3h6.666C10.253 3 11 3.746 11 4.667v6.666c0 .92-.746 1.667-1.667 1.667H2.667C1.747 13 1 12.254 1 11.333V4.667C1 3.747 1.746 3 2.667 3z"/>
@@ -26,14 +25,20 @@ const videoStopIcon = `
 recordButton.addEventListener("click", toggleRecording);
 
 function toggleRecording() {
-    if (isRecording) {
-        startVideoRecording();
-        isRecording = false;
+    if (isAudioRecording)
+    {
+        Swal.fire({
+            text:' You should stop the recording to start new one'
+        })
+        return false;
+    }
+    if (isVideoRecording) {
+        stopVideoRecording();
+        isVideoRecording = false;
     } else {
-        startRecording();
+        startVideoRecording();
     }
 }
-
 function requestVideo() {
 
     if (document.getElementById('error-id'))
@@ -53,7 +58,7 @@ function requestVideo() {
     navigator.mediaDevices.getUserMedia(constraints).then(stm => {
         stream = stm;
         reqBtn.style.display = 'none';
-        button.removeAttribute('disabled');
+        recordButton.removeAttribute('disabled');
         preview.srcObject = stream;
         preview.captureStream = preview.captureStream || preview.mozCaptureStream;
         preview.classList.remove('d-none');
@@ -75,9 +80,9 @@ function requestVideo() {
 }
 
 function startVideoRecording() {
-    isRecording = true;
-    button.innerHTML = videoStopIcon;
-    button.classList.add('recording');
+    isVideoRecording = true;
+    recordButton.innerHTML = videoStopIcon;
+    recordButton.classList.add('recording');
     if (document.getElementById('error-id'))
     {
         document.getElementById('error-id').remove();
@@ -96,9 +101,9 @@ function startVideoRecording() {
         }, 300000);
     }
     catch (e) {
-        isRecording = false
-        button.classList.remove('recording');
-        button.innerHTML = camIcon;
+        isVideoRecording = false
+        recordButton.classList.remove('recording');
+        recordButton.innerHTML = camIcon;
         let errorMsg = 'Seems like your browser does\'t support video recording, please try to use Chrome or Firefox';
         let error = document.createElement('p');
         error.innerText =  errorMsg;
@@ -116,10 +121,9 @@ function startVideoRecording() {
 
 
 function stopVideoRecording() {
-    console.log('recording stopped');
-    isRecording = false;
-    button.classList.remove('recording');
-    button.innerHTML = camIcon;
+    isVideoRecording = false;
+    recordButton.classList.remove('recording');
+    recordButton.innerHTML = camIcon;
     $("#reviewRecordingModal").modal({
         backdrop: 'static',
         keyboard: false
@@ -157,6 +161,7 @@ function stopVideoRecording() {
 //webkitURL is deprecated but nevertheless
 URL = window.URL || window.webkitURL;
 let gumStream;
+let isAudioRecording = false;
 //stream from getUserMedia()
 let rec;
 //Recorder.js object
@@ -181,9 +186,16 @@ let upload_info = document.getElementById('uploadInfo');
 button.addEventListener("click", audioToggleRecording);
 
 function audioToggleRecording() {
-    if (isRecording) {
+    if (isVideoRecording)
+    {
+        Swal.fire({
+            text:' You should stop the recording to start new one'
+        })
+        return false;
+    }
+    if (isAudioRecording) {
         stopRecording();
-        isRecording = false;
+        isAudioRecording = false;
     } else {
         startRecording();
     }
@@ -191,7 +203,7 @@ function audioToggleRecording() {
 
 function startRecording(){
     //console.log('recording clicked');
-    isRecording = true;
+    isAudioRecording = true;
     button.innerHTML = stopIcon;
     button.classList.add('recording');
 
@@ -222,9 +234,7 @@ function startRecording(){
         })
         //start the recording process
         rec.record()
-        console.log("Recording started");
-
-        isRecording = true;
+        isAudioRecording = true;
         button.innerHTML = stopIcon;
         button.classList.add('recording');
         if ( navigator.vibrate ) navigator.vibrate( 150 );
@@ -236,7 +246,7 @@ function startRecording(){
         }, 300000);
 
     }).catch(function(err) {
-        isRecording = false;
+        isAudioRecording = false;
         button.classList.remove('recording');
         button.innerHTML = micIcon;
     });
@@ -245,7 +255,7 @@ function startRecording(){
 function stopRecording() {
     console.log('recording stopped');
 
-    isRecording = false;
+    isAudioRecording = false;
     button.classList.remove( 'recording' );
     button.innerHTML = micIcon;
     if ( navigator.vibrate ) navigator.vibrate( [ 200, 100, 200 ] );

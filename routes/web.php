@@ -20,17 +20,11 @@ Route::group(array('domain' => '{subdomain}.'.config('app.app_domain').''), func
             return view('pages.subdomain.'.$subdomain.'.index');
         }
         return App::abort(404);
-    });
+    })->name('home');
     Route::prefix('capture')->group(function () {
-        Route::get('/audio', function ($subdomain) {
-            return view('pages.subdomain.'.$subdomain.'.capture.capture-audio');
-        })->name('capture-audio');
-        Route::get('video', function ($subdomain) {
-            return view('pages.subdomain.'.$subdomain.'.capture.capture-video');
-        })->name('capture-video');
-        Route::get('text', function ($subdomain) {
-            return view('pages.subdomain.'.$subdomain.'.capture.capture-text');
-        })->name('capture-text');
+        Route::get('record', function ($subdomain) {
+            return view('pages.subdomain.'.$subdomain.'.records');
+        })->name('capture-records');
     });
     Route::get('questionnaire', function ($subdomain) {
         return view('pages.subdomain.'.$subdomain.'.questionnaire.index');
@@ -49,7 +43,9 @@ Route::prefix('capture')->group(function () {
     Route::get('/', function () {
         return view('pages.capture.choose-method');
     })->name('capture');
-
+    Route::get('record', function () {
+        return view('pages.capture.capture-audio');
+    })->name('capture-records');
     Route::get('audio', function () {
         return view('pages.capture.capture-audio');
     })->name('capture-audio');

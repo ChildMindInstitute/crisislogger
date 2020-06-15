@@ -1,4 +1,4 @@
-@extends(isset(Auth::user()->id) ? 'layout.authorized.app' : 'layout.app')
+@extends(isset(Auth::user()->id) ? 'layout.authorized.app' : 'layout.subdomain.app')
 @section('title', '')
 @section('capture-active', 'kt-menu__item--active')
 @section('content')
