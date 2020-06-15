@@ -15,21 +15,25 @@ use App\Upload;
 Route::group(array('domain' => '{subdomain}.'.config('app.app_domain').''), function () {
     Route::get('/', function ($subdomain) {
         session()->put('subdomain', $subdomain);
-        return view('pages.index');
+        if (view()->exists('pages.subdomain.'.$subdomain.'.index'))
+        {
+            return view('pages.subdomain.'.$subdomain.'.index');
+        }
+        return App::abort(404);
     });
     Route::prefix('capture')->group(function () {
-        Route::get('/audio', function () {
-            return view('pages.subdomain.capture.capture-audio');
+        Route::get('/audio', function ($subdomain) {
+            return view('pages.subdomain.'.$subdomain.'.capture.capture-audio');
         })->name('capture-audio');
-        Route::get('video', function () {
-            return view('pages.subdomain.capture.capture-video');
+        Route::get('video', function ($subdomain) {
+            return view('pages.subdomain.'.$subdomain.'.capture.capture-video');
         })->name('capture-video');
-        Route::get('text', function () {
-            return view('pages.subdomain.capture.capture-text');
+        Route::get('text', function ($subdomain) {
+            return view('pages.subdomain.'.$subdomain.'.capture.capture-text');
         })->name('capture-text');
     });
-    Route::get('questionnaire', function () {
-        return view('pages.subdomain.questionnaire.index');
+    Route::get('questionnaire', function ($subdomain) {
+        return view('pages.subdomain.'.$subdomain.'.questionnaire.index');
     })->name('questionnaire');
 });
 Route::get('/', function () {
