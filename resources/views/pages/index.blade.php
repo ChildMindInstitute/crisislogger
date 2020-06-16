@@ -14,7 +14,7 @@
 
 
         <div class="text-center" style="margin-bottom: 30px;margin-top: 30px">
-            <a href="{{route('capture')}}" class="btn-primary btn btn-wide btn-lg mb-4">Share Your Thoughts</a>
+            <a href="{{ route('capture-choice') }}" class="btn-primary btn btn-wide btn-lg mb-4">Share Your Thoughts</a>
             @if(!session()->has('subdomain'))
                 <a href="https://explore.crisislogger.org" class="btn-outline-primary btn btn-wide btn-lg mb-4">Listen to Others' Thoughts</a>
             @endif
