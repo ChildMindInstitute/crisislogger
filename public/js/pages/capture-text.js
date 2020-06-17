@@ -31,7 +31,12 @@ $(function () {
         $('#uploadModal').modal('hide');
 
         let fd = new FormData();
-        fd.append("data", $("textarea[name='mind-text']").val());
+        let text = $("textarea[name='mind-text']").val();
+        if (!text.length)
+        {
+            return false;
+        }
+        fd.append("data", );
         fd.append("share", $("input[name='share']:checked").val());
         fd.append("contribute", $("input[name='contribute']:checked").val());
         fd.append("country", $("select[name='country']").val());

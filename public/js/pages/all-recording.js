@@ -189,6 +189,13 @@ let upload_info = document.getElementById('uploadInfo');
 button.addEventListener("click", audioToggleRecording);
 
 function audioToggleRecording() {
+    if(AudioContext.state === 'running') {
+        AudioContext.suspend().then(function() {
+        });
+    } else if(AudioContext.state === 'suspended') {
+        AudioContext.resume().then(function() {
+        });
+    }
     if (isVideoRecording)
     {
         Swal.fire({
