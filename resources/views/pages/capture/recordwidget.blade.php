@@ -19,7 +19,7 @@
             <div class="kt-portlet__body">
                 <center><h1 class="display-4">Please record a video, audio, or text.</h1></center>
                 <div id="recording-widget" class="row">
-                    <div id="video-record-area" class="col-lg-4 col-md-4 col-sm-12">
+                    <div id="video-record-area" class="col-lg-4 col-md-4 col-sm-12  mb-5">
                         <div class="text-center d-flex justify-content-center" id="preview">
                             <div id="spinner" class="d-none kt-spinner kt-spinner--v2 kt-spinner--lg kt-spinner--primary"></div>
                             <video id="live-video" width="270" height="200" muted autoplay="autoplay" class="d-none"></video>
@@ -49,12 +49,12 @@
                             </div>
                         </div>
                     </div>
-                    <div id="audio-record-area" class="recorder_wrapper col-lg-4 col-md-4 col-sm-12">
+                    <div id="audio-record-area" class="recorder_wrapper col-lg-4 col-md-4 col-sm-12  mb-5">
                         <div class="recorder record_btn" id="recorder"
                              style="margin: auto; text-align: center;justify-content: center; align-items: center;display: flex">
                         </div>
                     </div>
-                    <div id="text-record-area" class="col-lg-4 col-md-4 col-sm-12">
+                    <div id="text-record-area" class="col-lg-4 col-md-4 col-sm-12  mb-5">
                         <div id="recordingsList-txt" class="d-none">
                             <h3>Your text:</h3>
                         </div>
