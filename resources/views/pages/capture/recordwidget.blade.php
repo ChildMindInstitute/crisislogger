@@ -61,7 +61,7 @@
                         <form>
                             <div class="form-group">
                                 <label for="text-area"></label>
-                                <textarea class="form-control" cols="20" rows="5"  aria-label="With textarea" placeholder="Enter text" name="mind-text"></textarea>
+                                <textarea class="form-control" cols="20" rows="10" aria-label="With textarea" placeholder="Enter text" name="mind-text"></textarea>
                             </div>
                         </form>
                         <div class="text-center">
@@ -86,8 +86,8 @@
                             </div>
                             <div class="modal-body">
                                 <div id="recordingsList">
-                                    <video id='video_preview' controls />
-                                    <audio id='audio_preview' controls />
+                                    <video id='video_preview' controls></video>
+                                    <audio id='audio_preview' controls></audio>
                                 </div>
 
                             </div>

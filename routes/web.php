@@ -44,7 +44,7 @@ Route::prefix('capture')->group(function () {
         return view('pages.capture.choose-method');
     })->name('capture');
     Route::get('record', function () {
-        return view('pages.capture.capture-audio');
+        return view('pages.capture.recordwidget');
     })->name('capture-records');
     Route::get('audio', function () {
         return view('pages.capture.capture-audio');

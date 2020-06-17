@@ -1,6 +1,7 @@
 var video, timeoutRequest, reqBtn, recordButton, stream, recorder;
-video = document.getElementById('video');
-video.setAttribute('style', 'width: 100%');
+let video_preview = document.getElementById('video_preview');
+let audio_preview = document.getElementById('audio_preview');
+video_preview.setAttribute('style', 'width: 100%');
 reqBtn = document.getElementById('cameraButton');
 reqBtn.onclick = requestVideo;
 recordButton = document.getElementById('video-record-button');
@@ -124,6 +125,8 @@ function stopVideoRecording() {
     isVideoRecording = false;
     recordButton.classList.remove('recording');
     recordButton.innerHTML = camIcon;
+    audio_preview.style['display'] = 'none';
+    video_preview.style['display'] = 'block';
     $("#reviewRecordingModal").modal({
         backdrop: 'static',
         keyboard: false
@@ -133,7 +136,7 @@ function stopVideoRecording() {
     preview.classList.add('d-none');
     recorder.ondataavailable = e => {
         chunks.push(e.data);
-        video.src = URL.createObjectURL(e.data);
+        video_preview.src = URL.createObjectURL(e.data);
         var blob = new Blob(chunks, {type: 'video/webm'});
         let filename = new Date().toISOString() + ".webm";
 
@@ -203,13 +206,11 @@ function audioToggleRecording() {
 
 function startRecording(){
     //console.log('recording clicked');
-    isAudioRecording = true;
     button.innerHTML = stopIcon;
     button.classList.add('recording');
 
     if ( navigator.vibrate ) navigator.vibrate( 150 );
     // Remove the old recording, if we are re-recording
-    recordingsList.innerHTML = '';
     //upload_info.classList.add('d-none');
 
     /* Simple constraints object, for more advanced audio features see
@@ -253,8 +254,6 @@ function startRecording(){
 }
 
 function stopRecording() {
-    console.log('recording stopped');
-
     isAudioRecording = false;
     button.classList.remove( 'recording' );
     button.innerHTML = micIcon;
@@ -271,13 +270,13 @@ function stopRecording() {
 
 function createDownloadLink(blob) {
     let url = URL.createObjectURL(blob);
-    let au = document.createElement('audio');
-    let li = document.createElement('div');
     // let link = document.createElement('a');
     //add controls to the <audio> element
-    au.controls = true;
-    au.src = url;
-    au.style['width'] = '100%';
+    audio_preview.controls = true;
+    audio_preview.src = url;
+    audio_preview.style['width'] = '100%';
+    audio_preview.style['display'] = 'block';
+    video_preview.style['display'] = 'none';
     // au.classList.add('audio-record');
     //link the a element to the blob
     // link.href = url;
@@ -285,9 +284,7 @@ function createDownloadLink(blob) {
     // link.innerHTML = '<i class="flaticon-download flaticon"></i>';
     // link.classList.add('download-link');
     //add the new audio and a elements to the li element
-    li.appendChild(au);
     // li.appendChild(link);
-
     let filename = new Date().toISOString();
     //filename to send to server without extension
     upload.addEventListener('click', async (e) => {
@@ -307,11 +304,13 @@ function createDownloadLink(blob) {
         }
         uploadButtonClicked(blob, filename);
     });
-
-    recordingsList.appendChild(li);
     $("#reviewRecordingModal").modal({
         backdrop: 'static',
         keyboard: false
     });
+    $('#reviewRecordingModal').on('hidden.bs.modal', function () {
+        audio_preview.src=null
+        video_preview.src=null
+    })
 }
 
