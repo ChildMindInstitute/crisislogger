@@ -21,7 +21,6 @@ $(function () {
         }
         if (!$('#years-old').is(':checked'))
         {
-
             $('#years-old-label').after().find('.invalid-feedback').remove();
             $('#years-old-label').after("<span class='invalid-feedback'>You need to click above checkbox before continue.</span>").show()
             return false;
@@ -36,7 +35,7 @@ $(function () {
         {
             return false;
         }
-        fd.append("data", );
+        fd.append("data", text);
         fd.append("share", $("input[name='share']:checked").val());
         fd.append("contribute", $("input[name='contribute']:checked").val());
         fd.append("country", $("select[name='country']").val());
