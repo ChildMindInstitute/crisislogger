@@ -39,7 +39,7 @@
 
     <div class="container">
         @component('components.portlet')
-            @if(!count($questionnaireComponents))
+            @if(count($questionnaireComponents))
             <div class=" kt-grid--desktop-xl kt-grid--ver-desktop-xl kt-wizard-v3 kt-wizard-v3--extend" id="questionnaire_wizard" data-ktwizard-state="step-first">
                 <div class="kt-grid__item kt-wizard-v3__aside">
                     <!--begin: Form Wizard Nav -->
