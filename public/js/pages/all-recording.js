@@ -6,7 +6,7 @@ reqBtn = document.getElementById('cameraButton');
 reqBtn.onclick = requestVideo;
 recordButton = document.getElementById('video-record-button');
 videoContainer = document.getElementById('recordingsList');
-
+let recordingType = 'media';
 let videoUpload = document.getElementById('upload');
 let preview = document.getElementById('live-video');
 let spinner = document.getElementById('spinner');
@@ -296,6 +296,10 @@ function createDownloadLink(blob) {
     //filename to send to server without extension
     upload.addEventListener('click', async (e) => {
         e.preventDefault();
+        if (recordingType !=='media')
+        {
+            return false;
+        }
         if (!$('input[name="share"]').is(':checked'))
         {
             $('.share-section').after().find('.invalid-feedback').remove();

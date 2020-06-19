@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function dashboard(){
         $user = Auth::user();
-
+        $domain  = \URL::to('/');
         // Check and see if there are any files in the session waiting to be added to a user
         if(Session::has('filename')){
             $upload = Upload::where('name', Session::get('filename'))->first();
@@ -48,8 +48,8 @@ class HomeController extends Controller
             // Clear the session
             Session::remove('transcription');
         }
-        $uploads = Auth::user()->uploads()->with('transcript')->where('video_generated', false)->get();
-        $texts = Auth::user()->texts()->get();
+        $uploads = Auth::user()->uploads()->with('transcript')->where('video_generated', false)->where('where_from', $domain)->get();
+        $texts = Auth::user()->texts()->where('where_from', $domain)->get();
         return view('pages.dashboard', compact('uploads', 'texts'));
     }
 }

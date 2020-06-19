@@ -40,5 +40,11 @@ class Syncuserupload extends Command
     public function handle()
     {
         //
+        $uploads = Upload::whereNull('where_from')->get();
+        foreach ($uploads as $upload)
+        {
+            $upload->where_from = 'https://crisislogger.org';
+            $upload->update();
+        }
     }
 }

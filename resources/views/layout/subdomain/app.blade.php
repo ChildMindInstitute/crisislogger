@@ -34,4 +34,5 @@
     @else
         @include('layout.root.footer')
     @endif
+    @yield('scripts')
 </body>

@@ -51,4 +51,4 @@
 <script src="{{ asset('js/scripts.bundle.js') }}" type="text/javascript"></script>
 <!--end::Global Theme Bundle -->
 <script src="{{ asset('js/custom.js') }}?time={{ time() }}" type="text/javascript"></script>
-@yield('scripts')
+

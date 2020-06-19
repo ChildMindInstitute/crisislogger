@@ -1,4 +1,10 @@
 $(function () {
+    $('#uploadInfo-text').click(function (e) {
+        recordingType = 'text';
+        $('#text-only').show();
+        $('#transcript_only').hide();
+        swapModals();
+    });
     $("textarea[name='mind-text']").bind('keydown change', function () {
         if ($(this).val().length > 0)
         {
@@ -10,7 +16,11 @@ $(function () {
     });
     let upload = document.getElementById('upload');
     upload.addEventListener('click', async (e) => {
-
+        if (recordingType !=='text')
+        {
+            return false;
+        }
+        console.log(recordingType)
         e.preventDefault();
         // Block UI
         if (!$('input[name="share"]').is(':checked'))

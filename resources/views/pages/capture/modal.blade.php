@@ -28,7 +28,7 @@
                     <div class="form-group share-section">
                         <h4>Would you like to share publicly?</h4>
                         <div class="kt-radio-inline">
-                            @if(!request()->has('type'))
+                            <div id="transcript_only">
                                 <label class="kt-radio">
                                     <input type="radio" name="share" value="1"> Yes -- recording +
                                     transcript
@@ -38,16 +38,22 @@
                                     <input type="radio" name="share" value="2"> transcript only
                                     <span></span>
                                 </label>
-                            @else
+                                <label class="kt-radio">
+                                    <input type="radio" name="share" value="0"> No
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div id="text-only">
                                 <label class="kt-radio">
                                     <input type="radio" name="share" value="1"> Yes
                                     <span></span>
                                 </label>
-                            @endif
-                            <label class="kt-radio">
-                                <input type="radio" name="share" value="0"> No
-                                <span></span>
-                            </label>
+                                <label class="kt-radio">
+                                    <input type="radio" name="share" value="0"> No
+                                    <span></span>
+                                </label>
+                            </div>
+
                         </div>
                         <span class="form-text text-muted small-font">If Yes, the Child Mind Institute and its partners may share your text or recording through their websites and social media channels. If No, your story will not be publicly shared in any form.</span>
                     </div>

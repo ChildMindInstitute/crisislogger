@@ -30,4 +30,5 @@
     </footer>
     -->
     @include('layout.root.footer')
+    @yield('scripts')
 </body>

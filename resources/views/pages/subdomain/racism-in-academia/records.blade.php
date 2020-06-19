@@ -117,7 +117,7 @@
     </style>
     @include('pages.capture.modal')
 @endsection
-
+{{-- Here comment--}}
 @section('scripts')
     <script src="{{ asset('js/recorder.js') }}"></script>
     <script src="{{ asset('js/pages/capture-upload.js') }}?time={{ time() }}"></script>

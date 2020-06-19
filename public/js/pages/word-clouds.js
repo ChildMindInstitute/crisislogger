@@ -1,4 +1,4 @@
-let spinner = document.getElementById('spinner');
+let wordSpinner = document.getElementById('spinner');
 
 // Encapsulate the word cloud functionality
 function wordCloud(selector) {
@@ -72,7 +72,7 @@ function wordCloud(selector) {
 axios.get('/api/word_cloud', {
 })
 .then(function (response) {
-    spinner.remove();
+    wordSpinner.remove();
     let data = response.data;
     for(let i in data){
         let words = [];

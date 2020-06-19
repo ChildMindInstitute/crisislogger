@@ -1,7 +1,11 @@
 let uploadInfo = document.getElementById('uploadInfo');
 let DISABLED = "btn-disabled";
-console.log(uploadInfo)
-uploadInfo.addEventListener("click", swapModals);
+uploadInfo.addEventListener("click", function () {
+    recordingType = 'media';
+    $('#text-only').hide();
+    $('#transcript_only').show();
+    swapModals();
+});
 
 function swapModals() {
     if(uploadInfo.classList.contains(DISABLED)) {
@@ -21,7 +25,10 @@ function uploadButtonClicked(file, filename){
     if(!valid()){
         return;
     }
-
+    if (recordingType !=='media')
+    {
+        return false;
+    }
     // Block UI
     KTApp.blockPage();
     // Close the form modal
@@ -35,8 +42,6 @@ function uploadButtonClicked(file, filename){
     fd.append("voice", getParameterByName("voice"));
     fd.append("country", $("select[name='country']").val());
     fd.append("state", $("select[name='state']").val());
-    console.log(getParameterByName("voice"));
-
 	uploadInfo.classList.add(DISABLED);
     axios.post('/api/upload', fd, {
         headers: {
@@ -44,7 +49,6 @@ function uploadButtonClicked(file, filename){
         }
     }).then(response => {
         uploadInfo.classList.remove(DISABLED);
-        console.log(response);
         let data = response.data;
         KTApp.unblockPage();
 
