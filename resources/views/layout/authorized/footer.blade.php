@@ -14,3 +14,9 @@
         </div>
     </div>
 </footer>
+<!--begin::Global Theme Bundle(used by all pages) -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ asset('plugins/global/plugins.bundle.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/scripts.bundle.js') }}" type="text/javascript"></script>
+<!--end::Global Theme Bundle -->
+<script src="{{ asset('js/custom.js') }}?time={{ time() }}" type="text/javascript"></script>
