@@ -82,6 +82,11 @@ function setRank(e, id, type) {
             {{ $row->user_email}}
         @endif
     </td>
+    <td>
+        @if($row->where_from)
+            {{ $row->where_from}}
+        @endif
+    </td>
 </tr>
 @endforeach
 <form method="POST" name="hide" action="{{ route('admin-hide') }}">
