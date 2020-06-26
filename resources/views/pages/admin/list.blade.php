@@ -67,11 +67,21 @@ function setRank(e, id, type) {
             @endif
         @endif
     </td>
-<td>
-    @if($row->share  > 0)
-    {{ $row->text }}
-    @endif
-</td>
+    <td>
+        @if($row->share  > 0)
+        {{ $row->text }}
+        @endif
+    </td>
+    <td>
+        @if($row->user_name)
+        {{$row->user_name}}
+        @endif
+    </td>
+    <td>
+        @if($row->user_email)
+            {{ $row->user_email}}
+        @endif
+    </td>
 </tr>
 @endforeach
 <form method="POST" name="hide" action="{{ route('admin-hide') }}">
