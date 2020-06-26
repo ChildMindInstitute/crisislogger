@@ -1,4 +1,4 @@
-@extends('layout.admin', ['columns' => ['ID', 'Date', 'Upload', 'Text']])
+@extends('layout.admin', ['columns' => ['ID', 'Date', 'Upload', 'Text', 'User Name', 'Email Address', 'Domain']])
 @section('styles')
 <style>
 input { display: inline-block; height:16px; width: 80px; margin: 8px 10px 0 0}
