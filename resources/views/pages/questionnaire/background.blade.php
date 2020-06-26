@@ -4,11 +4,20 @@
 @component('components.country')
 @endcomponent
 
+@component('components.state')
+@endcomponent
+
+@component('components.age')
+@endcomponent 
 
 @component('components.form-group')
     <label for="dob">Your date of birth?</label>
     <input class="form-control datepicker" id="dob" type="text" value="" style="width: 100%" name="dob" placeholder="Select date" />
 @endcomponent
+
+<h3>BACKGROUND</h3>
+<h3>First, before we get started with the main questions, we would like to obtain some
+background information about you.</h3>
 
 @component('components.form-group')
     <label for="sex">Sex</label>
@@ -96,30 +105,39 @@
 @endcomponent
 
 @component('components.form-group')
-    <p>What is the highest level of education <em>your mother</em> completed?</p>
-    @include('components.radio', ['name' => 'education_mother', 'value' => 'Some grade school'])
-    @include('components.radio', ['name' => 'education_mother', 'value' => 'Some high school'])
-    @include('components.radio', ['name' => 'education_mother', 'value' => 'High school diploma or GED'])
-    @include('components.radio', ['name' => 'education_mother', 'value' => 'Some college of 2 year degree'])
-    @include('components.radio', ['name' => 'education_mother', 'value' => '4 year college degree'])
-    @include('components.radio', ['name' => 'education_mother', 'value' => 'Some school beyond college'])
-    @include('components.radio', ['name' => 'education_mother', 'value' => 'Graduate or professional degree'])
-@endcomponent
-
-@component('components.form-group')
-    <p>What is the highest level of education <em>your father</em> completed?</p>
-    @include('components.radio', ['name' => 'education_father', 'value' => 'Some grade school'])
-    @include('components.radio', ['name' => 'education_father', 'value' => 'Some high school'])
-    @include('components.radio', ['name' => 'education_father', 'value' => 'High school diploma or GED'])
-    @include('components.radio', ['name' => 'education_father', 'value' => 'Some college of 2 year degree'])
-    @include('components.radio', ['name' => 'education_father', 'value' => '4 year college degree'])
-    @include('components.radio', ['name' => 'education_father', 'value' => 'Some school beyond college'])
-    @include('components.radio', ['name' => 'education_father', 'value' => 'Graduate or professional degree'])
-@endcomponent
-
-@component('components.form-group')
     <p>How many people currently live in your house (excluding yourself)?</p>
     @include('components.input', ['name' => 'number_people_living_in_house'])
+@endcomponent
+
+@component('components.form-group')
+    <p>Please specify your relationship to the people in your home (check all that apply): </p>
+    @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Partner/Spouse'])
+    @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Parent(s)'])
+    @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Grandparent(s)'])
+    @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Siblings'])
+    @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Children'])
+    @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Other relatives'])
+    @include('components.checkbox', ['name' => 'relationship[]', 'value' => 'Unrelated person'])
+@endcomponent
+
+@component ('components.form-group')
+    <p> Are any adults living in the home an ESSENTIAL WORKER (e.g., healthcare,
+    delivery worker, store worker, security, building maintenance)? <p>
+    @include('components.radio-group', ['name' => 'essentialworker'])
+@endcomponent
+
+@component ('components.form-group')
+    <p>If yes,</p>
+    <p> Do they come home each day? <p>
+    @include('components.radio-group', ['name' => 'essentialworkerhome', 'value' => 'Yes'])
+    @include('components.radio-group', ['name' => 'essentialworkerhome', 'value' => 'No, separated due to COVID-19'])
+    @include('components.radio-group', ['name' => 'essentialworkerhome', 'value' => 'No, separated due to other reasons'])
+@endcomponent
+
+@component ('components.form-group')
+    <p>If yes,</p>
+    <p> Are they a FIRST RESPONDER, HEALTHCARE PROVIDER or OTHER WORKER in a facility treating COVID-19? <p>
+    @include('components.radio-group', ['name' => 'firstresponder'])
 @endcomponent
 
 @component('components.form-group')
@@ -168,6 +186,40 @@
     @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Serious acne or skin problems'])
     @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Emotional or mental health problems such as Depression or Anxiety'])
     @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Problems with alcohol or drugs'])
+    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Intellectual disability'])
+    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Autism Spectrum Disorder'])
+    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Learning Disorder']) 
+    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Attention-Deficit/Hyperactivity Disorder'])
+    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Other problems requiring special education services'])
+    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Other childhood onset neurodevelopmental conditions']) 
+    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Known genetic conditions'])
+    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Other'])
+@endcomponent
+
+@component('components.form-group')
+    <p>If other, please specify</p>
+    @include('components.input', ['name' => 'other-physical-health'])
+
+@component('components.form-group')
+    <p>How tall are you?</p>
+    @include('components.input', ['name' => 'height'])
+@endcomponent
+
+@component('components.form-group')
+    <p>Measurement:</p>
+    @include('components.radio', ['name' => 'mental_health', 'value' => 'Inches(in)'])
+    @include('components.radio', ['name' => 'mental_health', 'value' => 'Centimeters(cm)'])
+@endcomponent
+
+@component('components.form-group')
+    <p>How much do you weigh?</p>
+    @include('components.input', ['name' => 'weight'])
+@endcomponent
+
+@component('components.form-group')
+    <p>Measurement:</p>
+    @include('components.radio', ['name' => 'mental_health', 'value' => 'Pounds(lbs)'])
+    @include('components.radio', ['name' => 'mental_health', 'value' => 'Kilograms(kg)'])
 @endcomponent
 
 @component('components.form-group')
