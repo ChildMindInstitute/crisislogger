@@ -4,11 +4,6 @@
 @component('components.country')
 @endcomponent
 
-@component('components.state')
-@endcomponent
-
-@component('components.age')
-@endcomponent 
 
 @component('components.form-group')
     <label for="dob">Your date of birth?</label>
@@ -188,10 +183,10 @@ background information about you.</h3>
     @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Problems with alcohol or drugs'])
     @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Intellectual disability'])
     @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Autism Spectrum Disorder'])
-    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Learning Disorder']) 
+    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Learning Disorder'])
     @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Attention-Deficit/Hyperactivity Disorder'])
     @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Other problems requiring special education services'])
-    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Other childhood onset neurodevelopmental conditions']) 
+    @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Other childhood onset neurodevelopmental conditions'])
     @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Known genetic conditions'])
     @include('components.checkbox', ['name' => 'health_conditions[]', 'value' => 'Other'])
 @endcomponent
@@ -199,7 +194,7 @@ background information about you.</h3>
 @component('components.form-group')
     <p>If other, please specify</p>
     @include('components.input', ['name' => 'other-physical-health'])
-
+@endcomponent
 @component('components.form-group')
     <p>How tall are you?</p>
     @include('components.input', ['name' => 'height'])
