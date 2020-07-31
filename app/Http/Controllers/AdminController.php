@@ -90,23 +90,50 @@ class AdminController extends Controller
             .($date_from? " and created_at >= date('".$date_from."')": "")
             .($date_till? " and created_at < adddate('".$date_till."', 1)": "");
 
-        $report = DB::select( DB::raw("select d,"
-            ." group_concat(if(type not in ('txt', 'wav'), id, null) separator '|') video,"
-            ." group_concat(if(type='wav', id, null) separator '|') audio,"
-            ." group_concat(if(type='txt', id, null) separator '|') text"
+        $query =
+            "select d,"
+            ."id, type,
+            public, hide"
             ." from ("
-            ."   select date(u.created_at) d, u.id, substring_index(u.name, '.', -1) type, u.user_id, u.share as public from uploads as u left outer join transcriptions t on t.upload_id=u.id
+            ."   select date(u.created_at) d, u.id, substring_index(u.name, '.', -1) type, u.user_id, u.share as public, u.hide as hide  from uploads as u left outer join transcriptions t on t.upload_id=u.id
  ".$where_date ." and video_generated != 1".$searchWhere
             ."   union all"
-            ."   select date(t.created_at) d, t.id, 'txt',t.user_id , t.share  from text as t ".$where_date.$searchWhere
+            ."   select date(t.created_at) d, t.id, 'txt',t.user_id , t.share, t.hide as hide  from text as t ".$where_date.$searchWhere
             .") t "
             ." where 1"
             .($users_include || $referralWhere? " and user_id in (select id from users where ".$users_include." ".$referralWhere.")": "")
-            .($users_exclude? " and user_id not in (select id from users where ".$users_exclude.")": "")
-            .($users_include || $referralWhere? "" : " OR (user_id IS NULL and   public > 0)")
-            ." group by d"
-            ." order by d desc") );
-        return view('pages.admin.index', compact('report', 'users_include', 'users_exclude', 'date_from', 'date_till', 'searchText', 'referral_code'));
+            .($users_exclude? " and (user_id not in (select id from users where ".$users_exclude.") or user_id is NULL)": "")
+            ." order by d desc";
+        $reports = DB::select( DB::raw($query) );
+        $result = array(
+        );
+        if (count($reports) > 0)
+        {
+            foreach ($reports as $report)
+            {
+                $type = 'video';
+                if ($report->type === 'txt')
+                {
+                    $type = 'txt';
+                }
+                else if ($report->type === 'wav')
+                {
+                    $type = 'audio';
+                }
+                if ($report->public && $report->hide === 0)
+                {
+                    $result[$report->d][$type]['published'][] = $report->id;
+                }
+                else if ($report->public && ($report->hide || is_null($report->hide))){
+                    $result[$report->d][$type]['rejected'][] = $report->id;
+                }
+                else if (!$report->public)
+                {
+                    $result[$report->d][$type]['private'][] = $report->id;
+                }
+            }
+        }
+        return view('pages.admin.index', compact('result', 'users_include', 'users_exclude', 'date_from', 'date_till', 'searchText', 'referral_code', 'query'));
     }
 
     private static function safe_ids(Request $request) {
@@ -149,10 +176,10 @@ class AdminController extends Controller
         $type = $request->get('type');
         if ($type =='text')
         {
-            DB::update( DB::raw("update text set hide=? where id=?"), [$request->hide, $request->id] );
+            Texts::find($request->id)->update(['hide' => $request->hide]);
         }
         {
-            DB::update( DB::raw("update uploads set hide=? where id=?"), [$request->hide, $request->id] );
+            Upload::find($request->id)->update(['hide' => $request->hide]);
         }
 
         return response()->noContent(201);
@@ -162,10 +189,10 @@ class AdminController extends Controller
         $type = $request->get('type');
         if ($type ==='text')
         {
-            Texts::where('id', $request->id)->update(['rank' => $request->rank]);
+            Texts::find( $request->id)->update(['rank' => $request->rank]);
         }
         {
-            Upload::where('id', $request->id)->update(['rank' => $request->rank]);
+            Upload::find( $request->id)->update(['rank' => $request->rank]);
         }
         return response()->noContent(201);
     }

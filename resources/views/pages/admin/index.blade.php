@@ -4,6 +4,12 @@ label { margin:4px; padding: 2px; width:15%; text-align:right; float:left; }
 textarea, input[name='search-text'], input[name='referral-code'] { margin:4px !important; padding: 2px; width:80%; height: 50px; float:left; }
 input { float:left; width: 6em; margin:4px !important; padding: 2px 4px; }
 .delim { margin:4px; padding: 2px; float:left; }
+table td, table th {
+    text-align: center;
+}
+p {
+    font-size: 14px !important;
+}
 </style>
 
 @section('content-pre')
@@ -18,6 +24,8 @@ input { float:left; width: 6em; margin:4px !important; padding: 2px 4px; }
 <br/>
 <label for="referral-code">Search text</label>
 <input name="referral-code" placeholder="Referral code here" value="{{$referral_code}}">
+<label for="query">Query used to collect the below data</label>
+<textarea  readonly name="query" placeholder="Used SQL query">{{ $query }}</textarea>
 <br/>
 <br/>
 <label for="from">Date Range</label>
@@ -28,11 +36,42 @@ input { float:left; width: 6em; margin:4px !important; padding: 2px 4px; }
 </form>
 @endsection
 @section('content')
-@foreach ($report as $row)
-    <tr><td>{{ $row->d }}</td>
-        <td>@if($row->video)<a href="{{ route('admin-video') }}?{{ $row->video }}">{{ count(explode('|', $row->video)) }}</a>@else 0 @endif</td>
-        <td>@if($row->audio > 0)<a href="{{ route('admin-audio') }}?{{ $row->audio }}">{{ count(explode('|', $row->audio)) }}</a>@else 0 @endif</td>
-        <td>@if($row->text > 0)<a href="{{ route('admin-text') }}?{{ $row->text }}">{{ count(explode('|', $row->text)) }}</a>@else 0 @endif</td>
+    <p><span style="color: green">--- </span> : Public and approved status by admin</p>
+    <p><span style="color: red">--- </span> : Public and rejected status by admin</p>
+    <p><span style="color: grey">--- </span> : Private by user</p>
+    <?php $totalVideoPublished = $totalAudioPublished  = $textPublished = 0;?>
+    @foreach ($result as $date =>  $row)
+        <?php
+            $totalVideoPublished += isset($row['video']['published'])? count($row['video']['published']): 0;
+            $totalAudioPublished += isset($row['audio']['published'])? count($row['audio']['published']): 0;
+            $textPublished += isset($row['txt']['published'])? count($row['txt']['published']): 0;
+        ?>
+    <tr>
+        <td>{{ $date }}</td>
+            <td>
+                @if(isset($row['video']))
+                <a style="color: green" href="{{ isset($row['video']['published'])?route('admin-video').'?'.join('|', $row['video']['published']): '#'}}">{{isset($row['video']['published'])? count($row['video']['published']): 0}}</a>
+                <a  style="color: red" href="{{ isset($row['video']['rejected'])?route('admin-video').'?'.join('|', $row['video']['rejected']): '#' }}">{{isset($row['video']['rejected'])? count($row['video']['rejected']): 0}}</a>
+                (<a style="color: grey" href="{{ isset($row['video']['private'])?route('admin-video').'?'.join('|', $row['video']['private']): '#' }}">{{isset($row['video']['private'])? count($row['video']['private']): 0}}</a>)
+                @endif
+            </td>
+
+            <td>
+                @if(isset($row['audio']))
+                <a style="color: green" href="{{ isset($row['audio']['published'])?route('admin-audio').'?'.join('|', $row['audio']['published']): '#' }}" >{{isset($row['audio']['published'])? count($row['audio']['published']): 0}}</a>
+                <a style="color: red" href="{{ isset($row['audio']['rejected'])?route('admin-audio').'?'.join('|', $row['audio']['rejected']): '#' }}">{{isset($row['audio']['rejected'])? count($row['audio']['rejected']): 0}}</a>
+                (<a style="color: grey" href="{{ isset($row['audio']['private'])?route('admin-audio').'?'.join('|', $row['audio']['private']): '#' }}">{{isset($row['audio']['private'])? count($row['audio']['private']): 0}}</a>)
+                @endif
+            </td>
+            <td>
+                @if(isset($row['txt']))
+                <a style="color: green" href="{{ isset($row['txt']['published'])? route('admin-text').'?'.join('|', $row['txt']['published']): '#' }}">{{isset($row['txt']['published'])? count($row['txt']['published']): 0}}</a>
+                <a style="color: red" href="{{ isset($row['txt']['rejected'])? route('admin-text').'?'.join('|', $row['txt']['rejected']): '#' }}">{{isset($row['txt']['rejected'])? count($row['txt']['rejected']): 0}}</a>
+                (<a style="color: grey" href="{{ isset($row['txt']['private'])? route('admin-text').'?'.join('|', $row['txt']['private']): '#' }}">{{isset($row['txt']['private'])? count($row['txt']['private']): 0}}</a>)
+                @endif
+            </td>
+
     </tr>
 @endforeach
+    <p>Total published video : {{$totalVideoPublished}}, Total published audio: {{$totalAudioPublished}}, Total published text: {{$textPublished}}</p>
 @endsection
