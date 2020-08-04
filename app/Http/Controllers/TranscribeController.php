@@ -42,6 +42,10 @@ class TranscribeController extends Controller {
                 }
             });
         }
+        foreach ($data as &$item)
+        {
+            $item->text = self::decryptPureSQLData($item->text);
+        }
         $count = count($data);
         $page = (request('page'))?:1;
         $rpp =  8; //(request('perPage'))?:50;
@@ -58,5 +62,16 @@ class TranscribeController extends Controller {
 
         $uploads = Upload::with('transcript')->where('user_id', \Auth::user()->getKey())->paginate(12);
         return \response()->json($uploads);
+    }
+    private static function decryptPureSQLData($string)
+    {
+        if (!strlen($string))
+        {
+            return '';
+        }
+        else
+        {
+            return \Crypt::decrypt($string);
+        }
     }
 }
