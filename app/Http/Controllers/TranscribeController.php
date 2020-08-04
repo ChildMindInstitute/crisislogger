@@ -13,6 +13,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Storage;
 use App\Transcription;
 use Illuminate\Http\Request;
+use function foo\func;
 
 class TranscribeController extends Controller {
     public function __construct()
@@ -22,11 +23,11 @@ class TranscribeController extends Controller {
 
     public function index(Request $request) {
 		$searchTxt = $request->searchTxt;
-        $transcriptions = Transcription::select(['name', 'transcriptions.text as text', 'uploads.share as share', 'uploads.hide as hide','converted', 'uploads.id' ,'uploads.created_at'])->leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
+        $transcriptions = Transcription::select(['name', 'transcriptions.text as text', 'uploads.share as share', 'transcriptions.encrypted as encrypted', 'uploads.hide as hide','converted', 'uploads.id' ,'uploads.created_at'])->leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
             ->where('uploads.hide', '=', '0')
             ->where('uploads.video_generated', '=', '0')
             ->where('uploads.share', '>', '0');
-        $texts = Texts::select(\DB::raw('"null" as name, text, share, hide, false as converted,  (id+ "-text") as id, created_at'))
+        $texts = Texts::select(\DB::raw('"null" as name, text, encrypted as encrypted, share, hide, false as converted,  (id+ "-text") as id, created_at'))
             ->where('hide', '=', '0')
             ->where('share', '>', '0');
 
@@ -38,13 +39,9 @@ class TranscribeController extends Controller {
             $data = $data->filter(function($record) use ($searchTxt){
                 if (strlen($searchTxt))
                 {
-                    return (strpos(\Crypt::decrypt($record->name),$searchTxt) !== false) ? $record : null;
+                    return (strpos($record->text,$searchTxt) !== false) ? $record : null;
                 }
             });
-        }
-        foreach ($data as &$item)
-        {
-            $item->text = self::decryptPureSQLData($item->text);
         }
         $count = count($data);
         $page = (request('page'))?:1;
@@ -55,7 +52,7 @@ class TranscribeController extends Controller {
             'query' => $request->query(),
         ]);
         $data = $paginator;
-		return $data;
+        return $data;
 	}
 	public function userTranscription(Request $request)
     {
