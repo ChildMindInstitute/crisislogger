@@ -233,7 +233,7 @@ class AdminController extends Controller
         }
         else
         {
-            \Crypt::decrypt($string);
+            return \Crypt::decrypt($string);
         }
     }
 }
