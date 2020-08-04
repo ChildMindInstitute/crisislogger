@@ -156,6 +156,7 @@ class AdminController extends Controller
                 if ($item->encrypted)
                 {
                     $item->text = self::decryptPureSQLData($item->text);
+                    $item->user_name = self::decryptPureSQLData($item->user_name);
                 }
             }
         }
@@ -176,6 +177,7 @@ class AdminController extends Controller
                 if ($item->encrypted)
                 {
                     $item->text = self::decryptPureSQLData($item->text);
+                    $item->user_name = self::decryptPureSQLData($item->user_name);
                 }
             }
         }
@@ -195,6 +197,7 @@ class AdminController extends Controller
                 if ($item->encrypted)
                 {
                     $item->text = self::decryptPureSQLData($item->text);
+                    $item->user_name = self::decryptPureSQLData($item->user_name);
                 }
             }
         }
