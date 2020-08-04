@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\Encryptable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +17,7 @@ use Laravel\Passport\HasApiTokens;
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, Encryptable;
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +27,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password', 'openhumans_access_token', 'openhumans_refresh_token', 'openhumans_project_member_id',
     ];
-
+    protected $encryptable = [
+        'name',
+        'country',
+        'state'
+    ];
     /**
      * The attributes that should be hidden for arrays.
      *

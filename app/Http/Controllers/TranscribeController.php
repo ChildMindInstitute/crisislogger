@@ -9,6 +9,7 @@ use Google\Cloud\Speech\V1\RecognitionAudio;
 use Google\Cloud\Speech\V1\RecognitionConfig;
 use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
 use Illuminate\Http\Response;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Storage;
 use App\Transcription;
 use Illuminate\Http\Request;
@@ -37,7 +38,23 @@ class TranscribeController extends Controller {
         $data = $transcriptions->union($texts)
             ->orderBy('converted', 'DESC')
             ->orderBy('share', 'ASC')
-            ->paginate(8);
+            ->get();
+        $data = $data->filter(function($record) use ($searchTxt){
+            if (strlen($searchTxt))
+            {
+                return (strpos(\Crypt::decrypt($record->name),$searchTxt) !== false) ? $record : null;
+            }
+        });
+
+        $count = count($data);
+        $page = (request('page'))?:1;
+        $rpp =  8; //(request('perPage'))?:50;
+        $offset = $rpp * ($page - 1);
+        $paginator = new LengthAwarePaginator($data->slice($offset,$rpp),$count,$rpp,$page,[
+            'path'  => $request->url(),
+            'query' => $request->query(),
+        ]);
+        $data = $paginator;
 		return $data;
 	}
 	public function userTranscription(Request $request)

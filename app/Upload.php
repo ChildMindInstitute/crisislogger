@@ -89,5 +89,8 @@ class Upload extends Model
                 $model->setAttribute('privacy_update_date', date('Y-m-d').' '.date('H:m:i'));
             }
         });
+        static::saving(function (self  $model) {
+            $model->encrypted  = 1;
+        });
     }
 }

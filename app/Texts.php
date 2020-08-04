@@ -3,8 +3,11 @@
 
 namespace App;
 
+use App\Traits\Encryptable;
 use Illuminate\Database\Eloquent\Model;
 use Eloquent;
+use function foo\func;
+
 /**
  * Class Texts
  * @package App
@@ -20,9 +23,13 @@ use Eloquent;
  */
 class Texts extends Model
 {
+    use Encryptable;
     protected $table ='text';
     protected $fillable = [
         'hide'
+    ];
+    protected $encryptable = [
+        'text',
     ];
     protected static function boot()
     {
@@ -32,6 +39,9 @@ class Texts extends Model
             {
                 $model->setAttribute('privacy_update_date', date('Y-m-d').' '.date('H:m:i'));
             }
+        });
+        static::saving(function (self  $model) {
+            $model->encrypted  = 1;
         });
     }
 }

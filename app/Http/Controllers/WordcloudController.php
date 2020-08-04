@@ -25,13 +25,13 @@ class WordcloudController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function generate(Request $request){
+
         $user = Auth::user();
 
         // Get a list of transcriptions
         /** @var Transcription[] $transcriptions */
         $transcriptions = $user->transcriptions()->get();
         $words = [];
-
         // Loop through the transcriptions and get a list of words
         foreach($transcriptions as $transcription){
             $words[$transcription->upload_id]['word'] = $this->generateWords($transcription->text);
