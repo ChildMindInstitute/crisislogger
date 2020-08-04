@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\TranscriptsCollection;
 use App\Http\Resources\TranscriptsResource;
 use App\Texts;
 use App\Upload;
-use Google\Cloud\Speech\V1\SpeechClient;
-use Google\Cloud\Speech\V1\RecognitionAudio;
-use Google\Cloud\Speech\V1\RecognitionConfig;
-use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Storage;
 use App\Transcription;
 use Illuminate\Http\Request;
@@ -48,15 +44,15 @@ class TranscribeController extends Controller {
         $data = $data->map(function ($item) {
            return new TranscriptsResource($item);
         });
-        $count = count($data);
-        $page = (request('page'))?:1;
-        $rpp =  8; //(request('perPage'))?:50;
-        $offset = $rpp * ($page - 1);
-        $paginator = new LengthAwarePaginator($data->slice($offset,$rpp),$count,$rpp,$page,[
-            'path'  => $request->url(),
-            'query' => $request->query(),
-        ]);
-        $data = $paginator;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        //Create a new Laravel collection from the array data
+        $collection = new Collection($data);
+        //Define how many items we want to be visible in each page
+        $per_page = 8;
+        //Slice the collection to get the items to display in current page
+        $currentPageResults = $collection->slice(($currentPage - 1) * $per_page, $per_page)->values();
+
+        $data = new LengthAwarePaginator($currentPageResults, count($collection), $per_page);
         return $data;
 	}
 	public function userTranscription(Request $request)
