@@ -26,26 +26,22 @@ class TranscribeController extends Controller {
             ->where('uploads.hide', '=', '0')
             ->where('uploads.video_generated', '=', '0')
             ->where('uploads.share', '>', '0');
-        if ($searchTxt != null) {
-            $transcriptions = $transcriptions->where('transcriptions.text', 'like', "%$searchTxt%");
-        }
         $texts = Texts::select(\DB::raw('"null" as name, text, share, hide, false as converted,  (id+ "-text") as id, created_at'))
             ->where('hide', '=', '0')
             ->where('share', '>', '0');
-        if ($searchTxt != null) {
-            $texts = $texts->where('text', 'like', "%$searchTxt%");
-        }
+
         $data = $transcriptions->union($texts)
             ->orderBy('converted', 'DESC')
             ->orderBy('share', 'ASC')
             ->get();
-        $data = $data->filter(function($record) use ($searchTxt){
-            if (strlen($searchTxt))
-            {
-                return (strpos(\Crypt::decrypt($record->name),$searchTxt) !== false) ? $record : null;
-            }
-        });
-
+        if (strlen($searchTxt)) {
+            $data = $data->filter(function($record) use ($searchTxt){
+                if (strlen($searchTxt))
+                {
+                    return (strpos(\Crypt::decrypt($record->name),$searchTxt) !== false) ? $record : null;
+                }
+            });
+        }
         $count = count($data);
         $page = (request('page'))?:1;
         $rpp =  8; //(request('perPage'))?:50;
