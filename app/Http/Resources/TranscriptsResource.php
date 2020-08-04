@@ -18,7 +18,7 @@ class TranscriptsResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'text' => $this->text,
-            'created_at' => $this->created_at,
+            'created_at' => date('Y-m-d', $this->created_at),
             'share' => $this->share,
             'hide' => $this->hide,
         ];
