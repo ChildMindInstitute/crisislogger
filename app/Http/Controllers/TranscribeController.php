@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TranscriptsCollection;
+use App\Http\Resources\TranscriptsResource;
 use App\Texts;
 use App\Upload;
 use Google\Cloud\Speech\V1\SpeechClient;
@@ -43,6 +45,9 @@ class TranscribeController extends Controller {
                 }
             });
         }
+        $data = $data->map(function ($item) {
+           return new TranscriptsResource($item);
+        });
         $count = count($data);
         $page = (request('page'))?:1;
         $rpp =  8; //(request('perPage'))?:50;
