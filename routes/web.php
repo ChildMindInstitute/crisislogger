@@ -134,7 +134,9 @@ Route::prefix('admin')->group(function () {
     Route::post('rank', 'AdminController@rank')
       ->name('admin-rank')
       ->middleware('can:admin');
-
+    Route::get('export', 'AdminController@export')
+        ->name('admin-export')
+        ->middleware('can:admin');
 });
 
 Auth::routes();

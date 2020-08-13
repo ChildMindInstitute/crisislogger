@@ -34,11 +34,15 @@ p {
     <input name="till" placeholder="2100-12-31" value="{{ $date_till }}">
 <input type="submit" style="float:right" value="Apply"/>
 </form>
+
 @endsection
 @section('content')
     <p><span style="color: green">--- </span> : Public and approved status by admin</p>
     <p><span style="color: red">--- </span> : Public and rejected status by admin</p>
     <p><span style="color: grey">--- </span> : Private by user</p>
+    <div class="card-body">
+        <a class="btn btn-primary float-right" style="font-size: 18px !important;" href="{{route('admin-export')}}">Export Data</a>
+    </div>
     <?php $totalVideoPublished = $totalAudioPublished  = $textPublished = 0;?>
     @foreach ($result as $date =>  $row)
         <?php

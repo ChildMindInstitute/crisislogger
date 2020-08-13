@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TranscriptExport;
 use App\Texts;
 use App\Transcription;
 use App\Upload;
@@ -9,6 +10,7 @@ use Auth;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Maatwebsite\Excel\Facades\Excel;
 use Session;
 
 class AdminController extends Controller
@@ -93,20 +95,20 @@ class AdminController extends Controller
         $query =
             "select d,"
             ."id, type,
-            public, hide"
+            public, name, text, hide"
             ." from ("
-            ."   select date(u.created_at) d, u.id, substring_index(u.name, '.', -1) type, u.user_id, u.share as public, u.hide as hide  from uploads as u left outer join transcriptions t on t.upload_id=u.id
+            ."   select date(u.created_at) d, u.id, u.name as name, substring_index(u.name, '.', -1) type, t.text, u.user_id, u.share as public, u.hide as hide  from uploads as u left outer join transcriptions t on t.upload_id=u.id
  ".$where_date ." and video_generated != 1".$searchWhere
             ."   union all"
-            ."   select date(t.created_at) d, t.id, 'txt',t.user_id , t.share, t.hide as hide  from text as t ".$where_date.$searchWhere
+            ."   select date(t.created_at) d, t.id,'text_name' as name, 'txt', t.text,t.user_id , t.share, t.hide as hide  from text as t ".$where_date.$searchWhere
             .") t "
             ." where 1"
             .($users_include || $referralWhere? " and user_id in (select id from users where ".$users_include." ".$referralWhere.")": "")
             .($users_exclude? " and (user_id not in (select id from users where ".$users_exclude.") or user_id is NULL)": "")
             ." order by d desc";
+        Session::put('report_query', $query);
         $reports = DB::select( DB::raw($query) );
-        $result = array(
-        );
+        $result = array();
         if (count($reports) > 0)
         {
             foreach ($reports as $report)
@@ -203,7 +205,35 @@ class AdminController extends Controller
         }
         return view('pages.admin.list', compact('report', 'type'));
     }
-
+    public function export(Request $request)
+    {
+        if (Session::has('report_query'))
+        {
+            $query = Session::get('report_query');
+            $reports = DB::select( DB::raw($query) );
+            $result = array();
+            if (count($reports))
+            {
+                foreach ($reports as $report)
+                {
+                    $type = 'video transcript';
+                    if ($report->type === 'txt')
+                    {
+                        $type = 'text';
+                    }
+                    else if ($report->type === 'wav')
+                    {
+                        $type = 'audio transcript';
+                    }
+                    if ($report->public && $report->hide === 0)
+                    {
+                        $result[] = array( 'type' => $type, 'text' => self::decryptPureSQLData($report->text),'date' => $report->d ,'name' => $type==='text'? $report->id: $report->name);
+                    }
+                }
+            }
+            return Excel::download(new TranscriptExport($result), date('Y-m-d').'-reports.csv', \Maatwebsite\Excel\Excel::CSV);
+        }
+    }
     public function hide(Request $request) {
         $type = $request->get('type');
         if ($type =='text')
