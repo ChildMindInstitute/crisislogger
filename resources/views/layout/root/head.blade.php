@@ -30,6 +30,7 @@
     <link href="{{ asset('css/skins/brand/dark.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/skins/aside/dark.css') }}" rel="stylesheet" type="text/css" />        <!--end::Layout Skins -->
     <link href="{{ asset('scss/main.css') }}?time={{ time() }}" rel="stylesheet" type="text/css" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
     <style>
 

@@ -146,7 +146,7 @@ class AdminController extends Controller
     public function video(Request $request) {
         #\Log::info("query: ".AdminController::ids($request));
         $type = 'video';
-        $report = DB::select( DB::raw("select u.id, u.created_at,u.where_from, u.name, t.text, t.encrypted, u.hide, u.rank, u.share , a.name as user_name, a.email as user_email"
+        $report = DB::select( DB::raw("select u.id, u.transcript_rate as textRank, u.published as published,  u.created_at,u.where_from, u.name, t.text, t.encrypted, u.hide, u.rank, u.share , a.name as user_name, a.email as user_email"
             ." from uploads u left outer join transcriptions t on t.upload_id=u.id left join users as a on a.id=u.user_id"
             ." where u.id in (".AdminController::safe_ids($request).")"
             ." and substring_index(u.name, '.', -1) not in ('wav')"
@@ -167,7 +167,7 @@ class AdminController extends Controller
 
     public function audio(Request $request) {
         $type = 'audio';
-        $report = DB::select( DB::raw("select  distinct u.id,u.where_from, u.created_at, u.name, t.text, t.encrypted, u.hide, u.rank, u.share, a.name as user_name, a.email as user_email"
+        $report = DB::select( DB::raw("select  distinct u.id,u.where_from,u.transcript_rate as textRank, u.published as published, u.created_at, u.name, t.text, t.encrypted, u.hide, u.rank, u.share, a.name as user_name, a.email as user_email"
             ." from uploads u left outer join transcriptions t on t.upload_id=u.id left join users as a on a.id=u.user_id"
             ." where u.id in (".AdminController::safe_ids($request).")"
             ." and substring_index(u.name, '.', -1) in ('wav')"
@@ -188,7 +188,7 @@ class AdminController extends Controller
 
     public function text(Request $request) {
         $type = 'text';
-        $report = DB::select( DB::raw("select t.id, t.created_at, t.where_from, null name, t.text, t.encrypted , hide, share, `rank`,  a.name as user_name, a.email as user_email"
+        $report = DB::select( DB::raw("select t.id, t.created_at, '0' as textRank, true as published t.where_from, null name, t.text, t.encrypted , hide, share, `rank`,  a.name as user_name, a.email as user_email"
             ." from text t  left join users as a on a.id=t.user_id"
             ." where t.id in (".AdminController::safe_ids($request).")"
             ." order by t.created_at") );
@@ -243,7 +243,6 @@ class AdminController extends Controller
         {
             Upload::find($request->id)->update(['hide' => $request->hide]);
         }
-
         return response()->noContent(201);
     }
 
@@ -254,8 +253,21 @@ class AdminController extends Controller
             Texts::find( $request->id)->update(['rank' => $request->rank]);
         }
         {
-            Upload::find( $request->id)->update(['rank' => $request->rank]);
+            $transcript = $request->get('transcript');
+            if (!$transcript)
+            {
+                Upload::find( $request->id)->update(['rank' => $request->rank]);
+            }
+            else {
+                Upload::find( $request->id)->update(['transcript_rate' => $request->rank+0]);
+            }
         }
+        return response()->noContent(201);
+    }
+    public function toggleTranscript(Request $request)
+    {
+        $status = $request->get('status');
+        Upload::find( $request->id)->update(['published' => $status+0]);
         return response()->noContent(201);
     }
     private static function decryptPureSQLData($string)

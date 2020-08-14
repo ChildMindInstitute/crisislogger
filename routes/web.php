@@ -131,6 +131,9 @@ Route::prefix('admin')->group(function () {
       ->name('admin-hide')
       ->middleware('can:admin');
 
+    Route::post('toggleTranscript', 'AdminController@toggleTranscript')
+      ->name('toggle-transcript')
+        ->middleware('can:admin');
     Route::post('rank', 'AdminController@rank')
       ->name('admin-rank')
       ->middleware('can:admin');

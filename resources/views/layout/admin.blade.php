@@ -13,6 +13,17 @@ th, td {vertical-align:top; background-color: #fff; padding:4px 8px; border:2px 
     </tr>
     @yield('content')
 </table>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 @yield('scripts')
+<script src="{{ asset('plugins/global/plugins.bundle.js') }}" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    $(function() {
+        $('.transcript-toggle').bootstrapToggle({
+            on: 'Published',
+            off: 'Unpublished'
+        });
+    })
+</script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </body>

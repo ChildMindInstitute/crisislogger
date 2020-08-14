@@ -9,10 +9,22 @@ button { width:30px; height: 30px; background-repeat: no-repeat; background-posi
 .hide0 > td { background-color: #efe }
 .hide0 button { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAFaUlEQVR4nF2VyY9cVxXGzz333jfUq6G7uqq7yy4PbUe2DLYRllCUlS3LoCgKoUmMN0aRN5H/Dq9ZgFiwQEhkQwzBkQcwZmVBQBDLETa4A4pj4+qxpq7q4dWb7nRYxCSG3/58Ot/m9zEighdwzgFAnufj8bgoCiKy1gIA5zxN05mZmUajIaVERPhf2BdBBI5ZKibx1mYfPL82Myc93zFyHIlIGCuBDYe9lcF6LagdPvAS8wXg54fggL4MUsak27HOtuvNGvpRoUTAmQOdITPEhCWpnWPGSBisDeLezsGjC7X61PMeX35kYaU34pE3PVUil3kYWBCe0WgyB5ghVygsAdeOFyZnhpf8j//051MnTjZnZ1+o5mDU3WKloFzxkRSmOwylkWWGDsGAxRwxYUBAU5nzekkRsbSCTrulv/395VdeCUol4IxZa+MkNgTTpSom+eaHf3z0+9/IqPSN71+EhcOqHKECsgpJh4xWf3mjf/sPtlr96jtv8/Z87ou/Pnjw6rlvcgQkos1kiyIApmE4WPn19WO9rYPP1v75wx/RyrqJjdNG5sqfpP2r17avfXBg9enMp0+Wf3U7zLVGahw6sPTvJ84RxnFc9aIAA0sAocx1WnauPsn37Gb3f/Bj+dmzcrzlg+7fuLX9wZ32OImcRm52JuNhbz1zeqo+3XnyDIHxy5cvt5ot6WTBGY9klcPg0aOKBSqoVtjB/Y+mDs2PP/7o6fu39gxTL9eTSKzPVva+fq6Degeh5lfZVlKJyqzT6bT37gPDiLGCaQ7Z+ObtwS9u7tvRHFWKSguZFSqyLCpgQthrVuYufHvYrKogVNJr1OckYRzHAgAK4TiCnwvH5FhC4/xbaNjw3ffntQmsCwozrYgDbVrV3dNqnf9evzmd+eAjDwHjeIdH4eZkB40xwjrNXOo7IGoYkU8m86+daV/8burAy6lwzBlhcmZarb1vvrrRqEzCwHq+8QKHPmdCJ4VKM3TOcefQ2ZxbjRbyPLBADnbTJCfnKVNLDCpSUkzSLCTkPhqPMeET94hLchgyDwnQWkvG+gZYUWTCFNJ4Fjfe+93azbtlS6A1gYuFUjbdN5ps/PRquzecLrIKoLOOSekc48B8LtAYw5jghKF21iScio1rt7Krd14aFU6ZbuR1a0ER+iExmezOJ7ubP3n3eGdzJsmmJTqyIHia5JVSGYnIWKuUctbUNS1fv9O/9tv5NIt0mgvv2WwruHRBnXm5yxkg8/K0NRov/eznzdFWKY0BFHjYWV0+cvQIttvtlZXVTIANOO90R+/dObCrkKtdPxs1p+YWL3Tm9tpvneWvndkQiJryLPbTycPrN5qCA+nU5AZcY25W1Gq1p58+qaimk64SRionzYMBN+NWNPvmG916w4VBn4pD587KoNS/+yGMRkPHRFRPJsqvBmvDja987RiR41euXCmHpd6gLzy/XKmWo6nO8sZkvlF5/ey4OWO8wEkB0kM/bCwcZNOVrSLdrjeOfuctFZVSssPt0enTp6UUzFoLxj7+7DF4vF2tB5kTO+lqd3mZJdYPJZSc9B3HcuCVnGoyA1tDg6VdUVKc3b3/l4uXLk1Vq/iF2Ijc408+AQeN1rwhiIu0O+jrJIswAO45xplAQOtJp/JYcM9qdu/evcXFxf379/+/s4Fg6dE/VrbH7WNHS8Ln28Vmf0OR4szjKIgYk3yiEhGJ9dXVneHo/BuLM1PTwBgAOHrB2Z8ziHfvPXho4uxU+4gsy/VkZHLtM8kZGm3Wet31fvfkqZNfP3E8CsP/Lg8AA0ZEBiwCQ3i+MNZYq+2/Hi4Nt0exzosi5wCMUHJ54vjxhcMLjhwiY4jAnlcBgP8Ah/s0YEfQ/dMAAAAASUVORK5CYII='); }
 .hide1 input, .hide1 .rank { display:none;}
+.show > .btn.btn-default, .btn.btn-default.active, .btn.btn-default:active, .btn.btn-default:hover {
+    color: #ffffff;
+    background: #c2c3ca;
+    border-color: #c1c6e0;
+}
+.btn.btn-default {
+    background: #efefef;
+    color: #74788d;
+    border: 1px solid #e8ecfa;
+}
 </style>
+
 @endsection
 @section('scripts')
 <script>
+
 function toggleHide(e, id, type) {
     var tr = e.parentNode.parentNode;
     var h = tr.classList.contains("hide1")? 1: 0;
@@ -28,9 +40,27 @@ function toggleHide(e, id, type) {
             console.log(error);
         })
 }
-function setRank(e, id, type) {
-    axios.post('{{ route('admin-rank') }}', { id: id, rank: e.value, type: type })
+function toggleTranscript(e, id) {
+    var tr = e.parentNode.parentNode;
+    var h = tr.classList.contains("checked")? 1: 0;
+    axios.post('{{ route('toggle-transcript') }}', { id: id, status: h})
         .then(() => {
+        })
+        .catch(error => {
+            alert(error);
+            console.log(error);
+        })
+}
+function setRank(e, id, type, transcript = false) {
+    axios.post('{{ route('admin-rank') }}', { id: id, rank: e.value, type: type, transcript: transcript })
+        .then(() => {
+            if (transcript)
+            {
+                document.getElementById(id+'-trans-rate').innerText = e.value == 1? "top": e.value;
+                console.log(document.getElementById(id+'-trans-rate'))
+                return;
+            }
+
             e.nextSibling.innerHTML = e.value == 1? "top": e.value;
         })
         .catch(error => {
@@ -70,6 +100,13 @@ function setRank(e, id, type) {
     <td>
         @if($row->share  > 0)
         {{ $row->text }}
+            <br>
+            @if($type !=='text')
+                <input type="checkbox" class="transcript-toggle" {{$row->published? 'checked': ''}}
+                onchange="toggleTranscript(this, {{ $row->id }})" data-toggle="toggle">
+                <input type="range" min="1" max="100" value="{{ $row->textRank }}" onchange="setRank(this, {{ $row->id }}, '{{$type}}', true)" >
+                <span id="{{$row->id.'-trans-rate'}}" class="rank">{{ $row->textRank }}</span>
+            @endif
         @endif
     </td>
     <td>

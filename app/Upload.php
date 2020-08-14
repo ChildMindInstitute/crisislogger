@@ -28,6 +28,8 @@ use Storage;
  * @property string where_from
  * @property boolean hide
  * @property string privacy_update_date
+ * @property integer transcript_rate
+ * @property boolean published
  */
 class Upload extends Model
 {
@@ -35,7 +37,10 @@ class Upload extends Model
 	    'link'
     ];
     protected $fillable = [
-        'hide'
+        'hide',
+        'rank',
+        'transcript_rate',
+        'published'
     ];
     /**
      * @return string
