@@ -25,7 +25,7 @@ class TranscribeController extends Controller {
             ->where('uploads.hide', '=', '0')
             ->where('uploads.video_generated', '=', '0')
             ->where('uploads.share', '>', '0');
-        $texts = Texts::select(\DB::raw('"null" as name, text, rank, 1 as published, encrypted as encrypted, share, hide, false as converted,  (id+ "-text") as id, created_at'))
+        $texts = Texts::select(\DB::raw('"null" as name, text, rank, "1" as published, encrypted as encrypted, share, hide, false as converted,  (id+ "-text") as id, created_at'))
             ->where('hide', '=', '0')
             ->where('share', '>', '0');
 
