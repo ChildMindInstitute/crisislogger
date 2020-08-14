@@ -21,11 +21,12 @@ class TranscribeController extends Controller {
 
     public function index(Request $request) {
 		$searchTxt = $request->searchTxt;
-        $transcriptions = Transcription::select(['name', 'transcriptions.text as text', 'published', 'rank', 'uploads.share as share', 'transcriptions.encrypted as encrypted', 'uploads.hide as hide','converted', 'uploads.id' ,'uploads.created_at'])->leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
+        $transcriptions = Transcription::select(['name', 'transcriptions.text as text','uploads.rank as rank', 'uploads.published as published', 'uploads.share as share',
+            'transcriptions.encrypted as encrypted', 'uploads.hide as hide','converted', 'uploads.id' ,'uploads.created_at'])->leftJoin('uploads', 'uploads.id', '=', 'transcriptions.upload_id')
             ->where('uploads.hide', '=', '0')
             ->where('uploads.video_generated', '=', '0')
             ->where('uploads.share', '>', '0');
-        $texts = Texts::select(\DB::raw('"null" as name, text, rank, "1" as published, encrypted as encrypted, share, hide, false as converted,  (id+ "-text") as id, created_at'))
+        $texts = Texts::select(\DB::raw('"null" as name, text,  `text`.`rank`,"1" as published, share, encrypted as encrypted, hide, false as converted,  (id+ "-text") as id, created_at'))
             ->where('hide', '=', '0')
             ->where('share', '>', '0');
 
@@ -42,7 +43,7 @@ class TranscribeController extends Controller {
                 }
             });
         }
-        $data = $data->map(function ($item) {
+        $data   = $data->map(function ($item) {
             if (!$item->published)
             {
                 $item->text = '';

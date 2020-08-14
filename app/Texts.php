@@ -20,13 +20,15 @@ use function foo\func;
  * @property string where_from
  * @property boolean hide
  * @property string privacy_update_date
+ * @property integer rank
  */
 class Texts extends Model
 {
     use Encryptable;
     protected $table ='text';
     protected $fillable = [
-        'hide'
+        'hide',
+        'rank'
     ];
     protected $encryptable = [
         'text',
