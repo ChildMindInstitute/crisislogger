@@ -85,15 +85,18 @@ axios.get('/api/word_cloud', {
                     size: obj[key] *  Math.random() * (30 - 15) + 15
                 });
             });
-
         var portlet_body = document.createElement('div');
         $('#transcript-'+i).find('#spinner').remove();
         $('#transcript-'+i).find('.show-more-cloud').removeClass('d-none');
         $('#transcript-'+i).find('.video-box').append("<p class='d-none' id='show-more-text'>"+text+"</p>");
         portlet_body.classList.add('word-cloud');
-        $('#transcript-'+i).find('.video-box').append(portlet_body);
-        var myWordCloud = wordCloud(portlet_body);
-        myWordCloud.update(words);
+        if ($('#transcript-'+i).length !==  0)
+        {
+            $('#transcript-'+i).find('.video-box').append(portlet_body);
+            var myWordCloud = wordCloud(portlet_body);
+            myWordCloud.update(words);
+        }
+
     }
 })
 .catch(function (error) {

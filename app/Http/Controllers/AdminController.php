@@ -188,7 +188,7 @@ class AdminController extends Controller
 
     public function text(Request $request) {
         $type = 'text';
-        $report = DB::select( DB::raw("select t.id, t.created_at, '0' as textRank, true as published t.where_from, null name, t.text, t.encrypted , hide, share, `rank`,  a.name as user_name, a.email as user_email"
+        $report = DB::select( DB::raw("select t.id, t.created_at, '0' as textRank, '1' as published, t.where_from, null name, t.text, t.encrypted , hide, share, `rank`,  a.name as user_name, a.email as user_email"
             ." from text t  left join users as a on a.id=t.user_id"
             ." where t.id in (".AdminController::safe_ids($request).")"
             ." order by t.created_at") );

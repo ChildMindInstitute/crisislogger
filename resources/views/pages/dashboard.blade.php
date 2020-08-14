@@ -44,9 +44,11 @@
                                     </div>
                                 </div>
                             @else
+                                @if($upload->published)
                                 <div id="{{'transcript-'.$upload->id}}">
                                     {{--                                            <p class="card-title text-center">No word cloud</p>--}}
                                 </div>
+                                @endif
                             @endif
                             @if(Str::contains($upload->link, '.wav'))
                                 <audio controls src="{{ $upload->link }}" style="width: 100%"></audio>
