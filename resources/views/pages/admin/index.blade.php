@@ -77,5 +77,5 @@ p {
 
     </tr>
 @endforeach
-    <p>Total published video : {{$totalVideoPublished}}, Total published audio: {{$totalAudioPublished}}, Total published text: {{$textPublished}}</p>
+    <p>Total published video : {{$totalVideoPublished}}, Total published audio: {{$totalAudioPublished}}, Total published text: {{$textPublished}} <span class="float-right">-The export options is public + accepted + "contributed to science"-</span></p>
 @endsection

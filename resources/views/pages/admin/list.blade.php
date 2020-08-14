@@ -41,9 +41,7 @@ function toggleHide(e, id, type) {
         })
 }
 function toggleTranscript(e, id) {
-    var tr = e.parentNode.parentNode;
-    var h = tr.classList.contains("checked")? 1: 0;
-    axios.post('{{ route('toggle-transcript') }}', { id: id, status: h})
+    axios.post('{{ route('toggle-transcript') }}', { id: id, status: e.checked})
         .then(() => {
         })
         .catch(error => {
