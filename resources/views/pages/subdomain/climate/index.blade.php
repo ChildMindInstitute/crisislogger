@@ -3,7 +3,7 @@
 @section('description', '')
 @section('content')
     <div class="container kt-portlet pt-0">
-        <img src="{{ asset('media/photos/crisislogger-banner-plus-logo.png') }}" alt="">
+        <img src="{{ asset('media/photos/climate-banner.jpeg') }}" alt="Climate banner">
         <a href="{{ route('login') }}" class="login-btn text-white btn-lg">Login</a>
         <div class="text-center">
             <br>
