@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/login', 'Auth\LoginController@simpeAuth')->name('temporary-auth');
+Route::post('/login', 'Auth\LoginController@simpeAuth')->name('temporary-auth');
 
 Route::post('upload', 'UploadController@upload')->name('upload');
 Route::post('save-text', 'UploadController@saveText')->name('save-text');
