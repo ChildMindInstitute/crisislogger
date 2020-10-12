@@ -13,9 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/login', 'Auth\LoginController@simpeAuth')->name('temporary-auth');
 
 Route::post('upload', 'UploadController@upload')->name('upload');
 Route::post('save-text', 'UploadController@saveText')->name('save-text');
@@ -39,3 +37,4 @@ Route::get('user-transcription', 'TranscribeController@userTranscription');
 Route::get('user-texts', 'TextController@userTexts');
 Route::delete('remove-resource', 'UserController@removeResource');
 Route::post('questionnaire', 'QuestionnaireController@upload')->name('questionnaire_form_upload');
+Route::get('all-data', 'UserController@getAllData')->name('get_all_data');
