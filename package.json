@@ -28,7 +28,7 @@
         "react-bootstrap-sweetalert": "^5.1.9",
         "react-dom": "^16.2.0",
         "react-player": "^2.0.1",
-        "react-scripts": "3.4.1",
+        "react-scripts": "5.0.1",
         "react-wordcloud": "^1.2.2",
         "reactjs-popup": "^1.5.0",
         "redux": "^4.0.5",
